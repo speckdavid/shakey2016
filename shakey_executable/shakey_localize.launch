@@ -1,0 +1,16 @@
+<launch>
+
+  <arg name="pkg"/>
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg pkg)/map.yaml" respawn="true"/>
+
+  <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <remap from="scan" to="base_scan"/>
+    <param name="odom_frame" value="odom_combined"/>
+    <param name="odom_frame_id" value="odom_combined"/>
+    <param name="base_frame_id" value="base_footprint"/>
+  </node>
+
+  <include file="$(find pr2_navigation_global)/rviz/rviz_move_base.launch"/>
+
+</launch>
