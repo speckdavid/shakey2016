@@ -7,12 +7,12 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://manipulation_objects/meshes/box.stl" />
+        <mesh filename="package://shakey_spawn_objects/meshes/box.stl" />
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://manipulation_objects/meshes/box.stl" />
+        <mesh filename="package://shakey_spawn_objects/meshes/box.stl" />
       </geometry>
     </collision>
   </link>

@@ -2,17 +2,17 @@
   <link name="wedge">
     <inertial>
       <mass value="1.000000" />
-      <origin xyz="0.004387 -0.199963 -0.010162"/>
-      <inertia ixx="0.019198" ixy="-0.001487" ixz="0.027704" iyy="0.111287" iyz="-0.000078" izz="0.015378" />
+      <origin xyz="0.002705 -0.003992 -0.010305"/>
+      <inertia ixx="0.110845" ixy="0.000050" ixz="0.027700" iyy="0.111114" iyz="0.000686" izz="0.106930" />
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="package://manipulation_objects/meshes/wedge.stl" />
+        <mesh filename="package://shakey_spawn_objects/meshes/wedge.stl" />
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://manipulation_objects/meshes/wedge.stl" />
+        <mesh filename="package://shakey_spawn_objects/meshes/wedge.stl" />
       </geometry>
     </collision>
   </link>
