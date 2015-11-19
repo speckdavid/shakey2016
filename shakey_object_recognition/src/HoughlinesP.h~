@@ -33,12 +33,12 @@ public:
     Mat himg = houghlinesP(src);
     Size sz1 = src.size();
     Size sz2 = himg.size();
-    Mat finalImg(sz1.height, sz1.width+sz2.width, CV_8UC3);
-    Mat left(finalImg, Rect(0, 0, sz1.width, sz1.height));
+    Mat im3(sz1.height, sz1.width+sz2.width, CV_8UC3);
+    Mat left(im3, Rect(0, 0, sz1.width, sz1.height));
     src.copyTo(left);
-    Mat right(finalImg, Rect(sz1.width, 0, sz2.width, sz2.height));
+    Mat right(im3, Rect(sz1.width, 0, sz2.width, sz2.height));
     himg.copyTo(right);  
-    return finalImg;
+    return im3;
   }
 
 };
