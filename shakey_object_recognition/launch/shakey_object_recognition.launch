@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="load_driver" default="false" />
+  <arg name="depth_registration" default="true" />
+  <arg name="camera" default="head_mount_kinect" />
+
+  <include file="$(find openni_launch)/launch/openni.launch">
+    <arg name="load_driver" default="$(arg load_driver)" />
+    <arg name="depth_registration" value="$(arg depth_registration)" />
+    <arg name="camera" value="$(arg camera)"/>
+  </include>
+
+  <node name="segmentation3d" pkg="shakey_object_recognition" type="segmentation3d" output="screen"/>
+</launch>

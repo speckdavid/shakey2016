@@ -10,6 +10,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   sensor_msgs
   std_msgs
+  pcl_conversions
+  pcl_ros
 )
 
 ## System dependencies are found with CMake's conventions
@@ -121,6 +123,9 @@ include_directories(
 add_executable(image_converter src/image_converter.cpp)
 target_link_libraries(image_converter ${catkin_LIBRARIES})
 add_dependencies(image_converter sensor_msgs cv_bridge roscpp std_msgs image_transport)
+
+add_executable(segmentation3d src/segmentation3d.cpp)
+target_link_libraries(segmentation3d ${catkin_LIBRARIES})
 
 ## Declare a C++ library
 # add_library(shakey_object_recognition

@@ -4,7 +4,7 @@
 #include <sensor_msgs/image_encodings.h>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include "./HoughlinesP.h"
+#include "./segmentation2d.h"
 
 static const std::string OPENCV_WINDOW = "Image window";
 
@@ -14,7 +14,7 @@ class ImageConverter
   image_transport::ImageTransport it_;
   image_transport::Subscriber image_sub_;
   image_transport::Publisher image_pub_;
-  HoughlinesP hlp;
+  Segmentation2d seg;
   
 public:
   ImageConverter()
@@ -47,11 +47,12 @@ public:
     }
 
     // Draw houghlines on the video stream
-    cv_ptr->image = hlp.houghlinesP(cv_ptr->image);
-    //cv_ptr->image = hlp.houghlinesPDualPic(cv_ptr->image);
-
-
-
+    Mat houghL = seg.houghlinesP(cv_ptr->image);
+    Mat aThresh = seg.adaptiveThresholding(cv_ptr->image);
+    Mat contours = seg.contours(cv_ptr->image);
+    Mat dual1 = seg.dualPic(cv_ptr->image, houghL);
+    Mat dual2 = seg.dualPic(dual1, aThresh);
+    cv_ptr->image = seg.dualPic(dual2, contours);
     // Update GUI Window
     //cv::imshow(OPENCV_WINDOW, cv_ptr->image);
     //cv::waitKey(3);
