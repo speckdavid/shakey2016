@@ -8,7 +8,7 @@
 #include <vector>
 #include <math.h>
 
-#define GROUND_UPPER_BOUND -0.1
+#define GROUND_UPPER_BOUND 0.1
 #define ARC_THRESH 5
 
 enum Object_class {Box, Wedge, Ground, Unkown};
@@ -31,7 +31,7 @@ public:
 	  }
 	  // Check for plane parallel to ground plane -> Box
 	  if (std::abs(cur_coeff.values[0]) < 0.05 && std::abs(cur_coeff.values[1]) < 0.05 
-	    && std::abs(cur_coeff.values[2] - 1) < 0.05  && cur_coeff.values[3] < GROUND_UPPER_BOUND)
+	    && std::abs(cur_coeff.values[2])-1 < 0.05  && std::abs(cur_coeff.values[3]) > GROUND_UPPER_BOUND)
 	    return Box;
     }
     return Wedge;

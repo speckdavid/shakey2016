@@ -128,6 +128,7 @@ add_dependencies(image_converter sensor_msgs cv_bridge roscpp std_msgs image_tra
 
 add_executable(segmentation3d src/segmentation3d.cpp)
 target_link_libraries(segmentation3d ${catkin_LIBRARIES})
+target_link_libraries(segmentation3d ${PCL_LIBRARIES} libvtkCommon.so libvtkFiltering.so )
 
 ## Declare a C++ library
 # add_library(shakey_object_recognition
