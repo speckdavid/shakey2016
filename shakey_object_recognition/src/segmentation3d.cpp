@@ -41,7 +41,7 @@ class Segmentation3d
 {
   ros::NodeHandle nh;
   ros::Publisher vis_pub;
-  ros::Publisher cloud_pub;
+  // ros::Publisher cloud_pub;
   ros::Subscriber sub;
   tf::TransformListener listener;
   Classifier cl;
@@ -53,14 +53,17 @@ public:
   {
     sub = nh.subscribe ("/head_mount_kinect/depth/points", 1, 
       &Segmentation3d::cloud_cb, this);
-    vis_pub = nh.advertise<visualization_msgs::Marker>("visualization_marker", 0);
-    cloud_pub = nh.advertise<sensor_msgs::PointCloud2>("out_cloud", 0);
+    vis_pub = nh.advertise<visualization_msgs::MarkerArray>("visualization_markers", 0);
+    // cloud_pub = nh.advertise<sensor_msgs::PointCloud2>("out_cloud", 0);
     tf_error = false;
     obj = Ground;
   }  
 
   void cloud_cb (const sensor_msgs::PointCloud2ConstPtr& input)
   {
+	visualization_msgs::MarkerArray markerArray;
+	int number_marker = 5, cur_number_markers = 0;
+	markerArray.markers.resize(5);
 	tf_error = false;
 	obj = Ground;
 	// Create some clouds
@@ -91,8 +94,8 @@ public:
     pcl::ExtractIndices<pcl::PointXYZ> extract;
 
     int i = 0, nr_points = (int) cloud_out->points.size ();
-    // While 15% of the original cloud is still there
-    while (cloud_out->points.size () > 0.15 * nr_points)
+    // While 5% of the original cloud is still there
+    while (cloud_out->points.size () > 0.05 * nr_points)
     {
       // Segment the largest planar component from the remaining cloud
       seg.setInputCloud (cloud_out);
@@ -115,11 +118,15 @@ public:
       extract.filter (*cloud_f);
       cloud_out.swap (cloud_f);
 
+      /* debug for cloud
+      sensor_msgs::PointCloud2 out;
+      pcl::toROSMsg(*cloud_p, out);
+      cloud_pub.publish(out);*/
+
       // Check for ground plane and "small" surfaces
       if ((std::abs(coefficients->values[0]) < 0.05 && std::abs(coefficients->values[1]) < 0.05
       	    && std::abs(coefficients->values[2])-1 < 0.05
-			&& std::abs(coefficients->values[3]) < 0.1)
-			|| inliers->indices.size()  < nr_points * 0.01)
+			&& std::abs(coefficients->values[3]) < 0.1))
     	  continue;
       // save relevant coefficiencs
       all_coeffs.push_back(*coefficients);
@@ -143,36 +150,33 @@ public:
           pcl::FieldComparison<pcl::PointXYZ> ("z", pcl::ComparisonOps::GT, pcaCentroid(2) - distance)));
       range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new
           pcl::FieldComparison<pcl::PointXYZ> ("z", pcl::ComparisonOps::LT, (pcaCentroid(2) + distance))));
-      // build the filter
       pcl::ConditionalRemoval<pcl::PointXYZ> condrem (range_cond);
       condrem.setInputCloud (cloud_p);
-      condrem.setKeepOrganized(true);
-      // apply filter
       condrem.filter (*cloud_p);
-      std::vector<int> indices;
-      pcl::removeNaNFromPointCloud(*cloud_p, *cloud_p, indices);
 
       // parallel plane to ground plane (top plane of box)
       if (std::abs(coefficients->values[0]) < 0.05 && std::abs(coefficients->values[1]) < 0.05
             	    && std::abs(coefficients->values[2])-1 < 0.05  && std::abs(coefficients->values[3]) > 0.1) {
     	obj = Box;
-    	visualization_msgs::Marker marker = boxMarkerFromTopPlane(cloud_p, coefficients);
-    	vis_pub.publish(marker);
+    	visualization_msgs::Marker marker = boxMarkerFromTopPlane(cloud_p, coefficients, cur_number_markers);
+    	markerArray.markers[cur_number_markers] = marker;
+    	cur_number_markers++;
       }
       // crooked plane (wedge)
       if ( (1 - std::abs(coefficients->values[0]) < 0.75 || 1 - std::abs(coefficients->values[1])  < 0.75)
     		  && 1 - std::abs(coefficients->values[2]) < 0.75 && std::abs(coefficients->values[2]) < 0.75) {
         obj = Wedge;
-        visualization_msgs::Marker marker = wedgeMarkerFromCrookedPlane(cloud_p, coefficients);
-    	vis_pub.publish(marker);
-    	sensor_msgs::PointCloud2 out;
-    	pcl::toROSMsg(*cloud_p, out);
-    	cloud_pub.publish(out);
+        visualization_msgs::Marker marker = wedgeMarkerFromCrookedPlane(cloud_p, coefficients, cur_number_markers);
+    	markerArray.markers[cur_number_markers] = marker;
+    	cur_number_markers++;
       }
       // Dumb to console
       dump_console(inliers, coefficients, i);
       i++;
     }
+    for (int i = cur_number_markers; i < number_marker; i++)
+    	markerArray.markers[i] = dummyMarker(cur_number_markers);
+    vis_pub.publish(markerArray);
     if (obj == Box) std::cerr << "BOX" << std::endl;
     if (obj == Wedge) std::cerr << "WEDGE" << std::endl;
     if (obj == Ground) std::cerr << "GROUND" << std::endl;
@@ -204,17 +208,12 @@ private:
   }
   
   visualization_msgs::Marker boxMarkerFromTopPlane(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_p,
-  		  pcl::ModelCoefficients::Ptr coefficients) {
+  		  pcl::ModelCoefficients::Ptr coefficients, int id) {
 	  std::vector<Eigen::Vector3f> minBox = minimal2DBoundingBox(cloud_p, coefficients);
 	  float width_p, length_p;
 	  Eigen::Matrix3f eigenVectors = eigenVectorsAndSize(minBox, &width_p, &length_p);
-	  visualization_msgs::Marker marker;
-	  marker.header.frame_id = "odom_combined";
-	  marker.header.stamp = ros::Time();
-	  marker.ns = "segmentation3d";
-	  marker.id = 0;
+	  visualization_msgs::Marker marker = dummyMarker(id);
 	  marker.type = visualization_msgs::Marker::CUBE;
-	  marker.action = visualization_msgs::Marker::ADD;
 	  // Translation of points to the mean
 	  marker.pose.position.x = minBox[4](0);
 	  marker.pose.position.y = minBox[4](1);
@@ -233,36 +232,17 @@ private:
 	  marker.scale.y = std::abs(length_p);
 	  marker.scale.z = minBox[0](2);
 	  marker.color.a = 1.0;
-	  marker.color.r = 0.0;
-	  marker.color.g = 1.0;
-	  marker.color.b = 0.0;
 	  return marker;
   }
 
   visualization_msgs::Marker wedgeMarkerFromCrookedPlane(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_p,
-		  pcl::ModelCoefficients::Ptr coefficients) {
+		  pcl::ModelCoefficients::Ptr coefficients, int id) {
       std::vector<Eigen::Vector3f> minBox = minimal2DBoundingBox(cloud_p, coefficients);
       float width_p, length_p;
       Eigen::Matrix3f eigenVectors = eigenVectorsAndSize(minBox, &width_p, &length_p);
-      visualization_msgs::Marker marker;
-      marker.header.frame_id = "odom_combined";
-      marker.header.stamp = ros::Time();
-      marker.ns = "segmentation3d";
-      marker.id = 0;
+      visualization_msgs::Marker marker = dummyMarker(id);
       marker.type = visualization_msgs::Marker::TRIANGLE_LIST;
-      marker.action = visualization_msgs::Marker::ADD;
-      marker.pose.position.x = 0.0;
-      marker.pose.position.y = 0.0;
-      marker.pose.position.z = 0.0;
-      marker.pose.orientation.x = 0.0;
-      marker.pose.orientation.y = 0.0;
-      marker.pose.orientation.z = 0.0;
-      marker.pose.orientation.w = 1.0;
-      marker.scale.x = 1.0;
-      marker.scale.y = 1.0;
-      marker.scale.z = 1.0;
-      marker.color.g = 1.0;
-      marker.color.a = 1.0;
+	  marker.color.a = 1.0;
       std::vector<geometry_msgs::Point> ros_p;
       for (int i = 0; i < 4; i++) {
         ros_p.push_back(getRosPoint(minBox[i]));
@@ -291,6 +271,31 @@ private:
         }
       }
       return marker;
+  }
+
+  visualization_msgs::Marker dummyMarker(int id) {
+	  visualization_msgs::Marker marker;
+	  marker.header.frame_id = "odom_combined";
+	  marker.header.stamp = ros::Time();
+	  marker.ns = "segmentation3d";
+	  marker.id = id;
+	  marker.type = visualization_msgs::Marker::CUBE;
+	  marker.action = visualization_msgs::Marker::ADD;
+	  marker.pose.position.x = 0;
+	  marker.pose.position.y = 0;
+	  marker.pose.position.z = 0;
+	  marker.pose.orientation.x = 0.0;
+	  marker.pose.orientation.y = 0.0;
+	  marker.pose.orientation.z = 0.0;
+	  marker.pose.orientation.w = 1.0;
+	  marker.scale.x = 1;
+	  marker.scale.y = 1;
+	  marker.scale.z = 1;
+	  marker.color.a = 0.0;
+	  marker.color.r = 0.0;
+	  marker.color.g = 1.0;
+	  marker.color.b = 0.0;
+	  return marker;
   }
 
   void dump_console(pcl::PointIndices::Ptr inliers, pcl::ModelCoefficients::Ptr coefficients, int planeNumber)
