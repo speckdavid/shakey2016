@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="gki_index_scan_filter" type="gki_index_scan_filter" name="base_laser_scan_filter" >
+    <rosparam file="$(find gki_index_scan_filter)/config/shakey_front.yaml" command="load"/>
+    <remap from="scan" to="base_scan" />
+    <remap from="scan_filtered" to="base_scan_filtered" />
+  </node>
+</launch>
+

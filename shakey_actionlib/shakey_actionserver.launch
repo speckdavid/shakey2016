@@ -1,0 +1,10 @@
+<launch>
+
+  <include file="$(find gki_index_scan_filter)/shakey_scan_filter.launch"/>
+
+  <!-- mux_base_scan -->
+  <node pkg="topic_tools" type="mux" name="mux_base_scan" output="screen" args="base_scan_mux base_scan base_scan_filtered mux:=mux_base_scan"/>
+  <!-- action_server -->
+  <node pkg="shakey_actionlib" type="shakey_action_server" name="shakey_push_server" output="screen"/>
+
+</launch>
