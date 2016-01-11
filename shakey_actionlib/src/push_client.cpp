@@ -2,30 +2,57 @@
 #include <actionlib/client/simple_action_client.h>
 #include <actionlib/client/terminal_state.h>
 #include <shakey_actionlib/PushAction.h>
+#include <shakey_actionlib/MoveAction.h>
+#include <shakey_actionlib/ObserveAction.h>
+#include <tf/transform_listener.h>
 
 int main (int argc, char **argv)
 {
-  ros::init(argc, argv, "shakey_push_client");
+  ros::init(argc, argv, "shakey_action_client");
+
+  /*actionlib::SimpleActionClient<shakey_actionlib::ObserveAction> ac1("observe_action_server", true);
+  ROS_INFO("Waiting for action server to start.");
+  ac1.waitForServer();
+  ROS_INFO("Send goal.");
+  shakey_actionlib::ObserveGoal goal;
+  ac1.sendGoalAndWait(goal);*/
 
   // create the action client
   // true causes the client to spin its own thread
-  actionlib::SimpleActionClient<shakey_actionlib::PushAction> ac("shakey_push_server", true);
+  actionlib::SimpleActionClient<shakey_actionlib::MoveAction> ac1("move_action_server", true);
+  ROS_INFO("Waiting for action server to start.");
+  ac1.waitForServer();
+  shakey_actionlib::MoveGoal goal1;
+  goal1.target_pose.position.x = 5.0;
+  goal1.target_pose.position.y = 4.0;
+  goal1.target_pose.position.z = 0.0;
+  // Set correct orientation
+  tf::Vector3 plane_norm(-0.500082, -0.00174093, 0.0);
+  plane_norm = plane_norm.normalized();
+  std::cerr << plane_norm.getX() << plane_norm.getY() << plane_norm.getZ() << std::endl;
+  tf::Quaternion qt = tf::shortestArcQuat (tf::Vector3(1,0,0), plane_norm);
+  geometry_msgs::Quaternion robot_orientation;
+  tf::quaternionTFToMsg(qt, robot_orientation);
+  std::cerr << robot_orientation << std::endl;
+  goal1.target_pose.orientation = robot_orientation;
+  ac1.sendGoalAndWait(goal1);
 
+  actionlib::SimpleActionClient<shakey_actionlib::PushAction> ac2("push_action_server", true);
   ROS_INFO("Waiting for action server to start.");
   // wait for the action server to start
-  ac.waitForServer(); //will wait for infinite time
+  ac2.waitForServer(); //will wait for infinite time
 
   ROS_INFO("Action server started, sending goal.");
   // send a goal to the action
-  shakey_actionlib::PushGoal goal;
-  goal.target_point.x = -3.2;
-  goal.target_point.y = 3.25;
-  goal.target_point.z = 0;
-  goal.push_distance = 1.5;
-  goal.push_direction.x = -0.47;
-  goal.push_direction.y = -0.15;
-  goal.push_direction.z = 0;
-  ac.sendGoal(goal);
+  shakey_actionlib::PushGoal goal2;
+  goal2.target_point.x = 4.88502;
+  goal2.target_point.y = 5.08171;
+  goal2.target_point.z = 0;
+  goal2.push_distance = 2;
+  goal2.push_direction.x = -0.500082;
+  goal2.push_direction.y = -0.00174093;
+  goal2.push_direction.z = 0;
+  ac2.sendGoal(goal2);
 
   //wait for the action to return
   /*bool finished_before_timeout = ac.waitForResult(ros::Duration(120.0));

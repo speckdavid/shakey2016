@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
   move_base_msgs
   topic_tools
   move_base
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -67,7 +68,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate actions in the 'action' folder
 add_action_files(
   DIRECTORY action
-  FILES Push.action
+  FILES Push.action Move.action Observe.action
 )
 
 ## Generate added messages and services with any dependencies listed here
@@ -123,7 +124,9 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(shakey_action_server src/shakey_action_server.cpp)
+add_executable(push_action_server src/push_action_server.cpp)
+add_executable(move_action_server src/move_action_server.cpp)
+add_executable(observe_action_server src/observe_action_server.cpp)
 add_executable(push_client src/push_client.cpp)
 
 ## Declare a C++ library
@@ -141,12 +144,24 @@ add_executable(push_client src/push_client.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(shakey_action_server ${shakey_actionlib_EXPORTED_TARGETS})
+add_dependencies(push_action_server ${shakey_actionlib_EXPORTED_TARGETS})
+add_dependencies(move_action_server ${shakey_actionlib_EXPORTED_TARGETS})
+add_dependencies(observe_action_server ${shakey_actionlib_EXPORTED_TARGETS})
 add_dependencies(push_client ${shakey_actionlib_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(
-  shakey_action_server
+  push_action_server
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(
+  move_action_server
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(
+  observe_action_server
   ${catkin_LIBRARIES}
 )
 
