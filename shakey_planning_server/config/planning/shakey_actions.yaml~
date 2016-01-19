@@ -1,0 +1,7 @@
+state_creators:
+    - shakey_planning_actions/state_creator_robot_pose robot_location location at-base location
+goal_creators:
+    - shakey_planning_actions/goal_creator_objects
+action_executors:
+    - shakey_planning_actions/action_executor_push_object push-object /push_action_server
+    - shakey_planning_actions/action_executor_drive_base drive-base /move_base

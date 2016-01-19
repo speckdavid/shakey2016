@@ -23,11 +23,11 @@ int main (int argc, char **argv)
   ROS_INFO("Waiting for action server to start.");
   ac1.waitForServer();
   shakey_actionlib::MoveGoal goal1;
-  goal1.target_pose.position.x = 5.0;
-  goal1.target_pose.position.y = 4.0;
+  goal1.target_pose.position.x = 0.975404;
+  goal1.target_pose.position.y = 6.5046;
   goal1.target_pose.position.z = 0.0;
   // Set correct orientation
-  tf::Vector3 plane_norm(-0.500082, -0.00174093, 0.0);
+  tf::Vector3 plane_norm(0.312877, -0.38553, 0.0);
   plane_norm = plane_norm.normalized();
   std::cerr << plane_norm.getX() << plane_norm.getY() << plane_norm.getZ() << std::endl;
   tf::Quaternion qt = tf::shortestArcQuat (tf::Vector3(1,0,0), plane_norm);
@@ -45,14 +45,14 @@ int main (int argc, char **argv)
   ROS_INFO("Action server started, sending goal.");
   // send a goal to the action
   shakey_actionlib::PushGoal goal2;
-  goal2.target_point.x = 4.88502;
-  goal2.target_point.y = 5.08171;
+  goal2.target_point.x = 0;
+  goal2.target_point.y = 0;
   goal2.target_point.z = 0;
-  goal2.push_distance = 2;
-  goal2.push_direction.x = -0.500082;
-  goal2.push_direction.y = -0.00174093;
+  goal2.push_distance = 1.2;
+  goal2.push_direction.x = 0;
+  goal2.push_direction.y = 0;
   goal2.push_direction.z = 0;
-  ac2.sendGoal(goal2);
+  ac2.sendGoalAndWait(goal2);
 
   //wait for the action to return
   /*bool finished_before_timeout = ac.waitForResult(ros::Duration(120.0));

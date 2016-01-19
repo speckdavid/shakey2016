@@ -106,7 +106,7 @@
         (and
             (at start (at-base ?s))
             (at start (not (= ?s ?g)))
-            (at start (can-navigate ?s ?g))
+            ;(at start (can-navigate ?s ?g))
         )
         :effect
         (and

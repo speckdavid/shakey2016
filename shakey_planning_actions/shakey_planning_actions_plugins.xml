@@ -1,0 +1,14 @@
+<library path="lib/libshakey_planning_actions">	
+	<class name="shakey_planning_actions/state_creator_robot_pose" type="shakey_planning_actions::StateCreatorRobotPose" base_class_type="continual_planning_executive::StateCreator">
+        <description>Sets the current robot pose in the state and possible at-style predicates.</description>
+	</class>
+	<class name="shakey_planning_actions/goal_creator_objects" type="shakey_planning_actions::GoalCreatorObjects" base_class_type="continual_planning_executive::GoalCreator">
+        <description>Sets goal condition to push all objects.</description>
+	</class>
+	<class name="shakey_planning_actions/action_executor_push_object" type="shakey_planning_actions::ActionExecutorPushObject" base_class_type="continual_planning_executive::ActionExecutorInterface">
+        <description>Action executor for pushing an object.</description>
+	</class>
+	<class name="shakey_planning_actions/action_executor_drive_base" type="shakey_planning_actions::ActionExecutorDriveBase" base_class_type="continual_planning_executive::ActionExecutorInterface">
+        <description>An action executor that moves the base.</description>
+    </class>
+</library>

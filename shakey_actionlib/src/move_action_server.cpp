@@ -50,7 +50,6 @@ public:
     move_base_msgs::MoveBaseGoal goalMB;
     goalMB.target_pose.header.frame_id = "map";
     goalMB.target_pose.header.stamp = ros::Time::now();
-    // stop with some offset before the object
     goalMB.target_pose.pose.position.x = goal->target_pose.position.x;
     goalMB.target_pose.pose.position.y = goal->target_pose.position.y;
     goalMB.target_pose.pose.position.z = goal->target_pose.position.z;
