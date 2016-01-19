@@ -51,12 +51,15 @@ class Segmentation3d
 public:  
   Segmentation3d()
   {
-    sub = nh.subscribe ("/head_mount_kinect/depth/points", 1, 
+    sub = nh.subscribe ("/head_mount_kinect/depth/points", 1,
       &Segmentation3d::cloud_cb, this);
+    // sub = nh.subscribe ("/head_mount_kinect/depth_registered/points", 1,
+    //  &Segmentation3d::cloud_cb, this);
     vis_pub = nh.advertise<visualization_msgs::MarkerArray>("visualization_markers", 0);
     // cloud_pub = nh.advertise<sensor_msgs::PointCloud2>("out_cloud", 0);
     tf_error = false;
     obj = Ground;
+    std::cerr << "Start object recognition:" << std::endl;
   }  
 
   void cloud_cb (const sensor_msgs::PointCloud2ConstPtr& input)
@@ -95,7 +98,7 @@ public:
 
     int i = 0, nr_points = (int) cloud_out->points.size ();
     // While 5% of the original cloud is still there
-    while (cloud_out->points.size () > 0.05 * nr_points)
+    while (cloud_out->points.size () > 0.1 * nr_points)
     {
       // Segment the largest planar component from the remaining cloud
       seg.setInputCloud (cloud_out);
@@ -118,15 +121,15 @@ public:
       extract.filter (*cloud_f);
       cloud_out.swap (cloud_f);
 
-      /* debug for cloud
+      // debug for cloud
       sensor_msgs::PointCloud2 out;
       pcl::toROSMsg(*cloud_p, out);
-      cloud_pub.publish(out);*/
+      // cloud_pub.publish(out);
 
       // Check for ground plane and "small" surfaces
       if ((std::abs(coefficients->values[0]) < 0.05 && std::abs(coefficients->values[1]) < 0.05
       	    && std::abs(coefficients->values[2])-1 < 0.05
-			&& std::abs(coefficients->values[3]) < 0.1))
+			&& std::abs(coefficients->values[3]) < 0.1) || inliers->indices.size() < 1000)
     	  continue;
       // save relevant coefficiencs
       all_coeffs.push_back(*coefficients);
@@ -164,7 +167,7 @@ public:
       }
       // crooked plane (wedge)
       if ( (1 - std::abs(coefficients->values[0]) < 0.75 || 1 - std::abs(coefficients->values[1])  < 0.75)
-    		  && 1 - std::abs(coefficients->values[2]) < 0.75 && std::abs(coefficients->values[2]) < 0.75) {
+    		  && 1 - std::abs(coefficients->values[2]) < 0.75 && std::abs(coefficients->values[2]) < 0.9) {
         obj = Wedge;
         visualization_msgs::Marker marker = wedgeMarkerFromCrookedPlane(cloud_p, coefficients, cur_number_markers);
     	markerArray.markers[cur_number_markers] = marker;
@@ -192,9 +195,9 @@ private:
 	tf::StampedTransform transform;
     try
     {
-	  listener.waitForTransform("odom_combined", input->header.frame_id, 
+	  listener.waitForTransform("map", input->header.frame_id,
 	    input->header.stamp , ros::Duration(0.5));
-      listener.lookupTransform("odom_combined", input->header.frame_id, 
+      listener.lookupTransform("map", input->header.frame_id,
         input->header.stamp, transform);
     }
     catch (tf::TransformException &ex) {
@@ -203,13 +206,14 @@ private:
           tf_error = true;
     }
     pcl_ros::transformPointCloud(cloud_in, cloud_out, transform);
-    cloud_out.header.frame_id = "odom_combined";
+    cloud_out.header.frame_id = "map";
     return cloud_out;
   }
   
   visualization_msgs::Marker boxMarkerFromTopPlane(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_p,
   		  pcl::ModelCoefficients::Ptr coefficients, int id) {
 	  std::vector<Eigen::Vector3f> minBox = minimal2DBoundingBox(cloud_p, coefficients);
+	  printPushData(minBox);
 	  float width_p, length_p;
 	  Eigen::Matrix3f eigenVectors = eigenVectorsAndSize(minBox, &width_p, &length_p);
 	  visualization_msgs::Marker marker = dummyMarker(id);
@@ -275,7 +279,7 @@ private:
 
   visualization_msgs::Marker dummyMarker(int id) {
 	  visualization_msgs::Marker marker;
-	  marker.header.frame_id = "odom_combined";
+	  marker.header.frame_id = "map";
 	  marker.header.stamp = ros::Time();
 	  marker.ns = "segmentation3d";
 	  marker.id = id;
@@ -388,6 +392,31 @@ private:
 	  return eigenVectors;
   }
 
+  // TODO: Verify order of points
+  void printPushData(std::vector<Eigen::Vector3f> plane_bbx) {
+	  std::cerr << plane_bbx[0]<< plane_bbx[1]<< plane_bbx[2]<< plane_bbx[3]<< std::endl;
+	  Eigen::Vector3f push_p1 = (plane_bbx[0] + plane_bbx[1]) * 0.5f;
+	  Eigen::Vector3f push_p2 = (plane_bbx[0] + plane_bbx[3]) * 0.5f;
+	  Eigen::Vector3f push_p3 = (plane_bbx[2] + plane_bbx[1]) * 0.5f;
+	  Eigen::Vector3f push_p4 = (plane_bbx[2] + plane_bbx[3]) * 0.5f;
+	  Eigen::Vector3f push_v1 = plane_bbx[4] - push_p1;
+	  Eigen::Vector3f push_v2 = plane_bbx[4] - push_p2;
+	  Eigen::Vector3f push_v3 = plane_bbx[4] - push_p3;
+	  Eigen::Vector3f push_v4 = plane_bbx[4] - push_p4;
+	  push_p1 -= 1.2 * push_v1;
+	  push_p2 -= 1.2 * push_v2;
+	  push_p3 -= 1.2 * push_v3;
+	  push_p4 -= 1.2 * push_v4;
+	  std::cerr << "[(" << push_p1.x() << ", " << push_p1.y() << ", 0), (" <<
+			  push_v1.x() << ", " << push_v1.y() << ", 0)]" << std::endl;
+	  std::cerr << "[(" << push_p2.x() << ", " << push_p2.y() << ", 0), (" <<
+			  push_v2.x() << ", " << push_v2.y() << ", 0)]" << std::endl;
+	  std::cerr << "[(" << push_p3.x() << ", " << push_p3.y() << ", 0), (" <<
+			  push_v3.x() << ", " << push_v3.y() << ", 0)]" << std::endl;
+	  std::cerr << "[(" << push_p4.x() << ", " << push_p4.y() << ", 0), (" <<
+			  push_v4.x() << ", " << push_v4.y() << ", 0)]" << std::endl;
+  }
+
   geometry_msgs::Point getRosPoint(Eigen::Vector3f point)
   {
 	  geometry_msgs::Point p;
@@ -410,5 +439,3 @@ int main (int argc, char** argv)
   
   return 0;
 }
-
-
