@@ -3,31 +3,22 @@
 
 #include "continual_planning_executive/actionExecutorService.hpp"
 #include "continual_planning_executive/symbolicState.h"
+#include <actionlib/client/simple_action_client.h>
+#include <shakey_object_recognition/DetectObjects.h>
 
-namespace tidyup_actions
+namespace shakey_planning_actions
 {
 
-    class ActionExecutorDetectObjects : public ActionExecutorService<shakey_actionlib::ObserveAction>
+    class ActionExecutorDetectObjects : public ActionExecutorService<shakey_object_recognition::DetectObjects>
     {
         public:
             virtual void initialize(const std::deque<std::string> & arguments);
 
-            virtual bool fillGoal(shakey_actionlib::ObserveAction & goal,
+            virtual bool fillGoal(shakey_object_recognition::DetectObjects::Request & goal,
                     const DurativeAction & a, const SymbolicState & current);
 
-//            virtual bool executeBlocking(const DurativeAction & a, SymbolicState & current);
-
-            virtual void updateState(bool & success, tidyup_msgs::DetectGraspableObjects::Response & response,
+            virtual void updateState(bool & success, shakey_object_recognition::DetectObjects::Response & response,
                     const DurativeAction & a, SymbolicState & current);
-
-        private:
-            ros::ServiceClient serviceClientGraspability;
-            bool requestGraspability;
-            string tidyLocationName;
-
-            std::string findStaticObjectForLocation(const std::string& location, const SymbolicState & current) const;
-//            actionlib::SimpleActionClient<pr2_controllers_msgs::PointHeadAction>* headControl;
-//            string head_pointing_frame;
     };
 
 };

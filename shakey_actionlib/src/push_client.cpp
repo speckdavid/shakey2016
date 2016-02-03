@@ -45,13 +45,6 @@ int main (int argc, char **argv)
   ROS_INFO("Action server started, sending goal.");
   // send a goal to the action
   shakey_actionlib::PushGoal goal2;
-  goal2.target_point.x = 0;
-  goal2.target_point.y = 0;
-  goal2.target_point.z = 0;
-  goal2.push_distance = 1.2;
-  goal2.push_direction.x = 0;
-  goal2.push_direction.y = 0;
-  goal2.push_direction.z = 0;
   ac2.sendGoalAndWait(goal2);
 
   //wait for the action to return

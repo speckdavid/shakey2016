@@ -1452,9 +1452,9 @@
       <static>0</static>
     </model>
     <state world_name='default'>
-      <sim_time>73 882000000</sim_time>
-      <real_time>74 163556771</real_time>
-      <wall_time>1446845683 214204038</wall_time>
+      <sim_time>189 910000000</sim_time>
+      <real_time>68 716578584</real_time>
+      <wall_time>1454424542 356948672</wall_time>
       <model name='ground_plane'>
         <pose>0.207084 0.806571 0 0 -0 0</pose>
         <link name='Wall_16'>
@@ -1639,27 +1639,27 @@
         </link>
       </model>
       <model name='unit_box_1'>
-        <pose>23.3772 20.1759 0.5 0 -0 -0.76</pose>
+        <pose>-0.054079 11.2988 0.5 0 0 -0.76</pose>
         <link name='link'>
-          <pose>23.3772 20.1759 0.5 0 -0 -0.76</pose>
+          <pose>-0.054079 11.2988 0.5 0 0 -0.76</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='unit_box_2'>
-        <pose>16.7824 17.0808 0.5 0 -0 0</pose>
+        <pose>13.1437 13.6907 0.5 0 -0 0.24</pose>
         <link name='link'>
-          <pose>16.7824 17.0808 0.5 0 -0 0</pose>
+          <pose>13.1437 13.6907 0.5 0 -0 0.24</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='unit_box_3'>
-        <pose>15.2112 13.5727 0.5 0 -0 0</pose>
+        <pose>8.41852 11.2921 0.5 0 -0 0</pose>
         <link name='link'>
-          <pose>15.2112 13.5727 0.5 0 -0 0</pose>
+          <pose>8.41852 11.2921 0.5 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -1668,7 +1668,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>13.7802 4.46999 34.3243 0 1.16764 1.53219</pose>
+        <pose>10.7533 -8.18468 32.1639 -1.17697e-16 1.07964 1.53619</pose>
         <view_controller>orbit</view_controller>
       </camera>
     </gui>

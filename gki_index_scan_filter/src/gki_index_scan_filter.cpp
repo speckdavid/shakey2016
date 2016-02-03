@@ -75,9 +75,11 @@ public:
     for (size_t i = 0; i < filter_indices_size; ++i)
     {
         if(use_rep_117_)    // values are too close to the robot to be good
-            filtered_scan_.ranges[filter_indices_[i]] = -std::numeric_limits<double>::infinity();
+            // filtered_scan_.ranges[filter_indices_[i]] = -std::numeric_limits<double>::infinity();
+            filtered_scan_.ranges[filter_indices_[i]] = 2.8;
         else
-            filtered_scan_.ranges[filter_indices_[i]] = scan.range_max + 1.0;
+            // filtered_scan_.ranges[filter_indices_[i]] = scan.range_max + 1.0;
+            filtered_scan_.ranges[filter_indices_[i]] = 2.8;
     }
 
     scan_filtered_pub_.publish(filtered_scan_);

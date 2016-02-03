@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   pcl_ros
   tf
   tf_conversions
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -57,11 +58,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+  FILES
+  DetectObjects.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -71,10 +71,11 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   sensor_msgs#   std_msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+  geometry_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -118,17 +119,14 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-# include_directories(include)
+include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
-add_executable(image_converter src/image_converter.cpp)
-target_link_libraries(image_converter ${catkin_LIBRARIES})
-add_dependencies(image_converter sensor_msgs cv_bridge roscpp std_msgs image_transport)
 
-add_executable(segmentation3d src/segmentation3d.cpp)
-target_link_libraries(segmentation3d ${catkin_LIBRARIES})
-target_link_libraries(segmentation3d ${PCL_LIBRARIES} libvtkCommon.so libvtkFiltering.so )
+add_executable(objectDetection src/objectDetection.cpp src/objectVisualisation.cpp)
+target_link_libraries(objectDetection ${catkin_LIBRARIES})
+target_link_libraries(objectDetection ${PCL_LIBRARIES} libvtkCommon.so libvtkFiltering.so )
 
 ## Declare a C++ library
 # add_library(shakey_object_recognition

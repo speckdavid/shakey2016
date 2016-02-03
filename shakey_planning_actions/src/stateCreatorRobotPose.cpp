@@ -86,19 +86,6 @@ namespace shakey_planning_actions
 
     bool StateCreatorRobotPose::fillState(SymbolicState & state)
     {
-    	// For test
-    	state.addObject("loc1", _robotPoseType);
-    	state.addObject(_robotPoseObject, _robotPoseType);
-    	state.setNumericalFluent("x", "loc1", 3);
-    	state.setNumericalFluent("y", "loc1", 3);
-    	state.setNumericalFluent("z", "loc1", 0);
-    	state.setNumericalFluent("qx", "loc1", 0);
-    	state.setNumericalFluent("qy", "loc1", 0);
-    	state.setNumericalFluent("qz", "loc1", 0);
-    	state.setNumericalFluent("qw", "loc1", 1);
-    	state.setNumericalFluent("timestamp", "loc1", ros::Time::now().toSec());
-    	state.setObjectFluent("frame-id", "loc1", "/map");
-
         tf::StampedTransform transform;
         try{
         	_tf.waitForTransform("/map", "/base_link", ros::Time(0), ros::Duration(1.0));

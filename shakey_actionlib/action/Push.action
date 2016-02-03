@@ -1,6 +1,4 @@
 #goal definition
-geometry_msgs/Point target_point
-geometry_msgs/Vector3 push_direction
 float64 push_distance
 ---
 ---

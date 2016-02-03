@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>shakey_planning_actions</name>
+  <name>shakey_utils</name>
   <version>0.0.0</version>
-  <description>The shakey_planning_actions package</description>
+  <description>The shakey_utils package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/shakey_planning_actions</url> -->
+  <!-- <url type="website">http://wiki.ros.org/shakey_utils</url> -->
 
 
   <!-- Author tags are optional, mutiple are allowed, one per tag -->
@@ -40,19 +40,13 @@
   <!-- Use test_depend for packages you need only for testing: -->
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>continual_planning_executive</build_depend>
   <build_depend>roscpp</build_depend>
-  <build_depend>tf</build_depend>
-  <build_depend>shakey_actionlib</build_depend>
-  <build_depend>shakey_utils</build_depend>
-  <run_depend>shakey_utils</run_depend>
-  <run_depend>continual_planning_executive</run_depend>
   <run_depend>roscpp</run_depend>
-  <run_depend>tf</run_depend>
-  <run_depend>shakey_actionlib</run_depend>
+
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
-      <continual_planning_executive plugin="${prefix}/shakey_planning_actions_plugins.xml" />
+    <!-- Other tools can request additional information be placed here -->
+
   </export>
 </package>

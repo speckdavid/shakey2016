@@ -12,21 +12,21 @@ namespace shakey_planning_actions
     {
         ActionExecutorActionlib<move_base_msgs::MoveBaseAction, move_base_msgs::MoveBaseGoal,
             move_base_msgs::MoveBaseResult>::initialize(arguments);
-
-        if(arguments.size() < 3)
-            return;
     }
 
     bool ActionExecutorDriveBase::fillGoal(move_base_msgs::MoveBaseGoal & goal,
             const DurativeAction & a, const SymbolicState & current)
     {
-
         // FIXME: don't get from state (very old), but the newest.
         // The frame_id should be a fixed frame anyways
         goal.target_pose.header.stamp = ros::Time::now();
 
-        ROS_ASSERT(a.parameters.size() == 2);
-        string targetName = a.parameters[1];
+        ROS_ASSERT(a.parameters.size() <= 3);
+        string targetName;
+        if (a.parameters.size() == 3)
+        	targetName = a.parameters[2];
+        if (a.parameters.size() == 2)
+        	targetName = a.parameters[1];
 
         // extract nicer + warn.
         Predicate p;
@@ -65,22 +65,23 @@ namespace shakey_planning_actions
             const move_base_msgs::MoveBaseResult & result,
             const DurativeAction & a, SymbolicState & current)
     {
-        ROS_ASSERT(a.parameters.size() == 2);
-        string startName = a.parameters[0];
-        string targetName = a.parameters[1];
+    	// set robot_location to room of target position
+    	ROS_ASSERT(a.parameters.size() <= 3);
+    	string targetName;
+    	if (a.parameters.size() == 3)
+    		targetName = a.parameters[2];
+    	if (a.parameters.size() == 2)
+    		targetName = a.parameters[1];
 
-        // start predicates are always applied independent of success
-        for(std::vector<std::pair<std::string, bool> >::iterator it = _startPredicates.begin();
-                it != _startPredicates.end(); it++) {
-            current.setBooleanPredicate(it->first, startName, it->second);
-        }
-
-        if(actionReturnState == actionlib::SimpleClientGoalState::SUCCEEDED) {
-            for(std::vector<std::pair<std::string, bool> >::iterator it = _goalPredicates.begin();
-                    it != _goalPredicates.end(); it++) {
-                current.setBooleanPredicate(it->first, targetName, it->second);
-            }
-        }
+    	// extract nicer + warn.
+    	Predicate p;
+    	p.parameters.push_back(targetName);
+    	p.name = "location-in-room";
+    	std::string new_room;
+    	if(!current.hasObjectFluent(p, &new_room)) {
+    		ROS_ERROR("%s: targetName: %s - no location-in-room in state.", __func__, targetName.c_str());
+    	}
+    	current.setObjectFluent("location-in-room", "robot_location", new_room);
     }
 
 };

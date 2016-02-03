@@ -10,5 +10,5 @@
     <arg name="camera" value="$(arg camera)"/>
   </include>
 
-  <node name="segmentation3d" pkg="shakey_object_recognition" type="segmentation3d" output="screen"/>
+  <node name="segmentation3d" pkg="shakey_object_recognition" type="objectDetection" output="screen"/>
 </launch>

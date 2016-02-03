@@ -29,13 +29,6 @@ namespace shakey_planning_actions
                     const move_base_msgs::MoveBaseResult & result,
                     const DurativeAction & a, SymbolicState & current);
 
-        protected:
-            ///< predicates to set/unset for the start location on successfull execution
-            std::vector<std::pair<std::string, bool> > _startPredicates;
-
-            ///< predicates to set/unset for the goal location on successfull execution
-            std::vector<std::pair<std::string, bool> > _goalPredicates;
-
     };
 
 };

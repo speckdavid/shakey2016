@@ -2,7 +2,6 @@
 
   <!-- action_servers -->
   <node pkg="shakey_actionlib" type="push_action_server" name="push_action_server" output="screen"/>
-  <node pkg="shakey_actionlib" type="move_action_server" name="move_action_server" output="screen"/>
   <node pkg="shakey_actionlib" type="observe_action_server" name="observe_action_server" output="screen"/>
 
 </launch>

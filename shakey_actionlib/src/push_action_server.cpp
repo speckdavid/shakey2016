@@ -80,7 +80,7 @@ public:
     action_name_(name)
   {
 	cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("/base_controller/command", 1);
-    offset = 1.2;
+    offset = 1.5;
     as_.start();
   }
 
@@ -156,6 +156,7 @@ public:
       return;
     }
 
+    ros::Duration(0.25).sleep();
     // Move forward and push object
     move_base_msgs::MoveBaseGoal goalMB2;
     goalMB2.target_pose.header.frame_id = "base_link";
@@ -178,7 +179,7 @@ public:
     // Move back
     ROS_INFO("Moving back via cmd command...");
     ROS_INFO("Moving back...");
-    if(this->dirveStraightOdom(-0.25, offset))
+    if(this->dirveStraightOdom(-0.25, 0.75))
       ROS_INFO("Moving back completed.");
     else {
       ROS_INFO("Not able to move back.");
@@ -197,6 +198,7 @@ public:
       return;
     }
 
+    ros::Duration(0.25).sleep();
     ROS_INFO("Push action completed.");
     as_.setSucceeded();
   }

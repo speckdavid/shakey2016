@@ -11,6 +11,8 @@
 		room							; a room
 		doorway							; a doorway
 		
+		search_location - location
+		
 		movable_object          		; an object that can be pushed
 		pushable_location - location	; a pushable location of a movable object (in front of the side planes)
     )
@@ -22,8 +24,8 @@
     (:predicates
         (at-base ?l - location)                 ; location of the base
         (pushed ?o - movable_object)			; records if a movable_object was pushed to its goal
-		(doorway-free ?d - doorway)				; is the doorway is free?
 		(doorway-state-known ?d - doorway)		; is the doorway state known?
+		(searched ?l - search_location)
     )
 
     (:functions
@@ -37,10 +39,12 @@
         (qw ?p - pose) - number
         (timestamp ?p - pose) - number      ; unix time in s
         (frame-id ?p - pose) - frameid
-		(belongs-to-doorway ?l - doorway_location) - doorway
+	(belongs-to-doorway ?l - doorway_in_location) - doorway
         (location-in-room ?l - location) - room
         ;push informations for a movable object
         (belongs-to-movable-object ?u - pushable_location) - movable_object
+        (belongs-to-search-location ?o - movable_object) - search_location
+        (belongs-to-doorway ?o - movable_object) - doorway
         (push-distance ?o - movable_object) - number
     )
 
@@ -59,23 +63,6 @@
          )
     )
     
-    (:durative-action unblock-doorway
-        :parameters (?l - doorway_in_location ?d - doorway)
-        :duration (= ?duration 5.0)
-        :condition
-        (and
-            (at start (at-base ?l))
-            (at start (= (belongs-to-doorway ?l) ?d))
-            (at start (doorway-state-known ?d))
-            (at start (not (doorway-free ?d)))
-        )
-        :effect
-        (and
-            (at end (doorway-free ?d))
-            (at start (not (doorway-state-known ?d)))	; necessary if a ghost blocks again a doorway or it fails
-        )
-    )
-    
     (:durative-action drive-through-doorway
         :parameters (?d - doorway ?s - doorway_in_location ?g - doorway_out_location)
         :duration (= ?duration 10.0)
@@ -88,13 +75,13 @@
             (at start (= (belongs-to-doorway ?s) ?d))
             (at start (= (belongs-to-doorway ?g) ?d))
             (at start (doorway-state-known ?d))
-            (at start (doorway-free ?d))
+            (at start (not (is-doorway-blocked ?d)))
         )
         :effect
         (and
             (at start (not (at-base ?s)))
             (at end (at-base ?g))
-            (at end (not (door-state-known ?d)))
+            (at end (not (doorway-state-known ?d)))
             ; set robot_location to goal room
         )
     )
@@ -106,12 +93,26 @@
         (and
             (at start (at-base ?s))
             (at start (not (= ?s ?g)))
-            ;(at start (can-navigate ?s ?g))
+            (at start (can-navigate ?s ?g))
         )
         :effect
         (and
             (at start (not (at-base ?s)))
             (at end (at-base ?g))
+        )
+    )
+    
+    (:durative-action detect-objects
+        :parameters (?l - search_location)
+        :duration (= ?duration 1.0)
+        :condition
+        (and
+            (at start (at-base ?l))
+            (at start (not (searched ?l)))
+        )
+        :effect
+        (and
+            (at end (searched ?l))
         )
     )
     
@@ -125,7 +126,9 @@
 			(at start (= (belongs-to-movable-object ?u) ?o))
 		)
 		:effect
+		(and
 			(at end (pushed ?o))
+		)
 	)
 	
     (:derived
@@ -140,6 +143,26 @@
     (:derived
         (is-doorway-out-location ?l - doorway_location)
         (exists (?l2 - passage_out_location) (= ?l ?l2))
+    )
+    
+    (:derived
+        (is-doorway-blocked ?d - doorway)
+        (exists (?o - movable_object) 
+			(and
+				(= (belongs-to-doorway ?o) ?d)
+				(not (pushed ?o))
+			)
+		)
+    )
+    
+    (:derived
+        (has-unpushed-objects ?s - search_location)
+        (exists (?o - movable_object) 
+			(and
+				(= (belongs-to-doorway ?o) ?s)
+				(not (pushed ?o))
+			)
+		)
     )
 )
 

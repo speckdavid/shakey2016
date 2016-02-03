@@ -1,15 +1,11 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(shakey_planning_actions)
+project(shakey_utils)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  continual_planning_executive
-  tf
-  shakey_actionlib
-  shakey_utils
 )
 
 ## System dependencies are found with CMake's conventions
@@ -102,8 +98,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS include
-#  LIBRARIES shakey_planning_actions
+ INCLUDE_DIRS include
+#  LIBRARIES shakey_utils
 #  CATKIN_DEPENDS roscpp
 #  DEPENDS system_lib
 )
@@ -114,40 +110,33 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+# include_directories(include)
 include_directories(include)
-include_directories(shakey_utils/include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
-# add_library(shakey_planning_actions
-#   src/${PROJECT_NAME}/shakey_planning_actions.cpp
-# )
-add_library(shakey_planning_actions 
-src/stateCreatorRobotPose.cpp
-src/stateCreatorRobotLocationInRoom.cpp
-src/goalCreatorObjects.cpp
-src/actionExecutorPushObject.cpp
-src/actionExecutorDetectObjects.cpp
-src/actionExecutorDriveBase.cpp
+add_library(shakey_utils
+  src/geometryPoses.cpp
+  src/stringutil.cpp
 )
-target_link_libraries(shakey_planning_actions shakey_utils ${catkin_LIBRARIES})
+target_link_libraries(shakey_utils ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(shakey_planning_actions ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(shakey_utils ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(shakey_planning_actions_node src/shakey_planning_actions_node.cpp)
+# add_executable(shakey_utils_node src/shakey_utils_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(shakey_planning_actions_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(shakey_utils_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(shakey_planning_actions_node
+# target_link_libraries(shakey_utils_node
 #   ${catkin_LIBRARIES}
 # )
 
@@ -166,7 +155,7 @@ target_link_libraries(shakey_planning_actions shakey_utils ${catkin_LIBRARIES})
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS shakey_planning_actions shakey_planning_actions_node
+# install(TARGETS shakey_utils shakey_utils_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -191,7 +180,7 @@ target_link_libraries(shakey_planning_actions shakey_utils ${catkin_LIBRARIES})
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_shakey_planning_actions.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_shakey_utils.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
