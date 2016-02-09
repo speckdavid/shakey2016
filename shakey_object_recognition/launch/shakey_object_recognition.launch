@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <launch>
   <arg name="load_driver" default="false" />
   <arg name="depth_registration" default="true" />
@@ -10,5 +9,7 @@
     <arg name="camera" value="$(arg camera)"/>
   </include>
 
-  <node name="segmentation3d" pkg="shakey_object_recognition" type="objectDetection" output="screen"/>
+  <node name="segmentation3d" pkg="shakey_object_recognition" type="objectDetection" output="screen">
+    <rosparam file="$(find shakey_object_recognition)/config/config.yaml" command="load"/>
+  </node>
 </launch>
