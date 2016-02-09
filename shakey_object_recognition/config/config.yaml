@@ -9,6 +9,6 @@ ObjectDetection:
   # x (<) && y(<) && z(>) && w(<) of normal vector for ground plane
   groundCoeffs: [0.05, 0.05, 0.95, 0.1]
   # x (<) && y(<) && z(>) && w(>) of normal vector for box top plane
-  boxCoeffs: [0.2, 0.2, 0.9, 0.25]
+  boxCoeffs: [0.2, 0.2, 0.9, 0.1]
   # (x (>) || y(>)) && z(>) && z(<) of normal vector for wedge crooked plane
   wedgeCoeffs: [0.25, 0.25, 0.25, 0.9]
