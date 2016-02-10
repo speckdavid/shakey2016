@@ -60,6 +60,8 @@ class ObjectDetection
   bool tf_error;
   ObjectVisualisation visObjs;
 
+  std::string _worldFrame;
+
 public:  
   ObjectDetection()
   {
@@ -79,6 +81,7 @@ public:
 
   bool detect(shakey_object_recognition::DetectObjects::Request &req,
 		  	  	  	   shakey_object_recognition::DetectObjects::Response &res) {
+     load_params();
      visObjs.resetMarker();
 	 tf_error = true;
 	 pcl::PointCloud<pcl::PointXYZ> cloud_in;
@@ -151,6 +154,12 @@ public:
 	  temp << "[" << _wedgeCoeffs[0] << ", " << _wedgeCoeffs[1] << ", " <<
 	  		  _wedgeCoeffs[2] << ", " << _wedgeCoeffs[3] << "]";
 	  ROS_INFO("Wedge Coefficients: %s", temp.str().c_str());
+      nh.getParam("ObjectDetection/world_frame", _worldFrame);
+      if(_worldFrame.empty()) {
+          ROS_ERROR("ObjectDetection: no world_frame set, using /map");
+          _worldFrame = "/map";
+      }
+      ROS_INFO("Using world_frame = %s", _worldFrame.c_str());
 	  std::cerr << "--------------------------------------------------------------" << std::endl;
   }
 
@@ -161,7 +170,6 @@ public:
 
   void cloud_cb (pcl::PointCloud<pcl::PointXYZ> cloud_in)
   {
-	load_params();
 	obj = Ground;
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_out = cloud_in.makeShared();
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_p (new pcl::PointCloud<pcl::PointXYZ>), cloud_f (new pcl::PointCloud<pcl::PointXYZ>);
@@ -303,9 +311,9 @@ private:
 	tf::StampedTransform transform;
     try
     {
-	  listener.waitForTransform("map", input->header.frame_id,
+	  listener.waitForTransform(_worldFrame, input->header.frame_id,
 	    input->header.stamp , ros::Duration(0.5));
-      listener.lookupTransform("map", input->header.frame_id,
+      listener.lookupTransform(_worldFrame, input->header.frame_id,
         input->header.stamp, transform);
     }
     catch (tf::TransformException &ex) {
@@ -314,7 +322,7 @@ private:
           ROS_ERROR("%s",ex.what());
     }
     pcl_ros::transformPointCloud(cloud_in, cloud_out, transform);
-    cloud_out.header.frame_id = "map";
+    cloud_out.header.frame_id = _worldFrame;
     return cloud_out;
   }
 

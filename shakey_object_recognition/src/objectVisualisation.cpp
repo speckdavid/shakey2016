@@ -93,8 +93,17 @@ void ObjectVisualisation::addWedgeMarkerFromCrookedPlane(
 }
 
 visualization_msgs::Marker ObjectVisualisation::dummyMarker(int id) {
+    std::string _worldFrame;
+    ros::NodeHandle nh("~");
+    nh.getParam("ObjectDetection/world_frame", _worldFrame);
+    if(_worldFrame.empty()) {
+        ROS_ERROR("ObjectVisualisation: no world_frame set, using /map");
+        _worldFrame = "/map";
+    }
+    ROS_INFO("Using world_frame = %s", _worldFrame.c_str());
+
 	visualization_msgs::Marker marker;
-	marker.header.frame_id = "map";
+	marker.header.frame_id = _worldFrame;
 	marker.header.stamp = ros::Time();
 	marker.ns = "segmentation3d";
 	marker.id = id;

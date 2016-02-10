@@ -12,3 +12,4 @@ ObjectDetection:
   boxCoeffs: [0.2, 0.2, 0.9, 0.1]
   # (x (>) || y(>)) && z(>) && z(<) of normal vector for wedge crooked plane
   wedgeCoeffs: [0.25, 0.25, 0.25, 0.9]
+  world_frame: /base_footprint
