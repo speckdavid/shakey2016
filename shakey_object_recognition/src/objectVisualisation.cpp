@@ -19,6 +19,10 @@ void ObjectVisualisation::setNodeHandle(ros::NodeHandle nh) {
 	_nh = nh;
 }
 
+void ObjectVisualisation::setWorldFrame(std::string worldFrame) {
+	_worldFrame = worldFrame;
+}
+
 void ObjectVisualisation::resetMarker() {
 	_cur_objects = 0;
 	for (int i = 0; i < _num_marker; i++)
@@ -50,6 +54,7 @@ void ObjectVisualisation::addBoxMarkerFromTopPlane(
 	// Construct scale from max and min values (Bounding box)
 	marker.scale.x = std::abs(width_p);
 	marker.scale.y = std::abs(length_p);
+	std::cerr << width_p << ", " << length_p << std::endl;
 	marker.scale.z = minBox[0](2);
 	marker.color.a = 1.0;
 	_markerArray.markers[_cur_objects] = marker;
@@ -90,18 +95,10 @@ void ObjectVisualisation::addWedgeMarkerFromCrookedPlane(
 		}
 	}
 	_markerArray.markers[_cur_objects] = marker;
+	_cur_objects++;
 }
 
 visualization_msgs::Marker ObjectVisualisation::dummyMarker(int id) {
-    std::string _worldFrame;
-    ros::NodeHandle nh("~");
-    nh.getParam("ObjectDetection/world_frame", _worldFrame);
-    if(_worldFrame.empty()) {
-        ROS_ERROR("ObjectVisualisation: no world_frame set, using /map");
-        _worldFrame = "/map";
-    }
-    ROS_INFO("Using world_frame = %s", _worldFrame.c_str());
-
 	visualization_msgs::Marker marker;
 	marker.header.frame_id = _worldFrame;
 	marker.header.stamp = ros::Time();

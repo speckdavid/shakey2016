@@ -14,6 +14,7 @@ protected:
 	ros::NodeHandle _nh;
 	int _num_marker;
 	int _cur_objects;
+	std::string _worldFrame;
 	
 	visualization_msgs::Marker dummyMarker(int id);
 	
@@ -23,6 +24,8 @@ public:
 	ObjectVisualisation();
 	
 	void setNodeHandle(ros::NodeHandle nh);
+
+	void setWorldFrame(std::string worldFrame);
 
 	void resetMarker();
 

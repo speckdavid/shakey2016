@@ -28,12 +28,18 @@
 #include <pcl/surface/concave_hull.h>
 #include <pcl/filters/conditional_removal.h>
 #include <pcl/filters/filter.h>
+#include <pcl/kdtree/kdtree.h>
+#include <pcl/sample_consensus/method_types.h>
+#include <pcl/sample_consensus/model_types.h>
+#include <pcl/segmentation/sac_segmentation.h>
+#include <pcl/segmentation/extract_clusters.h>
 // Opencv specific includes
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 // Local files
 #include "shakey_object_recognition/DetectObjects.h"
 #include "shakey_object_recognition/objectVisualisation.h"
+
 
 enum Object_class {Box, Wedge, Ground, Unkown};
 
@@ -45,9 +51,14 @@ class ObjectDetection
   float _maxDistanceToCentroid;
   double _minXDistance;
   double _minYDistance;
-  std::vector<double> _groundCoeffs;
-  std::vector<double> _boxCoeffs;
-  std::vector<double> _wedgeCoeffs;
+  float _groundAngleDelta;
+  float _boxAngleDelta;
+  float _wedgeAngleDelta;
+  float _groundDistDelta;
+  float _boxDistDelta;
+  float _wedgeDistDelta;
+  int _minClusterPoints;
+
   ros::NodeHandle nh;
   ros::Publisher vis_pub;
   ros::Publisher cloud_pub;
@@ -65,6 +76,7 @@ class ObjectDetection
 public:  
   ObjectDetection()
   {
+    load_params();
     sub = nh.subscribe ("/head_mount_kinect/depth/points", 1,
       &ObjectDetection::normal_spin, this);
     service = nh.advertiseService("/detectObject", &ObjectDetection::detect, this);
@@ -77,18 +89,20 @@ public:
     tf_error = true;
     cur_cloud = sensor_msgs::PointCloud2ConstPtr();
     visObjs.setNodeHandle(nh);
+    visObjs.setWorldFrame(_worldFrame);
   }  
 
   bool detect(shakey_object_recognition::DetectObjects::Request &req,
 		  	  	  	   shakey_object_recognition::DetectObjects::Response &res) {
-     load_params();
      visObjs.resetMarker();
 	 tf_error = true;
 	 pcl::PointCloud<pcl::PointXYZ> cloud_in;
 	 int num_tf_error = 0;
 	 while (tf_error) {
-		 if (num_tf_error == 2) return false;
-		 std::cerr << "tf error" << std::endl;
+		 if (num_tf_error == 2) {
+			 ROS_INFO("Canceled due to tf error!");
+			 return false;
+		 }
 		 cloud_in = transformed_cloud(cur_cloud);
 		 if (!tf_error) cloud_cb(cloud_in);
 		 num_tf_error++;
@@ -105,60 +119,78 @@ public:
 	  ROS_INFO("CURRENT PARAMETERS:");
 	  ros::NodeHandle nh("~");
 	  std::string nspace = nh.getNamespace();;
+
 	  nh.getParam("ObjectDetection/maxIterations", _maxIteratrions);
 	  std::ostringstream temp;
 	  temp << _maxIteratrions;
 	  ROS_INFO("Maximal Iterations: %s", temp.str().c_str());
+
+	  nh.getParam("ObjectDetection/minClusterPoints", _minClusterPoints);
+	  temp.str("");
+	  temp.clear();
+	  temp << _minClusterPoints;
+	  ROS_INFO("Minimal Points in a Cluster: %s", temp.str().c_str());
+
 	  nh.getParam("ObjectDetection/distanceThreshold", _distanceThreshold);
 	  temp.str("");
 	  temp.clear();
 	  temp << _distanceThreshold;
 	  ROS_INFO("Distance Threshold: %s", temp.str().c_str());
-	  double dist;
-	  nh.getParam("ObjectDetection/maxDistanceToCentroid", dist);
-	  _maxDistanceToCentroid = dist + 0.0f;
+
+	  double d_tmp;
+	  nh.getParam("ObjectDetection/maxDistanceToCentroid", d_tmp);
+	  _maxDistanceToCentroid = d_tmp + 0.0f;
 	  temp.str("");
 	  temp.clear();
 	  temp << _maxDistanceToCentroid;
 	  ROS_INFO("Max Distance to Centroid: %s", temp.str().c_str());
+
 	  nh.getParam("ObjectDetection/remainingPoints", _remainingPoints);
 	  temp.str("");
 	  temp.clear();
 	  temp << _remainingPoints;
 	  ROS_INFO("Remaining Points: %s", temp.str().c_str());
+
 	  nh.getParam("ObjectDetection/minXDistance", _minXDistance);
 	  temp.str("");
 	  temp.clear();
 	  temp << _minXDistance;
 	  ROS_INFO("Minimal X Distance: %s", temp.str().c_str());
+
 	  nh.getParam("ObjectDetection/minYDistance", _minYDistance);
 	  temp.str("");
 	  temp.clear();
 	  temp << _minYDistance;
 	  ROS_INFO("Minimal Y Distance: %s", temp.str().c_str());
-	  nh.getParam("ObjectDetection/groundCoeffs", _groundCoeffs);
+
+	  nh.getParam("ObjectDetection/groundAngleDelta", d_tmp);
+	  _groundAngleDelta = d_tmp + 0.0f;
+	  nh.getParam("ObjectDetection/groundDistDelta", d_tmp);
+	  _groundDistDelta = d_tmp + 0.0f;
 	  temp.str("");
 	  temp.clear();
-	  temp << "[" << _groundCoeffs[0] << ", " << _groundCoeffs[1] << ", " <<
-			  _groundCoeffs[2] << ", " << _groundCoeffs[3] << "]";
-	  ROS_INFO("Ground Coefficients: %s", temp.str().c_str());
-	  nh.getParam("ObjectDetection/boxCoeffs", _boxCoeffs);
+	  temp << _groundAngleDelta << "deg and w < " << _groundDistDelta;
+	  ROS_INFO("Ground Angle Delta: %s", temp.str().c_str());
+
+	  nh.getParam("ObjectDetection/boxAngleDelta", d_tmp);
+	  _boxAngleDelta = d_tmp + 0.0f;
+	  nh.getParam("ObjectDetection/boxDistDelta", d_tmp);
+	  _boxDistDelta = d_tmp + 0.0f;
 	  temp.str("");
 	  temp.clear();
-	  temp << "[" << _boxCoeffs[0] << ", " << _boxCoeffs[1] << ", " <<
-			  _boxCoeffs[2] << ", " << _boxCoeffs[3] << "]";
-	  ROS_INFO("Box Coefficients: %s", temp.str().c_str());
-	  nh.getParam("ObjectDetection/wedgeCoeffs", _wedgeCoeffs);
+	  temp << _boxAngleDelta << "deg and " << "w > " << _boxDistDelta;
+	  ROS_INFO("Box Angle Delta: %s", temp.str().c_str());
+
+	  nh.getParam("ObjectDetection/wedgeAngleDelta", d_tmp);
+	  _wedgeAngleDelta = d_tmp + 0.0f;
+	  nh.getParam("ObjectDetection/wedgeDistDelta", d_tmp);
+	  _wedgeDistDelta = d_tmp + 0.0f;
 	  temp.str("");
 	  temp.clear();
-	  temp << "[" << _wedgeCoeffs[0] << ", " << _wedgeCoeffs[1] << ", " <<
-	  		  _wedgeCoeffs[2] << ", " << _wedgeCoeffs[3] << "]";
-	  ROS_INFO("Wedge Coefficients: %s", temp.str().c_str());
+	  temp << _wedgeAngleDelta << "deg and w > " << _wedgeDistDelta;
+	  ROS_INFO("Wedge Delta: %s", temp.str().c_str());
+
       nh.getParam("ObjectDetection/world_frame", _worldFrame);
-      if(_worldFrame.empty()) {
-          ROS_ERROR("ObjectDetection: no world_frame set, using /map");
-          _worldFrame = "/map";
-      }
       ROS_INFO("Using world_frame = %s", _worldFrame.c_str());
 	  std::cerr << "--------------------------------------------------------------" << std::endl;
   }
@@ -177,7 +209,7 @@ public:
     // Create plane representation
     pcl::ModelCoefficients::Ptr coefficients (new pcl::ModelCoefficients ());
     pcl::PointIndices::Ptr inliers (new pcl::PointIndices ());
-    
+
     // Create the segmentation object
     pcl::SACSegmentation<pcl::PointXYZ> seg;
     // Optional
@@ -216,80 +248,106 @@ public:
       extract.filter (*cloud_f);
       cloud_out.swap (cloud_f);
 
+      // Create Vectors for angle checks
+      Eigen::Vector3f normal(coefficients->values[0], coefficients->values[1], coefficients->values[2]);
+      float w = coefficients->values[3] * normal.norm();
+      normal.normalize();
+      float ang = angle(normal, Eigen::Vector3f (0,0,1));
+      // Direction does not matter.
+      if (ang > 90) ang = std::abs(180 - ang);
+
+      // Dump console
+      std::cerr << "\n" << std::endl;
+      std::ostringstream temp;
+      temp << i << "-th " << "PLANE: ";
+      temp << "Coefficients: " << "[" << normal[0] << ", " << normal[1]
+		   << ", " << normal[2] << ", " << w << "] with " << inliers->indices.size () << " Points and ";
+      temp << "Angle Deviation from [0, 0, 1]: " << ang;
+      ROS_INFO("%s", temp.str().c_str());
+
       // debug for cloud
       sensor_msgs::PointCloud2 out;
       pcl::toROSMsg(*cloud_p, out);
       cloud_pub.publish(out);
+      //ros::Duration(5).sleep();
 
-      dump_console(inliers, coefficients, i);
 
       // Check for ground plane
-      if ((std::abs(coefficients->values[0]) < _groundCoeffs[0]
-			 && std::abs(coefficients->values[1]) < _groundCoeffs[1]
-      	    && std::abs(coefficients->values[2]) > _groundCoeffs[2]
-			&& std::abs(coefficients->values[3]) < _groundCoeffs[3])) {
-    	  ROS_INFO("=> GROUND PLANE\n");
+      if (ang < _groundAngleDelta && std::abs(w) < _groundDistDelta) {
+    	  ROS_INFO("=> GROUND PLANE");
     	  i++;
     	  continue;
       }
 
-      // Remove all points which are far from centroid and therefore "possibly" not on surface
-      Eigen::Vector4f pcaCentroid;
-      pcl::compute3DCentroid(*cloud_p, pcaCentroid);
-      pcl::ConditionAnd<pcl::PointXYZ>::Ptr range_cond (new
-            pcl::ConditionAnd<pcl::PointXYZ> ());
-      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new
-          pcl::FieldComparison<pcl::PointXYZ> ("x", pcl::ComparisonOps::GT, pcaCentroid(0) - _maxDistanceToCentroid)));
-      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new
-          pcl::FieldComparison<pcl::PointXYZ> ("x", pcl::ComparisonOps::LT, (pcaCentroid(0) + _maxDistanceToCentroid))));
-      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new
-          pcl::FieldComparison<pcl::PointXYZ> ("y", pcl::ComparisonOps::GT, pcaCentroid(1) - _maxDistanceToCentroid)));
-      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new
-          pcl::FieldComparison<pcl::PointXYZ> ("y", pcl::ComparisonOps::LT, (pcaCentroid(1) + _maxDistanceToCentroid))));
-      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new
-          pcl::FieldComparison<pcl::PointXYZ> ("z", pcl::ComparisonOps::GT, pcaCentroid(2) - _maxDistanceToCentroid)));
-      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new
-          pcl::FieldComparison<pcl::PointXYZ> ("z", pcl::ComparisonOps::LT, (pcaCentroid(2) + _maxDistanceToCentroid))));
-      pcl::ConditionalRemoval<pcl::PointXYZ> condrem (range_cond);
-      condrem.setInputCloud (cloud_p);
-      condrem.filter (*cloud_p);
+      // Creating the KdTree object for the search method of the extraction
+      pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
+      tree->setInputCloud (cloud_p);
 
-      // FIXME: hack - Check if x and y is very small -> no object
-      Eigen::Vector4f min, max;
-      pcl::getMinMax3D(*cloud_p, min, max);
-      if (max.x() - min.x() < _minXDistance || max.y() - min.y() < _minYDistance) {
-    	  ROS_INFO("=> Not required X or Y Distance\n");
+      std::vector<pcl::PointIndices> cluster_indices;
+      pcl::EuclideanClusterExtraction<pcl::PointXYZ> ec;
+      ec.setClusterTolerance (_distanceThreshold);
+      ec.setMinClusterSize (_minClusterPoints);
+      ec.setMaxClusterSize (nr_points);
+      ec.setSearchMethod (tree);
+      ec.setInputCloud (cloud_p);
+      ec.extract (cluster_indices);
+      temp.str("");
+      temp.clear();
+      temp << "Number of clusters: " << cluster_indices.size();
+      ROS_INFO("%s", temp.str().c_str());
+      // Extract the inlier
+      if (cluster_indices.size() < 1) {
+    	  ROS_INFO("No Clusters found. Continue with next plane.\n");
     	  i++;
-          continue;
+    	  continue;
       }
 
+      pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_cluster (new pcl::PointCloud<pcl::PointXYZ>);
+      for (int k = 0; k < cluster_indices.size(); k++) {
+    	  pcl::PointIndices::Ptr cur_ind(new  pcl::PointIndices(cluster_indices[k]));
+    	  extract.setInputCloud (cloud_p);
+    	  extract.setIndices (cur_ind);
+    	  extract.setNegative (false);
+    	  extract.filter (*cloud_cluster);
 
-      // parallel plane to ground plane (top plane of box)
-      if (std::abs(coefficients->values[0]) < _boxCoeffs[0]
-    		  && std::abs(coefficients->values[1]) < _boxCoeffs[1]
-              && std::abs(coefficients->values[2]) > _boxCoeffs[2]
-			  && std::abs(coefficients->values[3]) > _boxCoeffs[3]) {
-        ROS_INFO("=> BOX TOP PLANE\n");
-    	obj = Box;
-  	    std::vector<Eigen::Vector3f> minBox = minimal2DBoundingBox(cloud_p, coefficients);
-  	    push_poses = getPushData(minBox);
-  	    float width_p, length_p;
-  	    Eigen::Matrix3f eigenVectors = eigenVectorsAndSize(minBox, &width_p, &length_p);
-  	    visObjs.addBoxMarkerFromTopPlane(minBox, eigenVectors, width_p, length_p);
+    	  temp.str("");
+    	  temp.clear();
+    	  temp << " " << k << "-th Cluster with "  << cluster_indices[k].indices.size() << " Points.";
+    	  ROS_INFO("%s", temp.str().c_str());
 
-      }
-      // crooked plane (wedge)
-      if ( (std::abs(coefficients->values[0]) > _wedgeCoeffs[0]
-    		  || std::abs(coefficients->values[1])  < _wedgeCoeffs[1])
-    		  && std::abs(coefficients->values[2]) > _wedgeCoeffs[2]
-			  && std::abs(coefficients->values[2]) < _wedgeCoeffs[3]) {
-    	ROS_INFO("=> WEDGE CROOKED PLANE\n");
-        obj = Wedge;
-        std::vector<Eigen::Vector3f> minBox = minimal2DBoundingBox(cloud_p, coefficients);
-        push_poses = getPushData(minBox);
-        float width_p, length_p;
-        Eigen::Matrix3f eigenVectors = eigenVectorsAndSize(minBox, &width_p, &length_p);
-        visObjs.addWedgeMarkerFromCrookedPlane(minBox, eigenVectors, width_p, length_p);
+          // debug for cloud
+          pcl::toROSMsg(*cloud_cluster, out);
+          cloud_pub.publish(out);
+          //ros::Duration(5).sleep();
+
+          // FIXME: hack - Check if x and y is very small -> no object
+          Eigen::Vector4f min, max;
+          pcl::getMinMax3D(*cloud_cluster, min, max);
+          if (max.x() - min.x() < _minXDistance || max.y() - min.y() < _minYDistance) {
+        	  ROS_INFO(" => Not required X or Y distance.");
+        	  i++;
+        	  continue;
+          }
+          // parallel plane to ground plane (top plane of box)
+          if (ang < _boxAngleDelta && std::abs(w) > _boxDistDelta) {
+        	  ROS_INFO(" => BOX TOP PLANE");
+        	  obj = Box;
+        	  std::vector<Eigen::Vector3f> minBox = minimal2DBoundingBox(cloud_cluster, coefficients);
+        	  push_poses = getPushData(minBox);
+        	  float width_p, length_p;
+        	  Eigen::Matrix3f eigenVectors = eigenVectorsAndSize(minBox, &width_p, &length_p);
+        	  visObjs.addBoxMarkerFromTopPlane(minBox, eigenVectors, width_p, length_p);
+          }
+          // crooked plane (wedge)
+          if ( std::abs(45 - ang) < _wedgeAngleDelta && std::abs(w) > _wedgeDistDelta) {
+        	  ROS_INFO(" => WEDGE CROOKED PLANE");
+        	  obj = Wedge;
+        	  std::vector<Eigen::Vector3f> minBox = minimal2DBoundingBox(cloud_cluster, coefficients);
+        	  push_poses = getPushData(minBox);
+        	  float width_p, length_p;
+        	  Eigen::Matrix3f eigenVectors = eigenVectorsAndSize(minBox, &width_p, &length_p);
+        	  visObjs.addWedgeMarkerFromCrookedPlane(minBox, eigenVectors, width_p, length_p);
+          }
       }
       i++;
     }
@@ -326,17 +384,9 @@ private:
     return cloud_out;
   }
 
-  void dump_console(pcl::PointIndices::Ptr inliers, pcl::ModelCoefficients::Ptr coefficients, int planeNumber)
-  {
-    // Print data
-	pcl_msgs::ModelCoefficients ros_coefficients;
-	pcl_conversions::fromPCL(*coefficients, ros_coefficients);
-    std::cerr << planeNumber << ". Coeffs: ["
-                             << ros_coefficients.values[0] << " "
-                             << ros_coefficients.values[1] << " "
-                             << ros_coefficients.values[2] << " "
-                             << ros_coefficients.values[3] <<  "] with " <<
-							 inliers->indices.size () << " Points." << std::endl;
+  float angle(Eigen::Vector3f v1, Eigen::Vector3f v2) {
+	  float cos_sim = v1.dot(v2) / v1.norm() * v2.norm();
+	  return acos(cos_sim) / M_PI * 180;
   }
 
   std::vector<Eigen::Vector3f> minimal2DBoundingBox(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_p,
@@ -396,21 +446,17 @@ private:
     return plane_bbx;
   }
 
+  // TODO: Verify order of points
   Eigen::Matrix3f eigenVectorsAndSize(std::vector<Eigen::Vector3f> plane_bbx, float *width, float *length) {
-	  Eigen::Matrix3f eigenVectors;;
-	  Eigen::MatrixXf::Index index;
-	  Eigen::MatrixXf points(3,3);
-	  points << plane_bbx[0], plane_bbx[1], plane_bbx[2];
-	  // find nearest neighbour
-	  Eigen::VectorXf dist = (points.colwise() - plane_bbx[3]).colwise().squaredNorm();
-	  dist.minCoeff(&index);
-	  *width = dist(index);
-	  Eigen::Vector3f e0 = (plane_bbx[3] - plane_bbx[index]).normalized();
+	  Eigen::Matrix3f eigenVectors;
+	  Eigen::Vector3f e0 = plane_bbx[0] - plane_bbx[1];
+	  *width = e0.norm();
+	  std::cerr << *width << std::endl;
+	  e0.normalize();
 	  // set the distance of e0 to infinity
-	  dist(index) = std::numeric_limits<float>::infinity();
-	  dist.minCoeff(&index);
-	  *length= dist(index);
-	  Eigen::Vector3f e1 = (plane_bbx[3] - plane_bbx[index]).normalized();
+	  Eigen::Vector3f e1 = plane_bbx[0] - plane_bbx[3];
+	  *length= e1.norm();
+	  e1.normalize();
 	  Eigen::Vector3f e2 = e0.cross(e1);
 	  eigenVectors << e0, e1, e2;
 	  return eigenVectors;

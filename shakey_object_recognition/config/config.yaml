@@ -1,15 +1,26 @@
 ObjectDetection:
   maxIterations: 1000
-  distanceThreshold: 0.1
-  remainingPoints: 0.05
-  # point.x - centroid.x < maxDistanceToCentroid for x,y,z
-  maxDistanceToCentroid: 1.5
+  minClusterPoints: 3000
+
+  # Points need to be 5 cm together for a plane and cluster
+  distanceThreshold: 0.05
+
+  # Continue until less then point * remainingPoints remain
+  remainingPoints: 0.1
+
+  # minimal size of objects
   minXDistance: 0.25
   minYDistance: 0.25
-  # x (<) && y(<) && z(>) && w(<) of normal vector for ground plane
-  groundCoeffs: [0.05, 0.05, 0.95, 0.1]
-  # x (<) && y(<) && z(>) && w(>) of normal vector for box top plane
-  boxCoeffs: [0.2, 0.2, 0.9, 0.1]
-  # (x (>) || y(>)) && z(>) && z(<) of normal vector for wedge crooked plane
-  wedgeCoeffs: [0.25, 0.25, 0.25, 0.9]
-  world_frame: /base_footprint
+
+  # Maximal angle deviation from (0,0,1)
+  groundAngleDelta: 5.0
+  boxAngleDelta: 7.5
+  wedgeAngleDelta: 12.5
+
+  # upper (ground) and lower (box, wedge) bound for w of the plan 
+  groundDistDelta: 0.1
+  boxDistDelta: 0.2
+  wedgeDistDelta: 0.2
+
+  # World frame for transformation
+  world_frame: base_footprint
