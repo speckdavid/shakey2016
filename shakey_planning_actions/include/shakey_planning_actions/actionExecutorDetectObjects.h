@@ -24,8 +24,6 @@ namespace shakey_planning_actions
 
         protected:
             void getBestPushPose(shakey_object_recognition::PushableObject);
-
-            ObjectVisualisation objVis;
     };
 
 };

@@ -103,12 +103,6 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 			current.setObjectFluent("location-in-room", push_loc_name,
 					new_room);
 
-			// Visualization
-			object.push_poses.clear();
-			geometry_msgs::Point direction = object.mean.position;
-			direction.x -= cur.position.x;
-			direction.y -= cur.position.y;
-			direction.z -= cur.position.z;
 
 		}
 	}
