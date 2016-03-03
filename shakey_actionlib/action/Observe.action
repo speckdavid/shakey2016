@@ -1,9 +1,0 @@
-#goal definition
----
-#result
-int32 object
-geometry_msgs/Point[] push_points
----
-#feedback
-int32 object
-geometry_msgs/Point[] push_points
