@@ -42,11 +42,15 @@
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>continual_planning_executive</build_depend>
   <build_depend>roscpp</build_depend>
+  <build_depend>pcl_conversions</build_depend>
   <build_depend>tf</build_depend>
   <build_depend>shakey_actionlib</build_depend>
   <build_depend>shakey_utils</build_depend>
+  <build_depend>shakey_object_recognition</build_depend>
+  <run_depend>shakey_object_recognition</run_depend>
   <run_depend>shakey_utils</run_depend>
   <run_depend>continual_planning_executive</run_depend>
+  <run_depend>pcl_conversions</run_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>tf</run_depend>
   <run_depend>shakey_actionlib</run_depend>

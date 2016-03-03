@@ -51,11 +51,10 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+  FILES
+  PushableObject.msg
+)
 
 ## Generate services in the 'srv' folder
 add_service_files(
@@ -107,7 +106,7 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+ INCLUDE_DIRS include
 #  LIBRARIES shakey_object_recognition
 #  CATKIN_DEPENDS cv_bridge image_transport roscpp sensor_msgs std_msgs
 #  DEPENDS system_lib
@@ -124,14 +123,16 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(objectDetection src/objectDetection.cpp src/objectVisualisation.cpp)
+add_executable(objectDetection src/ObjectDetection.cpp src/ObjectVisualisation.cpp)
 target_link_libraries(objectDetection ${catkin_LIBRARIES})
 target_link_libraries(objectDetection ${PCL_LIBRARIES} libvtkCommon.so libvtkFiltering.so )
 
 ## Declare a C++ library
-# add_library(shakey_object_recognition
-#   src/${PROJECT_NAME}/shakey_object_recognition.cpp
-# )
+add_library(shakey_object_recognition
+  src/ObjectDetection.cpp 
+  src/ObjectVisualisation.cpp
+)
+target_link_libraries(shakey_object_recognition ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries

@@ -6,10 +6,12 @@ project(shakey_planning_actions)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  pcl_conversions
   continual_planning_executive
   tf
   shakey_actionlib
   shakey_utils
+  shakey_object_recognition
 )
 
 ## System dependencies are found with CMake's conventions
@@ -116,6 +118,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(include)
 include_directories(shakey_utils/include)
+include_directories(shakey_object_recognition/include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
@@ -132,7 +135,7 @@ src/actionExecutorPushObject.cpp
 src/actionExecutorDetectObjects.cpp
 src/actionExecutorDriveBase.cpp
 )
-target_link_libraries(shakey_planning_actions shakey_utils ${catkin_LIBRARIES})
+target_link_libraries(shakey_planning_actions shakey_utils shakey_object_recognition ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries

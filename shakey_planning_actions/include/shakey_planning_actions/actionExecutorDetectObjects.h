@@ -5,6 +5,8 @@
 #include "continual_planning_executive/symbolicState.h"
 #include <actionlib/client/simple_action_client.h>
 #include <shakey_object_recognition/DetectObjects.h>
+#include "shakey_object_recognition/ObjectVisualisation.h"
+#include <nav_msgs/GetMap.h>
 
 namespace shakey_planning_actions
 {
@@ -19,6 +21,11 @@ namespace shakey_planning_actions
 
             virtual void updateState(bool & success, shakey_object_recognition::DetectObjects::Response & response,
                     const DurativeAction & a, SymbolicState & current);
+
+        protected:
+            void getBestPushPose(shakey_object_recognition::PushableObject);
+
+            ObjectVisualisation objVis;
     };
 
 };

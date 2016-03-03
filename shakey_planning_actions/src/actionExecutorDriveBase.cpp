@@ -73,7 +73,7 @@ namespace shakey_planning_actions
     	if (a.parameters.size() == 2)
     		targetName = a.parameters[1];
 
-    	// extract nicer + warn.
+    	// Set robot location to new position
     	Predicate p;
     	p.parameters.push_back(targetName);
     	p.name = "location-in-room";

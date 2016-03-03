@@ -12,8 +12,10 @@ TrajectoryPlannerROS:
   transform_tolerance: 0.2
 
   holonomic_robot: true
+  y_vels: -1, -1, 1, 1
   latch_xy_goal_tolerance: true
 
   vx_samples: 8
-  occdist_scale: 0.05
-
+  vtheta_samples: 30
+  heading_lookahead: 1.5
+  occdist_scale: 0.01

@@ -3,7 +3,7 @@
 global_costmap:
   #Set the global and robot frames for the costmap
   global_frame: map
-  robot_base_frame: base_link
+  robot_base_frame: base_footprint
 
   #Set the update and publish frequency of the costmap
   update_frequency: 5.0
@@ -16,4 +16,4 @@ global_costmap:
   #footprint_padding: 0.02
 
   inflation_layer/cost_scaling_factor: 2.5
-  inflation_layer/inflation_radius: 2.5
+  inflation_layer/inflation_radius: 4

@@ -20,7 +20,6 @@ protected:
   ros::ServiceClient mux_client;
   ros::ServiceClient move_base_client;
   std::string action_name_;
-  float offset;
   // Odom drive (mainly for backward drive)
   ros::Publisher cmd_vel_pub_;
   tf::TransformListener listener_;
@@ -80,7 +79,6 @@ public:
     action_name_(name)
   {
 	cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("/base_controller/command", 1);
-    offset = 1.5;
     as_.start();
   }
 
@@ -161,7 +159,7 @@ public:
     move_base_msgs::MoveBaseGoal goalMB2;
     goalMB2.target_pose.header.frame_id = "base_link";
     goalMB2.target_pose.header.stamp = ros::Time::now();
-    goalMB2.target_pose.pose.position.x = goal->push_distance + offset;
+    goalMB2.target_pose.pose.position.x = goal->push_distance;
     goalMB2.target_pose.pose.orientation.w = 1.0;
 
     ROS_INFO("Sending goal to move_base.");
