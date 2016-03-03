@@ -15,6 +15,7 @@ void ActionExecutorDetectObjects::initialize(
 	// Create Template for the service
 	ActionExecutorService<shakey_object_recognition::DetectObjects>::initialize(
 			arguments);
+	objVis.initialise("Destination_Objects", "map");
 }
 
 bool ActionExecutorDetectObjects::fillGoal(
@@ -26,6 +27,7 @@ bool ActionExecutorDetectObjects::fillGoal(
 void ActionExecutorDetectObjects::updateState(bool& success,
 		shakey_object_recognition::DetectObjects::Response & response,
 		const DurativeAction & a, SymbolicState & current) {
+	objVis.resetMarker();
 	if (!success)
 		return;
 	for (int i = 0; i < response.objects.size(); i++) {
@@ -103,9 +105,28 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 			current.setObjectFluent("location-in-room", push_loc_name,
 					new_room);
 
-
+			// Visualization
+			shakey_object_recognition::PushableObject new_object = object;
+			new_object.push_poses.clear();
+			Eigen::Vector3f direction = Eigen::Vector3f(object.mean.position.x,
+					object.mean.position.y, object.mean.position.z)
+					- Eigen::Vector3f(cur.position.x, cur.position.y,
+							cur.position.z);
+			float transX = direction.normalized().x() * 1.5;
+			float transY = direction.normalized().y() * 1.5;
+			new_object.mean.position.x += transX;
+			new_object.mean.position.y += transY;
+			new_object.corner_points = object.corner_points;
+			for (int b = 0; b < new_object.corner_points.size(); b++) {
+				new_object.corner_points.at(b).x += transX;
+				new_object.corner_points.at(b).y += transY;
+			}
+			std_msgs::ColorRGBA color;
+			color.b = color.a = 1;
+			objVis.addObjectMarker(new_object, color);
 		}
 	}
+	objVis.publish();
 	if (a.name == "detect-objects")
 		current.setBooleanPredicate("searched", a.parameters[0], true);
 	if (a.name == "detect-doorway-state")

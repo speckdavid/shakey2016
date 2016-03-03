@@ -94,7 +94,7 @@ visualization_msgs::Marker ObjectVisualisation::dummyMarker(int id) {
 	visualization_msgs::Marker marker;
 	marker.header.frame_id = _worldFrame;
 	marker.header.stamp = ros::Time();
-	marker.ns = "segmentation3d";
+	marker.ns = "obj/" + _name;
 	marker.id = id;
 	marker.type = visualization_msgs::Marker::CUBE;
 	marker.action = visualization_msgs::Marker::ADD;

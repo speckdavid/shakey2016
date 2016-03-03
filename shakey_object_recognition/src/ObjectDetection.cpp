@@ -83,7 +83,7 @@ public:
 				<< std::endl;
 		tf_error = true;
 		cur_cloud = sensor_msgs::PointCloud2ConstPtr();
-		visObjs.initialise(nh, "Detected_Objects", _worldFrame);
+		visObjs.initialise("Detected_Objects", _worldFrame);
 		visObjs.publish();
 		_offset = 0.75;
 	}

@@ -33,8 +33,8 @@ protected:
 public:
 	ObjectVisualisation(){};
 	
-	void initialise(ros::NodeHandle nh, std::string name, std::string worldFrame) {
-		_nh = nh;
+	void initialise(std::string name, std::string worldFrame) {
+		_nh = ros::NodeHandle();
 		_name = name;
 		_worldFrame = worldFrame;
 		_vis_pub = _nh.advertise<visualization_msgs::MarkerArray>(
@@ -43,6 +43,7 @@ public:
 		_markerArray.markers.resize(_num_marker);
 		_cur_objects = 0;
 		resetMarker();
+		publish();
 	}
 
 	void resetMarker();

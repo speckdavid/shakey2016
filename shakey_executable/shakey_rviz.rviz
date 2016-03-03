@@ -5,7 +5,10 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-      Splitter Ratio: 0.5
+        - /MarkerArray1/Status1
+        - /MarkerArray1/Namespaces1
+        - /MarkerArray2/Namespaces1
+      Splitter Ratio: 0.505929
     Tree Height: 578
   - Class: rviz/Tool Properties
     Expanded:
@@ -715,14 +718,6 @@ Visualization Manager:
       Queue Size: 2
       Transport Hint: raw
       Value: true
-    - Class: rviz/MarkerArray
-      Enabled: true
-      Marker Topic: /Detected_Objects
-      Name: MarkerArray
-      Namespaces:
-        segmentation3d: true
-      Queue Size: 100
-      Value: true
     - Alpha: 0.7
       Class: rviz/Map
       Color Scheme: costmap
@@ -760,6 +755,22 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /Detected_Objects
+      Name: MarkerArray
+      Namespaces:
+        obj/Detected_Objects: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /Destination_Objects
+      Name: MarkerArray
+      Namespaces:
+        obj/Destination_Objects: true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 0; 0; 0
@@ -779,22 +790,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 14.4236
+      Distance: 13.2214
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -1.9552
-        Y: 1.56839
-        Z: -3.80125
+        X: 1.7659
+        Y: 5.16501
+        Z: -1.26234
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.8854
+      Pitch: 0.730401
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.270404
+      Yaw: 3.61478
     Saved: ~
 Window Geometry:
   Displays:
