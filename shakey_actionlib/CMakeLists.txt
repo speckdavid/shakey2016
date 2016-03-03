@@ -124,7 +124,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(push_client src/push_client.cpp)
+add_executable(push_action_server src/push_action_server.cpp)
 
 ## Declare a C++ library
 # add_library(shakey_actionlib
@@ -141,12 +141,11 @@ add_executable(push_client src/push_client.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(push_client ${shakey_actionlib_EXPORTED_TARGETS})
+add_dependencies(push_action_server ${shakey_actionlib_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-
 target_link_libraries(
-  push_client
+  push_action_server
   ${catkin_LIBRARIES}
 )
 
