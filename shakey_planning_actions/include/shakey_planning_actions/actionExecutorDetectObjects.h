@@ -1,6 +1,7 @@
 #ifndef ACTION_EXECUTOR_DETECT_OBJECTS_H
 #define ACTION_EXECUTOR_DETECT_OBJECTS_H
 
+#include <actionlib/client/simple_action_client.h>
 #include "continual_planning_executive/actionExecutorService.hpp"
 #include "continual_planning_executive/symbolicState.h"
 #include <actionlib/client/simple_action_client.h>
@@ -25,7 +26,13 @@ namespace shakey_planning_actions
         protected:
             void getBestPushPose(shakey_object_recognition::PushableObject);
 
-            ObjectVisualisation objVis;
+            float getOccValue(Eigen::Vector3f pos);
+
+            ObjectVisualisation _objVis;
+            ros::NodeHandle _nh;
+            ros::ServiceClient _map_client;
+            nav_msgs::GetMap _mapResponse;
+            double _push_distance;
     };
 
 };

@@ -1,6 +1,7 @@
 #include "shakey_planning_actions/actionExecutorDetectObjects.h"
 #include "shakey_object_recognition/PushableObject.h"
 #include "shakey_object_recognition/ObjectVisualisation.h"
+#include <actionlib/client/simple_action_client.h>
 #include <pluginlib/class_list_macros.h>
 #include <iostream>
 #include <sstream>
@@ -15,7 +16,17 @@ void ActionExecutorDetectObjects::initialize(
 	// Create Template for the service
 	ActionExecutorService<shakey_object_recognition::DetectObjects>::initialize(
 			arguments);
-	objVis.initialise("Destination_Objects", "map");
+	_objVis.initialise("Destination_Objects", "/map");
+	_map_client = _nh.serviceClient<nav_msgs::GetMap>("/static_map");
+	if (!_map_client.call(_mapResponse))
+	      ROS_ERROR("No static map found.");
+	std::cerr << "!!!!!!!!!!!!!!!" << arguments.at(0) << std::endl;
+	if (arguments.at(0) == "detect-doorway-state") {
+		_nh.getParam("continual_planning_executive/push_distance_object_doorway", _push_distance);
+	}
+	if (arguments.at(0) == "detect-objects") {
+		_nh.getParam("continual_planning_executive/push_distance_object_normal", _push_distance);
+	}
 }
 
 bool ActionExecutorDetectObjects::fillGoal(
@@ -27,9 +38,9 @@ bool ActionExecutorDetectObjects::fillGoal(
 void ActionExecutorDetectObjects::updateState(bool& success,
 		shakey_object_recognition::DetectObjects::Response & response,
 		const DurativeAction & a, SymbolicState & current) {
-	objVis.resetMarker();
-	if (!success)
+	if (!success || _mapResponse.response.map.data.empty())
 		return;
+	_objVis.resetMarker();
 	for (int i = 0; i < response.objects.size(); i++) {
 		shakey_object_recognition::PushableObject object = response.objects.at(
 				i);
@@ -37,7 +48,7 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 			std::string obj_name;
 			obj_name = (object.obj_type == Box) ? "box" : "wedge";
 			std::ostringstream os;
-			os << i << "_";
+			os << i;
 			obj_name += os.str();
 			current.setObjectFluent("belongs-to-search-location", obj_name,
 					a.name == "detect-objects" ?
@@ -105,15 +116,21 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 			current.setObjectFluent("location-in-room", push_loc_name,
 					new_room);
 
+			// Set Push distance
+			if (a.name == "detect-doorway-state")
+				current.setNumericalFluent("push-distance", obj_name, _push_distance);
+			if (a.name == "detect-objects")
+				current.setNumericalFluent("push-distance", obj_name, _push_distance);
+
 			// Visualization
 			shakey_object_recognition::PushableObject new_object = object;
 			new_object.push_poses.clear();
 			Eigen::Vector3f direction = Eigen::Vector3f(object.mean.position.x,
-					object.mean.position.y, object.mean.position.z)
+					object.mean.position.y, 0)
 					- Eigen::Vector3f(cur.position.x, cur.position.y,
-							cur.position.z);
-			float transX = direction.normalized().x() * 1.5;
-			float transY = direction.normalized().y() * 1.5;
+							0);
+			float transX = direction.normalized().x() * _push_distance;
+			float transY = direction.normalized().y() * _push_distance;
 			new_object.mean.position.x += transX;
 			new_object.mean.position.y += transY;
 			new_object.corner_points = object.corner_points;
@@ -123,10 +140,10 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 			}
 			std_msgs::ColorRGBA color;
 			color.b = color.a = 1;
-			objVis.addObjectMarker(new_object, color);
+			_objVis.addObjectMarker(new_object, color);
 		}
 	}
-	objVis.publish();
+	_objVis.publish();
 	if (a.name == "detect-objects")
 		current.setBooleanPredicate("searched", a.parameters[0], true);
 	if (a.name == "detect-doorway-state")
@@ -138,7 +155,20 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 
 void ActionExecutorDetectObjects::getBestPushPose(
 		shakey_object_recognition::PushableObject) {
+}
 
+float ActionExecutorDetectObjects::getOccValue(Eigen::Vector3f pos) {
+	nav_msgs::OccupancyGrid map = _mapResponse.response.map;
+	unsigned int grid_x = (unsigned int)((pos.x() - map.info.origin.position.x) / map.info.resolution);
+	unsigned int grid_y = (unsigned int)((pos.y() - map.info.origin.position.y) / map.info.resolution);
+	unsigned int cell = grid_y * map.info.width + grid_x;
+	if (grid_x >= map.info.width || grid_y >= map.info.height) {
+		std::ostringstream os;
+		os << pos.x() << ", " << pos.y() << ", " << pos.z();
+		ROS_WARN("Position [%s] is not in static map.", os.str().c_str());
+		return -1;
+	}
+	return map.data[cell];
 }
 
 }

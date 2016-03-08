@@ -116,8 +116,6 @@ public:
 				<< std::endl;
 		ROS_INFO("CURRENT PARAMETERS:");
 		ros::NodeHandle nh("~");
-		std::string nspace = nh.getNamespace();
-		;
 
 		nh.getParam("ObjectDetection/maxIterations", _maxIteratrions);
 		std::ostringstream temp;
@@ -365,6 +363,8 @@ public:
 				else {
 					continue;
 				}
+				obj.frame_id = _worldFrame;
+				// from middle point (not from front)
 				obj.dist_to_obj = _offset;
 				std::vector<geometry_msgs::Point> corner_points;
 				// Corner points

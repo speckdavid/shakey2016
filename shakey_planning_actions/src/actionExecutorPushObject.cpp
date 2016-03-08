@@ -10,7 +10,14 @@ namespace shakey_planning_actions
     bool ActionExecutorPushObject::fillGoal(shakey_actionlib::PushGoal & goal,
             const DurativeAction & a, const SymbolicState & current)
     {
-    	goal.push_distance = 1.5 + 0.75;
+    	Predicate p;
+    	double push_distance;
+    	p.parameters.push_back(a.parameters[0]);
+    	p.name = "push-distance";
+    	current.hasNumericalFluent(p, &push_distance);
+    	float base_width = 0.65;
+
+    	goal.push_distance = push_distance + 0.75 - base_width / 2;
         return true;
     }
 

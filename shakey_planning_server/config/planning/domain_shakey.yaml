@@ -1,1 +1,5 @@
 domain_file: package://planner_benchmarks/modular/shakey/domain.pddl
+
+# Distances greater then 2.8 are pushed in 2.8 steps for saftey
+push_distance_object_doorway: 1.5
+push_distance_object_normal: 2.0

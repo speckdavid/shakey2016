@@ -156,23 +156,35 @@ public:
 
     ros::Duration(0.25).sleep();
     // Move forward and push object
-    move_base_msgs::MoveBaseGoal goalMB2;
-    goalMB2.target_pose.header.frame_id = "base_link";
-    goalMB2.target_pose.header.stamp = ros::Time::now();
-    goalMB2.target_pose.pose.position.x = goal->push_distance;
-    goalMB2.target_pose.pose.orientation.w = 1.0;
+    // FixMe: Push always 2.8 meters < 3 meters for a staight global plan
+    double remaining_distance = goal->push_distance;
+    while (remaining_distance > 0) {
+        move_base_msgs::MoveBaseGoal goalMB2;
+        goalMB2.target_pose.header.frame_id = "base_link";
+        goalMB2.target_pose.header.stamp = ros::Time::now();
+        goalMB2.target_pose.pose.position.x = remaining_distance >= 2.8 ? 2.8 : remaining_distance;
+        goalMB2.target_pose.pose.orientation.w = 1.0;
 
-    ROS_INFO("Sending goal to move_base.");
-    ROS_INFO("Pushing object...");
-    ac.sendGoal(goalMB2);
-    ac.waitForResult();
-    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-      ROS_INFO("Pushing object completed.");
-    else {
-      ROS_INFO("Not able to push the object.");
-      as_.setPreempted();
-      return;
+        ROS_INFO("Sending goal to move_base.");
+        ROS_INFO("Pushing object...");
+        ac.sendGoal(goalMB2);
+        ac.waitForResult();
+        if (ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) {
+        	std::ostringstream str_temp;
+        	str_temp << std::max(remaining_distance - 2.8, 0.0);
+        	ROS_INFO("Iterative pushing: %s meters remaining...", str_temp.str().c_str());
+        }else {
+          ROS_INFO("Not able to push the object.");
+          as_.setPreempted();
+          return;
+        }
+        remaining_distance -= 2.8;
     }
+    std::ostringstream str_temp;
+    str_temp << goal->push_distance;
+    ROS_INFO("Pushing object (%s meters) completed.", str_temp.str().c_str());
+
+
 
     // Move back
     ROS_INFO("Moving back via cmd command...");

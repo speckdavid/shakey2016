@@ -25,6 +25,7 @@ void ObjectVisualisation::addObjectMarker(shakey_object_recognition::PushableObj
 
 void ObjectVisualisation::addBoxMarker(shakey_object_recognition::PushableObject obj, std_msgs::ColorRGBA color) {
 	visualization_msgs::Marker marker = dummyMarker(_cur_objects);
+	marker.header.frame_id = obj.frame_id;
 	marker.type = visualization_msgs::Marker::CUBE;
 	// Translation of points to the mean
 	marker.pose = obj.mean;
@@ -42,6 +43,7 @@ void ObjectVisualisation::addBoxMarker(shakey_object_recognition::PushableObject
 void ObjectVisualisation::addWedgeMarker(shakey_object_recognition::PushableObject obj, std_msgs::ColorRGBA color) {
 	visualization_msgs::Marker marker = dummyMarker(_cur_objects);
 	marker.type = visualization_msgs::Marker::TRIANGLE_LIST;
+	marker.header.frame_id = obj.frame_id;
 	std::vector<geometry_msgs::Point> ros_p;
 	for (int i = 0; i < 4; i++) {
 		ros_p.push_back(obj.corner_points.at(i));
@@ -79,6 +81,7 @@ void ObjectVisualisation::addPushPosesMarker(shakey_object_recognition::Pushable
 	for (int i = 0; i < obj.push_poses.size(); i++) {
 		visualization_msgs::Marker marker = dummyMarker(_cur_objects);
 		marker.type = visualization_msgs::Marker::ARROW;
+		marker.header.frame_id = obj.frame_id;
 		marker.pose = obj.push_poses.at(i);
 		marker.scale.x = 0.3;
 		marker.scale.y = 0.05;
