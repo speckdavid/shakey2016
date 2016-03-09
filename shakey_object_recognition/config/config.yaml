@@ -1,6 +1,6 @@
 ObjectDetection:
   maxIterations: 1000
-  minClusterPoints: 2000
+  minClusterPoints: 20
 
   # Points need to be 5 cm together for a plane
   distanceThresholdPlane: 0.05

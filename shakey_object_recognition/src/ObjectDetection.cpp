@@ -232,6 +232,13 @@ public:
 		// Create the filtering object
 		pcl::ExtractIndices<pcl::PointXYZ> extract;
 
+        pcl::VoxelGrid< pcl::PointXYZ > sor;
+        sor.setInputCloud(cloud_out);
+        sor.setLeafSize(0.015f, 0.015f, 0.015f);
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_down(new pcl::PointCloud<pcl::PointXYZ>());
+        sor.filter(*cloud_down);
+        cloud_out = cloud_down;
+
 		int i = 0, nr_points = (int) cloud_out->points.size();
 		// While 5% of the original cloud is still there
 		while (cloud_out->points.size() > _remainingPoints * nr_points) {
@@ -281,7 +288,7 @@ public:
 			sensor_msgs::PointCloud2 out;
 			pcl::toROSMsg(*cloud_p, out);
 			cloud_pub.publish(out);
-			//ros::Duration(5).sleep();
+			//ros::Duration(2).sleep();
 			Eigen::Vector4f min, max;
 			pcl::getMinMax3D(*cloud_p, min, max);
 
@@ -335,7 +342,7 @@ public:
 				// debug for cloud
 				pcl::toROSMsg(*cloud_cluster, out);
 				cloud_pub.publish(out);
-				//ros::Duration(5).sleep();
+				//ros::Duration(2).sleep();
 
 				std::vector<Eigen::Vector3f> minBox = minimal2DBoundingBox(
 						cloud_cluster, coefficients);
