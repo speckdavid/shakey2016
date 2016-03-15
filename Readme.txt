@@ -12,7 +12,7 @@ Start Roboter system:
 	2.) Start 2d-navigation: roslaunch shakey_2dnav shakey_2dnav.launch
 	3.) Start object detection: roslaunch shakey_object_recognition shakey_object_recognition.launch
 	4.) Start action server: roslaunch shakey_actionlib shakey_actionserver.launch
-	5.) Start planner: roslaunch shakey_planning_server continual-planning-shakey.launch pkg:='path to world pkg' (here: ../src/shakey_new_world)
+	5.) Start planner: roslaunch shakey_planning_server continual-planning-shakey.launch map_suffix:='suffiex of map' (here: shakey_new_world)
 
 
 Note: Simulating is possible with gazebo

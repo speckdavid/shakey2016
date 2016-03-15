@@ -20,7 +20,6 @@ void ActionExecutorDetectObjects::initialize(
 	_map_client = _nh.serviceClient<nav_msgs::GetMap>("/static_map");
 	if (!_map_client.call(_mapResponse))
 	      ROS_ERROR("No static map found.");
-	std::cerr << "!!!!!!!!!!!!!!!" << arguments.at(0) << std::endl;
 	if (arguments.at(0) == "detect-doorway-state") {
 		_nh.getParam("continual_planning_executive/push_distance_object_doorway", _push_distance);
 	}
@@ -74,17 +73,13 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 				current.hasNumericalFluent(p, &qZ);
 				p.name = "qw";
 				current.hasNumericalFluent(p, &qW);
-				std::cerr << a.parameters[0] << qX << "," << qY << "," << qZ << ", " <<qW << std::endl;
 				for (int k = 0; k < object.push_poses.size(); k++) {
 					geometry_msgs::Pose cur1 = object.push_poses.at(k);
 					float dot = cur1.orientation.x * qX
 							+ cur1.orientation.y * qY + cur1.orientation.z * qZ
 							+ cur1.orientation.w * qW;
 					float ang = 2 * (acos(dot) / M_PI * 180);
-					std::cerr << dot << std::endl;
-					std::cerr << ang << std::endl;
 					if (std::abs(ang - 90) < 10) {
-						std::cerr<< "here" << ang << std::endl;
 						cur = cur1;
 						break;
 					}
