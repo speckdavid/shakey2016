@@ -1,17 +1,17 @@
 ObjectDetection:
   maxIterations: 1000
-  minClusterPoints: 20
+  minClusterPoints: 300
 
   # Points need to be 5 cm together for a plane
-  distanceThresholdPlane: 0.05
+  distanceThresholdPlane: 0.03
   # Value for simluation. Strange effects happens
   #distanceThresholdPlane: 0.095
 
   # Points need to be 15 cm together for a plane
-  distanceThresholdCluster: 0.15
+  distanceThresholdCluster: 0.1
 
   # Continue until less then point * remainingPoints remain
-  remainingPoints: 0.1
+  remainingPoints: 0.05
 
   # minimal size of objects
   minXDistance: 0.25
@@ -22,9 +22,13 @@ ObjectDetection:
   boxAngleDelta: 7.5
   wedgeAngleDelta: 12.5
 
+  # Point density (points per square meter)
+  boxPointDensity: 1500
+  wedgePointDensity: 2000
+
   # upper (ground) and lower (box, wedge) bound for max.z of the plan 
-  groundDistDelta: 0.1
-  boxDistDelta: 0.2
+  groundDistDelta: 0.2
+  boxDistDelta: 0.3
   wedgeDistDelta: 0.2
 
   # World frame for transformation
