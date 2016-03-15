@@ -1,26 +1,26 @@
 <!-- -->
 <launch>
 
-    <arg name="gui" default="1" />
-    <arg name="paused" default="1" />
+    <arg name="gui" default="true" />
+    <arg name="paused" default="true" />
     <arg name="config_pkg" default="$(find shakey_planning_server)"/>
-    <arg name="map_suffix" default="shakey" />
+    <arg name="pkg" default="shakey_original_world" />
 
     <!--rosparam command="load" ns="tfd_modules" file="$(find tfd_modules)/config/timeout_90s_5min_nontemporal.yaml" /-->
-    <rosparam command="load" ns="tfd_modules" file="$(arg config_pkg)/config/planning/planner_params_$(arg map_suffix).yaml" />
+    <rosparam command="load" ns="tfd_modules" file="$(arg config_pkg)/config/planning/$(arg pkg)/shakey_planner_params.yaml" />
 
     <!-- start executive -->
     <node pkg="continual_planning_executive" type="continual_planning_executive" args="" respawn="true" name="continual_planning_executive" output="screen" >
         <param name="start_paused" value="$(arg paused)" />
-	<param name="locations" value="$(arg config_pkg)/config/planning/locations_$(arg map_suffix).dat" />
+	<param name="locations" value="$(arg config_pkg)/config/planning/$(arg pkg)/shakey_locations.dat" />
 	<param name="nav_target_tolerance_xy" value="0.25" />
         <param name="nav_target_tolerance_yaw" value="0.25" />
         <param name="nav_target_tolerance_relative_to_move_base" value="false" />
         <param name="nav_base_local_planner_ns" value="/move_base" />
 
-	<rosparam command="load" file="$(arg config_pkg)/config/planning/$(arg map_suffix)_actions.yaml" />
+	<rosparam command="load" file="$(arg config_pkg)/config/planning/$(arg pkg)/shakey_actions.yaml" />
 	<rosparam command="load" file="$(find tfd_modules)/config/tfdm_interface.yaml" />
-	<rosparam command="load" file="$(arg config_pkg)/config/planning/domain_$(arg map_suffix).yaml" />
+	<rosparam command="load" file="$(arg config_pkg)/config/planning/$(arg pkg)/shakey_domain.yaml" />
     </node>
 
     <node if="$(arg gui)" pkg="continual_planning_monitor" type="continual_planning_monitor" name="continual_planning_monitor" />

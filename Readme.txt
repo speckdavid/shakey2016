@@ -1,14 +1,21 @@
 Reimplementation of Shakey:
 
-Start shakey in a world:
-	roslaunch shakey_executable shakey_world pkg:='path to world pkg'
+Create new (real) world:
+	1.) Create new package (e.g. shakey_new_world)
+	2.) Start mapping: roslaunch shakey_executable shakey_mapping.launch
+	3.) Save map to shakey_new_world: rosrun map_server map_saver
+	4.a) Create new folder ../src/shakey_planning_server/config/shakey_new_world
+	4.b) Create Config files
 
-Start mapping:
-	roslaunch shakey_executable shakey_mapping.launch
+Start Roboter system:
+	1.) Start location: roslaunch shakey_executable shakey_localize.launch pkg:='path to world pkg' (here: ../src/shakey_new_world)
+	2.) Start 2d-navigation: roslaunch shakey_2dnav shakey_2dnav.launch
+	3.) Start object detection: roslaunch shakey_object_recognition shakey_object_recognition.launch
+	4.) Start action server: roslaunch shakey_actionlib shakey_actionserver.launch
+	5.) Start planner: roslaunch shakey_planning_server continual-planning-shakey.launch pkg:='path to world pkg' (here: ../src/shakey_new_world)
 
-Start location:
-	roslaunch shakey_executable shakey_localize.launch pkg:='path to world pkg'
 
-Start 2d-navigation (location must run):
-	roslaunch shakey_2dnav shakey_2dnav.launch
+Note: Simulating is possible with gazebo
+	- Start shakey in a world: roslaunch shakey_executable shakey_world pkg:='path to world pkg'
+	- Insert Objects: roslaunch shakey_spawn_objects spawn_["box or wedge"].launch x:="x-value" y:="y-value"
 

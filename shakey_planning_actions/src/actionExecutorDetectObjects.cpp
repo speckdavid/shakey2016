@@ -69,18 +69,22 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 				p.name = "qx";
 				current.hasNumericalFluent(p, &qX);
 				p.name = "qy";
-				current.hasNumericalFluent(p, &qZ);
-				p.name = "qz";
-				current.hasNumericalFluent(p, &qW);
-				p.name = "qw";
 				current.hasNumericalFluent(p, &qY);
-				for (int k = 0; k < object.push_poses.size(); i++) {
+				p.name = "qz";
+				current.hasNumericalFluent(p, &qZ);
+				p.name = "qw";
+				current.hasNumericalFluent(p, &qW);
+				std::cerr << a.parameters[0] << qX << "," << qY << "," << qZ << ", " <<qW << std::endl;
+				for (int k = 0; k < object.push_poses.size(); k++) {
 					geometry_msgs::Pose cur1 = object.push_poses.at(k);
 					float dot = cur1.orientation.x * qX
 							+ cur1.orientation.y * qY + cur1.orientation.z * qZ
 							+ cur1.orientation.w * qW;
-					float ang = acos(dot) / M_PI * 180;
+					float ang = 2 * (acos(dot) / M_PI * 180);
+					std::cerr << dot << std::endl;
+					std::cerr << ang << std::endl;
 					if (std::abs(ang - 90) < 10) {
+						std::cerr<< "here" << ang << std::endl;
 						cur = cur1;
 						break;
 					}
