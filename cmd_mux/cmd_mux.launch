@@ -1,0 +1,13 @@
+<!--
+  Example standalone launcher for the velocity multiplexer.
+  
+  For best results you would usually load this into the core control system
+  to avoid latency for reactive controllers. However for other apps, running
+  it standalone with a similar configuration will also work.
+ -->
+<launch>
+  <node pkg="nodelet" type="nodelet" name="nodelet_manager" args="manager"/>
+  <node pkg="nodelet" type="nodelet" name="yocs_cmd_vel_mux" args="load yocs_cmd_vel_mux/CmdVelMuxNodelet nodelet_manager">
+    <param name="yaml_cfg_file" value="$(find cmd_mux)/config.yaml"/>
+  </node>
+</launch>

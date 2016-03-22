@@ -11,6 +11,6 @@
     <param name="base_frame_id" value="base_footprint"/>
   </node>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find shakey_executable)/shakey_rviz.rviz" output="screen"/>
+  <!-- node name="rviz" pkg="rviz" type="rviz" args="-d $(find shakey_executable)/shakey_rviz.rviz" output="screen"/ -->
 
 </launch>

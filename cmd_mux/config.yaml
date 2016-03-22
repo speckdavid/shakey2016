@@ -1,0 +1,11 @@
+subscribers:
+  - name:        "Navigation stack"
+    topic:       "/base_controller/joystick"
+    timeout:     0.1
+    priority:    0
+    short_desc:  "Navigation stack"
+  - name:        "Onboard joystick"
+    topic:       "/base_controller/2dnav_stack"
+    timeout:     0.1
+    priority:    1
+publisher:       "/base_controller/command"

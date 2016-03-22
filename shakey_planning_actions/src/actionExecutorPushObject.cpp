@@ -27,7 +27,13 @@ namespace shakey_planning_actions
     {
     	std::string object_name = a.parameters[0];
     	current.setBooleanPredicate("pushed", object_name, true);
-    	// TODO: set doorway state to unkown
+    	Predicate p;
+    	p.parameters.push_back(object_name);
+    	p.name = "belongs-to-doorway";
+    	std::string doorway;
+    	if (current.hasObjectFluent(p, &doorway)) {
+    		current.setBooleanPredicate("doorway-state-known", doorway, false);
+    	}
 
     }
 
