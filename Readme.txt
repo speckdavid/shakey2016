@@ -13,6 +13,10 @@ Start Roboter system:
 	3.) Start object detection: roslaunch shakey_object_recognition shakey_object_recognition.launch
 	4.) Start action server: roslaunch shakey_actionlib shakey_actionserver.launch
 	5.) Start planner: roslaunch shakey_planning_server continual-planning-shakey.launch map_suffix:='suffiex of map' (here: shakey_new_world)
+	6.a) Start cmd_mux: roslaunch cmd_mux cmd_mux.launch
+
+	Optional:
+	6.b) Start joystick/keyboard: roslaunch cmd_mux teleop_joystick.launch OR roslaunch cmd_mux teleop_keyboard.launch
 
 
 Note: Simulating is possible with gazebo
