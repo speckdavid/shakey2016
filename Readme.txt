@@ -15,6 +15,8 @@ Start Roboter system:
 	5.) Start planner: roslaunch shakey_planning_server continual-planning-shakey.launch map_suffix:='suffiex of map' (here: shakey_new_world)
 	6.a) Start cmd_mux: roslaunch cmd_mux cmd_mux.launch
 
+	Note: For 1.-6.a) You can use screenrun. (Example in shakey_original world)
+
 	Optional:
 	6.b) Start joystick/keyboard: roslaunch cmd_mux teleop_joystick.launch OR roslaunch cmd_mux teleop_keyboard.launch
 
