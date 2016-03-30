@@ -17,8 +17,6 @@ double canDriveToPos(const ParameterList & parameterList,
 	}
 
 	NumericalFluentList* nlf = new NumericalFluentList();
-	//ParameterList* pl = new ParameterList();
-	//pl->push_back("at-base");
 	nlf->push_back(NumericalFluent("x", parameterList));
 	nlf->push_back(NumericalFluent("y", parameterList));
 	nlf->push_back(NumericalFluent("z", parameterList));
