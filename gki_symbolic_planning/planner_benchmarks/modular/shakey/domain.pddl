@@ -16,6 +16,10 @@
 		movable_object          		; an object that can be pushed
 		pushable_location - location	; a pushable location of a movable object (in front of the side planes)
     )
+    
+    (:modules (canDriveToPos ?dummy - location
+    	      		 conditionchecker canDriveToPos@libshakey_planning_actions.so)
+    )
 
     (:constants
         robot_location - location
@@ -91,6 +95,7 @@
         :duration (= ?duration 1000.0)
         :condition
         (and
+			(at start ([canDriveToPos ?g]))
             (at start (at-base ?s))
             (at start (not (= ?s ?g)))
             (at start (can-navigate ?s ?g))

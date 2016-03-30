@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   pcl_conversions
   continual_planning_executive
+  tfd_modules
   tf
   shakey_actionlib
   shakey_utils
@@ -134,6 +135,7 @@ src/goalCreatorObjects.cpp
 src/actionExecutorPushObject.cpp
 src/actionExecutorDetectObjects.cpp
 src/actionExecutorDriveBase.cpp
+src/canDriveModule.cpp
 )
 target_link_libraries(shakey_planning_actions shakey_utils shakey_object_recognition ${catkin_LIBRARIES})
 
