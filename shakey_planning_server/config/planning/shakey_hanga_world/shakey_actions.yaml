@@ -5,6 +5,7 @@ goal_creators:
     - shakey_planning_actions/goal_creator_objects
 action_executors:
     - shakey_planning_actions/action_executor_push_object push-object /push_action_server
+    - shakey_planning_actions/action_executor_push_object push-object-to-pos /push_action_server
     - shakey_planning_actions/action_executor_drive_base drive-base /move_base
     - shakey_planning_actions/action_executor_drive_base drive-through-doorway /move_base
     - shakey_planning_actions/action_executor_detect_objects detect-objects /detectObject

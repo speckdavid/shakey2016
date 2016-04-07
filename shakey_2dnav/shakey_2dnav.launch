@@ -12,4 +12,6 @@
     <rosparam file="$(find shakey_2dnav)/config/global_costmap_params.yaml" command="load" />
     <rosparam file="$(find shakey_2dnav)/config/base_local_planner_params.yaml" command="load" />
   </node>
+
+  <node pkg="shakey_2dnav" type="costMapService" name="costMapService" output="screen"/>
 </launch>

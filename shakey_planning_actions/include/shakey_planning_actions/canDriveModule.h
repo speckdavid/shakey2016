@@ -7,6 +7,7 @@
 #include <nav_msgs/GetMap.h>
 #include <tf/transform_listener.h>
 #include <tf/transform_broadcaster.h>
+#include <shakey_utils/MapHelper.h>
 
 using namespace modules;
 
@@ -14,19 +15,36 @@ using namespace modules;
 extern "C" {
 #endif
 
-ros::NodeHandle _nh;
-nav_msgs::GetMap _map;
-tf::TransformListener _listener;
-bool latestMap = false;
+MapHelper _mapHelper;
+bool _setMapHelper = false;
 
 /// Checks if robot can drive to a certain location in 2 actions
-double canDriveToPos(const ParameterList & parameterList, predicateCallbackType predicateCallback, numericalFluentCallbackType numericalFluentCallback, int relaxed);
+double canDriveToPos(const ParameterList & parameterList,
+		predicateCallbackType predicateCallback,
+		numericalFluentCallbackType numericalFluentCallback, int relaxed);
+
+double canPushDistance(const ParameterList & parameterList,
+		predicateCallbackType predicateCallback,
+		numericalFluentCallbackType numericalFluentCallback, int relaxed);
+
+double canPushToPos(const ParameterList & parameterList,
+		predicateCallbackType predicateCallback,
+		numericalFluentCallbackType numericalFluentCallback, int relaxed);
+
+double costDriveToPos(const ParameterList & parameterList,
+		predicateCallbackType predicateCallback,
+		numericalFluentCallbackType numericalFluentCallback, int relaxed);
+
+double costPushDistance(const ParameterList & parameterList,
+		predicateCallbackType predicateCallback,
+		numericalFluentCallbackType numericalFluentCallback, int relaxed);
 
 VERIFY_CONDITIONCHECKER_DEF(canDriveToPos);
+VERIFY_CONDITIONCHECKER_DEF(canPushDistance);
+VERIFY_CONDITIONCHECKER_DEF(canPushToPos);
 
-// Additional Functions for modules
-float getOccValue(nav_msgs::GetMap map, Eigen::Vector3f pos);
-bool freeSpace(nav_msgs::GetMap map, geometry_msgs::Pose pose, float width, float depth);
+// Additional Functions
+geometry_msgs::Pose getPose(const ParameterList & pl, numericalFluentCallbackType numericalFluentCallback);
 
 #ifdef __cplusplus
 }

@@ -6,6 +6,7 @@ project(shakey_utils)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  tf_conversions
 )
 
 ## System dependencies are found with CMake's conventions
@@ -120,6 +121,7 @@ include_directories(
 add_library(shakey_utils
   src/geometryPoses.cpp
   src/stringutil.cpp
+  src/MapHelper.cpp
 )
 target_link_libraries(shakey_utils ${catkin_LIBRARIES})
 
@@ -129,7 +131,6 @@ target_link_libraries(shakey_utils ${catkin_LIBRARIES})
 # add_dependencies(shakey_utils ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(shakey_utils_node src/shakey_utils_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above

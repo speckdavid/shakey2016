@@ -30,15 +30,10 @@ protected:
 	void visualize(shakey_object_recognition::PushableObject object,
 			geometry_msgs::Pose push_pose);
 
-	bool getMinMaxWallPushPose(shakey_object_recognition::PushableObject obj,
-			std::vector<geometry_msgs::Pose> *best_pos, std::vector<float> *distance);
-
 	float getOccValue(Eigen::Vector3f pos);
 
 	float getWallDistance(geometry_msgs::Point pos,
 			shakey_object_recognition::PushableObject obj);
-
-	bool planToPos(geometry_msgs::Pose start, geometry_msgs::Pose goal);
 
 	geometry_msgs::Pose getCurrentLocation(const DurativeAction & a, SymbolicState & current);
 

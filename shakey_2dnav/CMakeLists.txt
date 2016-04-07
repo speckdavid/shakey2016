@@ -5,7 +5,9 @@ project(shakey_2dnav)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  roscpp
   move_base
+  std_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -115,6 +117,8 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+add_executable(costMapService src/costMapService.cpp)
+
 ## Declare a C++ library
 # add_library(shakey_2dnav
 #   src/${PROJECT_NAME}/shakey_2dnav.cpp
@@ -133,9 +137,10 @@ include_directories(
 # add_dependencies(shakey_2dnav_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(shakey_2dnav_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(costMapService
+  ${catkin_LIBRARIES}
+)
+add_dependencies(costMapService std_msgs)
 
 #############
 ## Install ##

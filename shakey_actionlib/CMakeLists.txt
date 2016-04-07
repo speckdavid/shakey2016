@@ -16,6 +16,8 @@ find_package(catkin REQUIRED COMPONENTS
   topic_tools
   move_base
   tf
+  tf_conversions
+  shakey_utils
 )
 
 ## System dependencies are found with CMake's conventions

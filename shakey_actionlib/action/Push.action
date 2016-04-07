@@ -1,5 +1,7 @@
 #goal definition
-float64 push_distance
+float64[] push_distance
+# assuming robot is in the beginning at the frist push pose - uses it for computation
+geometry_msgs/Pose[] push_poses
 ---
 ---
 #feedback

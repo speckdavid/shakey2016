@@ -1,6 +1,6 @@
 anytime_search: true
 disallow_concurrent_actions: true
-timeout_if_plan_found: 10
+timeout_if_plan_found: 30
 timeout_while_no_plan_found: 300
 min_search_time_after_plan_found: 3
 min_search_time_factor_after_plan_found: 0.15
