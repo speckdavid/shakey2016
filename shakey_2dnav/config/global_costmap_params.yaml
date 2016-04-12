@@ -17,5 +17,5 @@ global_costmap:
 
   #footprint_padding: 0.02
 
-  inflation_layer/cost_scaling_factor: 2.5
-  inflation_layer/inflation_radius: 4
+  inflation_layer/cost_scaling_factor: 0.5
+  inflation_layer/inflation_radius: 6

@@ -65,14 +65,13 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 			obj_name = (object.obj_type == Box) ? "box" : "wedge";
 			std::ostringstream os;
 			os << i;
-			obj_name += os.str();
+			obj_name += os.str() + "_" + a.parameters[0];
 			for (int j = 0; j < object.push_poses.size(); j++) {
 				geometry_msgs::Pose cur = object.push_poses.at(j);
 				// Saftey - object diaonal - 3 times resolution
 				double distance = getWallDistance(cur.position, object)
-						- std::sqrt((object.length * object.length
-								+ object.width * object.width))
-						- _mapResponse.response.map.info.resolution * 5;
+						+ std::min(object.length, object.width) / 2
+						- _mapResponse.response.map.info.resolution * 2;
 				double push_cost = 100;
 				if (a.name == "detect-objects") {
 					current.setObjectFluent("belongs-to-search-location",
@@ -130,7 +129,7 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 				current.setNumericalFluent("push-distance", push_loc_name,
 						_push_distance);
 				current.setNumericalFluent("push-cost", push_loc_name,
-						(int) push_cost);
+						(int) (push_cost*100));
 
 				// Set object location to current position of detection location
 				Predicate p;
@@ -169,10 +168,10 @@ void ActionExecutorDetectObjects::visualize(
 	Eigen::Vector3f direction = Eigen::Vector3f(object.mean.position.x,
 			object.mean.position.y, 0)
 			- Eigen::Vector3f(push_pose.position.x, push_pose.position.y, 0);
-	float transX = direction.normalized().x() * (_push_distance - 0.75);
-	float transY = direction.normalized().y() * (_push_distance - 0.75);
-	new_object.mean.position.x = push_pose.position.x + transX;
-	new_object.mean.position.y = push_pose.position.y + transY;
+	float transX = direction.normalized().x() * _push_distance;
+	float transY = direction.normalized().y() * _push_distance;
+	new_object.mean.position.x = object.mean.position.x + transX;
+	new_object.mean.position.y = object.mean.position.y + transY;
 	new_object.corner_points = object.corner_points;
 	for (int b = 0; b < new_object.corner_points.size(); b++) {
 		new_object.corner_points.at(b).x += transX;
@@ -207,11 +206,18 @@ float ActionExecutorDetectObjects::getWallDistance(geometry_msgs::Point pos,
 			obj.mean.position.y, 0);
 	Eigen::Vector3f direction = (mean - cur_pos).normalized();
 	float distance = 0;
+	Eigen::Vector3f add_vector = direction
+			* _mapResponse.response.map.info.resolution;
 	while (true) {
-		float occ_value = getOccValue(cur_pos);
-		if (occ_value == -1 || occ_value == 100)
-			return distance;
-		cur_pos += direction * _mapResponse.response.map.info.resolution;
+		for (int i = 0; i < obj.push_poses.size(); i++) {
+			Eigen::Vector3f cur_cell(obj.push_poses.at(i).position.x,
+					obj.push_poses.at(i).position.y, 0);
+			cur_cell += add_vector;
+			float occ_value = getOccValue(cur_cell);
+			if (occ_value == -1 || occ_value == 100)
+				return distance - _mapResponse.response.map.info.resolution;
+		}
+		add_vector += direction * _mapResponse.response.map.info.resolution;
 		distance += _mapResponse.response.map.info.resolution;
 	}
 }

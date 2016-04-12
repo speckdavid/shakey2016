@@ -60,7 +60,27 @@ double canPushToPos(const ParameterList & parameterList,
 	geometry_msgs::Pose dest = getPose(*pl, numericalFluentCallback);
 	MapHelper mh;
 	VectorXf s;
-	return mh.getPushDistances(push1, push2, dest, &s) ? 0 : INFINITE_COST;
+	double result =
+			mh.getPushDistances(push1, push2, dest, &s) ? 0 : INFINITE_COST;
+	if (result == INFINITE_COST)
+		return result;
+	// Check if max push distance (limited by  wall) is smaller then the mandatory push distance
+	NumericalFluentList* nlf = new NumericalFluentList();
+	pl->at(0) = parameterList.at(0);
+	nlf->push_back(NumericalFluent("push-distance", *pl));
+	numericalFluentCallback(nlf);
+	float dist1 = nlf->at(0).value;
+	pl->at(0) = parameterList.at(1);
+	nlf->push_back(NumericalFluent("push-distance", *pl));
+	numericalFluentCallback(nlf);
+	float dist2 = nlf->at(0).value;
+	if (dist1 < s.x() || dist2 < s.y()) {
+		result = INFINITE_COST;
+		ROS_WARN(
+				"Max push-distance smaller then push-distance to pos: %f <? %f , %f <? %f",
+				dist1, s.x(), dist2, s.y());
+	}
+	return result;
 }
 
 // Additional functions

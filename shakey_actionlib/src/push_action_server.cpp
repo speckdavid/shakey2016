@@ -181,7 +181,7 @@ public:
 				return;
 			}
 			// Drive to next push pose
-			if (i == 0) {
+			if (i == 0 && goal->push_poses.size() == 2) {
 				geometry_msgs::Pose p = goal->push_poses.at(i + 1);
 				move_base_msgs::MoveBaseGoal goalNewPushPose;
 				goalNewPushPose.target_pose.header.frame_id = "map";
@@ -198,9 +198,9 @@ public:
 				// Add translation to next push_pose
 				tf::Point p2;
 				tf::pointMsgToTF(p.position, p2);
-				// FIXME: Why - 0.5 extra?
+				// FIXME: Why - 0.4? - Half base + uncertainty at driving?
 				tf::Point dest = p2
-						+ (goal->push_distance.at(i) - 0.5) * rot.getColumn(0);
+						+ (goal->push_distance.at(i) - 0.4) * rot.getColumn(0);
 				geometry_msgs::Point mv_dest;
 				tf::pointTFToMsg(dest, mv_dest);
 				goalNewPushPose.target_pose.pose.position = mv_dest;

@@ -562,19 +562,20 @@ private:
 		std::vector<Eigen::Vector3f> points;
 		std::vector<Eigen::Vector3f> vecs;
 		// Add all points if not both are on the floor (flat side on wedge)
-		if (plane_bbx[0](2) > 0.15 || plane_bbx[1](2) > 0.15) {
+		float min_height = 0.3;
+		if (plane_bbx[0](2) > min_height || plane_bbx[1](2) > min_height) {
 			Eigen::Vector3f p0 = (plane_bbx[0] + plane_bbx[1]) * 0.5f;
 			points.push_back(p0);
 		}
-		if (plane_bbx[0](2) > 0.15 || plane_bbx[3](2) > 0.15) {
+		if (plane_bbx[0](2) > min_height || plane_bbx[3](2) > min_height) {
 			Eigen::Vector3f p1 = (plane_bbx[0] + plane_bbx[3]) * 0.5f;
 			points.push_back(p1);
 		}
-		if (plane_bbx[2](2) > 0.15 || plane_bbx[1](2) > 0.15) {
+		if (plane_bbx[2](2) > min_height || plane_bbx[1](2) > min_height) {
 			Eigen::Vector3f p2 = (plane_bbx[2] + plane_bbx[1]) * 0.5f;
 			points.push_back(p2);
 		}
-		if (plane_bbx[0](2) > 0.15 || plane_bbx[3](2) > 0.15) {
+		if (plane_bbx[0](2) > min_height || plane_bbx[3](2) > min_height) {
 			Eigen::Vector3f p3 = (plane_bbx[2] + plane_bbx[3]) * 0.5f;
 			points.push_back(p3);
 		}

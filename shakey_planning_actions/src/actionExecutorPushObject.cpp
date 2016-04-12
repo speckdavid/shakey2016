@@ -15,7 +15,7 @@ bool ActionExecutorPushObject::fillGoal(shakey_actionlib::PushGoal & goal,
 	p.name = "push-distance";
 	current.hasNumericalFluent(p, &push_distance);
 	float base_size = 0.65;
-	goal.push_distance.push_back(push_distance - base_size / 2);
+	goal.push_distance.push_back(push_distance + 0.75 - base_size / 2 );
 	geometry_msgs::Pose push1 = getLocation(a, current, a.parameters[1]);
 	goal.push_poses.push_back(push1);
 
@@ -46,7 +46,7 @@ void ActionExecutorPushObject::updateState(
 		const shakey_actionlib::PushResult & result, const DurativeAction & a,
 		SymbolicState & current) {
 	std::string object_name = a.parameters[0];
-	current.setBooleanPredicate("pushed", object_name, true); // TODO: Necessary ?
+	current.setBooleanPredicate("pushed", object_name, true);
 	Predicate p;
 	p.parameters.push_back(object_name);
 	p.name = "belongs-to-doorway";

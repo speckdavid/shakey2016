@@ -125,6 +125,7 @@
         (and
             (at start (at-base ?l))
             (at start (not (searched ?l)))
+            (at start (not (not-pushed-objects)))
         )
         :effect
         (and
@@ -189,6 +190,15 @@
         (exists (?o - movable_object) 
 			(and
 				(= (belongs-to-doorway ?o) ?d)
+				(not (pushed ?o))
+			)
+		)
+    )
+    
+    (:derived
+        (not-pushed-objects)
+        (exists (?o - movable_object) 
+			(and
 				(not (pushed ?o))
 			)
 		)
