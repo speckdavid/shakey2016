@@ -22,3 +22,5 @@ queue_management_mode: priority_based
 use_tss_known: false
 plan_name: plan
 monitoring_verify_timestamps: false
+eval/eval_current_dir: /home/shakey/eval
+eval/eval_dir: /home/shakey/eval

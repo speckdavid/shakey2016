@@ -19,7 +19,8 @@
         <param name="nav_base_local_planner_ns" value="/move_base" />
 
 	<rosparam command="load" file="$(arg config_pkg)/config/planning/$(arg map_suffix)/shakey_actions.yaml" />
-	<rosparam command="load" file="$(find tfd_modules)/config/tfdm_interface.yaml" />
+	<rosparam command="load" file="$(find tfd_modules)/config/tfdm_eval_interface.yaml" />
+	<!--rosparam command="load" file="$(find tfd_modules)/config/tfdm_interface.yaml" /-->
 	<rosparam command="load" file="$(arg config_pkg)/config/planning/$(arg map_suffix)/shakey_domain.yaml" />
     </node>
 

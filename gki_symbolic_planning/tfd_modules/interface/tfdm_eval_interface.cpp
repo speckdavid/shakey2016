@@ -44,7 +44,7 @@ namespace tfd_modules
     TFDMEvalInterface::TFDMEvalInterface()
     {
         runs.insert(make_pair("lazy_eval_partial_caching", setupRunLazyEvalPartialCaching));
-        runs.insert(make_pair("eager_eval_partial_caching", setupRunEagerEvalPartialCaching));
+        // runs.insert(make_pair("eager_eval_partial_caching", setupRunEagerEvalPartialCaching));
         defaultRun = "lazy_eval_partial_caching";
     }
 
