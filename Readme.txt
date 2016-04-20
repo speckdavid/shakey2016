@@ -25,3 +25,9 @@ Note: Simulating is possible with gazebo
 	- Start shakey in a world: roslaunch shakey_executable shakey_world pkg:='path to world pkg'
 	- Insert Objects: roslaunch shakey_spawn_objects spawn_["box or wedge"].launch x:="x-value" y:="y-value"
 
+Record Rosbag: [map, particle, global plan, local plan, object marker, object destination marker]
+	- rosbag record map particlecloud move_base/TrajectoryPlannerROS/global_plan move_base/TrajectoryPlannerROS/local_plan Detected_Objects /Destination_Objects
+
+Additional: [head mount image, segmentation cloud]
+	- head_mount_kinect/rgb/image_raw seg_cloud
+
