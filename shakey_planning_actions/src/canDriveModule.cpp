@@ -74,6 +74,7 @@ double canPushToPos(const ParameterList & parameterList,
 	nlf->push_back(NumericalFluent("push-distance", *pl));
 	numericalFluentCallback(nlf);
 	float dist2 = nlf->at(0).value;
+	// Subtract distance to object + small offset -> smaller->push in other direction
 	if (dist1 < s.x() || dist2 < s.y()) {
 		result = INFINITE_COST;
 		ROS_WARN(

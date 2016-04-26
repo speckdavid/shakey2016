@@ -14,6 +14,8 @@ PLUGINLIB_DECLARE_CLASS(shakey_planning_actions, goal_creator_objects,
 namespace shakey_planning_actions {
 
 GoalCreatorObjects::GoalCreatorObjects() {
+	_objViz.initialise("Objects_Location", "map");
+	_objViz.publish();
 }
 
 GoalCreatorObjects::~GoalCreatorObjects() {
@@ -21,8 +23,6 @@ GoalCreatorObjects::~GoalCreatorObjects() {
 
 bool GoalCreatorObjects::fillStateAndGoal(SymbolicState & currentState,
 		SymbolicState & goal) {
-	//goal.setBooleanPredicate("at-base", "loc1", "true");
-	//goal.setForEachGoalStatement("movable_object", "pushed", true);
 	currentState.addSuperType("pose", "pose");
 	currentState.addSuperType("frameid", "frameid");
 	currentState.addSuperType("location", "pose");
@@ -139,6 +139,23 @@ bool GoalCreatorObjects::fillStateAndGoal(SymbolicState & currentState,
 	else if (StringUtil::startsWith(type, "object")) {
 		currentState.addObject(location, "object_location");
 		goal.addObject(location, "object_location");
+		// Visualize the pose
+		shakey_object_recognition::PushableObject obj;
+		obj.obj_type = Box;
+		obj.frame_id = np.second.header.frame_id;
+		obj.mean.position.x = np.second.pose.position.x;
+		obj.mean.position.y = np.second.pose.position.y;
+		obj.mean.position.z = np.second.pose.position.z;
+		obj.mean.orientation.x = np.second.pose.orientation.x;
+		obj.mean.orientation.y = np.second.pose.orientation.y;
+		obj.mean.orientation.z = np.second.pose.orientation.z;
+		obj.mean.orientation.w = np.second.pose.orientation.w;
+		obj.height = 0.01;
+		obj.length = obj.width = 0.25;
+		std_msgs::ColorRGBA color;
+		color.g = color.r = 1;
+		_objViz.addObjectMarker(obj, color);
+		_objViz.publish();
 	}
 	else
 	{

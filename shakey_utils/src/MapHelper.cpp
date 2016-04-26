@@ -10,15 +10,8 @@ bool MapHelper::getPushDistances(MatrixXf A, VectorXf b, VectorXf * x) {
 	// Check here if an entry is negative
 	float min = x->minCoeff(&minRow, &minCol);
 	double relative_error = (A * (*x) - b).norm() / b.norm();
-	/*if (relative_error < 0.01 && abs(min) < 0.25) {
-		cout << "Matrix:\n" << A << endl;
-		cout << "Vec:\n" << b << endl;
-		cout << "The solution is:\n" << *x << endl;
-		cout << "The relative error is:\n" << relative_error << endl;
-	}*/
-	// Realtive error->possible to push and no negative cost
-	// at 0.25 we dont push this direction -> at goal in this direction
-	return relative_error < 0.01 && (min >= 0 || abs(min) < 0.25);
+	// TODO: < 0.1 nec?
+	return relative_error < 0.01 && (min >= 0 || abs(min) < 0.1);
 }
 
 // Additional Functions
@@ -44,7 +37,7 @@ float MapHelper::getOccValue(geometry_msgs::Point p) {
 bool MapHelper::freeSpace(geometry_msgs::Point p) {
 	float occ_value = getOccValue(p);
 	if (occ_value > 98) {
-		ROS_ERROR("OccValue: %f", occ_value);
+		ROS_WARN("OccValue: %f", occ_value);
 		return false;
 	}
 	return true;
@@ -65,8 +58,8 @@ bool MapHelper::getPushDistances(geometry_msgs::Pose push1,
 		MatrixXf push_vecs(2, 2);
 		push_vecs << direction1.x(), direction2.x(), direction1.y(), direction2.y();
 		VectorXf b(2, 1);
-		float pos_x = push1.position.x + 0.75 * direction1.x();
-		float pos_y = push1.position.y + 0.75 * direction1.y();
+		float pos_x = push1.position.x + (0.75 + 0.375) * direction1.x();
+		float pos_y = push1.position.y + (0.75 + 0.375) * direction1.y();
 		// Vector from current pos (push1) to dest
 		b << dest.position.x - pos_x, dest.position.y - pos_y;
 		return getPushDistances(push_vecs, b, x);

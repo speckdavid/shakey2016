@@ -44,7 +44,6 @@ protected:
 	nav_msgs::GetMap _mapResponse;
 	double _push_distance;
 	bool _pushToWall;
-	bool _onlyDetection;
 };
 
 }

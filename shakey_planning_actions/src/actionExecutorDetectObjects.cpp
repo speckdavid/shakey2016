@@ -22,7 +22,6 @@ void ActionExecutorDetectObjects::initialize(
 		ROS_ERROR("No static map found.");
 	_plan_client = _nh.serviceClient<nav_msgs::GetPlan>("/move_base/make_plan");
 	_pushToWall = false;
-	_onlyDetection = false;
 	if (arguments.at(0) == "detect-doorway-state") {
 		_nh.getParam(
 				"continual_planning_executive/push_distance_object_doorway",
@@ -37,8 +36,6 @@ void ActionExecutorDetectObjects::initialize(
 				_push_distance);
 		if (_push_distance < 0)
 			_pushToWall = true;
-		if (_push_distance == 0)
-			_onlyDetection = true;
 	}
 }
 
@@ -66,13 +63,14 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 			std::ostringstream os;
 			os << i;
 			obj_name += os.str() + "_" + a.parameters[0];
+
+			// Iterate over all push poses
 			for (int j = 0; j < object.push_poses.size(); j++) {
 				geometry_msgs::Pose cur = object.push_poses.at(j);
-				// Saftey - object diaonal - 3 times resolution
-				double distance = getWallDistance(cur.position, object)
-						+ std::min(object.length, object.width) / 2
-						- _mapResponse.response.map.info.resolution * 2;
+				double distance = getWallDistance(cur.position, object);
 				double push_cost = 100;
+
+				// Detected Object at Search location -> push to wall or push distance
 				if (a.name == "detect-objects") {
 					current.setObjectFluent("belongs-to-search-location",
 							obj_name, a.parameters[0]);
@@ -84,6 +82,7 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 					push_cost = _push_distance;
 				}
 
+				// Detect Objects for doorways
 				if (a.name == "detect-doorway-state") {
 					current.setObjectFluent("belongs-to-doorway", obj_name,
 							a.parameters[1]);
@@ -99,11 +98,13 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 							+ cur.orientation.w
 									* detection_position.orientation.w;
 					float ang = 2 * (acos(dot) / M_PI * 180);
-					// Minima at 90...wierd can not be 0 or planner bugs -> +1 always???
-					push_cost = (90 - ang) * (90 - ang) / 810 + 1;
+					// Minima at 90...wierd can not be 0 or planner bugs
+					// a driving action +1000 to be more expensive then
+					push_cost = (90 - ang) * (90 - ang) / 810 + 1000;
 				}
+				// Add ererything to state
 				current.addObject(obj_name, "movable_object");
-				bool object_pushed = _onlyDetection || _push_distance < 0.25;
+				bool object_pushed = _push_distance < 0.15;
 				current.setBooleanPredicate("pushed", obj_name, object_pushed);
 				std::ostringstream os1;
 				os1 << j;
@@ -129,8 +130,10 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 				current.setNumericalFluent("push-distance", push_loc_name,
 						_push_distance);
 				current.setNumericalFluent("push-cost", push_loc_name,
-						(int) (push_cost*100));
+						(int) (push_cost * 100));
 
+				if (a.name == "detect-doorway-state")
+					current.setBooleanPredicate("object_occupied", obj_name, true);
 				// Set object location to current position of detection location
 				Predicate p;
 				std::string det_loc = a.parameters[0];
@@ -143,10 +146,9 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 				}
 				current.setObjectFluent("location-in-room", push_loc_name,
 						new_room);
-
+				current.setObjectFluent("in-room", obj_name, new_room);
 				//Visualize the destination point
-				if (!_onlyDetection)
-					visualize(object, cur);
+				visualize(object, cur);
 			}
 		}
 	}
@@ -205,15 +207,15 @@ float ActionExecutorDetectObjects::getWallDistance(geometry_msgs::Point pos,
 	Eigen::Vector3f mean = Eigen::Vector3f(obj.mean.position.x,
 			obj.mean.position.y, 0);
 	Eigen::Vector3f direction = (mean - cur_pos).normalized();
-	float distance = 0;
+	double distance = 0;
 	Eigen::Vector3f add_vector = direction
 			* _mapResponse.response.map.info.resolution;
 	while (true) {
-		for (int i = 0; i < obj.push_poses.size(); i++) {
-			Eigen::Vector3f cur_cell(obj.push_poses.at(i).position.x,
-					obj.push_poses.at(i).position.y, 0);
+		for (int i = 0; i < obj.corner_points.size(); i++) {
+			Eigen::Vector3f cur_cell(obj.corner_points.at(i).x,
+					obj.corner_points.at(i).y, 0);
 			cur_cell += add_vector;
-			float occ_value = getOccValue(cur_cell);
+			double occ_value = getOccValue(cur_cell);
 			if (occ_value == -1 || occ_value == 100)
 				return distance - _mapResponse.response.map.info.resolution;
 		}

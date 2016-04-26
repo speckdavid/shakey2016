@@ -100,6 +100,54 @@ public:
 		for (int i = 0; i < goal->push_distance.size(); i++) {
 			ROS_INFO("Push distance: %f - %f (offset)",
 					goal->push_distance.at(i), 0.75);
+
+			// Drive to next push pose
+			if (i == 1 && goal->push_poses.size() == 2) {
+				if (goal->push_distance.at(i) - 0.75 < 0.1) {
+					ROS_WARN("Push distance smaller then 0.1. Do nothing");
+					continue;
+				}
+				geometry_msgs::Pose p = goal->push_poses.at(i);
+				move_base_msgs::MoveBaseGoal goalNewPushPose;
+				goalNewPushPose.target_pose.header.frame_id = "map";
+				goalNewPushPose.target_pose.header.stamp = ros::Time::now();
+				// Orientation stays the same
+				goalNewPushPose.target_pose.pose.orientation = p.orientation;
+				// Get push direction -> translation direction for next push pose
+				tf::Quaternion qt;
+				tf::quaternionMsgToTF(goal->push_poses.at(i - 1).orientation,
+						qt);
+				tf::Matrix3x3 rot;
+				rot.setIdentity();
+				rot.setRotation(qt);
+				tf::Vector3 direction1 = rot.getColumn(0).normalized();
+				// Add translation to next push_pose
+				tf::Point p2;
+				tf::pointMsgToTF(p.position, p2);
+				// +Half-base and uncertainty at driving
+				tf::Point dest = p2
+						+ (goal->push_distance.at(i - 1) - 0.575)
+								* rot.getColumn(0);
+				geometry_msgs::Point mv_dest;
+				tf::pointTFToMsg(dest, mv_dest);
+				goalNewPushPose.target_pose.pose.position = mv_dest;
+				ROS_INFO("Sending goal to move_base.");
+				ROS_INFO("Driving to next push pose [%f, %f, %f]...",
+						goalNewPushPose.target_pose.pose.position.x,
+						goalNewPushPose.target_pose.pose.position.y,
+						goalNewPushPose.target_pose.pose.position.z);
+				ac.sendGoal(goalNewPushPose);
+				ac.waitForResult();
+				if (ac.getState()
+						== actionlib::SimpleClientGoalState::SUCCEEDED) {
+					ROS_INFO("Driving to next push position completed.");
+				} else {
+					ROS_ERROR("Not able to drive to next push pose.");
+					as_.setPreempted();
+					return;
+				}
+			}
+
 			if (goal->push_distance.at(i) - 0.75 < 0.1) {
 				ROS_WARN("Push distance smaller then 0.1. Do nothing");
 				continue;
@@ -179,46 +227,6 @@ public:
 				ROS_INFO("Not able to swap to base_scan.");
 				as_.setPreempted();
 				return;
-			}
-			// Drive to next push pose
-			if (i == 0 && goal->push_poses.size() == 2) {
-				geometry_msgs::Pose p = goal->push_poses.at(i + 1);
-				move_base_msgs::MoveBaseGoal goalNewPushPose;
-				goalNewPushPose.target_pose.header.frame_id = "map";
-				goalNewPushPose.target_pose.header.stamp = ros::Time::now();
-				// Orientation stays the same
-				goalNewPushPose.target_pose.pose.orientation = p.orientation;
-				// Get push direction -> translation direction for next push pose
-				tf::Quaternion qt;
-				tf::quaternionMsgToTF(goal->push_poses.at(i).orientation, qt);
-				tf::Matrix3x3 rot;
-				rot.setIdentity();
-				rot.setRotation(qt);
-				tf::Vector3 direction1 = rot.getColumn(0).normalized();
-				// Add translation to next push_pose
-				tf::Point p2;
-				tf::pointMsgToTF(p.position, p2);
-				// FIXME: Why - 0.4? - Half base + uncertainty at driving?
-				tf::Point dest = p2
-						+ (goal->push_distance.at(i) - 0.4) * rot.getColumn(0);
-				geometry_msgs::Point mv_dest;
-				tf::pointTFToMsg(dest, mv_dest);
-				goalNewPushPose.target_pose.pose.position = mv_dest;
-				ROS_INFO("Sending goal to move_base.");
-				ROS_INFO("Driving to next push pose [%f, %f, %f]...",
-						goalNewPushPose.target_pose.pose.position.x,
-						goalNewPushPose.target_pose.pose.position.y,
-						goalNewPushPose.target_pose.pose.position.z);
-				ac.sendGoal(goalNewPushPose);
-				ac.waitForResult();
-				if (ac.getState()
-						== actionlib::SimpleClientGoalState::SUCCEEDED) {
-					ROS_INFO("Driving to next push position completed.");
-				} else {
-					ROS_ERROR("Not able to drive to next push pose.");
-					as_.setPreempted();
-					return;
-				}
 			}
 		}
 		ROS_INFO("Push action completed.");

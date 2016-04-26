@@ -20,7 +20,3 @@ programs:
     name: planner
     commands:
       - roslaunch shakey_planning_server continual-planning-shakey.launch map_suffix:='shakey_original_world'\015
-  -
-    name: cmd_mux
-    commands:
-      - roslaunch cmd_mux cmd_mux.launch\015

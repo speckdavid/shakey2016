@@ -14,6 +14,7 @@ TrajectoryPlannerROS:
   holonomic_robot: true
   y_vels: -1, -1, 1, 1
   latch_xy_goal_tolerance: true
+  xy_goal_tolerance: 0.1 
 
   vx_samples: 8
   vtheta_samples: 30

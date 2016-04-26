@@ -5,11 +5,13 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /Map2
         - /MarkerArray1/Status1
         - /MarkerArray1/Namespaces1
         - /MarkerArray2/Namespaces1
+        - /Camera1
       Splitter Ratio: 0.505929
-    Tree Height: 578
+    Tree Height: 398
   - Class: rviz/Tool Properties
     Expanded:
       - /2D Nav Goal1
@@ -768,9 +770,50 @@ Visualization Manager:
       Marker Topic: /Destination_Objects
       Name: MarkerArray
       Namespaces:
-        obj/Destination_Objects: true
+        {}
       Queue Size: 100
       Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /Objects_Location
+      Name: MarkerArray
+      Namespaces:
+        obj/Objects_Location: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Camera
+      Enabled: true
+      Image Rendering: background and overlay
+      Image Topic: /head_mount_kinect/rgb/image_raw
+      Name: Camera
+      Overlay Alpha: 0.5
+      Queue Size: 2
+      Transport Hint: raw
+      Value: true
+      Visibility:
+        AMCL Cloud: true
+        Current Goal: true
+        Floor Scan: true
+        Global Plan: true
+        Grid: true
+        Ground Filtered Tilt Scan: true
+        Head Scan: true
+        Image: true
+        Inflated Obstacles: true
+        Local Plan: true
+        Map: true
+        MarkerArray: true
+        Obstacles: true
+        Origin Axes: true
+        Planner Plan: true
+        PointCloud2: true
+        Robot Footprint: true
+        RobotModel: true
+        Tilt Scan Shadow Filtered: true
+        Transforms: true
+        Value: true
+        Visualization Markers: true
+      Zoom Factor: 1
   Enabled: true
   Global Options:
     Background Color: 0; 0; 0
@@ -790,24 +833,26 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 13.2214
+      Distance: 31.0881
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 1.7659
-        Y: 5.16501
-        Z: -1.26234
+        X: 6.52906
+        Y: 6.79772
+        Z: 0.158274
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.730401
+      Pitch: 1.1948
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.61478
+      Yaw: 4.8198
     Saved: ~
 Window Geometry:
+  Camera:
+    collapsed: false
   Displays:
     collapsed: false
   Height: 1000
@@ -815,9 +860,9 @@ Window Geometry:
   Hide Right Dock: false
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000002000000000000010f000003a2fc0200000002fb000000100044006900730070006c0061007900730100000028000002d1000000dd00fffffffb0000000a0049006d00610067006501000002ff000000cb0000001600ffffff000000010000010000000593fc0200000001fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730000000041000005930000006400ffffff000003aa000003a200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000002000000000000010f000003a2fc0200000004fb000000100044006900730070006c00610079007301000000280000021d000000dd00fffffffb0000000a0049006d006100670065010000024b000000980000001600fffffffb0000000c00430061006d00650072006101000002e9000000160000001600000016fb0000000c00430061006d00650072006101000002ff000000cb0000001600ffffff000000010000010000000593fc0200000001fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730000000041000005930000006400ffffff000003aa000003a200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Tool Properties:
     collapsed: false
   Width: 1215
-  X: 58
-  Y: 24
+  X: 57
+  Y: -4

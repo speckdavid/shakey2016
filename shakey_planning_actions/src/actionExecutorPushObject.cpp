@@ -35,8 +35,9 @@ bool ActionExecutorPushObject::fillGoal(shakey_actionlib::PushGoal & goal,
 		std::cout << "[" << push2.position.x << ", " << push2.position.y << ", "
 				<< push2.position.z << "] with " << _push_vector.y() << "meters" << std::endl;
 
-		goal.push_distance.at(0) = _push_vector.x() + 0.75 - base_size / 2;
-		goal.push_distance.push_back(_push_vector.y() + 0.75 - base_size / 2);
+		// TODO: - half base necessary?
+		goal.push_distance.at(0) = _push_vector.x() + 0.75;
+		goal.push_distance.push_back(_push_vector.y() + 0.75);
 	}
 	return true;
 }
@@ -54,8 +55,11 @@ void ActionExecutorPushObject::updateState(
 	if (current.hasObjectFluent(p, &doorway)) {
 		current.setBooleanPredicate("doorway-state-known", doorway, false);
 	}
-	if (a.name == "push-object-to-pos")
+	if (a.name == "push-object-to-pos") {
 		current.setBooleanPredicate("object_at", a.parameters[3], true);
+		current.setBooleanPredicate("object_occupied", a.parameters[0], true);
+	}
+	//current.removeObject(object_name, "true");
 
 }
 

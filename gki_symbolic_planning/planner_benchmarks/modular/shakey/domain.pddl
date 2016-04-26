@@ -26,8 +26,6 @@
     	      		 conditionchecker canPushToPos@libshakey_planning_actions.so)
     	      (costPushDistance ?loc - location
     	       		 cost costPushDistance@libshakey_planning_actions.so)
-    	      ;(costDriveToPos ?s ?q - location
-			;		cost costDriveToPos@libshakey_planning_actions.so)
     )
 
     (:constants
@@ -40,6 +38,7 @@
 		(doorway-state-known ?d - doorway)		; is the doorway state known?
 		(searched ?l - search_location)			; search location searched?
 		(object_at ?b - object_location) 		; is an object at this object location?
+		(object_occupied ?o - movable_object)
     )
 
     (:functions
@@ -55,8 +54,8 @@
         (frame-id ?p - pose) - frameid
 		(belongs-to-doorway ?l - doorway_in_location) - doorway
         (location-in-room ?l - location) - room
+        (in-room ?o - movable_object) - room
         ;push informations for a movable object
-        (belongs-to-object-location ?o - moveable_object) - object_location
         (belongs-to-movable-object ?u - pushable_location) - movable_object
         (belongs-to-search-location ?o - movable_object) - search_location
         (belongs-to-doorway ?o - movable_object) - doorway
@@ -157,16 +156,19 @@
 			(at start (not (pushed ?o)))
 			(at start (= (location-in-room ?p) (location-in-room ?b)))
 			(at start (= (location-in-room ?q) (location-in-room ?b)))
+			(at start (= (belongs-to-movable-object ?p) ?o))
+			(at start (= (belongs-to-movable-object ?q) ?o))
 			(at start (not (= ?p ?q)))
 			(at start (not (exists (doorway ?d) (= (belongs-to-doorway ?o) ?d))))
-			(at start (not (exists (object_location ?t) (= (belongs-to-object-location ?o) ?t))))
+			(at start (not (object_occupied ?o)))
+			(at start (not (object_at ?b)))
 			(at start (at-base ?p))
 			(at start ([canPushToPos ?p ?q ?b]))
 		)
 		:effect
 		(and
 			(at end (pushed ?o))
-			(at end (assign (belongs-to-object-location ?o) ?b))
+			(at end (object_occupied ?o))
 			(at end (object_at ?b))
 		)
 	)
@@ -211,14 +213,8 @@
 			(object_at ?b)
 			(forall (?o - movable_object)
 				(or 
-					(exists (?d doorway) (= (belongs-to-doorway ?o) ?d))
-					(exists (?t object_location) (= (belongs-to-object-location ?o) ?t))
-					(forall (?p - pushable_location) 
-						(or 
-							(not (= (location-in-room ?b) (location-in-room ?p)))
-							(not (= (belongs-to-movable-object ?p) ?o))
-						)
-					)
+					(object_occupied ?o)
+					(not (= (in-room ?o) (location-in-room ?b)))
 				)
 			)
 		)
