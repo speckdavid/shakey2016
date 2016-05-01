@@ -28,7 +28,7 @@ public:
 protected:
 
 	void visualize(shakey_object_recognition::PushableObject object,
-			geometry_msgs::Pose push_pose);
+			geometry_msgs::Pose push_pose, double dist);
 
 	float getOccValue(Eigen::Vector3f pos);
 
@@ -43,7 +43,6 @@ protected:
 	ros::ServiceClient _plan_client;
 	nav_msgs::GetMap _mapResponse;
 	double _push_distance;
-	bool _pushToWall;
 };
 
 }

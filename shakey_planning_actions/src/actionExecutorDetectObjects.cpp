@@ -21,7 +21,6 @@ void ActionExecutorDetectObjects::initialize(
 	if (!_map_client.call(_mapResponse))
 		ROS_ERROR("No static map found.");
 	_plan_client = _nh.serviceClient<nav_msgs::GetPlan>("/move_base/make_plan");
-	_pushToWall = false;
 	if (arguments.at(0) == "detect-doorway-state") {
 		_nh.getParam(
 				"continual_planning_executive/push_distance_object_doorway",
@@ -34,8 +33,9 @@ void ActionExecutorDetectObjects::initialize(
 	if (arguments.at(0) == "detect-objects") {
 		_nh.getParam("continual_planning_executive/push_distance_object_normal",
 				_push_distance);
-		if (_push_distance < 0)
-			_pushToWall = true;
+		if (_push_distance < 0) {
+			_push_distance = std::numeric_limits<float>::infinity();
+		}
 	}
 }
 
@@ -68,26 +68,19 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 			for (int j = 0; j < object.push_poses.size(); j++) {
 				geometry_msgs::Pose cur = object.push_poses.at(j);
 				double distance = getWallDistance(cur.position, object);
-				double push_cost = 100;
+				distance = std::min((double) distance,
+						_push_distance);
+				double push_cost = distance;
 
 				// Detected Object at Search location -> push to wall or push distance
 				if (a.name == "detect-objects") {
 					current.setObjectFluent("belongs-to-search-location",
 							obj_name, a.parameters[0]);
-					if (_pushToWall)
-						_push_distance = distance;
-					else
-						_push_distance = std::min((double) distance,
-								_push_distance);
-					push_cost = _push_distance;
 				}
-
 				// Detect Objects for doorways
 				if (a.name == "detect-doorway-state") {
 					current.setObjectFluent("belongs-to-doorway", obj_name,
 							a.parameters[1]);
-					_push_distance = std::min((double) distance,
-							_push_distance);
 
 					float dot = cur.orientation.x
 							* detection_position.orientation.x
@@ -100,11 +93,11 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 					float ang = 2 * (acos(dot) / M_PI * 180);
 					// Minima at 90...wierd can not be 0 or planner bugs
 					// a driving action +1000 to be more expensive then
-					push_cost = (90 - ang) * (90 - ang) / 810 + 1000;
+					push_cost = ((90 - ang) * (90 - ang) / 810 + 1000) - distance;
 				}
 				// Add ererything to state
 				current.addObject(obj_name, "movable_object");
-				bool object_pushed = _push_distance < 0.15;
+				bool object_pushed = distance < 0.15;
 				current.setBooleanPredicate("pushed", obj_name, object_pushed);
 				std::ostringstream os1;
 				os1 << j;
@@ -128,12 +121,13 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 				current.setObjectFluent("belongs-to-movable-object",
 						push_loc_name, obj_name);
 				current.setNumericalFluent("push-distance", push_loc_name,
-						_push_distance);
+						distance);
 				current.setNumericalFluent("push-cost", push_loc_name,
 						(int) (push_cost * 100));
-
+				// Set object to occupied
 				if (a.name == "detect-doorway-state")
 					current.setBooleanPredicate("object_occupied", obj_name, true);
+
 				// Set object location to current position of detection location
 				Predicate p;
 				std::string det_loc = a.parameters[0];
@@ -148,7 +142,7 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 						new_room);
 				current.setObjectFluent("in-room", obj_name, new_room);
 				//Visualize the destination point
-				visualize(object, cur);
+				visualize(object, cur, distance);
 			}
 		}
 	}
@@ -164,14 +158,14 @@ void ActionExecutorDetectObjects::updateState(bool& success,
 
 void ActionExecutorDetectObjects::visualize(
 		shakey_object_recognition::PushableObject object,
-		geometry_msgs::Pose push_pose) {
+		geometry_msgs::Pose push_pose, double dist) {
 	shakey_object_recognition::PushableObject new_object = object;
 	new_object.push_poses.clear();
 	Eigen::Vector3f direction = Eigen::Vector3f(object.mean.position.x,
 			object.mean.position.y, 0)
 			- Eigen::Vector3f(push_pose.position.x, push_pose.position.y, 0);
-	float transX = direction.normalized().x() * _push_distance;
-	float transY = direction.normalized().y() * _push_distance;
+	float transX = direction.normalized().x() * dist;
+	float transY = direction.normalized().y() * dist;
 	new_object.mean.position.x = object.mean.position.x + transX;
 	new_object.mean.position.y = object.mean.position.y + transY;
 	new_object.corner_points = object.corner_points;

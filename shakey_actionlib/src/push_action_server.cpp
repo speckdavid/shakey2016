@@ -101,7 +101,7 @@ public:
 			ROS_INFO("Push distance: %f - %f (offset)",
 					goal->push_distance.at(i), 0.75);
 
-			// Drive to next push pose
+			// Drive to next push pose for double push action
 			if (i == 1 && goal->push_poses.size() == 2) {
 				if (goal->push_distance.at(i) - 0.75 < 0.1) {
 					ROS_WARN("Push distance smaller then 0.1. Do nothing");

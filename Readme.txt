@@ -13,12 +13,11 @@ Start Roboter system:
 	3.) Start object detection: roslaunch shakey_object_recognition shakey_object_recognition.launch
 	4.) Start action server: roslaunch shakey_actionlib shakey_actionserver.launch
 	5.) Start planner: roslaunch shakey_planning_server continual-planning-shakey.launch map_suffix:='suffiex of map' (here: shakey_new_world)
-	6.a) Start cmd_mux: roslaunch cmd_mux cmd_mux.launch
 
-	Note: For 1.-6.a) You can use screenrun. (Example in shakey_original world)
+	Note: For 1.-5. You can use screenrun. (Example in shakey_original world)
 
 	Optional:
-	6.b) Start joystick/keyboard: roslaunch cmd_mux teleop_joystick.launch OR roslaunch cmd_mux teleop_keyboard.launch
+	6.) Start joystick/keyboard: roslaunch cmd_mux teleop_joystick.launch OR roslaunch cmd_mux teleop_keyboard.launch
 
 
 Note: Simulating is possible with gazebo
@@ -26,8 +25,10 @@ Note: Simulating is possible with gazebo
 	- Insert Objects: roslaunch shakey_spawn_objects spawn_["box or wedge"].launch x:="x-value" y:="y-value"
 
 Record Rosbag: [map, particle, global plan, local plan, object marker, object destination marker]
-	- rosbag record map particlecloud move_base/TrajectoryPlannerROS/global_plan move_base/TrajectoryPlannerROS/local_plan Detected_Objects Destination_Objects
+	- rosbag record map particlecloud seg_cloud tf move_base/NavfnROS/plan move_base/TrajectoryPlannerROS/local_plan head_mount_kinect/rgb/image_raw head_mount_kinect/rgb/camera_info Detected_Objects Destination_Objects Objects_Location
 
-Additional: [head mount image, segmentation cloud]
-	- head_mount_kinect/rgb/image_raw seg_cloud
+Notes:
+	- Start record before launching the planner (Object-Location Marker are only initialy published)
+	- Set eval directories correctly
+	- save outputs with tee?
 

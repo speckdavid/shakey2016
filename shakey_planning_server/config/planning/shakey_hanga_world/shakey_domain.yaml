@@ -5,4 +5,4 @@ domain_file: package://planner_benchmarks/modular/shakey/domain.pddl
 # Doorway only values > 0
 push_distance_object_doorway: 2
 # Pushes always to closest Wall/Unknow place. -1: distance to wall, 0: only detection
-push_distance_object_normal: 1
+push_distance_object_normal: -1

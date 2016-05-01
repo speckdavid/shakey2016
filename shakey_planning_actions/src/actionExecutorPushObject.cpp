@@ -22,11 +22,11 @@ bool ActionExecutorPushObject::fillGoal(shakey_actionlib::PushGoal & goal,
 	// Do the same with second one if double push action
 	if (a.name == "push-object-to-pos") {
 		// Get push and destination poses
-
 		geometry_msgs::Pose push2 = getLocation(a, current, a.parameters[2]);
 		goal.push_poses.push_back(push2);
 		geometry_msgs::Pose dest = getLocation(a, current, a.parameters[3]);
 		MapHelper mh;
+		// Compute necessary push distances
 		mh.getPushDistances(push1, push2, dest, &_push_vector);
 		std::cout << "DEST:\n[" << dest.position.x << ", " << dest.position.y
 				<< ", " << dest.position.z << "]" << std::endl;
@@ -35,7 +35,7 @@ bool ActionExecutorPushObject::fillGoal(shakey_actionlib::PushGoal & goal,
 		std::cout << "[" << push2.position.x << ", " << push2.position.y << ", "
 				<< push2.position.z << "] with " << _push_vector.y() << "meters" << std::endl;
 
-		// TODO: - half base necessary?
+		// Set push distances
 		goal.push_distance.at(0) = _push_vector.x() + 0.75;
 		goal.push_distance.push_back(_push_vector.y() + 0.75);
 	}
