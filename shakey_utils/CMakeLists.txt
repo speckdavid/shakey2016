@@ -6,11 +6,20 @@ project(shakey_utils)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  geometry_msgs
+  tf
   tf_conversions
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+  find_package(Qt4 REQUIRED)
+  set( QT_USE_QTGUI TRUE )
+  #set( QT_USE_QTOPENGL TRUE )
+  set( QT_USE_QTXML TRUE )
+  include(${QT_USE_FILE})
+
+  ADD_DEFINITIONS(-DQT_NO_KEYWORDS)
+  QT4_WRAP_UI(uis_h src/geometryPosesCreatorGui.ui)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -99,7 +108,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
- INCLUDE_DIRS include
+  INCLUDE_DIRS include
+  LIBRARIES shakey_utils
 #  LIBRARIES shakey_utils
 #  CATKIN_DEPENDS roscpp
 #  DEPENDS system_lib
@@ -115,7 +125,17 @@ catkin_package(
 include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  ${CMAKE_CURRENT_BINARY_DIR}
+  include
 )
+
+set(qt_srcs
+      src/geometryPosesCreatorGui.cpp)
+set(qt_hdrs
+      src/geometryPosesCreatorGui.h)
+
+qt4_automoc(${qt_srcs})
+QT4_WRAP_CPP(qt_moc_srcs ${qt_hdrs})
 
 ## Declare a C++ library
 add_library(shakey_utils
@@ -124,6 +144,10 @@ add_library(shakey_utils
   src/MapHelper.cpp
 )
 target_link_libraries(shakey_utils ${catkin_LIBRARIES})
+
+add_executable(geometryPosesCreatorGui src/geometryPosesCreatorGuiMain.cpp
+    ${uis_h} ${qt_srcs} ${qt_moc_srcs})
+target_link_libraries(geometryPosesCreatorGui ${QT_LIBRARIES} ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
