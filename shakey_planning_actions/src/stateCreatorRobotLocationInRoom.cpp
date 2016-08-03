@@ -31,7 +31,7 @@ namespace shakey_planning_actions
         Predicate p;
         p.name = "location-in-room";
         p.parameters.push_back(_robotPoseObject);
-        if(!state.hasObjectFluent(p, &robotRoom)) {
+        if(true||!state.hasObjectFluent(p, &robotRoom)) {
             // get the action robot position
             tf::StampedTransform transform;
             try{
