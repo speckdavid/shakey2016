@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   continual_planning_executive
   tfd_modules
   tf
+  angles
   shakey_actionlib
   shakey_utils
   shakey_object_recognition

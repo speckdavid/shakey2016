@@ -135,6 +135,22 @@ bool GoalCreatorObjects::fillStateAndGoal(SymbolicState & currentState,
 		currentState.setNumericalFluent("qz", outLocation, outPose.pose.orientation.z);
 		currentState.setNumericalFluent("qw", outLocation, outPose.pose.orientation.w);
 		currentState.setObjectFluent("location-in-room", outLocation, room);
+
+        shakey_object_recognition::PushableObject obj;
+		obj.obj_type = Box;
+		obj.frame_id = np.second.header.frame_id;
+		obj.mean.position.x = np.second.pose.position.x;
+		obj.mean.position.y = np.second.pose.position.y;
+		obj.mean.position.z = np.second.pose.position.z;
+		obj.mean.orientation.x = np.second.pose.orientation.x;
+		obj.mean.orientation.y = np.second.pose.orientation.y;
+		obj.mean.orientation.z = np.second.pose.orientation.z;
+		obj.mean.orientation.w = np.second.pose.orientation.w;
+		obj.height = 0.01;
+		obj.length = obj.width = 0.25;
+		std_msgs::ColorRGBA color;
+		color.g = 1;
+		_objViz.addObjectMarker(obj, color);
 	}
 	else if (StringUtil::startsWith(type, "object")) {
 		currentState.addObject(location, "object_location");
@@ -155,13 +171,29 @@ bool GoalCreatorObjects::fillStateAndGoal(SymbolicState & currentState,
 		std_msgs::ColorRGBA color;
 		color.g = color.r = 1;
 		_objViz.addObjectMarker(obj, color);
-		_objViz.publish();
 	}
 	else
 	{
 		currentState.addObject(location, "search_location");
 		goal.addObject(location, "search_location");
+
+        shakey_object_recognition::PushableObject obj;
+		obj.obj_type = Box;
+		obj.frame_id = np.second.header.frame_id;
+		obj.mean.position.x = np.second.pose.position.x;
+		obj.mean.position.y = np.second.pose.position.y;
+		obj.mean.position.z = np.second.pose.position.z;
+		obj.mean.orientation.x = np.second.pose.orientation.x;
+		obj.mean.orientation.y = np.second.pose.orientation.y;
+		obj.mean.orientation.z = np.second.pose.orientation.z;
+		obj.mean.orientation.w = np.second.pose.orientation.w;
+		obj.height = 0.01;
+		obj.length = obj.width = 0.25;
+		std_msgs::ColorRGBA color;
+		color.b = 1;
+		_objViz.addObjectMarker(obj, color);
 	}
+    _objViz.publish();
 }
 
 	goal.setForEachGoalStatement("search_location", "searched", true);
