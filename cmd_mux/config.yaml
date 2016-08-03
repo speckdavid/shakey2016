@@ -8,4 +8,8 @@ subscribers:
     topic:       "/base_controller/2dnav_stack"
     timeout:     0.1
     priority:    1
+  - name:        "Push reverse"
+    topic:       "/base_controller/push_reverse"
+    timeout:     0.1
+    priority:    2
 publisher:       "/base_controller/command"

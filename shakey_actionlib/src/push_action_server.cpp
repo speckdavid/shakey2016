@@ -76,7 +76,7 @@ public:
 			as_(nh_, name, boost::bind(&PushAction::executeCB, this, _1),
 					false), action_name_(name) {
 		cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>(
-				"/base_controller/command", 1);
+				"/base_controller/push_reverse", 1);
 		as_.start();
 	}
 

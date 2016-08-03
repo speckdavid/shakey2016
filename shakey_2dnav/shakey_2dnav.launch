@@ -12,6 +12,9 @@
     <rosparam file="$(find shakey_2dnav)/config/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find shakey_2dnav)/config/global_costmap_params.yaml" command="load" />
     <rosparam file="$(find shakey_2dnav)/config/base_local_planner_params.yaml" command="load" />
+
+    <rosparam file="$(find shakey_2dnav)/config/move_base.yaml" command="load" />
+
     <param name="controller_frequency" value="10.0" />
   </node>
 
