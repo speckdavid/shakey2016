@@ -39,7 +39,7 @@ public:
 		_worldFrame = worldFrame;
 		_vis_pub = _nh.advertise<visualization_msgs::MarkerArray>(
 				_name, 0);
-		_num_marker = 25;
+		_num_marker = 250;
 		_markerArray.markers.resize(_num_marker);
 		_cur_objects = 0;
 		resetMarker();

@@ -404,8 +404,8 @@ public:
 				obj.dist_to_obj = _offset;
 				std::vector<geometry_msgs::Point> corner_points;
 				// Corner points
-				for (int i = 0; i < 4; i++)
-					corner_points.push_back(getRosPoint(minBox[i]));
+				for (int j = 0; j < 4; j++)
+					corner_points.push_back(getRosPoint(minBox[j]));
 				obj.corner_points = corner_points;
 
 				// Mean computation
