@@ -128,24 +128,36 @@ public:
 				tf::Point dest = p2
 						+ (goal->push_distance.at(i - 1) - 0.575)
 								* rot.getColumn(0);
-				geometry_msgs::Point mv_dest;
-				tf::pointTFToMsg(dest, mv_dest);
-				goalNewPushPose.target_pose.pose.position = mv_dest;
-				ROS_INFO("Sending goal to move_base.");
-				ROS_INFO("Driving to next push pose [%f, %f, %f]...",
+				for (int k = 0; k < 5; k++) {
+					tf::quaternionMsgToTF(goal->push_poses.at(i).orientation,
+											qt);
+					rot.setIdentity();
+					rot.setRotation(qt);
+					tf::Vector3 pushDirection = rot.getColumn(0).normalized();
+					tf::Point cur_goal_pose = dest - (k * 0.25 * pushDirection);
+
+					geometry_msgs::Point mv_dest;
+					tf::pointTFToMsg(cur_goal_pose, mv_dest);
+					goalNewPushPose.target_pose.pose.position = mv_dest;
+					ROS_INFO("Sending goal to move_base.");
+					ROS_INFO("Driving to next push pose [%f, %f, %f]...",
 						goalNewPushPose.target_pose.pose.position.x,
 						goalNewPushPose.target_pose.pose.position.y,
 						goalNewPushPose.target_pose.pose.position.z);
+				// Compute next push position (farer from originial)
 				ac.sendGoal(goalNewPushPose);
 				ac.waitForResult();
-				if (ac.getState()
+					if (ac.getState()
 						== actionlib::SimpleClientGoalState::SUCCEEDED) {
-					ROS_INFO("Driving to next push position completed.");
-				} else {
-					ROS_ERROR("Not able to drive to next push pose.");
-					as_.setPreempted();
-					return;
+						ROS_INFO("Driving to next push position completed.");
+						break;
+					} else {
+						ROS_ERROR("Not able to drive to next push pose.");
+						as_.setPreempted();
+						if (k == 4) return;
+					}
 				}
+
 			}
 
 			if (goal->push_distance.at(i) - 0.75 < 0.1) {
