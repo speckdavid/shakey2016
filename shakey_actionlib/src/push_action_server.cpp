@@ -100,6 +100,7 @@ public:
 		for (int i = 0; i < goal->push_distance.size(); i++) {
 			ROS_INFO("Push distance: %f - %f (offset)",
 					goal->push_distance.at(i), 0.75);
+			double remaining_distance = goal->push_distance.at(i);
 
 			// Drive to next push pose for double push action
 			if (i == 1 && goal->push_poses.size() == 2) {
@@ -128,6 +129,7 @@ public:
 				tf::Point dest = p2
 						+ (goal->push_distance.at(i - 1) - 0.575)
 								* rot.getColumn(0);
+				// !!! Iterative try to get behind the box for next push
 				for (int k = 0; k < 5; k++) {
 					tf::quaternionMsgToTF(goal->push_poses.at(i).orientation,
 											qt);
@@ -150,6 +152,7 @@ public:
 					if (ac.getState()
 						== actionlib::SimpleClientGoalState::SUCCEEDED) {
 						ROS_INFO("Driving to next push position completed.");
+						remaining_distance += k * 0.25;
 						break;
 					} else {
 						ROS_ERROR("Not able to drive to next push pose.");
@@ -188,7 +191,6 @@ public:
 				return;
 			}
 			ros::Duration(0.25).sleep();
-			double remaining_distance = goal->push_distance.at(i);
 			while (remaining_distance > 0) {
 				move_base_msgs::MoveBaseGoal goalMB2;
 				goalMB2.target_pose.header.frame_id = "base_link";
