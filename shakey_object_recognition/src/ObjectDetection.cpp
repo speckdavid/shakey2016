@@ -5,6 +5,8 @@
 #include <sensor_msgs/PointCloud2.h>
 #include <Eigen/Geometry>
 #include <math.h>
+#include <pr2_controllers_msgs/PointHeadAction.h>
+#include <actionlib/client/simple_action_client.h>
 // PCL specific includes
 #include "pcl/common/eigen.h"
 #include "pcl/common/angles.h"
@@ -72,6 +74,8 @@ class ObjectDetection {
 	bool tf_error;
 	ObjectVisualisation visObjs;
 	std::string _worldFrame;
+	actionlib::SimpleActionClient<pr2_controllers_msgs::PointHeadAction>* _point_head_client;
+	std::vector<geometry_msgs::Point> _look_at_poses;
 
 public:
 	ObjectDetection() {
@@ -88,24 +92,47 @@ public:
 		visObjs.initialise("Detected_Objects", _worldFrame);
 		visObjs.publish();
 		_offset = 0.75;
+
+		_point_head_client = new actionlib::SimpleActionClient<pr2_controllers_msgs::PointHeadAction>("/head_traj_controller/point_head_action", true);
 	}
 
 	bool detect(shakey_object_recognition::DetectObjects::Request &req,
 			shakey_object_recognition::DetectObjects::Response &res) {
 		visObjs.resetMarker();
-		tf_error = true;
-		pcl::PointCloud<pcl::PointXYZ> cloud_in;
-		int num_tf_error = 0;
-		while (tf_error) {
-			if (num_tf_error == 2) {
-				ROS_INFO("Canceled due to tf error!");
-				return false;
+		for (int pos = 0; pos < _look_at_poses.size(); pos++) {
+			while(!_point_head_client->waitForServer(ros::Duration(5.0))){
+				ROS_INFO("Waiting for the point_head_action server to come up");
 			}
-			cloud_in = transformed_cloud(cur_cloud);
-			if (!tf_error)
-				res.objects = object_detection(cloud_in);
-			num_tf_error++;
+			lookAt("base_link", _look_at_poses.at(pos));
+			ros::Duration(1).sleep();
+			tf_error = true;
+			pcl::PointCloud<pcl::PointXYZ> cloud_in;
+			int num_tf_error = 0;
+			while (tf_error) {
+				if (num_tf_error == 2) {
+					ROS_INFO("Canceled due to tf error!");
+					return false;
+				}
+				cloud_in = transformed_cloud(cur_cloud);
+				if (!tf_error) {
+					std::vector<shakey_object_recognition::PushableObject> cur_objs = object_detection(cloud_in);
+					for (int i = 0; i < cur_objs.size(); i++) {
+						shakey_object_recognition::PushableObject cur_obj = cur_objs.at(i);
+						bool object_already_detected = false;
+						for (int j = 0; j < res.objects.size(); j++) {
+							if (hypot(cur_obj.mean.position.x - res.objects.at(j).mean.position.x,
+									cur_obj.mean.position.y - res.objects.at(j).mean.position.y) < 0.2) {
+								object_already_detected = true;
+								break;
+							}
+						}
+						if (!object_already_detected) res.objects.push_back(cur_obj);
+					}
+				}
+				num_tf_error++;
+			}
 		}
+		std::cerr << "Object detected: " << res.objects.size() << std::endl;
 		return true;
 	}
 
@@ -206,6 +233,23 @@ public:
 
 		nh.getParam("ObjectDetection/world_frame", _worldFrame);
 		ROS_INFO("Using world_frame = %s", _worldFrame.c_str());
+
+		std::vector<double> look_at_poses;
+		nh.getParam("ObjectDetection/lookAtPoses", look_at_poses);
+		if (look_at_poses.size() % 3 == 0) {
+			int ind = 0;
+			while(ind < look_at_poses.size()) {
+				std::cerr << "Pose " << ind / 3 << ": " << look_at_poses.at(ind) << ", " <<
+						look_at_poses.at(ind + 1) << ", " << look_at_poses.at(ind + 2) << std::endl;
+				geometry_msgs::Point cur_point;
+				cur_point.x = look_at_poses.at(ind); cur_point.y = look_at_poses.at(ind+1); cur_point.z = look_at_poses.at(ind+2);
+				_look_at_poses.push_back(cur_point);
+				ind += 3;
+			}
+
+		}
+		else ROS_INFO("Not valid number of position arguments (divisible by 3)!");
+
 		std::cerr
 				<< "--------------------------------------------------------------"
 				<< std::endl;
@@ -613,6 +657,35 @@ private:
 		p.z = point(2);
 		return p;
 	}
+
+	void lookAt(std::string frame_id, geometry_msgs::Point p)
+	  {
+	    //the goal message we will be sending
+	    pr2_controllers_msgs::PointHeadGoal goal;
+
+	    //the target point, expressed in the requested frame
+	    geometry_msgs::PointStamped point;
+	    point.header.frame_id = frame_id;
+	    point.point = p;
+	    goal.target = point;
+
+	    //we are pointing the high-def camera frame
+	    //(pointing_axis defaults to X-axis)
+	    goal.pointing_frame = "high_def_frame";
+	    goal.pointing_axis.x = 1; goal.pointing_axis.y = 0; goal.pointing_axis.z = 0;
+
+	    //take at least 0.5 seconds to get there
+	    goal.min_duration = ros::Duration(0.5);
+
+	    //and go no faster than 1 rad/s
+	    goal.max_velocity = 1.0;
+
+	    //send the goal
+	    _point_head_client->sendGoal(goal);
+
+	    //wait for it to get there (abort after 2 secs to prevent getting stuck)
+	    _point_head_client->waitForResult(ros::Duration(2));
+	  }
 
 };
 
