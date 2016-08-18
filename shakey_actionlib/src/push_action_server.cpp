@@ -156,8 +156,8 @@ public:
 						break;
 					} else {
 						ROS_ERROR("Not able to drive to next push pose.");
-						as_.setPreempted();
 						if (k == 4) return;
+						else ros::Duration(2).sleep();
 					}
 				}
 
