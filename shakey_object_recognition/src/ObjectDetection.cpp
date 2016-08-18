@@ -105,7 +105,7 @@ public:
 			ros::Duration(0.5).sleep();
 			ros::spinOnce();
 			pcl::PointCloud<pcl::PointXYZ> cloud_in;
-			std::cerr << "Looking at " << _look_at_poses.at(pos) << std::endl;
+			std::cerr << "Looking at: " << _look_at_poses.at(pos).x << ", " << _look_at_poses.at(pos).y << ", " << _look_at_poses.at(pos).z << std::endl;
 			cloud_in = transformed_cloud(cur_cloud);
 			std::vector<shakey_object_recognition::PushableObject> cur_objs = object_detection(cloud_in);
 			for (int i = 0; i < cur_objs.size(); i++) {
@@ -115,10 +115,23 @@ public:
 					if (hypot(cur_obj.mean.position.x - res.objects.at(j).mean.position.x,
 							cur_obj.mean.position.y - res.objects.at(j).mean.position.y) < 0.2) {
 						object_already_detected = true;
+						if(cur_obj.length * cur_obj.width > res.objects.at(j).length * res.objects.at(j).width) {
+							res.objects.at(j) = cur_obj;
+						}
 						break;
 					}
 				}
-				if (!object_already_detected) res.objects.push_back(cur_obj);
+				if (!object_already_detected) {
+					res.objects.push_back(cur_obj);
+				}
+				// Hacky
+				visObjs.resetMarker();
+				for (int o = 0; o < res.objects.size(); o++) {
+					// Visualisation
+					std_msgs::ColorRGBA color;
+					color.g = 1;
+					visObjs.addObjectMarker(res.objects.at(o), color);
+				}
 			}
 		}
 		std::cerr << "Object detected: " << res.objects.size() << std::endl;
@@ -460,11 +473,6 @@ public:
 				obj.width = width_p;
 				obj.length = length_p;
 				obj.height = minBox[4].z();
-
-				// Visualisation
-				std_msgs::ColorRGBA color;
-				color.g = 1;
-				visObjs.addObjectMarker(obj, color);
 
 				// Add to return
 				objects.push_back(obj);
