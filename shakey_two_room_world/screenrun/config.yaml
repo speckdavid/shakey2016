@@ -1,0 +1,28 @@
+programs:
+  -
+    name: localization
+    commands:
+      - roslaunch shakey_executable shakey_localize.launch pkg:=$(rospack find shakey_two_room_world)\015
+  -
+    name: 2d-navigation
+    commands:
+      - roslaunch shakey_2dnav shakey_2dnav.launch\015
+  -
+    name: object-detection
+    commands:
+      - roslaunch shakey_object_recognition shakey_object_recognition.launch\015
+  -
+    name: action-server
+    commands:
+      - roslaunch shakey_actionlib shakey_actionserver.launch\015
+  -
+    name: planner
+    commands:
+      - roslaunch shakey_planning_server continual-planning-shakey.launch map_suffix:='shakey_two_room_world'
+  -
+    name: bag
+    commands:
+      - rosbag record map particlecloud seg_cloud tf move_base/NavfnROS/plan move_base/TrajectoryPlannerROS/local_plan head_mount_kinect/rgb/image_raw head_mount_kinect/rgb/camera_info Detected_Objects Destination_Objects Objects_Location
+
+
+
