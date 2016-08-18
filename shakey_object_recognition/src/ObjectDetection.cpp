@@ -71,7 +71,6 @@ class ObjectDetection {
 	ros::ServiceServer service;
 	sensor_msgs::PointCloud2ConstPtr cur_cloud;
 	//std::vector<PushableObject> objects;
-	bool tf_error;
 	ObjectVisualisation visObjs;
 	std::string _worldFrame;
 	actionlib::SimpleActionClient<pr2_controllers_msgs::PointHeadAction>* _point_head_client;
@@ -87,7 +86,6 @@ public:
 		cloud_pub = nh.advertise<sensor_msgs::PointCloud2>("seg_cloud", 0);
 		std::cerr << "Start object recognition:\nWaiting for service call..."
 				<< std::endl;
-		tf_error = true;
 		cur_cloud = sensor_msgs::PointCloud2ConstPtr();
 		visObjs.initialise("Detected_Objects", _worldFrame);
 		visObjs.publish();
@@ -104,32 +102,23 @@ public:
 				ROS_INFO("Waiting for the point_head_action server to come up");
 			}
 			lookAt("base_link", _look_at_poses.at(pos));
-			ros::Duration(1).sleep();
-			tf_error = true;
+			ros::Duration(0.5).sleep();
+			ros::spinOnce();
 			pcl::PointCloud<pcl::PointXYZ> cloud_in;
-			int num_tf_error = 0;
-			while (tf_error) {
-				if (num_tf_error == 2) {
-					ROS_INFO("Canceled due to tf error!");
-					return false;
-				}
-				cloud_in = transformed_cloud(cur_cloud);
-				if (!tf_error) {
-					std::vector<shakey_object_recognition::PushableObject> cur_objs = object_detection(cloud_in);
-					for (int i = 0; i < cur_objs.size(); i++) {
-						shakey_object_recognition::PushableObject cur_obj = cur_objs.at(i);
-						bool object_already_detected = false;
-						for (int j = 0; j < res.objects.size(); j++) {
-							if (hypot(cur_obj.mean.position.x - res.objects.at(j).mean.position.x,
-									cur_obj.mean.position.y - res.objects.at(j).mean.position.y) < 0.2) {
-								object_already_detected = true;
-								break;
-							}
-						}
-						if (!object_already_detected) res.objects.push_back(cur_obj);
+			std::cerr << "Looking at " << _look_at_poses.at(pos) << std::endl;
+			cloud_in = transformed_cloud(cur_cloud);
+			std::vector<shakey_object_recognition::PushableObject> cur_objs = object_detection(cloud_in);
+			for (int i = 0; i < cur_objs.size(); i++) {
+				shakey_object_recognition::PushableObject cur_obj = cur_objs.at(i);
+				bool object_already_detected = false;
+				for (int j = 0; j < res.objects.size(); j++) {
+					if (hypot(cur_obj.mean.position.x - res.objects.at(j).mean.position.x,
+							cur_obj.mean.position.y - res.objects.at(j).mean.position.y) < 0.2) {
+						object_already_detected = true;
+						break;
 					}
 				}
-				num_tf_error++;
+				if (!object_already_detected) res.objects.push_back(cur_obj);
 			}
 		}
 		std::cerr << "Object detected: " << res.objects.size() << std::endl;
@@ -506,18 +495,16 @@ public:
 private:
 	pcl::PointCloud<pcl::PointXYZ> transformed_cloud(
 			const sensor_msgs::PointCloud2ConstPtr& input) {
-		tf_error = false;
 		pcl::PointCloud<pcl::PointXYZ> cloud_in;
 		pcl::PointCloud<pcl::PointXYZ> cloud_out;
 		pcl::fromROSMsg(*input, cloud_in);
 		tf::StampedTransform transform;
 		try {
 			listener.waitForTransform(_worldFrame, input->header.frame_id,
-					input->header.stamp, ros::Duration(0.5));
+					input->header.stamp, ros::Duration(1));
 			listener.lookupTransform(_worldFrame, input->header.frame_id,
 					input->header.stamp, transform);
 		} catch (tf::TransformException &ex) {
-			tf_error = true;
 			ros::Duration(0.5).sleep();
 			ROS_ERROR("%s", ex.what());
 		}

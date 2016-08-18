@@ -23,8 +23,8 @@ ObjectDetection:
   wedgeAngleDelta: 12.5
 
   # Point density (points per square meter)
-  boxPointDensity: 3000
-  wedgePointDensity: 3000
+  boxPointDensity: 2000
+  wedgePointDensity: 2000
 
   # upper (ground) and lower (box, wedge) bound for max.z of the plan 
   groundDistDelta: 0.2
@@ -34,3 +34,6 @@ ObjectDetection:
   # World frame for transformation
   #world_frame: base_footprint
   world_frame: map
+
+  # 3 coordinates form a point in the according to the base-link of the robot
+  lookAtPoses: [1,0,0, 1,0.5,0, 1,-0.5,0, 1.75,0,0, 1.75,0.5,0, 1.75,-0.5,0, 2.5,0,0, 2.5,0.5,0, 2.5,-0.5,0]
