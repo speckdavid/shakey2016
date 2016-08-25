@@ -7,6 +7,7 @@ Create new (real) world:
 	4.a) Create new folder ../src/shakey_planning_server/config/shakey_new_world
 	4.b) Create Config files 
 	4.c) For locations: if map is provided (rosrun shakey_utils geometryPosesCreatorGui map base_footprint)
+		Note: Add / before to /map in location file afterwards
 
 Start Roboter system:
 	1.) Start location: roslaunch shakey_executable shakey_localize.launch pkg:='path to world pkg' (here: ../src/shakey_new_world)
