@@ -113,7 +113,7 @@ public:
 				bool object_already_detected = false;
 				for (int j = 0; j < res.objects.size(); j++) {
 					if (hypot(cur_obj.mean.position.x - res.objects.at(j).mean.position.x,
-							cur_obj.mean.position.y - res.objects.at(j).mean.position.y) < 0.2) {
+							cur_obj.mean.position.y - res.objects.at(j).mean.position.y) < 0.4) {
 						object_already_detected = true;
 						if(cur_obj.length * cur_obj.width > res.objects.at(j).length * res.objects.at(j).width) {
 							res.objects.at(j) = cur_obj;
