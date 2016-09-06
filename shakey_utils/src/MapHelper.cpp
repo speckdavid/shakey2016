@@ -10,7 +10,6 @@ bool MapHelper::getPushDistances(MatrixXf A, VectorXf b, VectorXf * x) {
 	// Check here if an entry is negative
 	float min = x->minCoeff(&minRow, &minCol);
 	double relative_error = (A * (*x) - b).norm() / b.norm();
-	// TODO: < 0.1 nec?
 	return relative_error < 0.01 && (min >= 0 || abs(min) < 0.1);
 }
 

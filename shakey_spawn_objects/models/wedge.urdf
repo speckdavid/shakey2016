@@ -1,9 +1,9 @@
 <robot name="wedge_model">
   <link name="wedge">
     <inertial>
-      <mass value="1.000000" />
-      <origin xyz="0.002705 -0.003992 -0.010305"/>
-      <inertia ixx="0.110845" ixy="0.000050" ixz="0.027700" iyy="0.111114" iyz="0.000686" izz="0.106930" />
+      <mass value="5.000000" />
+      <origin xyz="-0.029040 -0.004040 0.006890"/>
+      <inertia ixx="0.547112" ixy="0.000273" ixz="0.101661" iyy="0.481230" iyz="0.003377" izz="0.467481" />
     </inertial>
     <visual>
       <geometry>

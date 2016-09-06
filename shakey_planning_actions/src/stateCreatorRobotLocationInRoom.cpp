@@ -7,13 +7,9 @@ PLUGINLIB_DECLARE_CLASS(shakey_planning_actions, state_creator_robot_location_in
 namespace shakey_planning_actions
 {
 
-    StateCreatorRobotLocationInRoom::StateCreatorRobotLocationInRoom()
-    {
-    }
+    StateCreatorRobotLocationInRoom::StateCreatorRobotLocationInRoom() { }
 
-    StateCreatorRobotLocationInRoom::~StateCreatorRobotLocationInRoom()
-    {
-    }
+    StateCreatorRobotLocationInRoom::~StateCreatorRobotLocationInRoom() { }
 
     void StateCreatorRobotLocationInRoom::initialize(const std::deque<std::string> & arguments)
     {

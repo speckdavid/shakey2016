@@ -61,7 +61,6 @@ void ObjectVisualisation::addWedgeMarker(shakey_object_recognition::PushableObje
 	p1.z = 0;
 	ros_p.push_back(p0);
 	ros_p.push_back(p1);
-	// TODO: connect correct points and find all bottoms points in partial view
 	for (int i = 0; i < 6; i++) {
 		for (int j = i + 1; j < 6; j++) {
 			for (int k = j + 1; k < 6; k++) {

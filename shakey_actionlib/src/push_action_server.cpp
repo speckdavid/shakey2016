@@ -30,8 +30,7 @@ protected:
 				ros::Time(0), ros::Duration(1.0));
 
 		//we will record transforms here
-		tf::StampedTransform start_transform;
-		tf::StampedTransform current_transform;
+		tf::StampedTransform start_transform, current_transform;
 
 		//record the starting transform from the odometry to the base frame
 		listener_.lookupTransform("base_footprint", "odom_combined",
@@ -58,15 +57,12 @@ protected:
 				break;
 			}
 			//see how far we've traveled
-			tf::Transform relative_transform = start_transform.inverse()
-					* current_transform;
+			tf::Transform relative_transform = start_transform.inverse() * current_transform;
 			double dist_moved = relative_transform.getOrigin().length();
 
-			if (std::abs(dist_moved) > std::abs(distance))
-				done = true;
+			if (std::abs(dist_moved) > std::abs(distance)) done = true;
 		}
-		if (done)
-			return true;
+		if (done) return true;
 		return false;
 	}
 
@@ -168,12 +164,10 @@ public:
 				continue;
 			}
 			// Swap to base_scan_filtered
-			mux_client = nh_.serviceClient<topic_tools::MuxSelect>(
-					"base_scan_mux_select");
+			mux_client = nh_.serviceClient<topic_tools::MuxSelect>("base_scan_mux_select");
 			topic_tools::MuxSelect sel;
 			sel.request.topic = "base_scan_filtered";
-			if (mux_client.call(sel))
-				ROS_INFO("Swap to base_scan_filtered completed.");
+			if (mux_client.call(sel)) ROS_INFO("Swap to base_scan_filtered completed.");
 			else {
 				ROS_INFO("Not able to swap to base_scan_filtered.");
 				as_.setPreempted();
@@ -183,8 +177,7 @@ public:
 			move_base_client = nh_.serviceClient<std_srvs::Empty>(
 					"/move_base/clear_costmaps");
 			std_srvs::Empty e;
-			if (move_base_client.call(e))
-				ROS_INFO("Costmap cleared completed");
+			if (move_base_client.call(e)) ROS_INFO("Costmap cleared completed");
 			else {
 				ROS_INFO("Not able to clear costmap.");
 				as_.setPreempted();
@@ -224,8 +217,7 @@ public:
 			// Move back
 			ROS_INFO("Moving back via cmd command...");
 			ROS_INFO("Moving back...");
-			if (this->dirveStraightOdom(-0.25, 0.75))
-				ROS_INFO("Moving back completed.");
+			if (this->dirveStraightOdom(-0.25, 0.75)) ROS_INFO("Moving back completed.");
 			else {
 				ROS_INFO("Not able to move back.");
 				as_.setPreempted();
@@ -235,8 +227,7 @@ public:
 			// Swap back to base_scan
 			topic_tools::MuxSelect sel2;
 			sel2.request.topic = "base_scan";
-			if (mux_client.call(sel2))
-				ROS_INFO("Swap to base_scan completed.");
+			if (mux_client.call(sel2)) ROS_INFO("Swap to base_scan completed.");
 			else {
 				ROS_INFO("Not able to swap to base_scan.");
 				as_.setPreempted();

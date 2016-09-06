@@ -74,14 +74,10 @@ namespace shakey_planning_actions
     	_atPredicate = arguments[2];
     	_locationType = arguments[3];
 
-    	if(_robotPoseObject == "-")
-    		_robotPoseObject = "";
-    	if(_robotPoseType == "-")
-    		_robotPoseType = "";
-    	if(_atPredicate == "-")
-    		_atPredicate = "";
-    	if(_locationType == "-")
-    		_locationType = "";
+    	if(_robotPoseObject == "-") _robotPoseObject = "";
+    	if(_robotPoseType == "-") _robotPoseType = "";
+    	if(_atPredicate == "-") _atPredicate = "";
+    	if(_locationType == "-") _locationType = "";
     }
 
     bool StateCreatorRobotPose::fillState(SymbolicState & state)
@@ -122,8 +118,8 @@ namespace shakey_planning_actions
         int atLocations = 0;
         for(SymbolicState::TypedObjectConstIterator it = targets.first; it != targets.second; it++) {
             string target = it->second;
-            if(target == _robotPoseObject)  // skip current robot location
-                continue;
+            // skip current robot location
+            if(target == _robotPoseObject) continue;
 
             geometry_msgs::PoseStamped targetPose;
             if(!extractPoseStamped(state, target, targetPose)) {

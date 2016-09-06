@@ -87,19 +87,8 @@ void ActionExecutorDetectObjects::updateState(bool& success,
                     double curYaw = tf::getYaw(cur.orientation);
                     double detectYaw = tf::getYaw(detection_position.orientation);
                     double ang = angles::to_degrees(fabs(angles::normalize_angle(curYaw - detectYaw)));
-					//float dot = cur.orientation.x
-					//		* detection_position.orientation.x
-					//		+ cur.orientation.y
-					//				* detection_position.orientation.y
-					//		+ cur.orientation.z
-					//				* detection_position.orientation.z
-					//		+ cur.orientation.w
-					//				* detection_position.orientation.w;
-					//float ang = 2 * (acos(dot) / M_PI * 180);
                     if(fabs(ang - 90) > 30)
                         continue;
-					// Minima at 90...wierd can not be 0 or planner bugs
-					// a driving action +1000 to be more expensive then
 					push_cost = ((90 - ang) * (90 - ang) / 810 + 1000) - distance;
 				}
 				// Add ererything to state

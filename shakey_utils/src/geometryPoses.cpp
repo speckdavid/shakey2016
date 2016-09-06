@@ -2,13 +2,9 @@
 #include <fstream>
 #include <sstream>
 
-GeometryPoses::GeometryPoses()
-{
-}
+GeometryPoses::GeometryPoses() { }
 
-GeometryPoses::~GeometryPoses()
-{
-}
+GeometryPoses::~GeometryPoses() { }
 
 GeometryPoses::NamedPose GeometryPoses::getPoseFromString(const std::string & line)
 {
@@ -21,7 +17,6 @@ GeometryPoses::NamedPose GeometryPoses::getPoseFromString(const std::string & li
     ss >> tnsec;
     pose.header.stamp = ros::Time(tsec, tnsec);
     ss >> pose.header.frame_id;
-    // TODO: check this goes through
     ss >> pose.pose.position.x;
     ss >> pose.pose.position.y;
     ss >> pose.pose.position.z;

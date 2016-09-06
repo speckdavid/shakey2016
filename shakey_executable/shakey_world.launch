@@ -1,7 +1,7 @@
 <launch>
 
   <!-- start up empty world -->
-  <arg name="pkg" default="/home/david/shakey/src/shakey_original_world/"/>
+  <arg name="pkg"/>
   <arg name="gui" default="true"/>
   <arg name="paused" default="true"/>
 

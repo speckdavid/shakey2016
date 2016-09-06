@@ -121,10 +121,8 @@ public:
 						break;
 					}
 				}
-				if (!object_already_detected) {
-					res.objects.push_back(cur_obj);
-				}
-				// Hacky
+				if (!object_already_detected) res.objects.push_back(cur_obj);
+				// Vizualize Markers
 				visObjs.resetMarker();
 				for (int o = 0; o < res.objects.size(); o++) {
 					// Visualisation
@@ -139,12 +137,8 @@ public:
 	}
 
 	void load_params() {
-		std::cerr
-				<< "--------------------------------------------------------------"
-				<< std::endl;
-		std::cerr
-				<< "--------------------------------------------------------------"
-				<< std::endl;
+		std::cerr << "--------------------------------------------------------------" << std::endl;
+		std::cerr << "--------------------------------------------------------------" << std::endl;
 		ROS_INFO("CURRENT PARAMETERS:");
 		ros::NodeHandle nh("~");
 
@@ -252,9 +246,7 @@ public:
 		}
 		else ROS_INFO("Not valid number of position arguments (divisible by 3)!");
 
-		std::cerr
-				<< "--------------------------------------------------------------"
-				<< std::endl;
+		std::cerr << "--------------------------------------------------------------" << std::endl;
 	}
 
 	void normal_spin(const sensor_msgs::PointCloud2ConstPtr& input) {
@@ -303,9 +295,7 @@ public:
 			seg.segment(*inliers, *coefficients);
 
 			if (inliers->indices.size() == 0) {
-				std::cerr
-						<< "Could not estimate a planar model for the given dataset."
-						<< std::endl;
+				std::cerr << "Could not estimate a planar model for the given dataset." << std::endl;
 				break;
 			}
 
@@ -327,8 +317,7 @@ public:
 			normal.normalize();
 			float ang = angle(normal, Eigen::Vector3f(0, 0, 1));
 			// Direction does not matter.
-			if (ang > 90)
-				ang = std::abs(180 - ang);
+			if (ang > 90) ang = std::abs(180 - ang);
 
 			// Dump console
 			std::cerr << "\n" << std::endl;
@@ -401,7 +390,7 @@ public:
 						cloud_cluster, coefficients);
 				// Check if plane is to small in x or y direction
 				float width_p, length_p;
-				Eigen::Matrix3f eigenVectors = eigenVectorsAndSize(minBox,
+				Eigen::Matrix3f normalVectors = normalVectorsAndSize(minBox,
 						&width_p, &length_p);
 				float point_density = cluster_indices[k].indices.size()
 						/ (width_p * length_p);
@@ -431,8 +420,7 @@ public:
 					obj.obj_type = Box;
 				}
 				// crooked plane (wedge)
-				else if (std::abs(45 - ang) < _wedgeAngleDelta
-						&& max.z() > _wedgeDistDelta) {
+				else if (std::abs(45 - ang) < _wedgeAngleDelta && max.z() > _wedgeDistDelta) {
 					if (point_density <= _wedgePointDensity) {
 						ROS_INFO("Not required points per square meter.");
 						*cloud_restore += *cloud_cluster;
@@ -455,7 +443,7 @@ public:
 				obj.corner_points = corner_points;
 
 				// Mean computation
-				Eigen::Matrix3d m = eigenVectors.cast<double>();
+				Eigen::Matrix3d m = normalVectors.cast<double>();
 				Eigen::Quaterniond q(m);
 				q.normalize();
 				geometry_msgs::Quaternion obj_orientation;
@@ -477,34 +465,26 @@ public:
 				// Add to return
 				objects.push_back(obj);
 			}
-			if (found_obj)
-				*cloud_out += *cloud_restore;
+			if (found_obj) *cloud_out += *cloud_restore;
 			i++;
 		}
 		std::ostringstream temp;
 		temp << "Detections: [ ";
 		for (int i = 0; i < objects.size(); i++) {
-			if (objects.at(i).obj_type == Box)
-				temp << "Box ";
-			if (objects.at(i).obj_type == Wedge)
-				temp << "Wedge ";
+			if (objects.at(i).obj_type == Box) temp << "Box ";
+			if (objects.at(i).obj_type == Wedge) temp << "Wedge ";
 		}
 		temp << "]";
 		ROS_INFO("%s", temp.str().c_str());
-		std::cerr
-				<< "--------------------------------------------------------------"
-				<< std::endl;
-		std::cerr
-				<< "--------------------------------------------------------------"
-				<< std::endl;
+		std::cerr << "--------------------------------------------------------------" << std::endl;
+		std::cerr << "--------------------------------------------------------------" << std::endl;
 		return objects;
 	}
 
 private:
 	pcl::PointCloud<pcl::PointXYZ> transformed_cloud(
 			const sensor_msgs::PointCloud2ConstPtr& input) {
-		pcl::PointCloud<pcl::PointXYZ> cloud_in;
-		pcl::PointCloud<pcl::PointXYZ> cloud_out;
+		pcl::PointCloud<pcl::PointXYZ> cloud_in, cloud_out;
 		pcl::fromROSMsg(*input, cloud_in);
 		tf::StampedTransform transform;
 		try {
@@ -580,9 +560,9 @@ private:
 	}
 
 // TODO: Verify order of points
-	Eigen::Matrix3f eigenVectorsAndSize(std::vector<Eigen::Vector3f> plane_bbx,
+	Eigen::Matrix3f normalVectorsAndSize(std::vector<Eigen::Vector3f> plane_bbx,
 			float *width, float *length) {
-		Eigen::Matrix3f eigenVectors;
+		Eigen::Matrix3f normalVectors;
 		Eigen::Vector3f e0 = plane_bbx[0] - plane_bbx[1];
 		*width = Eigen::Vector2f(e0.x(), e0.y()).norm();
 		e0.normalize();
@@ -590,8 +570,8 @@ private:
 		*length = Eigen::Vector2f(e1.x(), e1.y()).norm();
 		e1.normalize();
 		Eigen::Vector3f e2 = e0.cross(e1);
-		eigenVectors << e0, e1, e2;
-		return eigenVectors;
+		normalVectors << e0, e1, e2;
+		return normalVectors;
 	}
 
 // TODO: Verify order of points
@@ -647,9 +627,7 @@ private:
 
 	geometry_msgs::Point getRosPoint(Eigen::Vector3f point) {
 		geometry_msgs::Point p;
-		p.x = point(0);
-		p.y = point(1);
-		p.z = point(2);
+		p.x = point(0);	p.y = point(1);	p.z = point(2);
 		return p;
 	}
 
