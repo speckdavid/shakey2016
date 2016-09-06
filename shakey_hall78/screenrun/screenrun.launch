@@ -1,5 +1,0 @@
-<launch>
-  <node name="screenrun" pkg="screenrun" type="screenrun" args="b" output="screen">
-    <rosparam file="$(find shakey_hall78)/screenrun/config.yaml" command="load"/>
-  </node>
-</launch>
