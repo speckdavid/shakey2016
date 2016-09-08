@@ -11,8 +11,8 @@ The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulat
   2. Start mapping: roslaunch shakey_executable shakey_mapping.launch
   3. Save map to shakey_new_world: rosrun map_server map_saver
   4. Create new folder ../src/shakey_planning_server/config/shakey_new_world
-  5. Create Config files (you can copy the configs from [shakey_two_room_world](shakey_two_room_world/)
-  6. For locations in locations.dat: if map is provided (rosrun shakey_utils geometryPosesCreatorGui map base_footprint) - Note: Add / before to /map in location file afterwards
+  5. Create Config files (you can copy the config files from [shakey_two_room_world](shakey_planning_server/config/planning/shakey_two_room_world)
+  6. Update locations in locations.dat: if map is provided (rosrun shakey_utils geometryPosesCreatorGui map base_footprint) - Note: Add "/" before "map" resulting in "/map" in location file afterwards
 
 2. Simulating is with gazebo (optional)
   * Start shakey in a world: roslaunch shakey_executable shakey_world pkg:='path to world pkg'
@@ -27,6 +27,6 @@ The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulat
   6. Move the arms of the robot in a tucked position. You can use roslaunch cmd_mux teleop_joystick.launch OR roslaunch cmd_mux teleop_keyboard.launch for it.
   7. Note: For 1.-5. You can use [screenrun](http://wiki.ros.org/screenrun) with byobu. (Example in shakey_two_world_room)
 
-Of course you can also use the provided worlds shakey_two_rooms_world and shakey_three_rooms_world.
+Of course you can also use the provided worlds shakey_two_rooms_world and shakey_three_rooms_world by skipping Part 1.
 
 
