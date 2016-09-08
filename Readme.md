@@ -11,7 +11,7 @@ The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulat
   2. Start mapping: roslaunch shakey_executable shakey_mapping.launch
   3. Save map to shakey_new_world: rosrun map_server map_saver
   4. Create new folder ../src/shakey_planning_server/config/shakey_new_world
-  5. Create Config files (you can copy the config files from [shakey_two_room_world](shakey_planning_server/config/planning/shakey_two_room_world)
+  5. Create Config files (you can copy the config files from [shakey_two_room_world](shakey_planning_server/config/planning/shakey_two_room_world))
   6. Update locations in locations.dat: if map is provided (rosrun shakey_utils geometryPosesCreatorGui map base_footprint) - Note: Add "/" before "map" resulting in "/map" in location file afterwards
 
 2. Simulating is with gazebo (optional)
