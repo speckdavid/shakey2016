@@ -7,8 +7,8 @@ The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulat
 
 ## Stating Shakey 2016:
 1. Create new (real) world:
-⋅⋅1. Create new package (e.g. shakey_new_world)
-⋅⋅2. Start mapping: roslaunch shakey_executable shakey_mapping.launch
+..1. Create new package (e.g. shakey_new_world)
+..2. Start mapping: roslaunch shakey_executable shakey_mapping.launch
 ⋅⋅3. Save map to shakey_new_world: rosrun map_server map_saver
 ⋅⋅4. Create new folder ../src/shakey_planning_server/config/shakey_new_world
 ⋅⋅5. Create Config files 
