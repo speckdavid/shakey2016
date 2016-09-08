@@ -1,8 +1,8 @@
 # Shakey 2016
-Shakey the robot was one of the first autonomous robots that showed impressive capabilities of navigation and mobile manipulation. The provided code is an implementation of Shakey with modern robotics technology. It is possible to run the Shakey 2016 project on a PR2 or as an simulation. 
+Shakey the robot was one of the first autonomous robots that showed impressive capabilities of navigation and mobile manipulation. The provided code is an today's (2016) implementation of Shakey with modern robotics technology. It is possible to run the Shakey 2016 project on a PR2 or as a simulation. 
 
 ## Installing Shakey 2016
-The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulation. The Robot Operating System (ROS) is necessary to run this project. Our system is optimized (and recommanded) for [ROS Hydro Medusa](http://wiki.ros.org/hydro/Installation/Ubuntu) running on a Ubuntu 12.04 LTS (Precise) system. Once you have set up a [catkin workspace](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment) you can clone the Shakey 2016 Repository into your source folder (src) and build it as shown [here](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment). Now the Shakey 2016 project should be installed and ready for use.
+The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulation. The Robot Operating System (ROS) is necessary to run this project. Our system is optimized (and recommended) for [ROS Hydro Medusa](http://wiki.ros.org/hydro/Installation/Ubuntu) and an Ubuntu 12.04 LTS (Precise) system. Once you have set up a [catkin workspace](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment) you can clone the Shakey 2016 Repository into your source folder (src) and build it as shown [here](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment). Now the Shakey 2016 project should be installed and ready for use.
 
 
 ## Stating Shakey 2016:
@@ -11,8 +11,8 @@ The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulat
   2. Start mapping: roslaunch shakey_executable shakey_mapping.launch
   3. Save map to shakey_new_world: rosrun map_server map_saver
   4. Create new folder ../src/shakey_planning_server/config/shakey_new_world
-  5. Create Config files 
-  6. For locations: if map is provided (rosrun shakey_utils geometryPosesCreatorGui map base_footprint) - Note: Add / before to /map in location file afterwards
+  5. Create Config files (you can copy the configs from [shakey_two_room_world](shakey_two_room_world/)
+  6. For locations in locations.dat: if map is provided (rosrun shakey_utils geometryPosesCreatorGui map base_footprint) - Note: Add / before to /map in location file afterwards
 
 2. Simulating is with gazebo (optional)
   * Start shakey in a world: roslaunch shakey_executable shakey_world pkg:='path to world pkg'
