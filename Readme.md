@@ -29,4 +29,6 @@ The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulat
 
 Of course you can also use the provided worlds shakey_two_rooms_world and shakey_three_rooms_world by skipping Part 1.
 
+## Count Additional Code Lines
+A script is provided [here](count_additional_code_lines/) to count the additional code lines (not published before) we had to write in order to create the Shakey 2016 system. The [Blacklist](count_additional_code_lines/black_list_files) and [Whitelist](count_additional_code_lines/white_list_dirs) show which files are counted (with comments).
 
