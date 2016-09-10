@@ -1,0 +1,22 @@
+# Object Visualisation
+../shakey_object_recognition/include/shakey_object_recognition/ObjectVisualisation.h
+../shakey_object_recognition/src/ObjectVisualisation.cpp
+
+# Published Code
+# - https://github.com/GKIFreiburg/gki_pr2_symbolic_planning
+# - https://github.com/GKIFreiburg/pr2_tidyup/
+../shakey_planning_actions/include/shakey_planning_actions/actionExecutorDriveBase.h
+../shakey_planning_actions/include/shakey_planning_actions/stateCreatorRobotLocationInRoom.h
+../shakey_planning_actions/include/shakey_planning_actions/stateCreatorRobotPose.h
+../shakey_planning_actions/src/actionExecutorDriveBase.cpp
+../shakey_planning_actions/src/stateCreatorRobotLocationInRoom.cpp
+../shakey_planning_actions/src/stateCreatorRobotPose.cpp
+../shakey_utils/include/shakey_utils/geometryPoses.h
+../shakey_utils/include/shakey_utils/stringutil.h
+../shakey_utils/src/geometryPoses.cpp
+../shakey_utils/src/stringutil.cpp
+../shakey_utils/src/geometryPosesCreatorGui.cpp
+../shakey_utils/src/geometryPosesCreatorGui.ui
+../shakey_utils/src/geometryPosesCreatorGui.h
+../shakey_utils/src/geometryPosesCreatorGuiMain.cpp
+

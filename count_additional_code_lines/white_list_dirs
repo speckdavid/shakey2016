@@ -1,0 +1,24 @@
+../shakey_2dnav
+../shakey_actionlib
+../shakey_executable
+../shakey_object_recognition
+../shakey_planning_actions
+../shakey_planning_server
+../shakey_utils
+../CMakeLists.txt
+
+###############
+# Black List: #
+###############
+## Only convinient for real world experiments
+## ../cmd_mux
+
+## Only necessary for simulation
+## ../shakey_spawn_objects
+
+## Published Code
+## - https://github.com/GKIFreiburg/gki_symbolic_planning
+## - https://github.com/GKIFreiburg/gki_pr2_symbolic_planning
+## - https://github.com/GKIFreiburg/pr2_tidyup
+## ../gki_symbolic_planning
+## ../gki_index_scan_filter
