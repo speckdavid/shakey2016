@@ -10,7 +10,7 @@
     <rosparam command="load" ns="tfd_modules" file="$(arg config_pkg)/config/planning/$(arg map_suffix)/shakey_planner_params.yaml" />
 
     <!-- start executive -->
-    <node pkg="continual_planning_executive" type="continual_planning_executive" args="" respawn="true" name="continual_planning_executive" output="screen" >
+    <node pkg="continual_planning_executive" type="continual_planning_executive" args="" respawn="false" name="continual_planning_executive" output="screen" >
         <param name="start_paused" value="$(arg paused)" />
 	<param name="locations" value="$(arg config_pkg)/config/planning/$(arg map_suffix)/shakey_locations.dat" />
 	<param name="nav_target_tolerance_xy" value="0.25" />

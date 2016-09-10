@@ -226,7 +226,7 @@ public:
 
 			// Swap back to base_scan
 			topic_tools::MuxSelect sel2;
-			sel2.request.topic = "base_scan";
+			sel2.request.topic = "scan_filtered";
 			if (mux_client.call(sel2)) ROS_INFO("Swap to base_scan completed.");
 			else {
 				ROS_INFO("Not able to swap to base_scan.");

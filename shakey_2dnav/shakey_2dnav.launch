@@ -3,10 +3,11 @@
   <!-- Generate filter and mux for base scan  -->
   <include file="$(find gki_index_scan_filter)/shakey_scan_filter.launch"/>
   <include file="$(find cmd_mux)/cmd_mux.launch"/>
-  <node pkg="topic_tools" type="mux" name="mux_base_scan" output="screen" args="base_scan_mux base_scan base_scan_filtered mux:=mux_base_scan"/>
+  <node pkg="topic_tools" type="mux" name="mux_base_scan" output="screen" args="base_scan_mux scan_filtered base_scan_filtered mux:=mux_base_scan"/>
+  <include file="$(find shakey_2dnav)/laser_filter.launch" />
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <remap from="cmd_vel" to="base_controller/2dnav_stack" />
+    <remap from="cmd_vel" to="base_controller/2dnav_stackXXXXX" />
     <rosparam file="$(find shakey_2dnav)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find shakey_2dnav)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find shakey_2dnav)/config/local_costmap_params.yaml" command="load" />
