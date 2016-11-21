@@ -137,7 +137,7 @@ target_link_libraries(shakey_object_recognition ${catkin_LIBRARIES})
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(shakey_object_recognition ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(objectDetection shakey_object_recognition)
 
 ## Declare a C++ executable
 # add_executable(shakey_object_recognition_node src/shakey_object_recognition_node.cpp)
