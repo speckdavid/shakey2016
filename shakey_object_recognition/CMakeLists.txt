@@ -118,12 +118,15 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(include)
 include_directories(
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
 add_executable(objectDetection src/ObjectDetection.cpp src/ObjectVisualisation.cpp)
+add_dependencies(objectDetection shakey_object_recognition_gencpp)
+add_dependencies(objectDetection shakey_object_recognition)
+
 target_link_libraries(objectDetection ${catkin_LIBRARIES})
 target_link_libraries(objectDetection ${PCL_LIBRARIES} libvtkCommon.so libvtkFiltering.so )
 
@@ -133,11 +136,10 @@ add_library(shakey_object_recognition
   src/ObjectVisualisation.cpp
 )
 target_link_libraries(shakey_object_recognition ${catkin_LIBRARIES})
-
+add_dependencies(shakey_object_recognition shakey_object_recognition_gencpp)
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-add_dependencies(objectDetection shakey_object_recognition)
 
 ## Declare a C++ executable
 # add_executable(shakey_object_recognition_node src/shakey_object_recognition_node.cpp)
