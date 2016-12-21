@@ -1,0 +1,23 @@
+<robot name="corn_flakes_medium_model">
+  <link name="corn_flakes_medium">
+    <inertial>
+      <mass value="0.500000" />
+      <origin xyz="0.000000 0.000000 0.147500"/>
+      <inertia ixx="0.005831" ixy="0.000000" ixz="0.000000" iyy="0.003831" iyz="-0.000000" izz="0.002409" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://manipulation_objects/meshes/corn_flakes_medium.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://manipulation_objects/meshes/corn_flakes_medium.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="corn_flakes_medium">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+</robot>
+

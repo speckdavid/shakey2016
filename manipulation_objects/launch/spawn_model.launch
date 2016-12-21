@@ -1,0 +1,14 @@
+<launch>
+    <arg name="model" />
+
+    <arg name="name" default="object" />
+    <arg name="x" default="0.0" />
+    <arg name="y" default="0.0" />
+    <arg name="z" default="0.0" />
+    <arg name="Y" default="0.0" />
+
+    <node name="$(anon spawn_object)" pkg="gazebo_ros" type="spawn_model" 
+        args="-urdf -file $(arg model) -model $(arg name) -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg Y)" 
+        respawn="false" output="screen" />
+</launch>
+

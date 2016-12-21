@@ -1,0 +1,23 @@
+<robot name="coke_classic_model">
+  <link name="coke_classic">
+    <inertial>
+      <mass value="0.350000" />
+      <origin xyz="-0.000000 -0.000000 0.057500"/>
+      <inertia ixx="0.000468" ixy="0.000000" ixz="0.000000" iyy="0.000468" iyz="0.000000" izz="0.000182" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://manipulation_objects/meshes/coke_classic.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://manipulation_objects/meshes/coke_classic.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="coke_classic">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+</robot>
+

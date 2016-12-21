@@ -1,0 +1,22 @@
+<robot name="%s_model">
+  <link name="%s">
+    <inertial>
+      <mass value="%f" />
+      <origin xyz="%f %f %f"/>
+      <inertia ixx="%f" ixy="%f" ixz="%f" iyy="%f" iyz="%f" izz="%f" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://%s/meshes/%s" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://%s/meshes/%s" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="%s">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+</robot>

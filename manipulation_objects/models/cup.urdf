@@ -1,0 +1,23 @@
+<robot name="cup_model">
+  <link name="cup">
+    <inertial>
+      <mass value="0.100000" />
+      <origin xyz="0.000000 0.000000 0.076937"/>
+      <inertia ixx="0.000288" ixy="0.000000" ixz="0.000000" iyy="0.000288" iyz="0.000000" izz="0.000128" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://manipulation_objects/meshes/cup.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://manipulation_objects/meshes/cup.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="cup">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+</robot>
+

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if [ $# -ne 5 ]; then
+    PROG_NAME=$(basename ${0})
+    echo $#
+    echo "Usage $PROG_NAME <pkg> <add_ORK: true|false> <mesh.stl> <name> <mass>"
+    echo "Set add_ORK to true if it should be added to the ORK database"
+    exit 1
+fi
+
+PACKAGE=$1
+ORK=$2
+MESH_FILE=$3
+OBJECT_NAME=$4
+MASS=$5
+
+URDF_FILE=${OBJECT_NAME}.urdf
+LAUNCH_FILE=spawn_${OBJECT_NAME}.launch
+
+PKG_PATH=$(rospack find ${PACKAGE})
+mkdir -p ${PKG_PATH}/meshes
+mkdir -p ${PKG_PATH}/models
+mkdir -p ${PKG_PATH}/launch
+
+cp ${MESH_FILE} ${PKG_PATH}/meshes
+rosrun manipulation_objects create_urdf.py $PACKAGE ${MESH_FILE} ${OBJECT_NAME} $MASS ${URDF_FILE}
+rosrun manipulation_objects create_launch.py $PACKAGE ${URDF_FILE} ${OBJECT_NAME} ${LAUNCH_FILE}
+
+if $ORK; then
+    OBJECT_ID=$(rosrun manipulation_objects object_add.py -n ${OBJECT_NAME} --commit)
+    rosrun object_recognition_core mesh_add.py ${OBJECT_ID} ${PKG_PATH}/meshes/${MESH_FILE} --commit
+fi
+

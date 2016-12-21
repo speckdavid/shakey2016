@@ -1,0 +1,23 @@
+<robot name="bowl_large_model">
+  <link name="bowl_large">
+    <inertial>
+      <mass value="0.150000" />
+      <origin xyz="-0.000000 0.000000 0.029580"/>
+      <inertia ixx="0.000305" ixy="0.000000" ixz="0.000000" iyy="0.000305" iyz="-0.000000" izz="0.000490" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://manipulation_objects/meshes/bowl_large.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://manipulation_objects/meshes/bowl_large.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="bowl_large">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+</robot>
+
