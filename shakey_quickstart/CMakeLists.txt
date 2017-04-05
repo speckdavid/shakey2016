@@ -135,7 +135,7 @@ set(qt_hdrs
 qt4_automoc(${qt_srcs})
 QT4_WRAP_CPP(qt_moc_srcs ${qt_hdrs})
 
-add_executable(shakey_quickstart src/mainwindow.cpp
+add_executable(shakey_quickstart src/main.cpp src/mainwindow.cpp
     ${uis_h} ${qt_srcs} ${qt_moc_srcs})
 target_link_libraries(shakey_quickstart ${QT_LIBRARIES} ${catkin_LIBRARIES})
 

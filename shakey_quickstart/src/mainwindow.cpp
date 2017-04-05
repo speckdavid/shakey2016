@@ -5,6 +5,8 @@
 #include <QtGui/QApplication>
 #include <QFileDialog>
 #include <QDir>
+#include <QTimer>
+#include <QFileInfo>
 #include <ros/ros.h>
 #include <geometry_msgs/PoseStamped.h>
 #include "shakey_utils/geometryPoses.h"
@@ -36,38 +38,102 @@ string GetStdoutFromCommand(string cmd) {
 MainWindow::MainWindow(QWidget *parent) :
 		QMainWindow(parent), ui(new Ui::MainWindow) {
 	ui->setupUi(this);
+	mapping = false;
+	cropFlipper = true;
+	myTimer = new QTimer(this);
+	myTimer->setInterval(5000);
+	myTimer->start();
+	connect(myTimer, SIGNAL(timeout()), this, SLOT(updateMap()));
+	shakey_path = GetStdoutFromCommand("rospack find shakey_planning_server");
+	shakey_path = shakey_path.substr(0, shakey_path.length() - 23);
+	project_folder = "";
+	std::cout << shakey_path << std::endl;
+	num_searchLocs = 0;
+	num_doorways = 0;
 }
 
 MainWindow::~MainWindow() {
 	delete ui;
 }
 
+void MainWindow::updateMap() {
+	if (mapping) {
+		std::string cmd = "cd " + this->shakey_path + "/" + this->project_folder;
+		if (cropFlipper) {
+			QFileInfo check_file(QString::fromStdString(cmd.substr(3, cmd.length()) + "/full.yaml"));
+			if (check_file.exists() && check_file.isFile()) {
+				system((cmd + "&& rosrun map_server crop_map full.yaml map.yaml &").c_str());
+			}
+			QString filename = QString::fromStdString(this->shakey_path + "/" + this->project_folder + "/map.pgm");
+			QImage image(filename);
+			ui->currentMap->setPixmap(
+					QPixmap::fromImage(image).scaled(ui->currentMap->size(),	Qt::KeepAspectRatio));
+			cropFlipper = false;
+		} else {
+			system((cmd + "&& rosrun map_server map_saver -f full &").c_str());
+			cropFlipper = true;
+		}
+	}
+}
+
 void MainWindow::on_pushButton_createFolder_clicked() {
 	QString path = QString::fromStdString(this->shakey_path);
 	path.append(ui->worldName->text());
-	if(QDir(path).exists() || path.length() < 0) {
-		//TODO: Add some useful content
+	if (path.length() < 0) {
+		ui->worldName->setStyleSheet(
+						"QLineEdit { background: rgb(255, 0, 0); selection-background-color: rgb(255, 0, 0); }");
 	} else {
-		QDir().mkdir(path);
+		if (!QDir(path).exists())
+			QDir().mkdir(path);
+		ui->worldName->setStyleSheet(
+						"QLineEdit { background: rgb(255, 255, 255); selection-background-color: rgb(255, 255, 255); }");
 
 	}
-	cout << "created folder: " << path.toUtf8().constData() << endl;
+	this->project_folder = ui->worldName->text().toUtf8().constData();;
+	std::cout << "created folder: " << path.toUtf8().constData() << std::endl;
 
 }
 
 void MainWindow::on_pushButton_clicked() {
-	if (ui->ListPoses->currentIndex().isValid()) {
-		QListWidgetItem* item = ui->ListPoses->currentItem();
-		delete item;
+	if (!ui->ListPoses->selectedItems().isEmpty()) {
+		QList<QListWidgetItem*> items = ui->ListPoses->selectedItems();
+		for (int i = 0; i < items.size(); i++)
+			delete items.at(i);
+		ui->ListPoses->clearSelection();
+		ui->ListPoses->clearFocus();
+
 	}
 }
 
 void MainWindow::on_mapUpdateButton_clicked() {
-	system("cd /home/david/Pictures/ && rosrun map_server map_saver");
-	QString filename = "/home/david/Pictures/double_push.png";
-	QImage image(filename);
-	ui->currentMap->setPixmap(
-			QPixmap::fromImage(image).scaled(100, 100, Qt::KeepAspectRatio));
+	if (this->project_folder.length() == 0) {
+		ui->worldName->setStyleSheet(
+				"QLineEdit { background: rgb(255, 0, 0); selection-background-color: rgb(255, 0, 0); }");
+		return;
+	}
+	QString cur_str = ui->mapUpdateButton->text();
+	if (!this->mapping) {
+		this->mapping = true;
+		this->cropFlipper = false;
+		ui->mapUpdateButton->setText("Stop Mapping");
+		ui->currentMap->setText("Processing ...");
+		system("roslaunch shakey_executable shakey_mapping.launch &");
+	} else {
+		this->mapping = false;
+		system("rosnode kill /slam_gmapping &");
+		ui->mapUpdateButton->setText("Start Mapping");
+		QFileInfo check_file(QString::fromStdString(this->shakey_path + "/" + this->project_folder + "/full.yaml"));
+		if (check_file.exists() && check_file.isFile()) {
+			ui->lineEdit_XMap->setText(QChar(0x2713));
+		}
+
+	}
+
+	//system("cd /home/david/Pictures/ && rosrun map_server map_saver");
+	//QString filename = "/home/david/Pictures/double_push.png";
+	//QImage image(filename);
+	//ui->currentMap->setPixmap(
+	//		QPixmap::fromImage(image).scaled(100, 100, Qt::KeepAspectRatio));
 	//QString dir = QFileDialog::getExistingDirectory(this, tr("Choose a world directory"),
 	//                                            "/home",
 	//                                          QFileDialog::ShowDirsOnly
@@ -78,6 +144,24 @@ void MainWindow::on_mapUpdateButton_clicked() {
 
 void MainWindow::add_pose(geometry_msgs::PoseStampedConstPtr pose) {
 	std::stringstream ss;
+	QString loc_type = ui->comboBox_LocType->currentText();
+	QString room = ui->comboBox_Room->currentText();
+
+	// Is Search Locations
+	if (!QString::compare(loc_type, ui->comboBox_LocType->itemText(0), Qt::CaseInsensitive)) {
+		ss << "search_location_loc" << this->num_searchLocs << "_room" <<
+				QString(room.at(room.length() -1)).toUtf8().constData() << " ";
+		this->num_searchLocs++;
+
+	// Is Doorway
+	} else if (!QString::compare(loc_type, ui->comboBox_LocType->itemText(1), Qt::CaseInsensitive)) {
+		ss << "doorway_" << static_cast<int>(this->num_doorways) << "_room" <<
+				QString(room.at(room.length() -1)).toUtf8().constData() << " ";
+		this->num_doorways += 0.5;
+	} else {
+		cout << "ComboBox (wrong assignments)!";
+		return;
+	}
 	ss << pose->header.stamp.sec << " " << pose->header.stamp.nsec << " ";
 	ss << pose->header.frame_id << " ";
 	ss << pose->pose.position.x << " ";
@@ -87,35 +171,8 @@ void MainWindow::add_pose(geometry_msgs::PoseStampedConstPtr pose) {
 	ss << pose->pose.orientation.y << " ";
 	ss << pose->pose.orientation.z << " ";
 	ss << pose->pose.orientation.w;
-	ui->ListPoses->addItem(QString::fromStdString(ss.str()));
-}
-
-void add_to_list(geometry_msgs::PoseStampedConstPtr pose) {
-	//ROS_INFO("I heard: [%s]", msg->data.c_str());
-	std::cout << "hallo" << std::endl;
-}
-
-int main(int argc, char *argv[]) {
-	ros::init(argc, argv, "shakey_quickstart_gui");
-	ros::NodeHandle nh;
-
-	QApplication a(argc, argv);
-	MainWindow w;
-	w.show();
-	w.shakey_path = GetStdoutFromCommand("rospack find shakey_planning_server");
-	w.shakey_path = w.shakey_path.substr(0,
-			w.shakey_path.length() - 23);
-	std::cout << w.shakey_path << std::endl;
-
-	ros::Subscriber sub = nh.subscribe("move_base_simple/goal", 1000,
-			&MainWindow::add_pose, &w);
-	ros::WallRate rate(5);
-	while (ros::ok()) {
-		ros::spinOnce();
-
-		a.processEvents();
-
-		rate.sleep();
-	}
-	return 0;
+	QListWidgetItem *cur = new QListWidgetItem();
+	cur->setText(QString::fromStdString(ss.str()));
+	cur->setFlags (cur->flags () | Qt::ItemIsEditable);
+	ui->ListPoses->addItem(cur);
 }

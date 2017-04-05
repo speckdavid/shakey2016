@@ -7,18 +7,18 @@
     <x>0</x>
     <y>0</y>
     <width>982</width>
-    <height>708</height>
+    <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Shakey Quickstart</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>320</y>
+      <x>320</x>
+      <y>70</y>
       <width>98</width>
       <height>27</height>
      </rect>
@@ -36,38 +36,49 @@
       <height>191</height>
      </rect>
     </property>
+    <property name="sortingEnabled">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="currentMap">
     <property name="geometry">
      <rect>
-      <x>15</x>
-      <y>6</y>
-      <width>241</width>
-      <height>181</height>
+      <x>20</x>
+      <y>100</y>
+      <width>251</width>
+      <height>191</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(0, 0, 0);
+border: 1px solid black;
+text-align: center;</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="mapUpdateButton">
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>300</y>
-      <width>98</width>
+      <y>310</y>
+      <width>111</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>Start</string>
+     <string>Start Mapping</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="worldName">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>20</y>
+      <x>410</x>
+      <y>13</y>
       <width>221</width>
       <height>27</height>
      </rect>
@@ -76,30 +87,310 @@
      <string>world_example</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>69</x>
-      <y>22</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Map Name:</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_createFolder">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>20</y>
+      <x>640</x>
+      <y>14</y>
       <width>98</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
      <string>Create</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>70</y>
+      <width>211</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Search Locations:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>63</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Current Map:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>8</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Map/Project Name:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_LocType">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>310</y>
+      <width>146</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Search Location</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Doorway</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="comboBox_Room">
+    <property name="geometry">
+     <rect>
+      <x>492</x>
+      <y>310</y>
+      <width>101</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Room 0</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Room 1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Room 2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Room 3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Room 4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Room 5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Room 6</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Room 7</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Room 8</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Room 9</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_Topic">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>70</y>
+      <width>191</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>move_base_simple/goal</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>7</x>
+      <y>360</y>
+      <width>971</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_SaveLocs">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>310</y>
+      <width>98</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Save</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Start">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>420</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 20pt &quot;Ubuntu&quot;
+
+
+</string>
+    </property>
+    <property name="text">
+     <string>Start!</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_XLocations">
+    <property name="geometry">
+     <rect>
+      <x>303</x>
+      <y>446</y>
+      <width>41</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit:!focus
+{
+  border: 1px solid transparent;
+  background: transparent;
+}
+QLineEdit:focus
+{
+  border: 1px solid transparent;
+  background: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>X</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>410</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Map</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>450</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Locations</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_XMap">
+    <property name="geometry">
+     <rect>
+      <x>303</x>
+      <y>406</y>
+      <width>41</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit:!focus
+{
+  border: 1px solid transparent;
+  background: transparent;
+}
+QLineEdit:focus
+{
+  border: 1px solid transparent;
+  background: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>X</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
