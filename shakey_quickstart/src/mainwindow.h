@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <geometry_msgs/PoseStamped.h>
 #include <stdlib.h>
+#include <ros/ros.h>
 
 namespace Ui {
 class MainWindow;
@@ -22,13 +23,19 @@ public:
     bool mapping;
     bool cropFlipper;
     int num_searchLocs;
+    int num_goalLocs;
     double num_doorways;
+    ros::Subscriber sub;
+    ros::NodeHandle nh;
+    std::string sub_topic;
     
 private slots:
-    void on_pushButton_clicked();
+    void on_delPoseButton_clicked();
     void on_mapUpdateButton_clicked();
     void on_pushButton_createFolder_clicked();
+    void on_comboBox_Topic_currentIndexChanged(const QString &arg1);
     void updateMap();
+    void updateTopics();
 
 private:
     Ui::MainWindow *ui;
