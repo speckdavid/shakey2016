@@ -37,6 +37,30 @@ string GetStdoutFromCommand(string cmd) {
 	return data;
 }
 
+void replaceInFile(string in_file, string out_file, string strReplace, string strNew) {
+	ifstream in(in_file.c_str());
+	ofstream out(out_file.c_str());
+	if (!in || !out)
+	{
+	    cerr << "Could not open file " << in_file << " or " << out_file << "\n";
+	    return;
+	}
+	string line;
+	size_t len = strReplace.length();
+	while (getline(in, line))
+	{
+	    while (true)
+	    {
+	        size_t pos = line.find(strReplace);
+	        if (pos != string::npos)
+	            line.replace(pos, len, strNew);
+	        else
+	            break;
+	    }
+	    out << line << '\n';
+	}
+}
+
 MainWindow::MainWindow(QWidget *parent) :
 		QMainWindow(parent), ui(new Ui::MainWindow) {
 	ui->setupUi(this);
@@ -88,13 +112,41 @@ void MainWindow::on_pushButton_createFolder_clicked() {
 						"QLineEdit { background: rgb(255, 0, 0); selection-background-color: rgb(255, 0, 0); }");
 	} else {
 
-		// Create new world folder
-		if (!QDir(path).exists())
-			QDir().mkdir(path);
+		// Create new world package
+		if (!QDir(path).exists()) {
+			//QDir().mkdir(path);
+			std::string cmd = "cd "  + this->shakey_path +
+					" && catkin_create_pkg " + ui->worldName->text().toUtf8().constData();
+			system(cmd.c_str());
+		}
 
 		// Create evaluation folder
-		if (!QDir(path + "/eval").exists())
+		if (!QDir(path + "/eval").exists()) {
 			QDir().mkdir(path + "/eval");
+		}
+
+		// Create sceenrun folder
+		if (!QDir(path + "/screenrun").exists()) {
+			QDir().mkdir(path + "/eval");
+			QString screen_cp = QString::fromStdString(this->shakey_path +
+					"shakey_quickstart/screenrun_template");
+			cout << "cp -R " << screen_cp.toUtf8().constData() <<
+					" " << path.toUtf8().constData() << "/screenrun" << endl;
+			system("cp -R " + screen_cp.toUtf8() +
+					" " + path.toUtf8() + "/screenrun");
+
+			// Replace map_specific part in launch file
+			std::string old_file_name = (screen_cp + "/screenrun.launch").toUtf8().constData();
+			std::string new_file_name = (path + "/screenrun/screenrun.launch").toUtf8().constData();
+			replaceInFile(old_file_name, new_file_name,
+					"dummy", ui->worldName->text().toUtf8().constData());
+
+			// Replace map_specific part in config file
+			old_file_name = (screen_cp + "/config.yaml").toUtf8().constData();
+			new_file_name = (path + "/screenrun/config.yaml").toUtf8().constData();
+			replaceInFile(old_file_name, new_file_name,
+					"dummy", ui->worldName->text().toUtf8().constData());
+		}
 
 		// Create config files in shakey_planning_server
 		QString config_path = QString::fromStdString(this->shakey_path + "shakey_planning_server/config/planning");
@@ -155,18 +207,6 @@ void MainWindow::on_mapUpdateButton_clicked() {
 		}
 
 	}
-
-	//system("cd /home/david/Pictures/ && rosrun map_server map_saver");
-	//QString filename = "/home/david/Pictures/double_push.png";
-	//QImage image(filename);
-	//ui->currentMap->setPixmap(
-	//		QPixmap::fromImage(image).scaled(100, 100, Qt::KeepAspectRatio));
-	//QString dir = QFileDialog::getExistingDirectory(this, tr("Choose a world directory"),
-	//                                            "/home",
-	//                                          QFileDialog::ShowDirsOnly
-	//                                        | QFileDialog::DontResolveSymlinks);
-	//std::string utf8_text = dir.toUtf8().constData();
-	//std::cout << utf8_text << std::endl;
 }
 
 
