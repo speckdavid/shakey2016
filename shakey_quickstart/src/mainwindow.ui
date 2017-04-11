@@ -41,6 +41,12 @@
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QLabel" name="label_3">
+         <property name="minimumSize">
+          <size>
+           <width>251</width>
+           <height>36</height>
+          </size>
+         </property>
          <property name="styleSheet">
           <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
          </property>
@@ -72,6 +78,12 @@ text-align: center;</string>
        </item>
        <item>
         <widget class="QPushButton" name="mapUpdateButton">
+         <property name="minimumSize">
+          <size>
+           <width>251</width>
+           <height>27</height>
+          </size>
+         </property>
          <property name="text">
           <string>Start Mapping</string>
          </property>
@@ -98,6 +110,12 @@ text-align: center;</string>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QPushButton" name="delPoseButton">
+           <property name="minimumSize">
+            <size>
+             <width>85</width>
+             <height>27</height>
+            </size>
+           </property>
            <property name="text">
             <string>Delete</string>
            </property>
@@ -118,6 +136,12 @@ text-align: center;</string>
          </item>
          <item>
           <widget class="QLabel" name="label_2">
+           <property name="minimumSize">
+            <size>
+             <width>206</width>
+             <height>31</height>
+            </size>
+           </property>
            <property name="styleSheet">
             <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
            </property>
@@ -141,6 +165,12 @@ text-align: center;</string>
          </item>
          <item>
           <widget class="QComboBox" name="comboBox_Topic">
+           <property name="minimumSize">
+            <size>
+             <width>201</width>
+             <height>27</height>
+            </size>
+           </property>
            <item>
             <property name="text">
              <string>/move_base_simple/goal</string>
@@ -167,6 +197,12 @@ text-align: center;</string>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QComboBox" name="comboBox_LocType">
+           <property name="minimumSize">
+            <size>
+             <width>172</width>
+             <height>27</height>
+            </size>
+           </property>
            <item>
             <property name="text">
              <string>Search Location</string>
@@ -186,6 +222,12 @@ text-align: center;</string>
          </item>
          <item>
           <widget class="QComboBox" name="comboBox_Room">
+           <property name="minimumSize">
+            <size>
+             <width>81</width>
+             <height>27</height>
+            </size>
+           </property>
            <item>
             <property name="text">
              <string>Room 0</string>
@@ -253,6 +295,12 @@ text-align: center;</string>
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_SaveLocs">
+           <property name="minimumSize">
+            <size>
+             <width>85</width>
+             <height>27</height>
+            </size>
+           </property>
            <property name="text">
             <string>Save</string>
            </property>
@@ -279,6 +327,12 @@ text-align: center;</string>
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>90</width>
+         <height>41</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">font: 75 20pt &quot;Ubuntu&quot;
 
@@ -296,6 +350,12 @@ text-align: center;</string>
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
           <widget class="QLabel" name="label_5">
+           <property name="minimumSize">
+            <size>
+             <width>115</width>
+             <height>35</height>
+            </size>
+           </property>
            <property name="styleSheet">
             <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
            </property>
@@ -306,6 +366,12 @@ text-align: center;</string>
          </item>
          <item>
           <widget class="QLabel" name="label_6">
+           <property name="minimumSize">
+            <size>
+             <width>115</width>
+             <height>35</height>
+            </size>
+           </property>
            <property name="styleSheet">
             <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
            </property>
@@ -320,6 +386,12 @@ text-align: center;</string>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
           <widget class="QLineEdit" name="lineEdit_XMap">
+           <property name="minimumSize">
+            <size>
+             <width>261</width>
+             <height>35</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>20</pointsize>
@@ -350,6 +422,12 @@ QLineEdit:focus
          </item>
          <item>
           <widget class="QLineEdit" name="lineEdit_XLocations">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>35</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
              <width>200</width>
@@ -393,8 +471,8 @@ QLineEdit:focus
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>174</x>
-      <y>12</y>
+      <x>175</x>
+      <y>13</y>
       <width>579</width>
       <height>33</height>
      </rect>
@@ -402,6 +480,12 @@ QLineEdit:focus
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="label_4">
+       <property name="minimumSize">
+        <size>
+         <width>230</width>
+         <height>31</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
        </property>
@@ -415,7 +499,7 @@ QLineEdit:focus
        <property name="minimumSize">
         <size>
          <width>250</width>
-         <height>0</height>
+         <height>27</height>
         </size>
        </property>
        <property name="text">
@@ -425,6 +509,12 @@ QLineEdit:focus
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_createFolder">
+       <property name="minimumSize">
+        <size>
+         <width>85</width>
+         <height>27</height>
+        </size>
+       </property>
        <property name="text">
         <string>Create</string>
        </property>
