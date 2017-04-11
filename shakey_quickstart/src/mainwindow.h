@@ -33,6 +33,8 @@ private slots:
     void on_delPoseButton_clicked();
     void on_mapUpdateButton_clicked();
     void on_pushButton_createFolder_clicked();
+    void on_pushButton_SaveLocs_clicked();
+    void on_pushButton_Done_clicked();
     void on_comboBox_Topic_currentIndexChanged(const QString &arg1);
     void updateMap();
     void updateTopics();

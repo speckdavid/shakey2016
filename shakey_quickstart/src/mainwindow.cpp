@@ -65,7 +65,7 @@ MainWindow::MainWindow(QWidget *parent) :
 		QMainWindow(parent), ui(new Ui::MainWindow) {
 	ui->setupUi(this);
 	mapping = false;
-	cropFlipper = true;
+	cropFlipper = false;
 	myTimer = new QTimer(this);
 	myTimer->setInterval(2000);
 	myTimer->start();
@@ -112,12 +112,24 @@ void MainWindow::on_pushButton_createFolder_clicked() {
 						"QLineEdit { background: rgb(255, 0, 0); selection-background-color: rgb(255, 0, 0); }");
 	} else {
 
+		this->project_folder = ui->worldName->text().toUtf8().constData();;
 		// Create new world package
 		if (!QDir(path).exists()) {
 			//QDir().mkdir(path);
 			std::string cmd = "cd "  + this->shakey_path +
 					" && catkin_create_pkg " + ui->worldName->text().toUtf8().constData();
 			system(cmd.c_str());
+			std::cout << "created folder: " << path.toUtf8().constData() << std::endl;
+		} else if (QFileInfo(path + "/map.yaml").exists()) {
+			QString filename = path + "/map.pgm";
+			QImage image(filename);
+			ui->currentMap->setPixmap(
+					QPixmap::fromImage(image).scaled(ui->currentMap->size(),	Qt::KeepAspectRatio));
+			ui->lineEdit_XMap->setText(QChar(0x2713));
+			if (!QString::compare(QString(QChar(0x2713)), ui->lineEdit_XLocations->text(), Qt::CaseInsensitive)) {
+				ui->pushButton_Done->setEnabled(true);
+			}
+
 		}
 
 		// Create evaluation folder
@@ -130,13 +142,14 @@ void MainWindow::on_pushButton_createFolder_clicked() {
 			QDir().mkdir(path + "/eval");
 			QString screen_cp = QString::fromStdString(this->shakey_path +
 					"shakey_quickstart/screenrun_template");
-			cout << "cp -R " << screen_cp.toUtf8().constData() <<
-					" " << path.toUtf8().constData() << "/screenrun" << endl;
-			system("cp -R " + screen_cp.toUtf8() +
-					" " + path.toUtf8() + "/screenrun");
+			system("mkdir " + (path + "/screenrun").toUtf8());
+			system("cp -R " + (screen_cp + "/config.yaml").toUtf8() +
+					" " + path.toUtf8() + "/screenrun/config.yaml");
+			system("cp -R " + (screen_cp + "/screenrun.lau").toUtf8() +
+					" " + path.toUtf8() + "/screenrun/screenrun.launch");
 
 			// Replace map_specific part in launch file
-			std::string old_file_name = (screen_cp + "/screenrun.launch").toUtf8().constData();
+			std::string old_file_name = (screen_cp + "/screenrun.lau").toUtf8().constData();
 			std::string new_file_name = (path + "/screenrun/screenrun.launch").toUtf8().constData();
 			replaceInFile(old_file_name, new_file_name,
 					"dummy", ui->worldName->text().toUtf8().constData());
@@ -168,8 +181,6 @@ void MainWindow::on_pushButton_createFolder_clicked() {
 						"QLineEdit { background: rgb(255, 255, 255); selection-background-color: rgb(255, 255, 255); }");
 
 	}
-	this->project_folder = ui->worldName->text().toUtf8().constData();;
-	std::cout << "created folder: " << path.toUtf8().constData() << std::endl;
 
 }
 
@@ -202,11 +213,43 @@ void MainWindow::on_mapUpdateButton_clicked() {
 		system("rosnode kill /slam_gmapping &");
 		ui->mapUpdateButton->setText("Start Mapping");
 		QFileInfo check_file(QString::fromStdString(this->shakey_path + "/" + this->project_folder + "/full.yaml"));
+
+		// Set Checkmark and check if final button should be enabled
 		if (check_file.exists() && check_file.isFile()) {
 			ui->lineEdit_XMap->setText(QChar(0x2713));
+			if (!QString::compare(QString(QChar(0x2713)), ui->lineEdit_XLocations->text(), Qt::CaseInsensitive)) {
+				ui->pushButton_Done->setEnabled(true);
+			}
 		}
 
 	}
+}
+
+void MainWindow::on_pushButton_SaveLocs_clicked() {
+	if (this->project_folder.length() == 0) {
+		ui->worldName->setStyleSheet(
+				"QLineEdit { background: rgb(255, 0, 0); selection-background-color: rgb(255, 0, 0); }");
+		return;
+	}
+	QString loc_path = QString::fromStdString(this->shakey_path +
+			"shakey_planning_server/config/planning/" +
+			this->project_folder);
+	if (QDir(loc_path).exists()) {
+		FILE * loc_file = fopen((loc_path + "/shakey_locations.dat").toUtf8(), "w");
+		for (int i = 0; i < ui->ListPoses->count(); i ++) {
+			fputs(ui->ListPoses->item(i)->text().toUtf8() + "\n", loc_file);
+		}
+		fclose(loc_file);
+		ui->lineEdit_XLocations->setText(QChar(0x2713));
+		if (!QString::compare(QString(QChar(0x2713)), ui->lineEdit_XMap->text(), Qt::CaseInsensitive)) {
+			ui->pushButton_Done->setEnabled(true);
+		}
+		std::cout << "saved poses: " << loc_path.toUtf8().constData() << std::endl;
+	}
+}
+
+void MainWindow::on_pushButton_Done_clicked() {
+	this->setVisible(false);
 }
 
 
@@ -225,19 +268,23 @@ void MainWindow::on_comboBox_Topic_currentIndexChanged(const QString &arg1) {
 void MainWindow::updateTopics() {
 	std::stringstream topic_choices(GetStdoutFromCommand("rostopic find geometry_msgs/PoseStamped"));
 	std::string line;
-	sub_topic = "";
-	ui->comboBox_Topic->clear();
+	sub_topic = "/move_base_simple/goal";
 	if (topic_choices != NULL)
 	{
+		bool empty_topics = true;
 		while(std::getline(topic_choices,line,'\n')){
+			if (empty_topics && line.length() > 0) {
+				ui->comboBox_Topic->clear();
+				empty_topics = false;
+			}
 			QString cur_topic = QString::fromStdString(line);
 			if (line.size() > 0)
 				ui->comboBox_Topic->addItem(QString::fromStdString(line));
 		}
+		sub_topic = "dummy";
+		on_comboBox_Topic_currentIndexChanged(QString::fromStdString("/move_base_simple/goal"));
+		ui->comboBox_Topic->setCurrentIndex(ui->comboBox_Topic->findText(QString::fromStdString(sub_topic)));
 	}
-	sub_topic = "dummy";
-	on_comboBox_Topic_currentIndexChanged(QString::fromStdString("/move_base_simple/goal"));
-	ui->comboBox_Topic->setCurrentIndex(ui->comboBox_Topic->findText(QString::fromStdString(sub_topic)));
 }
 
 void MainWindow::add_pose(geometry_msgs::PoseStampedConstPtr pose) {
@@ -267,7 +314,7 @@ void MainWindow::add_pose(geometry_msgs::PoseStampedConstPtr pose) {
 		return;
 	}
 	ss << pose->header.stamp.sec << " " << pose->header.stamp.nsec << " ";
-	ss << pose->header.frame_id << " ";
+	ss << "/" << pose->header.frame_id << " ";
 	ss << pose->pose.position.x << " ";
 	ss << pose->pose.position.y << " ";
 	ss << pose->pose.position.z << " ";

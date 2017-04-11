@@ -259,7 +259,7 @@ text-align: center;</string>
      <string>Save</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_Start">
+   <widget class="QPushButton" name="pushButton_Done">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -278,7 +278,7 @@ text-align: center;</string>
 </string>
     </property>
     <property name="text">
-     <string>Start!</string>
+     <string>Done!</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_XLocations">
