@@ -471,8 +471,8 @@ QLineEdit:focus
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>175</x>
-      <y>13</y>
+      <x>165</x>
+      <y>14</y>
       <width>579</width>
       <height>33</height>
      </rect>
@@ -490,7 +490,7 @@ QLineEdit:focus
         <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
        </property>
        <property name="text">
-        <string>Map/Project Name:</string>
+        <string>Map/Project:</string>
        </property>
       </widget>
      </item>
