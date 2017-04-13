@@ -6,73 +6,90 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>982</width>
-    <height>507</height>
+    <width>949</width>
+    <height>577</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Shakey Quickstart</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_8">
+   <layout class="QVBoxLayout" name="verticalLayout_6">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_7">
+     <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout_7">
         <item>
-         <widget class="QLabel" name="label_4">
-          <property name="minimumSize">
-           <size>
-            <width>230</width>
-            <height>31</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
-          </property>
-          <property name="text">
-           <string>Map/Project:</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="minimumSize">
+             <size>
+              <width>230</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
+            </property>
+            <property name="text">
+             <string>Map/Project:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="worldName">
+            <property name="minimumSize">
+             <size>
+              <width>250</width>
+              <height>27</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>world_example</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_createFolder">
+            <property name="minimumSize">
+             <size>
+              <width>85</width>
+              <height>27</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Create / Load</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
-         <widget class="QLineEdit" name="worldName">
-          <property name="minimumSize">
+         <spacer name="horizontalSpacer_8">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
            <size>
-            <width>250</width>
-            <height>27</height>
+            <width>40</width>
+            <height>20</height>
            </size>
           </property>
-          <property name="text">
-           <string>world_example</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_createFolder">
-          <property name="minimumSize">
-           <size>
-            <width>85</width>
-            <height>27</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Create</string>
-          </property>
-         </widget>
+         </spacer>
         </item>
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
            <widget class="QLabel" name="label_3">
             <property name="minimumSize">
              <size>
               <width>251</width>
-              <height>36</height>
+              <height>45</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -85,6 +102,12 @@
           </item>
           <item>
            <widget class="QLabel" name="currentMap">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>251</width>
@@ -120,100 +143,96 @@ text-align: center;</string>
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_5">
+         <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_2">
-              <item>
-               <widget class="QPushButton" name="delPoseButton">
-                <property name="minimumSize">
-                 <size>
-                  <width>85</width>
-                  <height>27</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Delete</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_4">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>18</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_2">
-                <property name="minimumSize">
-                 <size>
-                  <width>206</width>
-                  <height>31</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
-                </property>
-                <property name="text">
-                 <string>Search Locations:</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_2">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>48</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QComboBox" name="comboBox_Topic">
-                <property name="minimumSize">
-                 <size>
-                  <width>201</width>
-                  <height>27</height>
-                 </size>
-                </property>
-                <item>
-                 <property name="text">
-                  <string>/move_base_simple/goal</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <widget class="QListWidget" name="ListPoses">
+             <widget class="QPushButton" name="delPoseButton">
               <property name="minimumSize">
                <size>
-                <width>661</width>
-                <height>191</height>
+                <width>85</width>
+                <height>27</height>
                </size>
               </property>
-              <property name="sortingEnabled">
-               <bool>false</bool>
+              <property name="text">
+               <string>Delete</string>
               </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>18</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="minimumSize">
+               <size>
+                <width>206</width>
+                <height>45</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
+              </property>
+              <property name="text">
+               <string>Search Locations:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>48</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_Topic">
+              <property name="minimumSize">
+               <size>
+                <width>201</width>
+                <height>27</height>
+               </size>
+              </property>
+              <item>
+               <property name="text">
+                <string>/move_base_simple/goal</string>
+               </property>
+              </item>
              </widget>
             </item>
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <widget class="QListWidget" name="ListPoses">
+            <property name="minimumSize">
+             <size>
+              <width>661</width>
+              <height>191</height>
+             </size>
+            </property>
+            <property name="sortingEnabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
              <widget class="QComboBox" name="comboBox_LocType">
               <property name="minimumSize">
@@ -332,210 +351,214 @@ text-align: center;</string>
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_6">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
-         <spacer name="horizontalSpacer">
+         <spacer name="horizontalSpacer_6">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>40</width>
+            <width>238</width>
             <height>20</height>
            </size>
           </property>
          </spacer>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <spacer name="horizontalSpacer_6">
+           <widget class="QPushButton" name="pushButton_Done">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>41</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 75 20pt &quot;Ubuntu&quot;
+
+
+</string>
+            </property>
+            <property name="text">
+             <string>Done!</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>178</width>
+              <width>28</width>
               <height>20</height>
              </size>
             </property>
            </spacer>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
-             <widget class="QPushButton" name="pushButton_Done">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
+             <widget class="QLabel" name="label_5">
               <property name="minimumSize">
                <size>
-                <width>90</width>
-                <height>41</height>
+                <width>141</width>
+                <height>35</height>
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">font: 75 20pt &quot;Ubuntu&quot;
-
-
-</string>
+               <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
               </property>
               <property name="text">
-               <string>Done!</string>
+               <string>Map</string>
               </property>
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacer_5">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
+             <widget class="QLabel" name="label_6">
+              <property name="minimumSize">
                <size>
-                <width>28</width>
-                <height>20</height>
+                <width>141</width>
+                <height>35</height>
                </size>
               </property>
-             </spacer>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_4">
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_4">
-                <item>
-                 <widget class="QLabel" name="label_5">
-                  <property name="minimumSize">
-                   <size>
-                    <width>115</width>
-                    <height>35</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
-                  </property>
-                  <property name="text">
-                   <string>Map</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_6">
-                  <property name="minimumSize">
-                   <size>
-                    <width>115</width>
-                    <height>35</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
-                  </property>
-                  <property name="text">
-                   <string>Locations</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_3">
-                <item>
-                 <widget class="QLineEdit" name="lineEdit_XMap">
-                  <property name="minimumSize">
-                   <size>
-                    <width>261</width>
-                    <height>35</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>20</pointsize>
-                    <weight>75</weight>
-                    <italic>true</italic>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLineEdit:!focus
-{
-  border: 1px solid transparent;
-  background: transparent;
-}
-QLineEdit:focus
-{
-  border: 1px solid transparent;
-  background: white;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>X</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLineEdit" name="lineEdit_XLocations">
-                  <property name="minimumSize">
-                   <size>
-                    <width>200</width>
-                    <height>35</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>200</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>20</pointsize>
-                    <weight>75</weight>
-                    <italic>true</italic>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLineEdit:!focus
-{
-  border: 1px solid transparent;
-  background: transparent;
-}
-QLineEdit:focus
-{
-  border: 1px solid transparent;
-  background: white;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>X</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
+              <property name="styleSheet">
+               <string notr="true">font: 75 20pt &quot;Ubuntu&quot;;</string>
+              </property>
+              <property name="text">
+               <string>Locations</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
           <item>
-           <spacer name="horizontalSpacer_7">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>178</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_XMap">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>20</pointsize>
+                <weight>75</weight>
+                <italic>true</italic>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLineEdit:!focus
+{
+  border: 1px solid transparent;
+  background: transparent;
+}
+QLineEdit:focus
+{
+  border: 1px solid transparent;
+  background: white;
+}</string>
+              </property>
+              <property name="text">
+               <string>X</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_XLocations">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>200</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>20</pointsize>
+                <weight>75</weight>
+                <italic>true</italic>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLineEdit:!focus
+{
+  border: 1px solid transparent;
+  background: transparent;
+}
+QLineEdit:focus
+{
+  border: 1px solid transparent;
+  background: white;
+}</string>
+              </property>
+              <property name="text">
+               <string>X</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_7">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>158</width>
+            <height>17</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>
@@ -548,8 +571,8 @@ QLineEdit:focus
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>982</width>
-     <height>25</height>
+     <width>949</width>
+     <height>29</height>
     </rect>
    </property>
   </widget>

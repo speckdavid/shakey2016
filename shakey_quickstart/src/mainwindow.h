@@ -2,9 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QListWidget>
 #include <geometry_msgs/PoseStamped.h>
 #include <stdlib.h>
 #include <ros/ros.h>
+#include <visualization_msgs/MarkerArray.h>
+#include <visualization_msgs/Marker.h>
 
 namespace Ui {
 class MainWindow;
@@ -25,9 +28,11 @@ public:
     int num_searchLocs;
     int num_goalLocs;
     double num_doorways;
-    ros::Subscriber sub;
     ros::NodeHandle nh;
+    ros::Subscriber sub;
+    ros::Publisher vis_pub;
     std::string sub_topic;
+    visualization_msgs::MarkerArray poses_marker;
     
 private slots:
     void on_delPoseButton_clicked();
@@ -38,6 +43,8 @@ private slots:
     void on_comboBox_Topic_currentIndexChanged(const QString &arg1);
     void updateMap();
     void updateTopics();
+    void updateMarker();
+    void on_ListPoses_itemChanged(QListWidgetItem* item);
 
 private:
     Ui::MainWindow *ui;

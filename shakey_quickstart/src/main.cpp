@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 	ros::WallRate rate(100);
 	while (ros::ok() && w.isVisible()) {
 		ros::spinOnce();
-
+		w.vis_pub.publish(w.poses_marker);
 		a.processEvents();
 
 		rate.sleep();

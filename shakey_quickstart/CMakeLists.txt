@@ -7,7 +7,6 @@ project(shakey_quickstart)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   geometry_msgs
-  shakey_utils
 )
 
 ## System dependencies are found with CMake's conventions
@@ -137,7 +136,7 @@ QT4_WRAP_CPP(qt_moc_srcs ${qt_hdrs})
 
 add_executable(shakey_quickstart src/main.cpp src/mainwindow.cpp
     ${uis_h} ${qt_srcs} ${qt_moc_srcs})
-target_link_libraries(shakey_quickstart ${QT_LIBRARIES} ${catkin_LIBRARIES})
+target_link_libraries(shakey_quickstart shakey_object_recognition ${QT_LIBRARIES} ${catkin_LIBRARIES})
 
 ## Declare a C++ library
 # add_library(shakey_quickstart

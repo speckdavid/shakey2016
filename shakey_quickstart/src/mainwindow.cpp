@@ -9,7 +9,6 @@
 #include <QFileInfo>
 #include <ros/ros.h>
 #include <geometry_msgs/PoseStamped.h>
-#include "shakey_utils/geometryPoses.h"
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -78,6 +77,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	num_goalLocs = 0;
 	num_doorways = 0;
 	updateTopics();
+	vis_pub = nh.advertise<visualization_msgs::MarkerArray>("poses_marker", 0);
 }
 
 MainWindow::~MainWindow() {
@@ -177,6 +177,42 @@ void MainWindow::on_pushButton_createFolder_clicked() {
 			std::cout << config_path.toUtf8().constData() << "/shakey_planner_params.yaml" << std::endl;
 		}
 
+		// Read current locations
+		QFile inputFile(config_path + "/" + ui->worldName->text() + "/shakey_locations.dat");
+		cout << inputFile.fileName().toUtf8().constData() << endl;
+		ui->ListPoses->clear();
+		if (inputFile.open(QIODevice::ReadOnly)) {
+
+			cout << "Read existing location data..." <<endl;
+		    QTextStream in(&inputFile);
+		    while (!in.atEnd())
+		    {
+		    	QString line = in.readLine();
+		    	QListWidgetItem *cur = new QListWidgetItem();
+		    	cur->setText(line);
+		    	cur->setFlags (cur->flags () | Qt::ItemIsEditable);
+		    	ui->ListPoses->addItem(cur);
+		    	QStringList loc_data = line.split("_");
+		    	if (!QString::compare(loc_data[0], "search", Qt::CaseInsensitive)) {
+		    		int cur_num = loc_data[2][3].digitValue();
+		    		this->num_searchLocs = cur_num >= this->num_searchLocs ? cur_num + 1 : this->num_searchLocs;
+		    	}
+		    	else if (!QString::compare(loc_data[0], "object", Qt::CaseInsensitive)) {
+		    		int cur_num = loc_data[2][3].digitValue();
+		    		this->num_goalLocs = cur_num >= this->num_goalLocs ? cur_num + 1 : this->num_goalLocs;
+		    	}
+		    	else if (!QString::compare(loc_data[0], "doorway", Qt::CaseInsensitive)) {
+		    		int cur_num = loc_data[1][0].digitValue();
+		    		this->num_doorways = cur_num >= this->num_doorways ? cur_num + 1 : this->num_doorways;
+		    	}
+		    }
+		    inputFile.close();
+			ui->lineEdit_XLocations->setText(QChar(0x2713));
+			if (!QString::compare(QString(QChar(0x2713)), ui->lineEdit_XMap->text(), Qt::CaseInsensitive)) {
+				ui->pushButton_Done->setEnabled(true);
+			}
+		    this->updateMarker();
+		}
 		ui->worldName->setStyleSheet(
 						"QLineEdit { background: rgb(255, 255, 255); selection-background-color: rgb(255, 255, 255); }");
 
@@ -191,8 +227,8 @@ void MainWindow::on_delPoseButton_clicked() {
 			delete items.at(i);
 		ui->ListPoses->clearSelection();
 		ui->ListPoses->clearFocus();
-
 	}
+	this->updateMarker();
 }
 
 void MainWindow::on_mapUpdateButton_clicked() {
@@ -326,4 +362,55 @@ void MainWindow::add_pose(geometry_msgs::PoseStampedConstPtr pose) {
 	cur->setText(QString::fromStdString(ss.str()));
 	cur->setFlags (cur->flags () | Qt::ItemIsEditable);
 	ui->ListPoses->addItem(cur);
+	this->updateMarker();
+}
+
+void MainWindow::on_ListPoses_itemChanged(QListWidgetItem* item) {
+	this->updateMarker();
+}
+
+void MainWindow::updateMarker() {
+	// Delete all markers
+	for (int i = 0; i < poses_marker.markers.size(); i++) {
+		poses_marker.markers[i].action = visualization_msgs::Marker::DELETE;
+	}
+	vis_pub.publish(poses_marker);
+
+	// Create new markers
+	poses_marker.markers.resize(ui->ListPoses->count());
+	for (int i = 0; i < ui->ListPoses->count(); i++) {
+		QString cur_loc = ui->ListPoses->item(i)->text();
+		QStringList loc_name = cur_loc.split("_");
+		QStringList loc_data = cur_loc.split(" ");
+		visualization_msgs::Marker marker;
+		marker.id = i;
+		marker.header.stamp.sec = loc_data[1].toInt();
+		marker.header.stamp.nsec = loc_data[2].toInt();
+		marker.header.frame_id = loc_data[3].toUtf8().constData();
+		marker.pose.position.x = loc_data[4].toDouble();
+		marker.pose.position.y = loc_data[5].toDouble();
+		marker.pose.position.z = loc_data[6].toDouble();
+		marker.pose.orientation.x = loc_data[7].toDouble();
+		marker.pose.orientation.y = loc_data[8].toDouble();
+		marker.pose.orientation.z = loc_data[9].toDouble();
+		marker.pose.orientation.w = loc_data[10].toDouble();
+		marker.color.a = 1;
+		marker.scale.x = 1;
+		marker.scale.y = 0.15;
+		marker.scale.z = 0.15;
+		marker.type = visualization_msgs::Marker::ARROW;
+		marker.action = visualization_msgs::Marker::ADD;
+		if (!QString::compare(loc_name[0], "search", Qt::CaseInsensitive)) {
+			marker.color.b = 1;
+		} else if (!QString::compare(loc_name[0], "object",
+				Qt::CaseInsensitive)) {
+			marker.color.g = 1;
+			marker.scale.x = marker.scale.y = 0.5;
+			marker.type = visualization_msgs::Marker::CUBE;
+		} else if (!QString::compare(loc_name[0], "doorway",
+				Qt::CaseInsensitive)) {
+			marker.color.r = 1;
+		}
+		poses_marker.markers[i] = marker;
+	}
 }
