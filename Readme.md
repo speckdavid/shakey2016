@@ -5,7 +5,7 @@ Shakey the robot was one of the first autonomous robots that showed impressive c
 The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulation. The Robot Operating System (ROS) is necessary to run this project. Our system is optimized (and recommended) for [ROS Hydro Medusa](http://wiki.ros.org/hydro/Installation/Ubuntu) and an Ubuntu 12.04 LTS (Precise) system. Once you have set up a [catkin workspace](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment) you can clone the Shakey 2016 Repository into your source folder (src) and build it as shown [here](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment). Now the Shakey 2016 project should be installed and ready for use.
 
 
-## Stating Shakey 2016:
+## Starting Shakey 2016:
 1. Create new (real) world:
   1. Create new package (e.g. shakey_new_world)
   2. Start mapping: roslaunch shakey_executable shakey_mapping.launch
