@@ -188,6 +188,8 @@ void MainWindow::on_pushButton_createFolder_clicked() {
 		    while (!in.atEnd())
 		    {
 		    	QString line = in.readLine();
+		    	if (line.length() <= 0)
+		    		continue;
 		    	QListWidgetItem *cur = new QListWidgetItem();
 		    	cur->setText(line);
 		    	cur->setFlags (cur->flags () | Qt::ItemIsEditable);
