@@ -377,7 +377,7 @@ void MainWindow::updateMarker() {
 		poses_marker.markers[i].action = visualization_msgs::Marker::DELETE;
 	}
 	vis_pub.publish(poses_marker);
-
+	std::map<int, std::vector<visualization_msgs::Marker> > doorways;
 	// Create new markers
 	poses_marker.markers.resize(ui->ListPoses->count());
 	for (int i = 0; i < ui->ListPoses->count(); i++) {
@@ -412,7 +412,40 @@ void MainWindow::updateMarker() {
 		} else if (!QString::compare(loc_name[0], "doorway",
 				Qt::CaseInsensitive)) {
 			marker.color.r = 1;
+			// Save doorway info
+			int doorway_num = loc_name[1][loc_name[1].size() -1].toLatin1();
+			if (!doorways.count(doorway_num)) {
+				doorways[doorway_num] = std::vector<visualization_msgs::Marker>();
+			}
+			doorways[doorway_num].push_back(marker);
 		}
 		poses_marker.markers[i] = marker;
 	}
+
+	// Add doorway lines (line markers)
+	int arrow_marker_num = poses_marker.markers.size();
+	poses_marker.markers.resize(arrow_marker_num + doorways.size());
+	std::map<int, std::vector<visualization_msgs::Marker> >::iterator it;
+	int cur_id = arrow_marker_num;
+	for ( it = doorways.begin(); it != doorways.end(); it++ )
+	{
+		if (it->second.size() != 2) {
+			continue;
+		}
+		visualization_msgs::Marker marker;
+		marker.id = cur_id;
+		marker.header = it->second.at(0).header;
+		marker.color.r = marker.color.a = 1;
+		marker.type = visualization_msgs::Marker::LINE_STRIP;
+		marker.action = visualization_msgs::Marker::ADD;
+		marker.scale.x = 0.05;
+		for (int i = 0; i < it->second.size(); i++) {
+			marker.points.push_back(it->second.at(i).pose.position);
+		}
+		poses_marker.markers[cur_id] = marker;
+		cur_id++;
+	}
+
+
+
 }
