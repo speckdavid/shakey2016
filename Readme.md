@@ -1,9 +1,9 @@
 # Shakey 2016
 Shakey the robot was one of the first autonomous robots that showed impressive capabilities of navigation and mobile manipulation. The provided code is a today's (2016) implementation of Shakey with modern robotics technology. It is possible to run the Shakey 2016 project on a PR2 or as a simulation. More information in IEEE Robotics and Automation Letters (Vol. 2):  [Shakey 2016 — How Much Does it Take to Redo Shakey the Robot?](http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7847341&isnumber=7797562)
 
-<center>
+<p align="center">
 [![Shakey 2016 - Video](images/youtube_test.png?raw=true)](https://www.youtube.com/watch?v=wKOCdZT4GXM&feature=youtu.be)
-</center>
+</p>
 
 ## 0. Installing Shakey 2016
 The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulation. The Robot Operating System (ROS) is necessary to run this project. Our system is optimized (and recommended) for [ROS Hydro Medusa](http://wiki.ros.org/hydro/Installation/Ubuntu) and an Ubuntu 12.04 LTS (Precise) system. Once you have set up a [catkin workspace](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment) you can clone the Shakey 2016 Repository into your source folder (src) and build it as shown [here](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment). Now the Shakey 2016 project should be installed and ready for use.
