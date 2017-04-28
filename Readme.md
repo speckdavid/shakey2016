@@ -100,7 +100,7 @@ $ roslaunch shakey_spawn_objects spawn_box.launch x:="0" y:="0" name:="box_0"
 
 <br>
 
-### 3.2 Start Shakey
+### 3.2 Start Shakey 2016
 
 In order to start a scenario we use [screenrun](http://wiki.ros.org/screenrun) with byobu.
 
@@ -108,7 +108,7 @@ In order to start a scenario we use [screenrun](http://wiki.ros.org/screenrun) w
 $ roslaunch [your_scenario_name] screenrun.launch
 $ byobu
 ```
-Now you navigate with F3 and F4. Start all ros nodes by executing (ENTER) the provided commands in every tap. The planning monitor should appear and
+You can navigate between different taps with F3 and F4. Start all ros nodes by executing the provided commands (ENTER) in every tap. The planning monitor should appear and as explained in 1. by pressing "Execution/Run" you can start the system.
 
 <br>
 
