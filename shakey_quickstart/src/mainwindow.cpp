@@ -125,8 +125,8 @@ void MainWindow::on_pushButton_createFolder_clicked() {
 			QImage image(filename);
 			ui->currentMap->setPixmap(
 					QPixmap::fromImage(image).scaled(ui->currentMap->size(),	Qt::KeepAspectRatio));
-			ui->lineEdit_XMap->setText(QChar(0x2713));
-			if (!QString::compare(QString(QChar(0x2713)), ui->lineEdit_XLocations->text(), Qt::CaseInsensitive)) {
+			ui->label_X_map->setText(QChar(0x2713));
+			if (!QString::compare(QString(QChar(0x2713)), ui->label_X_locs->text(), Qt::CaseInsensitive)) {
 				ui->pushButton_Done->setEnabled(true);
 			}
 
@@ -203,14 +203,14 @@ void MainWindow::on_pushButton_createFolder_clicked() {
 		    		int cur_num = loc_data[2][3].digitValue();
 		    		this->num_goalLocs = cur_num >= this->num_goalLocs ? cur_num + 1 : this->num_goalLocs;
 		    	}
-		    	else if (!QString::compare(loc_data[0], "doorway", Qt::CaseInsensitive)) {
-		    		int cur_num = loc_data[1][0].digitValue();
+		    	else if (QString::compare(loc_data[0], "doorway", Qt::CaseInsensitive)) {
+		    		int cur_num = loc_data[0][7].digitValue();
 		    		this->num_doorways = cur_num >= this->num_doorways ? cur_num + 1 : this->num_doorways;
 		    	}
 		    }
 		    inputFile.close();
-			ui->lineEdit_XLocations->setText(QChar(0x2713));
-			if (!QString::compare(QString(QChar(0x2713)), ui->lineEdit_XMap->text(), Qt::CaseInsensitive)) {
+			ui->label_X_locs->setText(QChar(0x2713));
+			if (!QString::compare(QString(QChar(0x2713)), ui->label_X_map->text(), Qt::CaseInsensitive)) {
 				ui->pushButton_Done->setEnabled(true);
 			}
 		    this->updateMarker();
@@ -254,8 +254,8 @@ void MainWindow::on_mapUpdateButton_clicked() {
 
 		// Set Checkmark and check if final button should be enabled
 		if (check_file.exists() && check_file.isFile()) {
-			ui->lineEdit_XMap->setText(QChar(0x2713));
-			if (!QString::compare(QString(QChar(0x2713)), ui->lineEdit_XLocations->text(), Qt::CaseInsensitive)) {
+			ui->label_X_map->setText(QChar(0x2713));
+			if (!QString::compare(QString(QChar(0x2713)), ui->label_X_locs->text(), Qt::CaseInsensitive)) {
 				ui->pushButton_Done->setEnabled(true);
 			}
 		}
@@ -278,8 +278,8 @@ void MainWindow::on_pushButton_SaveLocs_clicked() {
 			fputs(ui->ListPoses->item(i)->text().toUtf8() + "\n", loc_file);
 		}
 		fclose(loc_file);
-		ui->lineEdit_XLocations->setText(QChar(0x2713));
-		if (!QString::compare(QString(QChar(0x2713)), ui->lineEdit_XMap->text(), Qt::CaseInsensitive)) {
+		ui->label_X_locs->setText(QChar(0x2713));
+		if (!QString::compare(QString(QChar(0x2713)), ui->label_X_map->text(), Qt::CaseInsensitive)) {
 			ui->pushButton_Done->setEnabled(true);
 		}
 		std::cout << "saved poses: " << loc_path.toUtf8().constData() << std::endl;
@@ -343,8 +343,8 @@ void MainWindow::add_pose(geometry_msgs::PoseStampedConstPtr pose) {
 		this->num_goalLocs++;
 
 	// Is Doorway
-	} else if (!QString::compare(loc_type, ui->comboBox_LocType->itemText(2), Qt::CaseInsensitive)) {
-		ss << "doorway_" << static_cast<int>(this->num_doorways) << "_room" <<
+	} else if (loc_type.contains(ui->comboBox_LocType->itemText(2))) {
+		ss << "doorway" << static_cast<int>(this->num_doorways) << "_room" <<
 				QString(room.at(room.length() -1)).toUtf8().constData() << " ";
 		this->num_doorways += 0.5;
 	} else {
@@ -368,6 +368,15 @@ void MainWindow::add_pose(geometry_msgs::PoseStampedConstPtr pose) {
 }
 
 void MainWindow::on_ListPoses_itemChanged(QListWidgetItem* item) {
+	QString cur_loc = item->text();
+	QStringList loc_name = cur_loc.split("_");
+	QStringList loc_data = cur_loc.split(" ");
+	if ((loc_name.size() != 2 && loc_name.size() != 4) || loc_data.size() != 11)
+		item->setTextColor(QColor(255,0,0));
+	else {
+		item->setTextColor(Qt::black);
+	}
+	ui->ListPoses->clearSelection();
 	this->updateMarker();
 }
 
@@ -381,6 +390,11 @@ void MainWindow::updateMarker() {
 	// Create new markers
 	poses_marker.markers.resize(ui->ListPoses->count());
 	for (int i = 0; i < ui->ListPoses->count(); i++) {
+		// Red entry -> not valid pose
+		if (ui->ListPoses->item(i)->textColor().value() != 0) {
+			poses_marker.markers.resize(poses_marker.markers.size()-1);
+			continue;
+		}
 		QString cur_loc = ui->ListPoses->item(i)->text();
 		QStringList loc_name = cur_loc.split("_");
 		QStringList loc_data = cur_loc.split(" ");
@@ -409,11 +423,10 @@ void MainWindow::updateMarker() {
 			marker.color.g = 1;
 			marker.scale.x = marker.scale.y = 0.5;
 			marker.type = visualization_msgs::Marker::CUBE;
-		} else if (!QString::compare(loc_name[0], "doorway",
-				Qt::CaseInsensitive)) {
+		} else if (loc_name[0].contains("doorway")) {
 			marker.color.r = 1;
 			// Save doorway info
-			int doorway_num = loc_name[1][loc_name[1].size() -1].toLatin1();
+			int doorway_num = loc_name[0][7].toAscii();
 			if (!doorways.count(doorway_num)) {
 				doorways[doorway_num] = std::vector<visualization_msgs::Marker>();
 			}
@@ -445,7 +458,5 @@ void MainWindow::updateMarker() {
 		poses_marker.markers[cur_id] = marker;
 		cur_id++;
 	}
-
-
 
 }
