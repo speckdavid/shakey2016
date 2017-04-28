@@ -5,7 +5,7 @@ Shakey the robot was one of the first autonomous robots that showed impressive c
 
 <br>
 
-## 0. Installing Shakey 2016
+## 0. Installing Shakey 2016 <a name="installing"></a>
 The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulation. The Robot Operating System (ROS) is necessary to run this project. Our system is optimized (and recommended) for [ROS Hydro Medusa](http://wiki.ros.org/hydro/Installation/Ubuntu) and an Ubuntu 12.04 LTS (Precise) system. Once you have set up a [catkin workspace](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment) you can clone the Shakey 2016 Repository into your source folder (src) and build it as shown [here](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment). Now the Shakey 2016 project should be installed and ready for use.
 
 <br>
@@ -44,16 +44,22 @@ Start Rviz as an additional visualization tool.
 $ rosrun rviz rviz
 ```
 
+<br>
+
 ### 2.2 Create / Load new Scenario
 Now you can create or load a new scenario. Inserting your descired scneario name and press Load /Create. If the a scenario with the desired name already existist the relevant data will be loaded. Otherwise a new scenario with all relevant folders and files will be created.
 
 ![](images/scenario.jpg?raw=true)
+
+<br>
 
 ### 2.2 Create a Map
 
 Press "Start mapping" to build up a map of the new scenario. The shakey_quickplay window should visualize the current map. Additionally the map is published as "/map" which can be used to visualize the current in Rviz. Once you are satified with the map you can press stop mapping and the map will be saved (indicaded by a small checkmark at the bottom). Note: Restarting the mapping procedure will remove the already created map.
 
 ![](images/mapping.jpg?raw=true)
+
+<br>
 
 ### 2.3 Create relevant Poses
 For a complete scenario it is neessary to specify Search Locations, Doorway Entries and Object Goal Locations. For that purpose you can use the Location area of the shaley_quickstart node (combined with rviz). At the top right you can choose between different topics which pusblish StampedPoses. We recommonend to use the "/move_base_simple/goal" topic. Here you can choose at bottom left which location type you want to specify next. In addition, you should choose the room in which the corresponding location is located.
@@ -65,6 +71,8 @@ Via drag and drop you can specify the exact poses of the desired location. Choos
 Search Locations are visualized as blue arrows, Doorways are visualized as red arrow with a connecting line between two corresponding entry points and Object Goal Locations as green boxes (irrelevant orientation).
 
 ![](images/rviz.jpg?raw=true)
+
+<br>
 
 ### 2.4 Save the Scenario
 
@@ -90,6 +98,7 @@ E.g. a box at the origin with name box_0 can be created as follows.
 $ roslaunch shakey_spawn_objects spawn_box.launch x:="0" y:="0" name:="box_0"
 ```
 
+<br>
 
 ### 3.2 Start Shakey
 
