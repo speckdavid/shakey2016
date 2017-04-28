@@ -3,6 +3,7 @@ Shakey the robot was one of the first autonomous robots that showed impressive c
 
 [![Shakey 2016 - Video](images/youtube.png?raw=true)](https://www.youtube.com/watch?v=wKOCdZT4GXM&feature=youtu.be)
 
+<br>
 ## 0. Installing Shakey 2016
 The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulation. The Robot Operating System (ROS) is necessary to run this project. Our system is optimized (and recommended) for [ROS Hydro Medusa](http://wiki.ros.org/hydro/Installation/Ubuntu) and an Ubuntu 12.04 LTS (Precise) system. Once you have set up a [catkin workspace](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment) you can clone the Shakey 2016 Repository into your source folder (src) and build it as shown [here](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment). Now the Shakey 2016 project should be installed and ready for use.
 
@@ -65,9 +66,9 @@ Search Locations are visualized as blue arrows, Doorways are visualized as red a
 
 Once you set all locations you can save them by pressing the Save button. If everything is set up you can press the Done! button and the shakey_quickstart closes.
 
-## Start a Scenario
+## 3. Start a Scenario
 
-### 2.1 Start the Simulation (optional)
+### 3.1 Start the Simulation (optional)
 If you work with a "real" PR2 you can skip this part. Otherwise start the simualtion with gazebo.
 
 ```sh
@@ -84,7 +85,7 @@ $ roslaunch shakey_spawn_objects spawn_box.launch x:="0" y:="0" name:="box_0"
 ```
 
 
-### 2.2 Start Shakey
+### 3.2 Start Shakey
 
 In order to start a scenario we use [screenrun](http://wiki.ros.org/screenrun) with byobu.
 
@@ -95,12 +96,14 @@ $ byobu
 Now you navigate with F3 and F4. Start all ros nodes by executing (ENTER) the provided commands in every tap. The planning monitor should appear and
 
 
-## 3. Evaluate Runs
+## 4. Evaluate Runs
+
+TODO: fill with text
 
 
-## 4. Count Additional Code Lines
+## 5. Count Additional Code Lines
 A script is provided [here](count_additional_code_lines/) to count the additional code lines (not published before) we had to write in order to create the Shakey 2016 system. The [Blacklist](count_additional_code_lines/black_list_files) and [Whitelist](count_additional_code_lines/white_list_dirs) show which files are counted (with comments).
 
 
-## 5. References
+## 6. References
 [D. Speck, C. Dornhege and W. Burgard, Shakey 2016 — How Much Does it Take to Redo Shakey the Robot?, in IEEE Robotics and Automation Letters, vol. 2, no. 2, pp. 1203-1209, April 2017.](http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7847341&isnumber=7797562)
