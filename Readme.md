@@ -53,7 +53,7 @@ Now you can create or load a new scenario. Inserting your descired scneario name
 
 <br>
 
-### 2.2 Create a Map
+### 2.3 Create a Map
 
 Press "Start mapping" to build up a map of the new scenario. The shakey_quickplay window should visualize the current map. Additionally, the map is published as "/map" which can be used to visualize it with Rviz. Once you are satified with the map you can press stop mapping and the map will be saved (indicaded by a small checkmark at the bottom). Note: Restarting the mapping procedure will remove the already created map.
 
@@ -61,7 +61,7 @@ Press "Start mapping" to build up a map of the new scenario. The shakey_quickpla
 
 <br>
 
-### 2.3 Create relevant Poses
+### 2.4 Create relevant Poses
 For a complete scenario it is neessary to specify Search Locations, Doorway Entries and Object Goal Locations. For that purpose you can use the Location area of shakey_quickstart (combined with rviz). At the top right you can choose between different topics which pusblish StampedPoses. We recommonend to use the "/move_base_simple/goal" topic. Furthermore, you can choose at bottom left which location type you want to specify next. In addition, you should choose the room in which the corresponding location is located.
 
 ![](images/poses.jpg?raw=true)
@@ -74,7 +74,7 @@ Search Locations are visualized as blue arrows, Doorways are visualized as red a
 
 <br>
 
-### 2.4 Save the Scenario
+### 2.5 Save the Scenario
 
 Once you set all locations you can save them by pressing the Save button. If everything is set up you can press the Done! button and the shakey_quickstart window closes.
 
@@ -113,8 +113,7 @@ You can navigate between different taps with F3 and F4. Now, start all ros nodes
 <br>
 
 ## 4. Evaluate Runs
-
-TODO: fill with text
+ Work in procress...
 
 <br>
 
