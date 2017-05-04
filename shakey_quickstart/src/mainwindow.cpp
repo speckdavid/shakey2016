@@ -438,7 +438,6 @@ void MainWindow::updateMarker() {
 	}
 
 	// Add doorway lines (line markers)
-	return;
 	int arrow_marker_num = poses_marker.markers.size();
 	poses_marker.markers.resize(arrow_marker_num + doorways.size());
 	std::map<int, std::vector<visualization_msgs::Marker> >::iterator it;

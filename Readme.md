@@ -1,7 +1,7 @@
 # Shakey 2016
 Shakey the robot was one of the first autonomous robots that showed impressive capabilities of navigation and mobile manipulation. The provided code is a today's (2016) implementation of Shakey with modern robotics technology. It is possible to run the Shakey 2016 project on a PR2 or as a simulation. More information in IEEE Robotics and Automation Letters (Vol. 2):  [Shakey 2016 — How Much Does it Take to Redo Shakey the Robot?](http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7847341&isnumber=7797562)
 
-[![Shakey 2016 - Video](images/youtube.png?raw=true)](https://www.youtube.com/watch?v=wKOCdZT4GXM&feature=youtu.be)
+[![Shakey 2016 - Video](images/youtube.png?raw=true)](https://www.youtube.com/watch?v=FQuuyhuEXak)
 
 <br>
 
