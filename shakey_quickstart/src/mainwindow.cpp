@@ -426,16 +426,19 @@ void MainWindow::updateMarker() {
 		} else if (loc_name[0].contains("doorway")) {
 			marker.color.r = 1;
 			// Save doorway info
-			int doorway_num = loc_name[0][7].toAscii();
+			int doorway_num = (loc_name[0][7] + "").toInt();
+			//cout << doorway_num << endl;
 			if (!doorways.count(doorway_num)) {
 				doorways[doorway_num] = std::vector<visualization_msgs::Marker>();
 			}
 			doorways[doorway_num].push_back(marker);
 		}
 		poses_marker.markers[i] = marker;
+		cout << i << endl;
 	}
 
 	// Add doorway lines (line markers)
+	return;
 	int arrow_marker_num = poses_marker.markers.size();
 	poses_marker.markers.resize(arrow_marker_num + doorways.size());
 	std::map<int, std::vector<visualization_msgs::Marker> >::iterator it;
