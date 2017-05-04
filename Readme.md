@@ -15,7 +15,7 @@ The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulat
   6. Update locations in locations.dat: if map is provided (rosrun shakey_utils geometryPosesCreatorGui map base_footprint) - Note: Add "/" before "map" resulting in "/map" in location file afterwards
 
 2. Simulating is with gazebo (optional)
-  * Start shakey in a world: roslaunch shakey_executable shakey_world pkg:='path to world pkg'
+  * Start shakey in a world: roslaunch shakey_executable shakey_world.launch pkg:='path to world pkg'
   * Insert Objects: roslaunch shakey_spawn_objects spawn_["box or wedge"].launch x:="x-value" y:="y-value" name:="obj_name"
 
 3. Start Roboter system:

@@ -7,5 +7,5 @@ doorway2_room2 1821 768000000 /map 7.94 -4.6 0 0 0 0.71418 0.69977
 search_location_loc_room1 2082 232000000 /map 7.5 0.75 0 0 0 0.322645 0.94652
 doorway1_room0 1756 43000000 /map 6.65 0.85 0 0 0 1 0
 doorway1_room1 1821 768000000 /map 2.2 0.95 0 0 0 0 1
-object_location_loc0_room0 1366384505 92288380 /map -3.5 2.5 0 0 0 1
-object_location_loc1_room1 1366384505 92288380 /map 10 4 0 0 0 1
+object_location_loc0_room0 1366384505 92288380 /map -3.5 2.5 0 0 0 0 1
+object_location_loc1_room1 1366384505 92288380 /map 10 4 0 0 0 0 1
