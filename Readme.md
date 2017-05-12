@@ -3,7 +3,7 @@ Shakey the robot was one of the first autonomous robots that showed impressive c
 
 [![Shakey 2016 - Video](images/youtube.png?raw=true)](https://www.youtube.com/watch?v=FQuuyhuEXak)
 
-If you are intrested in trying out Shakey 2016 you can run and evaluate an example in section 2. Shakey Quickstart (with Simulation). If you want to build up your own scenario either with the simulation or with a real world PR2 you can find a detailed explaination in section 3. Create a new scenario (Simulation or Real World PR2). Section 4 describes how to start the Shakey 2016 in your scenario. Finally, section 5 is about evaluating recorded runs.
+If you are intrested in trying out Shakey 2016 you can run and evaluate an example in Section 2. Shakey Quickstart (with Simulation). If you want to create your own scenario either with simulation or with a real world PR2 you can find a detailed explanation in Section 3. Section 4 describes the execution of Shakey 2016. Finally, Section 5 is about evaluating recorded runs.
 <br>
 
 ## 1. Installing Shakey 2016 <a name="installing"></a>
@@ -36,7 +36,7 @@ By pressing "Execution/Run" the system will start to tidy up the objects located
 
 ## 3. Create a new scenario (Simulation or Real World PR2)
 
-In this section we explain how to set up your own scenario for the Shakey 2016 system. It is possible to use a simulation by building a map with gazebo. Or you can use a real world scenario with a real world PR2.
+In this section we explain how you can create your own scenario for the Shakey 2016 system. It is possible to use a simulation by building a map with gazebo. Or you can use a real world scenario with a real world PR2.
 
 <br>
 
@@ -88,7 +88,7 @@ Once you set all locations you can save them by pressing the Save button. If eve
 
 ## 4. Start your Scenario
 
-In order to start Shakey 2016 in your scenario follow the subsequent steps. If you use an real PR2 you can skip part 4.1.
+In order to start Shakey 2016 in your scenario follow the subsequent steps. If you use a real PR2 you can skip part 4.1.
 
 <br> 
 
@@ -118,7 +118,7 @@ In order to start a scenario we use [screenrun](http://wiki.ros.org/screenrun) w
 $ roslaunch [your_scenario_name] screenrun.launch
 $ byobu
 ```
-You can navigate between different tabs with F3 and F4. Now, start all ros nodes by executing the provided commands (ENTER) in every tap. The planning monitor should appear and as explained in 1. by pressing "Execution/Run" you can start the system.
+You can navigate between different tabs with F3 and F4. Now, start all ros nodes by executing the provided commands (ENTER) in every tab. The planning monitor should appear and as explained in 1. by pressing "Execution/Run" you can start the system.
 
 <br>
 
