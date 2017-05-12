@@ -5,13 +5,11 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /Map2
         - /MarkerArray1/Status1
         - /MarkerArray1/Namespaces1
         - /MarkerArray2/Namespaces1
-        - /Camera1
       Splitter Ratio: 0.505929
-    Tree Height: 398
+    Tree Height: 731
   - Class: rviz/Tool Properties
     Expanded:
       - /2D Nav Goal1
@@ -710,7 +708,7 @@ Visualization Manager:
       Use rainbow: false
       Value: false
     - Class: rviz/Image
-      Enabled: true
+      Enabled: false
       Image Topic: /head_mount_kinect/rgb/image_raw
       Max Value: 1
       Median window: 5
@@ -719,7 +717,7 @@ Visualization Manager:
       Normalize Range: true
       Queue Size: 2
       Transport Hint: raw
-      Value: true
+      Value: false
     - Alpha: 0.7
       Class: rviz/Map
       Color Scheme: costmap
@@ -770,26 +768,26 @@ Visualization Manager:
       Marker Topic: /Destination_Objects
       Name: MarkerArray
       Namespaces:
-        {}
+        obj/Destination_Objects: true
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
       Enabled: true
-      Marker Topic: /Objects_Location
+      Marker Topic: /poses_marker
       Name: MarkerArray
       Namespaces:
-        obj/Objects_Location: true
+        "": true
       Queue Size: 100
       Value: true
     - Class: rviz/Camera
-      Enabled: true
+      Enabled: false
       Image Rendering: background and overlay
       Image Topic: /head_mount_kinect/rgb/image_raw
       Name: Camera
       Overlay Alpha: 0.5
       Queue Size: 2
       Transport Hint: raw
-      Value: true
+      Value: false
       Visibility:
         AMCL Cloud: true
         Current Goal: true
@@ -840,9 +838,9 @@ Visualization Manager:
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 6.52906
-        Y: 6.79772
-        Z: 0.158274
+        X: 2.94708
+        Y: 4.59509
+        Z: -0.554666
       Name: Current View
       Near Clip Distance: 0.01
       Pitch: 1.1948
@@ -855,14 +853,14 @@ Window Geometry:
     collapsed: false
   Displays:
     collapsed: false
-  Height: 1000
+  Height: 972
   Hide Left Dock: false
   Hide Right Dock: false
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000002000000000000010f000003a2fc0200000004fb000000100044006900730070006c00610079007301000000280000021d000000dd00fffffffb0000000a0049006d006100670065010000024b000000980000001600fffffffb0000000c00430061006d00650072006101000002e9000000160000001600000016fb0000000c00430061006d00650072006101000002ff000000cb0000001600ffffff000000010000010000000593fc0200000001fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730000000041000005930000006400ffffff000003aa000003a200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000002000000000000010f00000386fc0200000004fb000000100044006900730070006c00610079007301000000280000036a000000dd00fffffffb0000000a0049006d00610067006500000002d4000000be0000001600fffffffb0000000c00430061006d0065007200610100000398000000160000001600000016fb0000000c00430061006d00650072006100000002e9000000c50000001600ffffff000000010000010000000593fc0200000001fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730000000041000005930000006400ffffff000003aa0000038600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Tool Properties:
     collapsed: false
   Width: 1215
   X: 57
-  Y: -4
+  Y: 24

@@ -22,5 +22,5 @@ queue_management_mode: priority_based
 use_tss_known: false
 plan_name: plan
 monitoring_verify_timestamps: false
-eval/eval_current_dir: /media/diskstation/shakey_simulations/shakey_runs
-eval/eval_dir: /media/diskstation/shakey_simulations/shakey_runs
+eval/eval_current_dir: /home/david/shakey/src/shakey_three_room_world/eval
+eval/eval_dir: /home/david/shakey/src/shakey_three_room_world/eval
