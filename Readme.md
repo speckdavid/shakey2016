@@ -22,6 +22,9 @@ You can (and should) tuck the arms of the robot such that they not infer with th
 $ roslaunch pr2_teleop_general pr2_teleop_general_keyboard.launch
 ```
 
+The robot should look similar to the picture below.
+![](images/pr2_arm_pose.png?raw=true)
+
 Now start the Shakey 2016 system. In order to start a scenario we use [screenrun](http://wiki.ros.org/screenrun) with byobu.
 ```sh
 $ roslaunch shakey_quickscenario screenrun.launch
