@@ -12,19 +12,29 @@ import numpy as np
 USAGE = """
 python3 eval_data.py i [o]
 
-i = path to top input folder (e.g. [...]/shakey_quickscenario/eval)
+i = path to top input folder (e.g. [...]/shakey_quickscenario/eval/example)
+    - if more then one run is located in this folder it will process all
+        and builts plots over the average
+    
 o = path to top output folder saving plots (default: 'i'/plots)
 
 This script generates relevant evaluation plots for a collection of
-shakey 2016 runs.
+shakey 2016 runs or a single shakey 2016 run.
 """
 
 def parseActionTimes(fileName='action.times'):
     doc_id = -1
     files = dict()
-    folders = os.listdir(path)
+    
+    # Hack for checking if collection of folders
+    if os.path.isfile(path + fileName):
+        folders = [""]
+    else:
+        folders = os.listdir(path)
+    
     for folder in folders:
         if "plot" in folder:
+            #print ("Skipped " + folder + "...")
             continue
         cur_path = path + folder + "/" + fileName
         print("Parsing " + folder + "/" + fileName + "...")
@@ -44,13 +54,19 @@ def parseActionTimes(fileName='action.times'):
 def parsePlanningTimes(path, filename='plan.times'):
     run_id = -1
     plan_times = [.0, .0, .0, .0, .0]
-    run_folders = listdirs(path)
+    
+    # Hack for checking if collection of folders
+    if os.path.isfile(path + "action.times"):
+        run_folders = [""]
+    else:
+        run_folders = listdirs(path)
+        
     #print(run_folders)
     num_all = 0
     for run in run_folders:
-        """if "mb_bug" in run:
-            print("skipped " + run)
-            continue"""
+        if "plot" in run:
+            #print ("Skipped " + run + "...")
+            continue
         run_id += 1
         cur_path = path + run
         plan_step_folders = listdirs(cur_path)
