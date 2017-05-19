@@ -1,0 +1,12 @@
+doorway 2
+doorway_in_location 4
+doorway_location 8
+doorway_out_location 4
+frameid 1
+location 17
+movable_object 1
+object_location 2
+pose 18
+pushable_location 3
+room 3
+search_location 2

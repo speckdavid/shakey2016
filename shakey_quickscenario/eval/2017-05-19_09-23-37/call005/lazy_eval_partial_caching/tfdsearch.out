@@ -1,0 +1,450 @@
+
+Planner Paramters:
+Eps State Value Comparison: 1e-06
+Eps Time Comparison: 1e-06
+Eps Double Comparison: 1e-06
+Eps Scheduling Gap Time: 0.001
+Anytime Search: Enabled
+Disallow concurrent actions: Enabled
+WARNING: planning non-temporally
+fetch_next_state immediately lets time pass: Disabled
+Insert let_time_pass only when running operators is not empty: Disabled
+Timeout if plan was found: 30 seconds
+Timeout while no plan was found: 300 seconds
+Min search time after plan found: 3 seconds
+Min search time factor after plan found: 0.15 seconds
+Greedy Search: Enabled
+Verbose: Enabled
+Verbose Print Time: 10
+Analyze: Disabled
+Analyze Output NumericalFluents: Disabled
+Analyze Condensed Output: Enabled
+Analyze Discarded States by Reason: Enabled
+Analyze Link Equal States: Enabled
+Lazy Heuristic Evaluation: Enabled
+Boosting: Enabled
+Boost Strength: 1000
+Lazy State Module Evaluation: 1
+Use cost modules for applicablity: Enabled
+Use cost modules for makespan pruning: Enabled
+Cyclic CG heuristic: Enabled 	Preferred Operators: Enabled
+Makespan heuristic: Disabled 	Preferred Operators: Disabled
+No Heuristic: Disabled
+Greedy Apply heuristic: Disabled 	Preferred Operators: Disabled Max Depth: 0
+Cg Heuristic Zero Cost Waiting Transitions: Enabled
+Cg Heuristic Fire Waiting Transitions Only If Local Problems Matches State: Disabled
+GValues by: Timestamp
+Queue management mode: Priority based
+Grounding mode: Single and Reinsert
+GroundN max groundings: 10
+Grounding Discount mode: Linear
+Grounding Discount gamma: 1
+Grounding Number depends on state: true
+Known by logical state only filtering: Disabled
+use_subgoals_to_break_makespan_ties: Disabled
+Reschedule plans: Disabled
+Epsilonize internally: Disabled
+Epsilonize externally: Disabled
+Keep original plans: Enabled
+Plan name: "plan"
+Plan monitor file: "" (no monitoring)
+Monitoring verify timestamps: Disabled
+
+[33m[ WARN] [1495179158.419194061]: var for pred can-navigate robot_location wedge0_search_location_loc1_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420296053]: var for pred can-navigate search_location_loc1_room0 search_location_loc1_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420550655]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_0 wedge0_search_location_loc1_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420581191]: var for pred can-navigate doorway0_room1 doorway1_room1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420604838]: var for pred can-navigate search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420645084]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_2 box0_doorway0_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420668744]: var for pred can-navigate box0_doorway0_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420690251]: var for pred can-navigate doorway1_room2 object_location_loc1_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420751250]: var for pred can-navigate doorway1_room2_out search_location_loc0_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420815052]: var for pred can-navigate doorway0_room0 wedge0_search_location_loc1_room0_push_loc_0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420839843]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_2 doorway0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420861700]: var for pred can-navigate doorway0_room1_out doorway1_room1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420894480]: var for pred can-navigate doorway0_room0 box0_doorway0_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.420917149]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_2 box0_doorway0_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421092653]: var for pred can-navigate box0_doorway0_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421120350]: var for pred can-navigate doorway0_room0_out search_location_loc1_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421184797]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_2 init_loc was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421207536]: var for pred can-navigate box0_doorway0_room0_push_loc_1 object_location_loc0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421228993]: var for pred can-navigate doorway1_room2_out object_location_loc1_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421249837]: var for pred can-navigate doorway0_room0 object_location_loc0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421270875]: var for pred can-navigate robot_location doorway0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421292285]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421313914]: var for pred can-navigate doorway0_room1_out doorway1_room1_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421334836]: var for pred can-navigate init_loc doorway0_room0_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421356050]: var for pred can-navigate doorway1_room1_out doorway0_room1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421382780]: var for pred can-navigate object_location_loc0_room0 object_location_loc0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421409479]: var for pred can-navigate object_location_loc0_room0 box0_doorway0_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421430616]: var for pred can-navigate doorway0_room0_out box0_doorway0_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421458194]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_0 box0_doorway0_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421481275]: var for pred can-navigate search_location_loc1_room0 doorway0_room0_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421777722]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_1 box0_doorway0_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421804838]: var for pred can-navigate box0_doorway0_room0_push_loc_2 box0_doorway0_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421843524]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421871098]: var for pred can-navigate search_location_loc1_room0 box0_doorway0_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421893741]: var for pred can-navigate robot_location init_loc was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421926526]: var for pred can-navigate box0_doorway0_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421960451]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_2 search_location_loc1_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.421982855]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_0 doorway0_room0_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422004565]: var for pred can-navigate search_location_loc0_room2 search_location_loc0_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422026176]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_0 wedge0_search_location_loc1_room0_push_loc_0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422047832]: var for pred can-navigate object_location_loc0_room0 doorway0_room0_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422068897]: var for pred can-navigate doorway0_room0 init_loc was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422090338]: var for pred can-navigate doorway0_room0_out doorway0_room0_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422111800]: var for pred can-navigate box0_doorway0_room0_push_loc_2 search_location_loc1_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422133355]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422158298]: var for pred can-navigate doorway0_room0_out doorway0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422180474]: var for pred can-navigate box0_doorway0_room0_push_loc_1 doorway0_room0_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422346346]: var for pred can-navigate doorway1_room2_out doorway1_room2_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422374726]: var for pred can-navigate doorway0_room0 wedge0_search_location_loc1_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422383586]: var for pred can-navigate search_location_loc1_room0 object_location_loc0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422512171]: var for pred can-navigate robot_location wedge0_search_location_loc1_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422518957]: var for pred can-navigate init_loc init_loc was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422525078]: var for pred can-navigate box0_doorway0_room0_push_loc_2 init_loc was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422534524]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_1 object_location_loc0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422540838]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_0 doorway0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422555074]: var for pred can-navigate init_loc search_location_loc1_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422561633]: var for pred object-at-location object_location_loc1_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422567654]: var for pred can-navigate box0_doorway0_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422574381]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_1 doorway0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422587337]: var for pred can-navigate doorway1_room2 doorway1_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422597006]: var for pred can-navigate search_location_loc0_room2 doorway1_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422607859]: var for pred can-navigate doorway0_room0 wedge0_search_location_loc1_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422621718]: var for pred can-navigate doorway0_room0_out object_location_loc0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422629591]: var for pred can-navigate box0_doorway0_room0_push_loc_1 box0_doorway0_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422643867]: var for pred can-navigate doorway0_room1_out doorway0_room1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422651241]: var for pred can-navigate robot_location robot_location was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422658311]: var for pred can-navigate box0_doorway0_room0_push_loc_1 search_location_loc1_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422668379]: var for pred can-navigate doorway0_room0 box0_doorway0_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422680363]: var for pred can-navigate doorway0_room0 doorway0_room0_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422699537]: var for pred can-navigate doorway1_room2_out doorway1_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422707360]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_1 doorway0_room0_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422714765]: var for pred can-navigate object_location_loc1_room2 doorway1_room2_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422725539]: var for pred can-navigate search_location_loc0_room2 doorway1_room2_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422733047]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422742012]: var for pred can-navigate box0_doorway0_room0_push_loc_1 box0_doorway0_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422750997]: var for pred can-navigate robot_location doorway0_room0_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422758466]: var for pred can-navigate doorway0_room1_out doorway0_room1_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422882802]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_2 doorway0_room0_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422889360]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_1 search_location_loc1_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422895047]: var for pred can-navigate box0_doorway0_room0_push_loc_2 object_location_loc0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422904738]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_1 box0_doorway0_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422910998]: var for pred can-navigate doorway1_room1_out doorway0_room1_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422923179]: var for pred can-navigate init_loc box0_doorway0_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422931975]: var for pred can-navigate doorway0_room0_out wedge0_search_location_loc1_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422939333]: var for pred can-navigate search_location_loc1_room0 box0_doorway0_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422947360]: var for pred can-navigate object_location_loc0_room0 wedge0_search_location_loc1_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422957120]: var for pred can-navigate init_loc wedge0_search_location_loc1_room0_push_loc_0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422965946]: var for pred can-navigate box0_doorway0_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.422993322]: var for pred can-navigate doorway1_room1 doorway0_room1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.423655066]: var for pred can-navigate object_location_loc0_room0 search_location_loc1_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.423665720]: var for pred can-navigate init_loc doorway0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.423679115]: var for pred can-navigate object_location_loc1_room2 doorway1_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.423693587]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_0 search_location_loc1_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.423701764]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_0 object_location_loc0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.423709618]: var for pred can-navigate doorway0_room0 search_location_loc1_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.423717281]: var for pred can-navigate doorway1_room2 search_location_loc0_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.423723168]: var for pred can-navigate doorway0_room0 doorway0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.423729805]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_1 init_loc was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.423748347]: var for pred can-navigate robot_location object_location_loc0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.423759305]: var for pred can-navigate search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424136367]: var for pred can-navigate doorway1_room2 doorway1_room2_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424160143]: var for pred can-navigate doorway0_room0_out wedge0_search_location_loc1_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424199858]: var for pred can-navigate doorway1_room1_out doorway1_room1_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424223576]: var for pred can-navigate object_location_loc0_room0 wedge0_search_location_loc1_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424245802]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_2 object_location_loc0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424267043]: var for pred can-navigate search_location_loc1_room0 doorway0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424287923]: var for pred can-navigate robot_location wedge0_search_location_loc1_room0_push_loc_0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424308757]: var for pred can-navigate box0_doorway0_room0_push_loc_2 doorway0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424329216]: var for pred can-navigate doorway1_room1_out doorway1_room1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424355421]: var for pred can-navigate robot_location box0_doorway0_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424364186]: var for pred can-navigate search_location_loc0_room2 object_location_loc1_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424375155]: var for pred can-navigate search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424383057]: var for pred can-navigate box0_doorway0_room0_push_loc_1 init_loc was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424390003]: var for pred can-navigate object_location_loc1_room2 search_location_loc0_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424402743]: var for pred can-navigate box0_doorway0_room0_push_loc_1 doorway0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424410805]: var for pred can-navigate doorway0_room1 doorway1_room1_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424439505]: var for pred can-navigate search_location_loc1_room0 init_loc was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424448413]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424456365]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_0 init_loc was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424510481]: var for pred can-navigate robot_location search_location_loc1_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424525061]: var for pred can-navigate robot_location box0_doorway0_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424535924]: var for pred can-navigate object_location_loc0_room0 box0_doorway0_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424559453]: var for pred can-navigate doorway1_room1 doorway1_room1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424577007]: var for pred can-navigate doorway0_room1 doorway0_room1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424593999]: var for pred can-navigate doorway0_room0_out box0_doorway0_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424601388]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_0 box0_doorway0_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424618522]: var for pred can-navigate doorway0_room0_out init_loc was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424626489]: var for pred can-navigate box0_doorway0_room0_push_loc_2 box0_doorway0_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424753742]: var for pred can-navigate doorway1_room1 doorway0_room1_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424760154]: var for pred can-navigate init_loc object_location_loc0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424769896]: var for pred can-navigate init_loc wedge0_search_location_loc1_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424775768]: var for pred can-navigate doorway0_room1 doorway0_room1_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424781701]: var for pred can-navigate box0_doorway0_room0_push_loc_2 doorway0_room0_out was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424789809]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_0 wedge0_search_location_loc1_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424807461]: var for pred can-navigate object_location_loc0_room0 init_loc was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424816847]: var for pred can-navigate object_location_loc1_room2 object_location_loc1_room2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424829195]: var for pred can-navigate wedge0_search_location_loc1_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424836882]: var for pred can-navigate init_loc box0_doorway0_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424845054]: var for pred can-navigate doorway0_room0_out wedge0_search_location_loc1_room0_push_loc_0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424852220]: var for pred can-navigate object_location_loc0_room0 doorway0_room0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424907786]: var for pred can-navigate object_location_loc0_room0 wedge0_search_location_loc1_room0_push_loc_0 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424917341]: var for pred can-navigate init_loc wedge0_search_location_loc1_room0_push_loc_1 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424926863]: var for pred can-navigate box0_doorway0_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_2 was -1: Removing pred(is this constant?)[0m
+[33m[ WARN] [1495179158.424935135]: var for pred can-navigate doorway1_room1 doorway1_room1_out was -1: Removing pred(is this constant?)[0m
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : robot_location, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc1_room0, ? - search_location : search_location_loc1_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room1, ? - doorway_in_location : doorway1_room1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc1_room0, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2, ? - pushable_location : box0_doorway0_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_2, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway1_room2, ? - object_location : object_location_loc1_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway1_room2_out, ? - search_location : search_location_loc0_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room0, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2, ? - doorway_in_location : doorway0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room1_out, ? - doorway_in_location : doorway1_room1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room0, ? - pushable_location : box0_doorway0_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2, ? - pushable_location : box0_doorway0_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_2, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room0_out, ? - search_location : search_location_loc1_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2, ? - location : init_loc to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_1, ? - object_location : object_location_loc0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway1_room2_out, ? - object_location : object_location_loc1_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room0, ? - object_location : object_location_loc0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : robot_location, ? - doorway_in_location : doorway0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room1_out, ? - doorway_out_location : doorway1_room1_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : init_loc, ? - doorway_out_location : doorway0_room0_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway1_room1_out, ? - doorway_in_location : doorway0_room1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc0_room0, ? - object_location : object_location_loc0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc0_room0, ? - pushable_location : box0_doorway0_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room0_out, ? - pushable_location : box0_doorway0_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0, ? - pushable_location : box0_doorway0_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc1_room0, ? - doorway_out_location : doorway0_room0_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1, ? - pushable_location : box0_doorway0_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_2, ? - pushable_location : box0_doorway0_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc1_room0, ? - pushable_location : box0_doorway0_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : robot_location, ? - location : init_loc to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_1, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2, ? - search_location : search_location_loc1_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0, ? - doorway_out_location : doorway0_room0_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc0_room2, ? - search_location : search_location_loc0_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc0_room0, ? - doorway_out_location : doorway0_room0_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room0, ? - location : init_loc to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room0_out, ? - doorway_out_location : doorway0_room0_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_2, ? - search_location : search_location_loc1_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room0_out, ? - doorway_in_location : doorway0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_1, ? - doorway_out_location : doorway0_room0_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway1_room2_out, ? - doorway_out_location : doorway1_room2_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room0, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc1_room0, ? - object_location : object_location_loc0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : robot_location, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : init_loc, ? - location : init_loc to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_2, ? - location : init_loc to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1, ? - object_location : object_location_loc0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0, ? - doorway_in_location : doorway0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : init_loc, ? - search_location : search_location_loc1_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate object-at-location params: ? - object_location : object_location_loc1_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_2, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1, ? - doorway_in_location : doorway0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway1_room2, ? - doorway_in_location : doorway1_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc0_room2, ? - doorway_in_location : doorway1_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room0, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room0_out, ? - object_location : object_location_loc0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_1, ? - pushable_location : box0_doorway0_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room1_out, ? - doorway_in_location : doorway0_room1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : robot_location, ? - location : robot_location to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_1, ? - search_location : search_location_loc1_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room0, ? - pushable_location : box0_doorway0_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room0, ? - doorway_out_location : doorway0_room0_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway1_room2_out, ? - doorway_in_location : doorway1_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1, ? - doorway_out_location : doorway0_room0_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc1_room2, ? - doorway_out_location : doorway1_room2_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc0_room2, ? - doorway_out_location : doorway1_room2_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_1, ? - pushable_location : box0_doorway0_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : robot_location, ? - doorway_out_location : doorway0_room0_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room1_out, ? - doorway_out_location : doorway0_room1_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2, ? - doorway_out_location : doorway0_room0_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1, ? - search_location : search_location_loc1_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_2, ? - object_location : object_location_loc0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1, ? - pushable_location : box0_doorway0_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway1_room1_out, ? - doorway_out_location : doorway0_room1_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : init_loc, ? - pushable_location : box0_doorway0_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room0_out, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc1_room0, ? - pushable_location : box0_doorway0_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc0_room0, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : init_loc, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_1, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway1_room1, ? - doorway_in_location : doorway0_room1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc0_room0, ? - search_location : search_location_loc1_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : init_loc, ? - doorway_in_location : doorway0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc1_room2, ? - doorway_in_location : doorway1_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0, ? - search_location : search_location_loc1_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0, ? - object_location : object_location_loc0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room0, ? - search_location : search_location_loc1_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway1_room2, ? - search_location : search_location_loc0_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room0, ? - doorway_in_location : doorway0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1, ? - location : init_loc to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : robot_location, ? - object_location : object_location_loc0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc1_room0, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway1_room2, ? - doorway_out_location : doorway1_room2_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room0_out, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway1_room1_out, ? - doorway_out_location : doorway1_room1_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc0_room0, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2, ? - object_location : object_location_loc0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc1_room0, ? - doorway_in_location : doorway0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : robot_location, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_2, ? - doorway_in_location : doorway0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway1_room1_out, ? - doorway_in_location : doorway1_room1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : robot_location, ? - pushable_location : box0_doorway0_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc0_room2, ? - object_location : object_location_loc1_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc1_room0, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_1, ? - location : init_loc to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc1_room2, ? - search_location : search_location_loc0_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_1, ? - doorway_in_location : doorway0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room1, ? - doorway_out_location : doorway1_room1_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - search_location : search_location_loc1_room0, ? - location : init_loc to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0, ? - location : init_loc to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : robot_location, ? - search_location : search_location_loc1_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : robot_location, ? - pushable_location : box0_doorway0_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc0_room0, ? - pushable_location : box0_doorway0_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway1_room1, ? - doorway_in_location : doorway1_room1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room1, ? - doorway_in_location : doorway0_room1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room0_out, ? - pushable_location : box0_doorway0_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0, ? - pushable_location : box0_doorway0_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room0_out, ? - location : init_loc to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_2, ? - pushable_location : box0_doorway0_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway1_room1, ? - doorway_out_location : doorway0_room1_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : init_loc, ? - object_location : object_location_loc0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : init_loc, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway0_room1, ? - doorway_out_location : doorway0_room1_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_2, ? - doorway_out_location : doorway0_room0_out to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc0_room0, ? - location : init_loc to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc1_room2, ? - object_location : object_location_loc1_room2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : init_loc, ? - pushable_location : box0_doorway0_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_out_location : doorway0_room0_out, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc0_room0, ? - doorway_in_location : doorway0_room0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - object_location : object_location_loc0_room0, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_0 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - location : init_loc, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_1 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - pushable_location : box0_doorway0_room0_push_loc_1, ? - pushable_location : wedge0_search_location_loc1_room0_push_loc_2 to anything
+prepare_predicate_all_mapping: Could not match predicate can-navigate params: ? - doorway_in_location : doorway1_room1, ? - doorway_out_location : doorway1_room1_out to anything
+Initializing cyclic causal graph heuristic...done.
+Best heuristic value: 7034 [expanded 1 state(s)]
+Best heuristic value: 4034 [expanded 2 state(s)]
+Best heuristic value: 3034 [expanded 3 state(s)]
+Best heuristic value: 3033 [expanded 4 state(s)]
+Best heuristic value: 3032 [expanded 5 state(s)]
+Best heuristic value: 3022 [expanded 6 state(s)]
+Best heuristic value: 3012 [expanded 7 state(s)]
+Best heuristic value: 2012 [expanded 8 state(s)]
+Best heuristic value: 1012 [expanded 9 state(s)]
+Best heuristic value: 1012 [expanded 10 state(s)]
+Best heuristic value: 1011 [expanded 11 state(s)]
+Best heuristic value: 1011 [expanded 12 state(s)]
+Best heuristic value: 1001 [expanded 13 state(s)]
+Best heuristic value: 1001 [expanded 14 state(s)]
+Best heuristic value: 1 [expanded 15 state(s)]
+Best heuristic value: 0 [expanded 17 state(s)]
+
+Found new plan:
+0.00000000: (drive-base robot_location doorway0_room0) [1000.00000000]
+1000.00000000: (detect-doorway-state doorway0_room0 doorway0) [1.00000000]
+1001.00000000: (drive-through-doorway doorway0 doorway0_room0 doorway0_room1_out) [10.00000000]
+1011.00000000: (drive-base doorway0_room1_out doorway1_room1) [1000.00000000]
+2011.00000000: (detect-doorway-state doorway1_room1 doorway1) [1.00000000]
+2012.00000000: (drive-through-doorway doorway1 doorway1_room1 doorway1_room2_out) [10.00000000]
+2022.00000000: (drive-base doorway1_room2_out search_location_loc0_room2) [1000.00000000]
+3022.00000000: (detect-objects search_location_loc0_room2) [1.00000000]
+Solution with original makespan 3023 found (ignoring no-moving-targets-rule).
+Plan length: 8 step(s).
+Makespan   : 3023
+[33m[ WARN] [1495179158.498137149]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.498208911]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.498932882]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.498965054]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.499597981]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.499609714]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.499912557]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.499923252]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.500185416]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.500195956]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.500266683]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.500277178]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.500473017]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.500483096]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.500743735]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.500754726]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.500941426]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.500974901]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.501225908]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.501277659]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.501867873]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.501880885]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.502046515]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.502056717]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.502082521]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.502091500]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.502409055]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.502420228]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.502708054]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.502718657]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.502858666]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.502868576]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.503485840]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.503498510]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.503766206]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.503777319]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.503802327]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.503811149]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.503997864]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.504007902]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.504196355]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.504226595]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.504491736]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.504597461]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.504631763]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.504641082]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.505157332]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.505170476]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.505564647]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.505581809]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.505804333]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.505815030]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.506392308]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.506423068]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+[33m[ WARN] [1495179158.506701631]: OccValue: 99.000000[0m
+[33m[ WARN] [1495179158.506712904]: Not possible to drive to position -> [4.981960, 0.370872, 0.000000][0m
+Completely explored state space -- best plan found!
+[0m[ INFO] [1495179158.507131547]: Forcing exit modules at end with empty plan.[0m
+Search time: 0.01 seconds - Walltime: 0.0124159 seconds
+Total time: 0.07 seconds - Walltime: 0.122252 seconds
+
+Search Time: 0 sec.
+Virtual Memory: 533392 kb
+Expanded Nodes: 103 state(s).
+Rate: -103.0 Nodes/s (over 0.0s) -103.0 Nodes/s (total average)
+Generated Nodes: 492 state(s).
+Rate: -492.0 Nodes/s (over 0.0s) -492.0 Nodes/s (total average)
+Generated Nodes due to live branching: 0 state(s).
+Rate: -0.0 Nodes/s (over 0.0s) -0.0 Nodes/s (total average)
+Overall branching factor by list sizes: 4.7767
+Averaged overall branching factor: Mean 4.824  Std: 4.008  (Num: 102)
+Branching factors by open list:
+Open List 0: Mean 3.461  Std: 3.567  (Num: 102)
+Open List 1: Mean 1.363  Std: 0.483  (Num: 102)
+OpenList sizes: 0 0
+Heuristic Computations (per heuristic): 256 Total: 256
+Heuristic calculation times (per heuristic):
+Mean 0.000 us Std: 0.000 us (Num: 256)
+Best heuristic value: 0
+

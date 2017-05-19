@@ -1,0 +1,276 @@
+begin_groups
+91
+group
+1
+62 0 can-navigate 2 <object_location_loc1_room2> <doorway1_room2> 
+group
+1
+21 0 can-navigate 2 <doorway0_room0_out> <doorway0_room0_out> 
+group
+1
+3 0 at-base 1 <doorway0_room1_out> 
+group
+1
+75 0 can-navigate 2 <search_location_loc0_room2> <search_location_loc0_room2> 
+group
+1
+79 0 can-navigate 2 <search_location_loc1_room0> <object_location_loc0_room0> 
+group
+1
+82 0 doorway-state-known 1 <doorway0> 
+group
+1
+28 0 can-navigate 2 <doorway0_room1> <doorway1_room1> 
+group
+1
+31 0 can-navigate 2 <doorway0_room1_out> <doorway0_room1_out> 
+group
+1
+85 0 new-axiom@6 0 
+group
+1
+47 0 can-navigate 2 <doorway1_room2_out> <doorway1_room2_out> 
+group
+1
+49 0 can-navigate 2 <doorway1_room2_out> <search_location_loc0_room2> 
+group
+1
+19 0 can-navigate 2 <doorway0_room0> <search_location_loc1_room0> 
+group
+1
+44 0 can-navigate 2 <doorway1_room2> <object_location_loc1_room2> 
+group
+1
+11 0 at-base 1 <robot_location> 
+group
+1
+15 0 can-navigate 2 <doorway0_room0> <doorway0_room0_out> 
+group
+1
+9 0 at-base 1 <object_location_loc0_room0> 
+group
+1
+56 0 can-navigate 2 <object_location_loc0_room0> <doorway0_room0> 
+group
+1
+6 0 at-base 1 <doorway1_room2> 
+group
+1
+84 0 new-axiom@0 0 
+group
+1
+7 0 at-base 1 <doorway1_room2_out> 
+group
+1
+61 0 can-navigate 2 <object_location_loc0_room0> <search_location_loc1_room0> 
+group
+1
+60 0 can-navigate 2 <object_location_loc0_room0> <robot_location> 
+group
+1
+29 0 can-navigate 2 <doorway0_room1> <doorway1_room1_out> 
+group
+1
+8 0 at-base 1 <init_loc> 
+group
+1
+32 0 can-navigate 2 <doorway0_room1_out> <doorway1_room1> 
+group
+1
+57 0 can-navigate 2 <object_location_loc0_room0> <doorway0_room0_out> 
+group
+1
+14 0 can-navigate 2 <doorway0_room0> <doorway0_room0> 
+group
+1
+58 0 can-navigate 2 <object_location_loc0_room0> <init_loc> 
+group
+1
+66 0 can-navigate 2 <robot_location> <doorway0_room0> 
+group
+1
+51 0 can-navigate 2 <init_loc> <doorway0_room0_out> 
+group
+1
+35 0 can-navigate 2 <doorway1_room1> <doorway0_room1_out> 
+group
+1
+50 0 can-navigate 2 <init_loc> <doorway0_room0> 
+group
+1
+69 0 can-navigate 2 <robot_location> <object_location_loc0_room0> 
+group
+1
+5 0 at-base 1 <doorway1_room1_out> 
+group
+1
+10 0 at-base 1 <object_location_loc1_room2> 
+group
+1
+63 0 can-navigate 2 <object_location_loc1_room2> <doorway1_room2_out> 
+group
+1
+53 0 can-navigate 2 <init_loc> <object_location_loc0_room0> 
+group
+1
+1 0 at-base 1 <doorway0_room0_out> 
+group
+1
+67 0 can-navigate 2 <robot_location> <doorway0_room0_out> 
+group
+1
+17 0 can-navigate 2 <doorway0_room0> <object_location_loc0_room0> 
+group
+1
+46 0 can-navigate 2 <doorway1_room2_out> <doorway1_room2> 
+group
+1
+70 0 can-navigate 2 <robot_location> <robot_location> 
+group
+1
+71 0 can-navigate 2 <robot_location> <search_location_loc1_room0> 
+group
+1
+41 0 can-navigate 2 <doorway1_room1_out> <doorway1_room1_out> 
+group
+1
+23 0 can-navigate 2 <doorway0_room0_out> <object_location_loc0_room0> 
+group
+1
+88 0 object-at-location 1 <object_location_loc1_room2> 
+group
+1
+24 0 can-navigate 2 <doorway0_room0_out> <robot_location> 
+group
+1
+87 0 object-at-location 1 <object_location_loc0_room0> 
+group
+1
+59 0 can-navigate 2 <object_location_loc0_room0> <object_location_loc0_room0> 
+group
+1
+72 0 can-navigate 2 <search_location_loc0_room2> <doorway1_room2> 
+group
+1
+33 0 can-navigate 2 <doorway0_room1_out> <doorway1_room1_out> 
+group
+1
+13 0 at-base 1 <search_location_loc1_room0> 
+group
+1
+86 0 new-axiom@7 0 
+group
+1
+22 0 can-navigate 2 <doorway0_room0_out> <init_loc> 
+group
+1
+40 0 can-navigate 2 <doorway1_room1_out> <doorway1_room1> 
+group
+1
+55 0 can-navigate 2 <init_loc> <search_location_loc1_room0> 
+group
+1
+26 0 can-navigate 2 <doorway0_room1> <doorway0_room1> 
+group
+1
+78 0 can-navigate 2 <search_location_loc1_room0> <init_loc> 
+group
+1
+90 0 searched 1 <search_location_loc1_room0> 
+group
+1
+52 0 can-navigate 2 <init_loc> <init_loc> 
+group
+1
+20 0 can-navigate 2 <doorway0_room0_out> <doorway0_room0> 
+group
+1
+37 0 can-navigate 2 <doorway1_room1> <doorway1_room1_out> 
+group
+1
+68 0 can-navigate 2 <robot_location> <init_loc> 
+group
+1
+43 0 can-navigate 2 <doorway1_room2> <doorway1_room2_out> 
+group
+1
+36 0 can-navigate 2 <doorway1_room1> <doorway1_room1> 
+group
+1
+38 0 can-navigate 2 <doorway1_room1_out> <doorway0_room1> 
+group
+1
+76 0 can-navigate 2 <search_location_loc1_room0> <doorway0_room0> 
+group
+1
+81 0 can-navigate 2 <search_location_loc1_room0> <search_location_loc1_room0> 
+group
+1
+25 0 can-navigate 2 <doorway0_room0_out> <search_location_loc1_room0> 
+group
+1
+64 0 can-navigate 2 <object_location_loc1_room2> <object_location_loc1_room2> 
+group
+1
+42 0 can-navigate 2 <doorway1_room2> <doorway1_room2> 
+group
+1
+4 0 at-base 1 <doorway1_room1> 
+group
+1
+45 0 can-navigate 2 <doorway1_room2> <search_location_loc0_room2> 
+group
+1
+2 0 at-base 1 <doorway0_room1> 
+group
+1
+34 0 can-navigate 2 <doorway1_room1> <doorway0_room1> 
+group
+1
+39 0 can-navigate 2 <doorway1_room1_out> <doorway0_room1_out> 
+group
+1
+74 0 can-navigate 2 <search_location_loc0_room2> <object_location_loc1_room2> 
+group
+1
+48 0 can-navigate 2 <doorway1_room2_out> <object_location_loc1_room2> 
+group
+1
+30 0 can-navigate 2 <doorway0_room1_out> <doorway0_room1> 
+group
+1
+27 0 can-navigate 2 <doorway0_room1> <doorway0_room1_out> 
+group
+1
+16 0 can-navigate 2 <doorway0_room0> <init_loc> 
+group
+1
+12 0 at-base 1 <search_location_loc0_room2> 
+group
+1
+73 0 can-navigate 2 <search_location_loc0_room2> <doorway1_room2_out> 
+group
+1
+18 0 can-navigate 2 <doorway0_room0> <robot_location> 
+group
+1
+54 0 can-navigate 2 <init_loc> <robot_location> 
+group
+1
+83 0 doorway-state-known 1 <doorway1> 
+group
+1
+80 0 can-navigate 2 <search_location_loc1_room0> <robot_location> 
+group
+1
+0 0 at-base 1 <doorway0_room0> 
+group
+1
+77 0 can-navigate 2 <search_location_loc1_room0> <doorway0_room0_out> 
+group
+1
+65 0 can-navigate 2 <object_location_loc1_room2> <search_location_loc0_room2> 
+group
+1
+89 0 searched 1 <search_location_loc0_room2> 
+end_groups

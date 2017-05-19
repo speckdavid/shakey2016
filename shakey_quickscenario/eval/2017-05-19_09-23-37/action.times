@@ -1,0 +1,22 @@
+"0: (drive-base init_loc search_location_loc1_room0) [1000]" 1 91.3585
+"0: (detect-objects search_location_loc1_room0) [1]" 1 20.0867
+"0: (drive-base search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_2) [1000]" 1 42.8599
+"0: (push-object-to-pos wedge0_search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_1 object_location_loc0_room0) [1000]" 1 131.807
+"0: (drive-base robot_location doorway0_room0) [1000]" 1 91.2476
+"0: (detect-doorway-state doorway0_room0 doorway0) [1]" 1 19.0612
+"0: (drive-base doorway0_room0 box0_doorway0_room0_push_loc_2) [1000]" 1 64.9774
+"0: (push-object box0_doorway0_room0 box0_doorway0_room0_push_loc_2) [99801]" 1 43.9731
+"0: (drive-base robot_location doorway0_room0) [1000]" 1 54.1451
+"0: (detect-doorway-state doorway0_room0 doorway0) [1]" 1 18.3342
+"0: (drive-through-doorway doorway0 doorway0_room0 doorway0_room1_out) [10]" 1 40.2251
+"0: (drive-base doorway0_room1_out doorway1_room1) [1000]" 1 75.5253
+"0: (detect-doorway-state doorway1_room1 doorway1) [1]" 1 19.1165
+"0: (drive-base doorway1_room1 wedge0_doorway1_room1_push_loc_2) [1000]" 1 43.8868
+"0: (push-object wedge0_doorway1_room1 wedge0_doorway1_room1_push_loc_2) [99800]" 1 44.3872
+"0: (drive-base robot_location doorway1_room1) [1000]" 1 58.0256
+"0: (detect-doorway-state doorway1_room1 doorway1) [1]" 1 18.4056
+"0: (drive-through-doorway doorway1 doorway1_room1 doorway1_room2_out) [10]" 1 40.3081
+"0: (drive-base doorway1_room2_out search_location_loc0_room2) [1000]" 1 87.3995
+"0: (detect-objects search_location_loc0_room2) [1]" 1 18.456
+"0: (drive-base search_location_loc0_room2 box0_search_location_loc0_room2_push_loc_2) [1000]" 1 19.8856
+"0: (push-object-to-pos box0_search_location_loc0_room2 box0_search_location_loc0_room2_push_loc_2 box0_search_location_loc0_room2_push_loc_3 object_location_loc1_room2) [1000]" 1 186.118

@@ -1,0 +1,5 @@
+# Makespans for created plans and the time it took to create the plan
+# The special makespan: -1 indicates the total runtime and not the generation of a plan
+# makespan search_time(s) total_time(s) search_walltime(s) total_walltime(s)
+3023.000000 0.000000 0.060000 0.000723 0.110559
+-1.000000 0.010000 0.070000 0.012416 0.122252

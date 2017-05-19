@@ -1,0 +1,537 @@
+var0
+   0: Atom at-base(<doorway0_room0>)
+   1: <none of those>
+var1
+   0: Atom at-base(<doorway0_room0_out>)
+   1: <none of those>
+var2
+   0: Atom at-base(<doorway0_room1>)
+   1: <none of those>
+var3
+   0: Atom at-base(<doorway0_room1_out>)
+   1: <none of those>
+var4
+   0: Atom at-base(<doorway1_room1>)
+   1: <none of those>
+var5
+   0: Atom at-base(<doorway1_room1_out>)
+   1: <none of those>
+var6
+   0: Atom at-base(<doorway1_room2>)
+   1: <none of those>
+var7
+   0: Atom at-base(<doorway1_room2_out>)
+   1: <none of those>
+var8
+   0: Atom at-base(<init_loc>)
+   1: <none of those>
+var9
+   0: Atom at-base(<object_location_loc0_room0>)
+   1: <none of those>
+var10
+   0: Atom at-base(<object_location_loc1_room2>)
+   1: <none of those>
+var11
+   0: Atom at-base(<robot_location>)
+   1: <none of those>
+var12
+   0: Atom at-base(<search_location_loc0_room2>)
+   1: <none of those>
+var13
+   0: Atom at-base(<search_location_loc1_room0>)
+   1: <none of those>
+var14
+   0: Atom at-base(<wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var15
+   0: Atom at-base(<wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var16
+   0: Atom at-base(<wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>
+var17
+   0: Atom can-navigate(<doorway0_room0>, <doorway0_room0>)
+   1: <none of those>
+var18
+   0: Atom can-navigate(<doorway0_room0>, <doorway0_room0_out>)
+   1: <none of those>
+var19
+   0: Atom can-navigate(<doorway0_room0>, <init_loc>)
+   1: <none of those>
+var20
+   0: Atom can-navigate(<doorway0_room0>, <object_location_loc0_room0>)
+   1: <none of those>
+var21
+   0: Atom can-navigate(<doorway0_room0>, <robot_location>)
+   1: <none of those>
+var22
+   0: Atom can-navigate(<doorway0_room0>, <search_location_loc1_room0>)
+   1: <none of those>
+var23
+   0: Atom can-navigate(<doorway0_room0>, <wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var24
+   0: Atom can-navigate(<doorway0_room0>, <wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var25
+   0: Atom can-navigate(<doorway0_room0>, <wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>
+var26
+   0: Atom can-navigate(<doorway0_room0_out>, <doorway0_room0>)
+   1: <none of those>
+var27
+   0: Atom can-navigate(<doorway0_room0_out>, <doorway0_room0_out>)
+   1: <none of those>
+var28
+   0: Atom can-navigate(<doorway0_room0_out>, <init_loc>)
+   1: <none of those>
+var29
+   0: Atom can-navigate(<doorway0_room0_out>, <object_location_loc0_room0>)
+   1: <none of those>
+var30
+   0: Atom can-navigate(<doorway0_room0_out>, <robot_location>)
+   1: <none of those>
+var31
+   0: Atom can-navigate(<doorway0_room0_out>, <search_location_loc1_room0>)
+   1: <none of those>
+var32
+   0: Atom can-navigate(<doorway0_room0_out>, <wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var33
+   0: Atom can-navigate(<doorway0_room0_out>, <wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var34
+   0: Atom can-navigate(<doorway0_room0_out>, <wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>
+var35
+   0: Atom can-navigate(<doorway0_room1>, <doorway0_room1>)
+   1: <none of those>
+var36
+   0: Atom can-navigate(<doorway0_room1>, <doorway0_room1_out>)
+   1: <none of those>
+var37
+   0: Atom can-navigate(<doorway0_room1>, <doorway1_room1>)
+   1: <none of those>
+var38
+   0: Atom can-navigate(<doorway0_room1>, <doorway1_room1_out>)
+   1: <none of those>
+var39
+   0: Atom can-navigate(<doorway0_room1_out>, <doorway0_room1>)
+   1: <none of those>
+var40
+   0: Atom can-navigate(<doorway0_room1_out>, <doorway0_room1_out>)
+   1: <none of those>
+var41
+   0: Atom can-navigate(<doorway0_room1_out>, <doorway1_room1>)
+   1: <none of those>
+var42
+   0: Atom can-navigate(<doorway0_room1_out>, <doorway1_room1_out>)
+   1: <none of those>
+var43
+   0: Atom can-navigate(<doorway1_room1>, <doorway0_room1>)
+   1: <none of those>
+var44
+   0: Atom can-navigate(<doorway1_room1>, <doorway0_room1_out>)
+   1: <none of those>
+var45
+   0: Atom can-navigate(<doorway1_room1>, <doorway1_room1>)
+   1: <none of those>
+var46
+   0: Atom can-navigate(<doorway1_room1>, <doorway1_room1_out>)
+   1: <none of those>
+var47
+   0: Atom can-navigate(<doorway1_room1_out>, <doorway0_room1>)
+   1: <none of those>
+var48
+   0: Atom can-navigate(<doorway1_room1_out>, <doorway0_room1_out>)
+   1: <none of those>
+var49
+   0: Atom can-navigate(<doorway1_room1_out>, <doorway1_room1>)
+   1: <none of those>
+var50
+   0: Atom can-navigate(<doorway1_room1_out>, <doorway1_room1_out>)
+   1: <none of those>
+var51
+   0: Atom can-navigate(<doorway1_room2>, <doorway1_room2>)
+   1: <none of those>
+var52
+   0: Atom can-navigate(<doorway1_room2>, <doorway1_room2_out>)
+   1: <none of those>
+var53
+   0: Atom can-navigate(<doorway1_room2>, <object_location_loc1_room2>)
+   1: <none of those>
+var54
+   0: Atom can-navigate(<doorway1_room2>, <search_location_loc0_room2>)
+   1: <none of those>
+var55
+   0: Atom can-navigate(<doorway1_room2_out>, <doorway1_room2>)
+   1: <none of those>
+var56
+   0: Atom can-navigate(<doorway1_room2_out>, <doorway1_room2_out>)
+   1: <none of those>
+var57
+   0: Atom can-navigate(<doorway1_room2_out>, <object_location_loc1_room2>)
+   1: <none of those>
+var58
+   0: Atom can-navigate(<doorway1_room2_out>, <search_location_loc0_room2>)
+   1: <none of those>
+var59
+   0: Atom can-navigate(<init_loc>, <doorway0_room0>)
+   1: <none of those>
+var60
+   0: Atom can-navigate(<init_loc>, <doorway0_room0_out>)
+   1: <none of those>
+var61
+   0: Atom can-navigate(<init_loc>, <init_loc>)
+   1: <none of those>
+var62
+   0: Atom can-navigate(<init_loc>, <object_location_loc0_room0>)
+   1: <none of those>
+var63
+   0: Atom can-navigate(<init_loc>, <robot_location>)
+   1: <none of those>
+var64
+   0: Atom can-navigate(<init_loc>, <search_location_loc1_room0>)
+   1: <none of those>
+var65
+   0: Atom can-navigate(<init_loc>, <wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var66
+   0: Atom can-navigate(<init_loc>, <wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var67
+   0: Atom can-navigate(<init_loc>, <wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>
+var68
+   0: Atom can-navigate(<object_location_loc0_room0>, <doorway0_room0>)
+   1: <none of those>
+var69
+   0: Atom can-navigate(<object_location_loc0_room0>, <doorway0_room0_out>)
+   1: <none of those>
+var70
+   0: Atom can-navigate(<object_location_loc0_room0>, <init_loc>)
+   1: <none of those>
+var71
+   0: Atom can-navigate(<object_location_loc0_room0>, <object_location_loc0_room0>)
+   1: <none of those>
+var72
+   0: Atom can-navigate(<object_location_loc0_room0>, <robot_location>)
+   1: <none of those>
+var73
+   0: Atom can-navigate(<object_location_loc0_room0>, <search_location_loc1_room0>)
+   1: <none of those>
+var74
+   0: Atom can-navigate(<object_location_loc0_room0>, <wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var75
+   0: Atom can-navigate(<object_location_loc0_room0>, <wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var76
+   0: Atom can-navigate(<object_location_loc0_room0>, <wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>
+var77
+   0: Atom can-navigate(<object_location_loc1_room2>, <doorway1_room2>)
+   1: <none of those>
+var78
+   0: Atom can-navigate(<object_location_loc1_room2>, <doorway1_room2_out>)
+   1: <none of those>
+var79
+   0: Atom can-navigate(<object_location_loc1_room2>, <object_location_loc1_room2>)
+   1: <none of those>
+var80
+   0: Atom can-navigate(<object_location_loc1_room2>, <search_location_loc0_room2>)
+   1: <none of those>
+var81
+   0: Atom can-navigate(<robot_location>, <doorway0_room0>)
+   1: <none of those>
+var82
+   0: Atom can-navigate(<robot_location>, <doorway0_room0_out>)
+   1: <none of those>
+var83
+   0: Atom can-navigate(<robot_location>, <init_loc>)
+   1: <none of those>
+var84
+   0: Atom can-navigate(<robot_location>, <object_location_loc0_room0>)
+   1: <none of those>
+var85
+   0: Atom can-navigate(<robot_location>, <robot_location>)
+   1: <none of those>
+var86
+   0: Atom can-navigate(<robot_location>, <search_location_loc1_room0>)
+   1: <none of those>
+var87
+   0: Atom can-navigate(<robot_location>, <wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var88
+   0: Atom can-navigate(<robot_location>, <wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var89
+   0: Atom can-navigate(<robot_location>, <wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>
+var90
+   0: Atom can-navigate(<search_location_loc0_room2>, <doorway1_room2>)
+   1: <none of those>
+var91
+   0: Atom can-navigate(<search_location_loc0_room2>, <doorway1_room2_out>)
+   1: <none of those>
+var92
+   0: Atom can-navigate(<search_location_loc0_room2>, <object_location_loc1_room2>)
+   1: <none of those>
+var93
+   0: Atom can-navigate(<search_location_loc0_room2>, <search_location_loc0_room2>)
+   1: <none of those>
+var94
+   0: Atom can-navigate(<search_location_loc1_room0>, <doorway0_room0>)
+   1: <none of those>
+var95
+   0: Atom can-navigate(<search_location_loc1_room0>, <doorway0_room0_out>)
+   1: <none of those>
+var96
+   0: Atom can-navigate(<search_location_loc1_room0>, <init_loc>)
+   1: <none of those>
+var97
+   0: Atom can-navigate(<search_location_loc1_room0>, <object_location_loc0_room0>)
+   1: <none of those>
+var98
+   0: Atom can-navigate(<search_location_loc1_room0>, <robot_location>)
+   1: <none of those>
+var99
+   0: Atom can-navigate(<search_location_loc1_room0>, <search_location_loc1_room0>)
+   1: <none of those>
+var100
+   0: Atom can-navigate(<search_location_loc1_room0>, <wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var101
+   0: Atom can-navigate(<search_location_loc1_room0>, <wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var102
+   0: Atom can-navigate(<search_location_loc1_room0>, <wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>
+var103
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_0>, <doorway0_room0>)
+   1: <none of those>
+var104
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_0>, <doorway0_room0_out>)
+   1: <none of those>
+var105
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_0>, <init_loc>)
+   1: <none of those>
+var106
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_0>, <object_location_loc0_room0>)
+   1: <none of those>
+var107
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_0>, <robot_location>)
+   1: <none of those>
+var108
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_0>, <search_location_loc1_room0>)
+   1: <none of those>
+var109
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_0>, <wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var110
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_0>, <wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var111
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_0>, <wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>
+var112
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_1>, <doorway0_room0>)
+   1: <none of those>
+var113
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_1>, <doorway0_room0_out>)
+   1: <none of those>
+var114
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_1>, <init_loc>)
+   1: <none of those>
+var115
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_1>, <object_location_loc0_room0>)
+   1: <none of those>
+var116
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_1>, <robot_location>)
+   1: <none of those>
+var117
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_1>, <search_location_loc1_room0>)
+   1: <none of those>
+var118
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_1>, <wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var119
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_1>, <wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var120
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_1>, <wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>
+var121
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_2>, <doorway0_room0>)
+   1: <none of those>
+var122
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_2>, <doorway0_room0_out>)
+   1: <none of those>
+var123
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_2>, <init_loc>)
+   1: <none of those>
+var124
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_2>, <object_location_loc0_room0>)
+   1: <none of those>
+var125
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_2>, <robot_location>)
+   1: <none of those>
+var126
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_2>, <search_location_loc1_room0>)
+   1: <none of those>
+var127
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_2>, <wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var128
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_2>, <wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var129
+   0: Atom can-navigate(<wedge0_search_location_loc1_room0_push_loc_2>, <wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>
+var130
+   0: Atom doorway-state-known(<doorway0>)
+   1: <none of those>
+var131
+   0: Atom doorway-state-known(<doorway1>)
+   1: <none of those>
+var132
+   0: Atom new-axiom@0()
+   1: <none of those>
+var133
+   0: Atom new-axiom@3(<wedge0_search_location_loc1_room0>, <object_location_loc0_room0>)
+   1: <none of those>
+var134
+   0: Atom new-axiom@3(<wedge0_search_location_loc1_room0>, <object_location_loc1_room2>)
+   1: <none of those>
+var135
+   0: Atom new-axiom@4(<object_location_loc0_room0>)
+   1: <none of those>
+var136
+   0: Atom new-axiom@4(<object_location_loc1_room2>)
+   1: <none of those>
+var137
+   0: Atom new-axiom@5()
+   1: <none of those>
+var138
+   0: Atom new-axiom@6()
+   1: <none of those>
+var139
+   0: Atom new-axiom@7()
+   1: <none of those>
+var140
+   0: Atom not-pushed-objects()
+   1: <none of those>
+var141
+   0: Atom object-at-location(<object_location_loc0_room0>)
+   1: <none of those>
+var142
+   0: Atom object-at-location(<object_location_loc1_room2>)
+   1: <none of those>
+var143
+   0: Atom object_at(<object_location_loc0_room0>)
+   1: <none of those>
+var144
+   0: Atom object_occupied(<wedge0_search_location_loc1_room0>)
+   1: <none of those>
+var145
+   0: Atom pushed(<wedge0_search_location_loc1_room0>)
+   1: <none of those>
+var146
+   0: Atom searched(<search_location_loc0_room2>)
+   1: <none of those>
+var147
+   0: Atom searched(<search_location_loc1_room0>)
+   1: <none of those>
+var148
+   -2: PNE derived!1()
+var149
+   -2: PNE derived!2()
+var150
+   -2: PNE derived!3()
+var151
+   0: ModuleCall candrivetopos(<doorway0_room0>)
+   1: <none of those>
+var152
+   0: ModuleCall candrivetopos(<doorway0_room0_out>)
+   1: <none of those>
+var153
+   0: ModuleCall candrivetopos(<doorway0_room1>)
+   1: <none of those>
+var154
+   0: ModuleCall candrivetopos(<doorway0_room1_out>)
+   1: <none of those>
+var155
+   0: ModuleCall candrivetopos(<doorway1_room1>)
+   1: <none of those>
+var156
+   0: ModuleCall candrivetopos(<doorway1_room1_out>)
+   1: <none of those>
+var157
+   0: ModuleCall candrivetopos(<doorway1_room2>)
+   1: <none of those>
+var158
+   0: ModuleCall candrivetopos(<doorway1_room2_out>)
+   1: <none of those>
+var159
+   0: ModuleCall candrivetopos(<init_loc>)
+   1: <none of those>
+var160
+   0: ModuleCall candrivetopos(<object_location_loc0_room0>)
+   1: <none of those>
+var161
+   0: ModuleCall candrivetopos(<object_location_loc1_room2>)
+   1: <none of those>
+var162
+   0: ModuleCall candrivetopos(<robot_location>)
+   1: <none of those>
+var163
+   0: ModuleCall candrivetopos(<search_location_loc0_room2>)
+   1: <none of those>
+var164
+   0: ModuleCall candrivetopos(<search_location_loc1_room0>)
+   1: <none of those>
+var165
+   0: ModuleCall candrivetopos(<wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var166
+   0: ModuleCall candrivetopos(<wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var167
+   0: ModuleCall candrivetopos(<wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>
+var168
+   0: ModuleCall canpushdistance(<wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var169
+   0: ModuleCall canpushdistance(<wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var170
+   0: ModuleCall canpushdistance(<wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>
+var171
+   0: ModuleCall canpushtopos(<wedge0_search_location_loc1_room0_push_loc_0>, <wedge0_search_location_loc1_room0_push_loc_1>, <object_location_loc0_room0>)
+   1: <none of those>
+var172
+   0: ModuleCall canpushtopos(<wedge0_search_location_loc1_room0_push_loc_0>, <wedge0_search_location_loc1_room0_push_loc_2>, <object_location_loc0_room0>)
+   1: <none of those>
+var173
+   0: ModuleCall canpushtopos(<wedge0_search_location_loc1_room0_push_loc_1>, <wedge0_search_location_loc1_room0_push_loc_0>, <object_location_loc0_room0>)
+   1: <none of those>
+var174
+   0: ModuleCall canpushtopos(<wedge0_search_location_loc1_room0_push_loc_1>, <wedge0_search_location_loc1_room0_push_loc_2>, <object_location_loc0_room0>)
+   1: <none of those>
+var175
+   0: ModuleCall canpushtopos(<wedge0_search_location_loc1_room0_push_loc_2>, <wedge0_search_location_loc1_room0_push_loc_0>, <object_location_loc0_room0>)
+   1: <none of those>
+var176
+   0: ModuleCall canpushtopos(<wedge0_search_location_loc1_room0_push_loc_2>, <wedge0_search_location_loc1_room0_push_loc_1>, <object_location_loc0_room0>)
+   1: <none of those>
+var177
+   0: ModuleCall costpushdistance(<wedge0_search_location_loc1_room0_push_loc_0>)
+   1: <none of those>
+var178
+   0: ModuleCall costpushdistance(<wedge0_search_location_loc1_room0_push_loc_1>)
+   1: <none of those>
+var179
+   0: ModuleCall costpushdistance(<wedge0_search_location_loc1_room0_push_loc_2>)
+   1: <none of those>

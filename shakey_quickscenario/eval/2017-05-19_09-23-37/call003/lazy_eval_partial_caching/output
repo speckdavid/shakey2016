@@ -1,0 +1,5879 @@
+0
+begin_variables
+72
+var0 2 -1
+var1 2 -1
+var2 2 -1
+var3 2 -1
+var4 2 -1
+var5 2 -1
+var6 2 -1
+var7 2 -1
+var8 2 -1
+var9 2 -1
+var10 2 -1
+var11 2 -1
+var12 2 -1
+var13 2 -1
+var14 2 -1
+var15 2 -1
+var16 2 -1
+var21 2 -1
+var30 2 -1
+var63 2 -1
+var72 2 -1
+var98 2 -1
+var107 2 -1
+var116 2 -1
+var125 2 -1
+var130 2 -1
+var131 2 -1
+var132 2 1
+var133 2 -1
+var135 2 1
+var137 2 1
+var138 2 1
+var139 2 1
+var140 2 1
+var141 2 1
+var143 2 -1
+var144 2 -1
+var145 2 -1
+var146 2 -1
+var147 2 -1
+var148 -1 -1
+var149 -1 -1
+var150 -1 -1
+var151 -2 -1
+var152 -2 -1
+var153 -2 -1
+var154 -2 -1
+var155 -2 -1
+var156 -2 -1
+var157 -2 -1
+var158 -2 -1
+var159 -2 -1
+var160 -2 -1
+var161 -2 -1
+var162 -2 -1
+var163 -2 -1
+var164 -2 -1
+var165 -2 -1
+var166 -2 -1
+var167 -2 -1
+var168 -2 -1
+var169 -2 -1
+var170 -2 -1
+var171 -2 -1
+var172 -2 -1
+var173 -2 -1
+var174 -2 -1
+var175 -2 -1
+var176 -2 -1
+var177 -3 -1
+var178 -3 -1
+var179 -3 -1
+end_variables
+begin_oplinits
+0
+end_oplinits
+begin_objects
+25
+location robot_location
+doorway doorway0
+doorway doorway1
+doorway_in_location doorway0_room0
+doorway_in_location doorway0_room1
+doorway_in_location doorway1_room1
+doorway_in_location doorway1_room2
+doorway_out_location doorway0_room0_out
+doorway_out_location doorway0_room1_out
+doorway_out_location doorway1_room1_out
+doorway_out_location doorway1_room2_out
+frameid /map
+location init_loc
+location robot_location
+movable_object wedge0_search_location_loc1_room0
+object_location object_location_loc0_room0
+object_location object_location_loc1_room2
+pushable_location wedge0_search_location_loc1_room0_push_loc_0
+pushable_location wedge0_search_location_loc1_room0_push_loc_1
+pushable_location wedge0_search_location_loc1_room0_push_loc_2
+room room0
+room room1
+room room2
+search_location search_location_loc0_room2
+search_location search_location_loc1_room0
+end_objects
+begin_pddl_translation
+140
+at-base 1 doorway0_room0 0 0
+at-base 1 doorway0_room0_out 1 0
+at-base 1 doorway0_room1 2 0
+at-base 1 doorway0_room1_out 3 0
+at-base 1 doorway1_room1 4 0
+at-base 1 doorway1_room1_out 5 0
+at-base 1 doorway1_room2 6 0
+at-base 1 doorway1_room2_out 7 0
+at-base 1 init_loc 8 0
+at-base 1 object_location_loc0_room0 9 0
+at-base 1 object_location_loc1_room2 10 0
+at-base 1 robot_location 11 0
+at-base 1 search_location_loc0_room2 12 0
+at-base 1 search_location_loc1_room0 13 0
+at-base 1 wedge0_search_location_loc1_room0_push_loc_0 14 0
+at-base 1 wedge0_search_location_loc1_room0_push_loc_1 15 0
+at-base 1 wedge0_search_location_loc1_room0_push_loc_2 16 0
+can-navigate 2 doorway0_room0 doorway0_room0 -1 0
+can-navigate 2 doorway0_room0 doorway0_room0_out -1 0
+can-navigate 2 doorway0_room0 init_loc -1 0
+can-navigate 2 doorway0_room0 object_location_loc0_room0 -1 0
+can-navigate 2 doorway0_room0 robot_location 17 0
+can-navigate 2 doorway0_room0 search_location_loc1_room0 -1 0
+can-navigate 2 doorway0_room0 wedge0_search_location_loc1_room0_push_loc_0 -1 0
+can-navigate 2 doorway0_room0 wedge0_search_location_loc1_room0_push_loc_1 -1 0
+can-navigate 2 doorway0_room0 wedge0_search_location_loc1_room0_push_loc_2 -1 0
+can-navigate 2 doorway0_room0_out doorway0_room0 -1 0
+can-navigate 2 doorway0_room0_out doorway0_room0_out -1 0
+can-navigate 2 doorway0_room0_out init_loc -1 0
+can-navigate 2 doorway0_room0_out object_location_loc0_room0 -1 0
+can-navigate 2 doorway0_room0_out robot_location 18 0
+can-navigate 2 doorway0_room0_out search_location_loc1_room0 -1 0
+can-navigate 2 doorway0_room0_out wedge0_search_location_loc1_room0_push_loc_0 -1 0
+can-navigate 2 doorway0_room0_out wedge0_search_location_loc1_room0_push_loc_1 -1 0
+can-navigate 2 doorway0_room0_out wedge0_search_location_loc1_room0_push_loc_2 -1 0
+can-navigate 2 doorway0_room1 doorway0_room1 -1 0
+can-navigate 2 doorway0_room1 doorway0_room1_out -1 0
+can-navigate 2 doorway0_room1 doorway1_room1 -1 0
+can-navigate 2 doorway0_room1 doorway1_room1_out -1 0
+can-navigate 2 doorway0_room1_out doorway0_room1 -1 0
+can-navigate 2 doorway0_room1_out doorway0_room1_out -1 0
+can-navigate 2 doorway0_room1_out doorway1_room1 -1 0
+can-navigate 2 doorway0_room1_out doorway1_room1_out -1 0
+can-navigate 2 doorway1_room1 doorway0_room1 -1 0
+can-navigate 2 doorway1_room1 doorway0_room1_out -1 0
+can-navigate 2 doorway1_room1 doorway1_room1 -1 0
+can-navigate 2 doorway1_room1 doorway1_room1_out -1 0
+can-navigate 2 doorway1_room1_out doorway0_room1 -1 0
+can-navigate 2 doorway1_room1_out doorway0_room1_out -1 0
+can-navigate 2 doorway1_room1_out doorway1_room1 -1 0
+can-navigate 2 doorway1_room1_out doorway1_room1_out -1 0
+can-navigate 2 doorway1_room2 doorway1_room2 -1 0
+can-navigate 2 doorway1_room2 doorway1_room2_out -1 0
+can-navigate 2 doorway1_room2 object_location_loc1_room2 -1 0
+can-navigate 2 doorway1_room2 search_location_loc0_room2 -1 0
+can-navigate 2 doorway1_room2_out doorway1_room2 -1 0
+can-navigate 2 doorway1_room2_out doorway1_room2_out -1 0
+can-navigate 2 doorway1_room2_out object_location_loc1_room2 -1 0
+can-navigate 2 doorway1_room2_out search_location_loc0_room2 -1 0
+can-navigate 2 init_loc doorway0_room0 -1 0
+can-navigate 2 init_loc doorway0_room0_out -1 0
+can-navigate 2 init_loc init_loc -1 0
+can-navigate 2 init_loc object_location_loc0_room0 -1 0
+can-navigate 2 init_loc robot_location 19 0
+can-navigate 2 init_loc search_location_loc1_room0 -1 0
+can-navigate 2 init_loc wedge0_search_location_loc1_room0_push_loc_0 -1 0
+can-navigate 2 init_loc wedge0_search_location_loc1_room0_push_loc_1 -1 0
+can-navigate 2 init_loc wedge0_search_location_loc1_room0_push_loc_2 -1 0
+can-navigate 2 object_location_loc0_room0 doorway0_room0 -1 0
+can-navigate 2 object_location_loc0_room0 doorway0_room0_out -1 0
+can-navigate 2 object_location_loc0_room0 init_loc -1 0
+can-navigate 2 object_location_loc0_room0 object_location_loc0_room0 -1 0
+can-navigate 2 object_location_loc0_room0 robot_location 20 0
+can-navigate 2 object_location_loc0_room0 search_location_loc1_room0 -1 0
+can-navigate 2 object_location_loc0_room0 wedge0_search_location_loc1_room0_push_loc_0 -1 0
+can-navigate 2 object_location_loc0_room0 wedge0_search_location_loc1_room0_push_loc_1 -1 0
+can-navigate 2 object_location_loc0_room0 wedge0_search_location_loc1_room0_push_loc_2 -1 0
+can-navigate 2 object_location_loc1_room2 doorway1_room2 -1 0
+can-navigate 2 object_location_loc1_room2 doorway1_room2_out -1 0
+can-navigate 2 object_location_loc1_room2 object_location_loc1_room2 -1 0
+can-navigate 2 object_location_loc1_room2 search_location_loc0_room2 -1 0
+can-navigate 2 robot_location doorway0_room0 -1 0
+can-navigate 2 robot_location doorway0_room0_out -1 0
+can-navigate 2 robot_location init_loc -1 0
+can-navigate 2 robot_location object_location_loc0_room0 -1 0
+can-navigate 2 robot_location robot_location -1 0
+can-navigate 2 robot_location search_location_loc1_room0 -1 0
+can-navigate 2 robot_location wedge0_search_location_loc1_room0_push_loc_0 -1 0
+can-navigate 2 robot_location wedge0_search_location_loc1_room0_push_loc_1 -1 0
+can-navigate 2 robot_location wedge0_search_location_loc1_room0_push_loc_2 -1 0
+can-navigate 2 search_location_loc0_room2 doorway1_room2 -1 0
+can-navigate 2 search_location_loc0_room2 doorway1_room2_out -1 0
+can-navigate 2 search_location_loc0_room2 object_location_loc1_room2 -1 0
+can-navigate 2 search_location_loc0_room2 search_location_loc0_room2 -1 0
+can-navigate 2 search_location_loc1_room0 doorway0_room0 -1 0
+can-navigate 2 search_location_loc1_room0 doorway0_room0_out -1 0
+can-navigate 2 search_location_loc1_room0 init_loc -1 0
+can-navigate 2 search_location_loc1_room0 object_location_loc0_room0 -1 0
+can-navigate 2 search_location_loc1_room0 robot_location 21 0
+can-navigate 2 search_location_loc1_room0 search_location_loc1_room0 -1 0
+can-navigate 2 search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_0 -1 0
+can-navigate 2 search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_1 -1 0
+can-navigate 2 search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_2 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_0 doorway0_room0 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_0 doorway0_room0_out -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_0 init_loc -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_0 object_location_loc0_room0 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_0 robot_location 22 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_0 search_location_loc1_room0 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_0 wedge0_search_location_loc1_room0_push_loc_0 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_0 wedge0_search_location_loc1_room0_push_loc_1 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_0 wedge0_search_location_loc1_room0_push_loc_2 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_1 doorway0_room0 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_1 doorway0_room0_out -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_1 init_loc -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_1 object_location_loc0_room0 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_1 robot_location 23 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_1 search_location_loc1_room0 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_0 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_1 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_2 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_2 doorway0_room0 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_2 doorway0_room0_out -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_2 init_loc -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_2 object_location_loc0_room0 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_2 robot_location 24 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_2 search_location_loc1_room0 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_0 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_1 -1 0
+can-navigate 2 wedge0_search_location_loc1_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_2 -1 0
+doorway-state-known 1 doorway0 25 0
+doorway-state-known 1 doorway1 26 0
+not-pushed-objects 0 33 0
+object-at-location 1 object_location_loc0_room0 34 0
+object-at-location 1 object_location_loc1_room2 -1 0
+object_at 1 object_location_loc0_room0 35 0
+object_occupied 1 wedge0_search_location_loc1_room0 36 0
+pushed 1 wedge0_search_location_loc1_room0 37 0
+searched 1 search_location_loc0_room2 38 0
+searched 1 search_location_loc1_room0 39 0
+0
+end_pddl_translation
+begin_constant_facts
+47
+belongs-to-doorway!val 2 doorway0_room0 doorway0
+belongs-to-doorway!val 2 doorway0_room0_out doorway0
+belongs-to-doorway!val 2 doorway0_room1 doorway0
+belongs-to-doorway!val 2 doorway0_room1_out doorway0
+belongs-to-doorway!val 2 doorway1_room1 doorway1
+belongs-to-doorway!val 2 doorway1_room1_out doorway1
+belongs-to-doorway!val 2 doorway1_room2 doorway1
+belongs-to-doorway!val 2 doorway1_room2_out doorway1
+belongs-to-movable-object!val 2 wedge0_search_location_loc1_room0_push_loc_0 wedge0_search_location_loc1_room0
+belongs-to-movable-object!val 2 wedge0_search_location_loc1_room0_push_loc_1 wedge0_search_location_loc1_room0
+belongs-to-movable-object!val 2 wedge0_search_location_loc1_room0_push_loc_2 wedge0_search_location_loc1_room0
+belongs-to-search-location!val 2 wedge0_search_location_loc1_room0 search_location_loc1_room0
+frame-id!val 2 doorway0_room0 /map
+frame-id!val 2 doorway0_room0_out /map
+frame-id!val 2 doorway0_room1 /map
+frame-id!val 2 doorway0_room1_out /map
+frame-id!val 2 doorway1_room1 /map
+frame-id!val 2 doorway1_room1_out /map
+frame-id!val 2 doorway1_room2 /map
+frame-id!val 2 doorway1_room2_out /map
+frame-id!val 2 init_loc /map
+frame-id!val 2 object_location_loc0_room0 /map
+frame-id!val 2 object_location_loc1_room2 /map
+frame-id!val 2 robot_location /map
+frame-id!val 2 search_location_loc0_room2 /map
+frame-id!val 2 search_location_loc1_room0 /map
+frame-id!val 2 wedge0_search_location_loc1_room0_push_loc_0 /map
+frame-id!val 2 wedge0_search_location_loc1_room0_push_loc_1 /map
+frame-id!val 2 wedge0_search_location_loc1_room0_push_loc_2 /map
+in-room!val 2 wedge0_search_location_loc1_room0 room0
+location-in-room!val 2 doorway0_room0 room0
+location-in-room!val 2 doorway0_room0_out room0
+location-in-room!val 2 doorway0_room1 room1
+location-in-room!val 2 doorway0_room1_out room1
+location-in-room!val 2 doorway1_room1 room1
+location-in-room!val 2 doorway1_room1_out room1
+location-in-room!val 2 doorway1_room2 room2
+location-in-room!val 2 doorway1_room2_out room2
+location-in-room!val 2 init_loc room0
+location-in-room!val 2 object_location_loc0_room0 room0
+location-in-room!val 2 object_location_loc1_room2 room2
+location-in-room!val 2 robot_location room0
+location-in-room!val 2 search_location_loc0_room2 room2
+location-in-room!val 2 search_location_loc1_room0 room0
+location-in-room!val 2 wedge0_search_location_loc1_room0_push_loc_0 room0
+location-in-room!val 2 wedge0_search_location_loc1_room0_push_loc_1 room0
+location-in-room!val 2 wedge0_search_location_loc1_room0_push_loc_2 room0
+142
+push-cost 1 wedge0_search_location_loc1_room0_push_loc_0 260.000000
+push-cost 1 wedge0_search_location_loc1_room0_push_loc_1 290.000000
+push-cost 1 wedge0_search_location_loc1_room0_push_loc_2 225.000000
+push-distance 1 wedge0_search_location_loc1_room0_push_loc_0 2.600000
+push-distance 1 wedge0_search_location_loc1_room0_push_loc_1 2.900000
+push-distance 1 wedge0_search_location_loc1_room0_push_loc_2 2.250000
+qw 1 doorway0_room0 0.999801
+qw 1 doorway0_room0_out -0.019957
+qw 1 doorway0_room1 -0.019813
+qw 1 doorway0_room1_out -0.999804
+qw 1 doorway1_room1 0.999967
+qw 1 doorway1_room1_out -0.008175
+qw 1 doorway1_room2 0.012267
+qw 1 doorway1_room2_out -0.999925
+qw 1 init_loc 1.000000
+qw 1 object_location_loc0_room0 1.000000
+qw 1 object_location_loc1_room2 1.000000
+qw 1 robot_location 0.782293
+qw 1 search_location_loc0_room2 -0.179464
+qw 1 search_location_loc1_room0 0.902964
+qw 1 wedge0_search_location_loc1_room0_push_loc_0 0.636354
+qw 1 wedge0_search_location_loc1_room0_push_loc_1 0.771397
+qw 1 wedge0_search_location_loc1_room0_push_loc_2 0.095692
+qx 1 doorway0_room0 0.000000
+qx 1 doorway0_room0_out 0.000000
+qx 1 doorway0_room1 0.000000
+qx 1 doorway0_room1_out 0.000000
+qx 1 doorway1_room1 0.000000
+qx 1 doorway1_room1_out 0.000000
+qx 1 doorway1_room2 0.000000
+qx 1 doorway1_room2_out 0.000000
+qx 1 init_loc 0.000000
+qx 1 object_location_loc0_room0 0.000000
+qx 1 object_location_loc1_room2 0.000000
+qx 1 robot_location 0.000001
+qx 1 search_location_loc0_room2 0.000000
+qx 1 search_location_loc1_room0 0.000000
+qx 1 wedge0_search_location_loc1_room0_push_loc_0 0.000000
+qx 1 wedge0_search_location_loc1_room0_push_loc_1 0.000000
+qx 1 wedge0_search_location_loc1_room0_push_loc_2 0.000000
+qy 1 doorway0_room0 0.000000
+qy 1 doorway0_room0_out 0.000000
+qy 1 doorway0_room1 0.000000
+qy 1 doorway0_room1_out 0.000000
+qy 1 doorway1_room1 0.000000
+qy 1 doorway1_room1_out 0.000000
+qy 1 doorway1_room2 0.000000
+qy 1 doorway1_room2_out 0.000000
+qy 1 init_loc 0.000000
+qy 1 object_location_loc0_room0 0.000000
+qy 1 object_location_loc1_room2 0.000000
+qy 1 robot_location -0.000000
+qy 1 search_location_loc0_room2 0.000000
+qy 1 search_location_loc1_room0 0.000000
+qy 1 wedge0_search_location_loc1_room0_push_loc_0 -0.000000
+qy 1 wedge0_search_location_loc1_room0_push_loc_1 0.000000
+qy 1 wedge0_search_location_loc1_room0_push_loc_2 -0.000000
+qz 1 doorway0_room0 0.019957
+qz 1 doorway0_room0_out 0.999801
+qz 1 doorway0_room1 0.999804
+qz 1 doorway0_room1_out -0.019813
+qz 1 doorway1_room1 0.008175
+qz 1 doorway1_room1_out 0.999967
+qz 1 doorway1_room2 0.999925
+qz 1 doorway1_room2_out 0.012267
+qz 1 init_loc 0.000000
+qz 1 object_location_loc0_room0 0.000000
+qz 1 object_location_loc1_room2 0.000000
+qz 1 robot_location -0.622911
+qz 1 search_location_loc0_room2 0.983765
+qz 1 search_location_loc1_room0 -0.429715
+qz 1 wedge0_search_location_loc1_room0_push_loc_0 0.771397
+qz 1 wedge0_search_location_loc1_room0_push_loc_1 -0.636354
+qz 1 wedge0_search_location_loc1_room0_push_loc_2 -0.995411
+timestamp 1 doorway0_room0 1625.210000
+timestamp 1 doorway0_room0_out 1625.210000
+timestamp 1 doorway0_room1 1690.030000
+timestamp 1 doorway0_room1_out 1690.030000
+timestamp 1 doorway1_room1 1756.040000
+timestamp 1 doorway1_room1_out 1756.040000
+timestamp 1 doorway1_room2 1821.770000
+timestamp 1 doorway1_room2_out 1821.770000
+timestamp 1 init_loc 446.568000
+timestamp 1 object_location_loc0_room0 1366380000.000000
+timestamp 1 object_location_loc1_room2 1366380000.000000
+timestamp 1 robot_location 612.135000
+timestamp 1 search_location_loc0_room2 1495180000.000000
+timestamp 1 search_location_loc1_room0 1495170000.000000
+timestamp 1 wedge0_search_location_loc1_room0_push_loc_0 518.713000
+timestamp 1 wedge0_search_location_loc1_room0_push_loc_1 518.714000
+timestamp 1 wedge0_search_location_loc1_room0_push_loc_2 518.714000
+x 1 doorway0_room0 3.455620
+x 1 doorway0_room0_out 3.455620
+x 1 doorway0_room1 8.200000
+x 1 doorway0_room1_out 8.200000
+x 1 doorway1_room1 7.035100
+x 1 doorway1_room1_out 7.035100
+x 1 doorway1_room2 11.653700
+x 1 doorway1_room2_out 11.653700
+x 1 init_loc 0.000000
+x 1 object_location_loc0_room0 -5.000000
+x 1 object_location_loc1_room2 12.000000
+x 1 robot_location -5.314130
+x 1 search_location_loc0_room2 17.362400
+x 1 search_location_loc1_room0 -4.875510
+x 1 wedge0_search_location_loc1_room0_push_loc_0 -3.620190
+x 1 wedge0_search_location_loc1_room0_push_loc_1 -4.057480
+x 1 wedge0_search_location_loc1_room0_push_loc_2 -2.752070
+y 1 doorway0_room0 1.481760
+y 1 doorway0_room0_out 1.481760
+y 1 doorway0_room1 1.505140
+y 1 doorway0_room1_out 1.505140
+y 1 doorway1_room1 -3.551470
+y 1 doorway1_room1_out -3.551470
+y 1 doorway1_room2 -3.527860
+y 1 doorway1_room2_out -3.527860
+y 1 init_loc 0.000000
+y 1 object_location_loc0_room0 -1.000000
+y 1 object_location_loc1_room2 3.500000
+y 1 robot_location 0.211620
+y 1 search_location_loc0_room2 0.833664
+y 1 search_location_loc1_room0 3.263760
+y 1 wedge0_search_location_loc1_room0_push_loc_0 -0.149385
+y 1 wedge0_search_location_loc1_room0_push_loc_1 2.108880
+y 1 wedge0_search_location_loc1_room0_push_loc_2 1.190650
+z 1 doorway0_room0 -0.000092
+z 1 doorway0_room0_out -0.000092
+z 1 doorway0_room1 -0.000000
+z 1 doorway0_room1_out -0.000000
+z 1 doorway1_room1 0.000000
+z 1 doorway1_room1_out 0.000000
+z 1 doorway1_room2 0.000000
+z 1 doorway1_room2_out 0.000000
+z 1 init_loc 0.000000
+z 1 object_location_loc0_room0 0.000000
+z 1 object_location_loc1_room2 0.000000
+z 1 robot_location 0.051045
+z 1 search_location_loc0_room2 0.000000
+z 1 search_location_loc1_room0 0.000000
+z 1 wedge0_search_location_loc1_room0_push_loc_0 0.000000
+z 1 wedge0_search_location_loc1_room0_push_loc_1 0.000000
+z 1 wedge0_search_location_loc1_room0_push_loc_2 0.000000
+end_constant_facts
+begin_modules
+0
+0
+0
+26
+canDriveToPos libshakey_planning_actions.so 1  ?g location doorway0_room0 43
+canDriveToPos libshakey_planning_actions.so 1  ?g location doorway0_room0_out 44
+canDriveToPos libshakey_planning_actions.so 1  ?g location doorway0_room1 45
+canDriveToPos libshakey_planning_actions.so 1  ?g location doorway0_room1_out 46
+canDriveToPos libshakey_planning_actions.so 1  ?g location doorway1_room1 47
+canDriveToPos libshakey_planning_actions.so 1  ?g location doorway1_room1_out 48
+canDriveToPos libshakey_planning_actions.so 1  ?g location doorway1_room2 49
+canDriveToPos libshakey_planning_actions.so 1  ?g location doorway1_room2_out 50
+canDriveToPos libshakey_planning_actions.so 1  ?g location init_loc 51
+canDriveToPos libshakey_planning_actions.so 1  ?g location object_location_loc0_room0 52
+canDriveToPos libshakey_planning_actions.so 1  ?g location object_location_loc1_room2 53
+canDriveToPos libshakey_planning_actions.so 1  ?g location robot_location 54
+canDriveToPos libshakey_planning_actions.so 1  ?g location search_location_loc0_room2 55
+canDriveToPos libshakey_planning_actions.so 1  ?g location search_location_loc1_room0 56
+canDriveToPos libshakey_planning_actions.so 1  ?g location wedge0_search_location_loc1_room0_push_loc_0 57
+canDriveToPos libshakey_planning_actions.so 1  ?g location wedge0_search_location_loc1_room0_push_loc_1 58
+canDriveToPos libshakey_planning_actions.so 1  ?g location wedge0_search_location_loc1_room0_push_loc_2 59
+canPushDistance libshakey_planning_actions.so 1  ?u location wedge0_search_location_loc1_room0_push_loc_0 60
+canPushDistance libshakey_planning_actions.so 1  ?u location wedge0_search_location_loc1_room0_push_loc_1 61
+canPushDistance libshakey_planning_actions.so 1  ?u location wedge0_search_location_loc1_room0_push_loc_2 62
+canPushToPos libshakey_planning_actions.so 3  ?p pushable_location wedge0_search_location_loc1_room0_push_loc_0  ?q pushable_location wedge0_search_location_loc1_room0_push_loc_1  ?b object_location object_location_loc0_room0 63
+canPushToPos libshakey_planning_actions.so 3  ?p pushable_location wedge0_search_location_loc1_room0_push_loc_0  ?q pushable_location wedge0_search_location_loc1_room0_push_loc_2  ?b object_location object_location_loc0_room0 64
+canPushToPos libshakey_planning_actions.so 3  ?p pushable_location wedge0_search_location_loc1_room0_push_loc_1  ?q pushable_location wedge0_search_location_loc1_room0_push_loc_0  ?b object_location object_location_loc0_room0 65
+canPushToPos libshakey_planning_actions.so 3  ?p pushable_location wedge0_search_location_loc1_room0_push_loc_1  ?q pushable_location wedge0_search_location_loc1_room0_push_loc_2  ?b object_location object_location_loc0_room0 66
+canPushToPos libshakey_planning_actions.so 3  ?p pushable_location wedge0_search_location_loc1_room0_push_loc_2  ?q pushable_location wedge0_search_location_loc1_room0_push_loc_0  ?b object_location object_location_loc0_room0 67
+canPushToPos libshakey_planning_actions.so 3  ?p pushable_location wedge0_search_location_loc1_room0_push_loc_2  ?q pushable_location wedge0_search_location_loc1_room0_push_loc_1  ?b object_location object_location_loc0_room0 68
+0
+3
+costPushDistance libshakey_planning_actions.so 1  ?u location wedge0_search_location_loc1_room0_push_loc_0 69
+costPushDistance libshakey_planning_actions.so 1  ?u location wedge0_search_location_loc1_room0_push_loc_1 70
+costPushDistance libshakey_planning_actions.so 1  ?u location wedge0_search_location_loc1_room0_push_loc_2 71
+0
+end_modules
+begin_state
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+0
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+0
+0
+0
+0
+0
+1
+0
+0
+0
+1
+0
+1
+10
+1000
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-3
+-4
+-4
+-4
+end_state
+begin_goal
+1
+27 0
+end_goal
+115
+begin_operator
+detect-doorway-state doorway0_room0 doorway0
+0
+= 40
+2
+0 0
+25 1
+0
+0
+0
+1
+0
+0
+0
+25 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+detect-doorway-state doorway0_room1 doorway0
+0
+= 40
+2
+2 0
+25 1
+0
+0
+0
+1
+0
+0
+0
+25 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+detect-doorway-state doorway1_room1 doorway1
+0
+= 40
+2
+26 1
+4 0
+0
+0
+0
+1
+0
+0
+0
+26 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+detect-doorway-state doorway1_room2 doorway1
+0
+= 40
+2
+26 1
+6 0
+0
+0
+0
+1
+0
+0
+0
+26 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+detect-objects search_location_loc0_room2
+0
+= 40
+3
+12 0
+38 1
+33 1
+0
+0
+0
+1
+0
+0
+0
+38 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+detect-objects search_location_loc1_room0
+0
+= 40
+3
+39 1
+33 1
+13 0
+0
+0
+0
+1
+0
+0
+0
+39 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0 doorway0_room0_out
+0
+= 42
+1
+44 0
+0
+0
+1
+0
+0
+0
+0 0 1
+1
+0
+0
+0
+1 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0 init_loc
+0
+= 42
+1
+51 0
+0
+0
+1
+0
+0
+0
+0 0 1
+1
+0
+0
+0
+8 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0 object_location_loc0_room0
+0
+= 42
+1
+52 0
+0
+0
+1
+0
+0
+0
+0 0 1
+1
+0
+0
+0
+9 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0 robot_location
+0
+= 42
+2
+54 0
+17 0
+0
+0
+1
+0
+0
+0
+0 0 1
+1
+0
+0
+0
+11 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0 search_location_loc1_room0
+0
+= 42
+1
+56 0
+0
+0
+1
+0
+0
+0
+0 0 1
+1
+0
+0
+0
+13 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0 wedge0_search_location_loc1_room0_push_loc_0
+0
+= 42
+1
+57 0
+0
+0
+1
+0
+0
+0
+0 0 1
+1
+0
+0
+0
+14 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0 wedge0_search_location_loc1_room0_push_loc_1
+0
+= 42
+1
+58 0
+0
+0
+1
+0
+0
+0
+0 0 1
+1
+0
+0
+0
+15 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0 wedge0_search_location_loc1_room0_push_loc_2
+0
+= 42
+1
+59 0
+0
+0
+1
+0
+0
+0
+0 0 1
+1
+0
+0
+0
+16 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0_out doorway0_room0
+0
+= 42
+1
+43 0
+0
+0
+1
+0
+0
+0
+1 0 1
+1
+0
+0
+0
+0 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0_out init_loc
+0
+= 42
+1
+51 0
+0
+0
+1
+0
+0
+0
+1 0 1
+1
+0
+0
+0
+8 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0_out object_location_loc0_room0
+0
+= 42
+1
+52 0
+0
+0
+1
+0
+0
+0
+1 0 1
+1
+0
+0
+0
+9 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0_out robot_location
+0
+= 42
+2
+54 0
+18 0
+0
+0
+1
+0
+0
+0
+1 0 1
+1
+0
+0
+0
+11 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0_out search_location_loc1_room0
+0
+= 42
+1
+56 0
+0
+0
+1
+0
+0
+0
+1 0 1
+1
+0
+0
+0
+13 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0_out wedge0_search_location_loc1_room0_push_loc_0
+0
+= 42
+1
+57 0
+0
+0
+1
+0
+0
+0
+1 0 1
+1
+0
+0
+0
+14 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0_out wedge0_search_location_loc1_room0_push_loc_1
+0
+= 42
+1
+58 0
+0
+0
+1
+0
+0
+0
+1 0 1
+1
+0
+0
+0
+15 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room0_out wedge0_search_location_loc1_room0_push_loc_2
+0
+= 42
+1
+59 0
+0
+0
+1
+0
+0
+0
+1 0 1
+1
+0
+0
+0
+16 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room1 doorway0_room1_out
+0
+= 42
+1
+46 0
+0
+0
+1
+0
+0
+0
+2 0 1
+1
+0
+0
+0
+3 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room1 doorway1_room1
+0
+= 42
+1
+47 0
+0
+0
+1
+0
+0
+0
+2 0 1
+1
+0
+0
+0
+4 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room1 doorway1_room1_out
+0
+= 42
+1
+48 0
+0
+0
+1
+0
+0
+0
+2 0 1
+1
+0
+0
+0
+5 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room1_out doorway0_room1
+0
+= 42
+1
+45 0
+0
+0
+1
+0
+0
+0
+3 0 1
+1
+0
+0
+0
+2 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room1_out doorway1_room1
+0
+= 42
+1
+47 0
+0
+0
+1
+0
+0
+0
+3 0 1
+1
+0
+0
+0
+4 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway0_room1_out doorway1_room1_out
+0
+= 42
+1
+48 0
+0
+0
+1
+0
+0
+0
+3 0 1
+1
+0
+0
+0
+5 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway1_room1 doorway0_room1
+0
+= 42
+1
+45 0
+0
+0
+1
+0
+0
+0
+4 0 1
+1
+0
+0
+0
+2 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway1_room1 doorway0_room1_out
+0
+= 42
+1
+46 0
+0
+0
+1
+0
+0
+0
+4 0 1
+1
+0
+0
+0
+3 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway1_room1 doorway1_room1_out
+0
+= 42
+1
+48 0
+0
+0
+1
+0
+0
+0
+4 0 1
+1
+0
+0
+0
+5 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway1_room1_out doorway0_room1
+0
+= 42
+1
+45 0
+0
+0
+1
+0
+0
+0
+5 0 1
+1
+0
+0
+0
+2 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway1_room1_out doorway0_room1_out
+0
+= 42
+1
+46 0
+0
+0
+1
+0
+0
+0
+5 0 1
+1
+0
+0
+0
+3 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway1_room1_out doorway1_room1
+0
+= 42
+1
+47 0
+0
+0
+1
+0
+0
+0
+5 0 1
+1
+0
+0
+0
+4 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway1_room2 doorway1_room2_out
+0
+= 42
+1
+50 0
+0
+0
+1
+0
+0
+0
+6 0 1
+1
+0
+0
+0
+7 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway1_room2 object_location_loc1_room2
+0
+= 42
+1
+53 0
+0
+0
+1
+0
+0
+0
+6 0 1
+1
+0
+0
+0
+10 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway1_room2 search_location_loc0_room2
+0
+= 42
+1
+55 0
+0
+0
+1
+0
+0
+0
+6 0 1
+1
+0
+0
+0
+12 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway1_room2_out doorway1_room2
+0
+= 42
+1
+49 0
+0
+0
+1
+0
+0
+0
+7 0 1
+1
+0
+0
+0
+6 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway1_room2_out object_location_loc1_room2
+0
+= 42
+1
+53 0
+0
+0
+1
+0
+0
+0
+7 0 1
+1
+0
+0
+0
+10 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base doorway1_room2_out search_location_loc0_room2
+0
+= 42
+1
+55 0
+0
+0
+1
+0
+0
+0
+7 0 1
+1
+0
+0
+0
+12 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base init_loc doorway0_room0
+0
+= 42
+1
+43 0
+0
+0
+1
+0
+0
+0
+8 0 1
+1
+0
+0
+0
+0 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base init_loc doorway0_room0_out
+0
+= 42
+1
+44 0
+0
+0
+1
+0
+0
+0
+8 0 1
+1
+0
+0
+0
+1 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base init_loc object_location_loc0_room0
+0
+= 42
+1
+52 0
+0
+0
+1
+0
+0
+0
+8 0 1
+1
+0
+0
+0
+9 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base init_loc robot_location
+0
+= 42
+2
+54 0
+19 0
+0
+0
+1
+0
+0
+0
+8 0 1
+1
+0
+0
+0
+11 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base init_loc search_location_loc1_room0
+0
+= 42
+1
+56 0
+0
+0
+1
+0
+0
+0
+8 0 1
+1
+0
+0
+0
+13 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base init_loc wedge0_search_location_loc1_room0_push_loc_0
+0
+= 42
+1
+57 0
+0
+0
+1
+0
+0
+0
+8 0 1
+1
+0
+0
+0
+14 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base init_loc wedge0_search_location_loc1_room0_push_loc_1
+0
+= 42
+1
+58 0
+0
+0
+1
+0
+0
+0
+8 0 1
+1
+0
+0
+0
+15 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base init_loc wedge0_search_location_loc1_room0_push_loc_2
+0
+= 42
+1
+59 0
+0
+0
+1
+0
+0
+0
+8 0 1
+1
+0
+0
+0
+16 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base object_location_loc0_room0 doorway0_room0
+0
+= 42
+1
+43 0
+0
+0
+1
+0
+0
+0
+9 0 1
+1
+0
+0
+0
+0 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base object_location_loc0_room0 doorway0_room0_out
+0
+= 42
+1
+44 0
+0
+0
+1
+0
+0
+0
+9 0 1
+1
+0
+0
+0
+1 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base object_location_loc0_room0 init_loc
+0
+= 42
+1
+51 0
+0
+0
+1
+0
+0
+0
+9 0 1
+1
+0
+0
+0
+8 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base object_location_loc0_room0 robot_location
+0
+= 42
+2
+20 0
+54 0
+0
+0
+1
+0
+0
+0
+9 0 1
+1
+0
+0
+0
+11 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base object_location_loc0_room0 search_location_loc1_room0
+0
+= 42
+1
+56 0
+0
+0
+1
+0
+0
+0
+9 0 1
+1
+0
+0
+0
+13 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base object_location_loc0_room0 wedge0_search_location_loc1_room0_push_loc_0
+0
+= 42
+1
+57 0
+0
+0
+1
+0
+0
+0
+9 0 1
+1
+0
+0
+0
+14 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base object_location_loc0_room0 wedge0_search_location_loc1_room0_push_loc_1
+0
+= 42
+1
+58 0
+0
+0
+1
+0
+0
+0
+9 0 1
+1
+0
+0
+0
+15 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base object_location_loc0_room0 wedge0_search_location_loc1_room0_push_loc_2
+0
+= 42
+1
+59 0
+0
+0
+1
+0
+0
+0
+9 0 1
+1
+0
+0
+0
+16 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base object_location_loc1_room2 doorway1_room2
+0
+= 42
+1
+49 0
+0
+0
+1
+0
+0
+0
+10 0 1
+1
+0
+0
+0
+6 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base object_location_loc1_room2 doorway1_room2_out
+0
+= 42
+1
+50 0
+0
+0
+1
+0
+0
+0
+10 0 1
+1
+0
+0
+0
+7 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base object_location_loc1_room2 search_location_loc0_room2
+0
+= 42
+1
+55 0
+0
+0
+1
+0
+0
+0
+10 0 1
+1
+0
+0
+0
+12 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base robot_location doorway0_room0
+0
+= 42
+1
+43 0
+0
+0
+1
+0
+0
+0
+11 0 1
+1
+0
+0
+0
+0 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base robot_location doorway0_room0_out
+0
+= 42
+1
+44 0
+0
+0
+1
+0
+0
+0
+11 0 1
+1
+0
+0
+0
+1 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base robot_location init_loc
+0
+= 42
+1
+51 0
+0
+0
+1
+0
+0
+0
+11 0 1
+1
+0
+0
+0
+8 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base robot_location object_location_loc0_room0
+0
+= 42
+1
+52 0
+0
+0
+1
+0
+0
+0
+11 0 1
+1
+0
+0
+0
+9 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base robot_location search_location_loc1_room0
+0
+= 42
+1
+56 0
+0
+0
+1
+0
+0
+0
+11 0 1
+1
+0
+0
+0
+13 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base robot_location wedge0_search_location_loc1_room0_push_loc_0
+0
+= 42
+1
+57 0
+0
+0
+1
+0
+0
+0
+11 0 1
+1
+0
+0
+0
+14 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base robot_location wedge0_search_location_loc1_room0_push_loc_1
+0
+= 42
+1
+58 0
+0
+0
+1
+0
+0
+0
+11 0 1
+1
+0
+0
+0
+15 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base robot_location wedge0_search_location_loc1_room0_push_loc_2
+0
+= 42
+1
+59 0
+0
+0
+1
+0
+0
+0
+11 0 1
+1
+0
+0
+0
+16 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base search_location_loc0_room2 doorway1_room2
+0
+= 42
+1
+49 0
+0
+0
+1
+0
+0
+0
+12 0 1
+1
+0
+0
+0
+6 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base search_location_loc0_room2 doorway1_room2_out
+0
+= 42
+1
+50 0
+0
+0
+1
+0
+0
+0
+12 0 1
+1
+0
+0
+0
+7 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base search_location_loc0_room2 object_location_loc1_room2
+0
+= 42
+1
+53 0
+0
+0
+1
+0
+0
+0
+12 0 1
+1
+0
+0
+0
+10 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base search_location_loc1_room0 doorway0_room0
+0
+= 42
+1
+43 0
+0
+0
+1
+0
+0
+0
+13 0 1
+1
+0
+0
+0
+0 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base search_location_loc1_room0 doorway0_room0_out
+0
+= 42
+1
+44 0
+0
+0
+1
+0
+0
+0
+13 0 1
+1
+0
+0
+0
+1 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base search_location_loc1_room0 init_loc
+0
+= 42
+1
+51 0
+0
+0
+1
+0
+0
+0
+13 0 1
+1
+0
+0
+0
+8 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base search_location_loc1_room0 object_location_loc0_room0
+0
+= 42
+1
+52 0
+0
+0
+1
+0
+0
+0
+13 0 1
+1
+0
+0
+0
+9 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base search_location_loc1_room0 robot_location
+0
+= 42
+2
+21 0
+54 0
+0
+0
+1
+0
+0
+0
+13 0 1
+1
+0
+0
+0
+11 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_0
+0
+= 42
+1
+57 0
+0
+0
+1
+0
+0
+0
+13 0 1
+1
+0
+0
+0
+14 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_1
+0
+= 42
+1
+58 0
+0
+0
+1
+0
+0
+0
+13 0 1
+1
+0
+0
+0
+15 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_2
+0
+= 42
+1
+59 0
+0
+0
+1
+0
+0
+0
+13 0 1
+1
+0
+0
+0
+16 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_0 doorway0_room0
+0
+= 42
+1
+43 0
+0
+0
+1
+0
+0
+0
+14 0 1
+1
+0
+0
+0
+0 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_0 doorway0_room0_out
+0
+= 42
+1
+44 0
+0
+0
+1
+0
+0
+0
+14 0 1
+1
+0
+0
+0
+1 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_0 init_loc
+0
+= 42
+1
+51 0
+0
+0
+1
+0
+0
+0
+14 0 1
+1
+0
+0
+0
+8 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_0 object_location_loc0_room0
+0
+= 42
+1
+52 0
+0
+0
+1
+0
+0
+0
+14 0 1
+1
+0
+0
+0
+9 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_0 robot_location
+0
+= 42
+2
+54 0
+22 0
+0
+0
+1
+0
+0
+0
+14 0 1
+1
+0
+0
+0
+11 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_0 search_location_loc1_room0
+0
+= 42
+1
+56 0
+0
+0
+1
+0
+0
+0
+14 0 1
+1
+0
+0
+0
+13 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_0 wedge0_search_location_loc1_room0_push_loc_1
+0
+= 42
+1
+58 0
+0
+0
+1
+0
+0
+0
+14 0 1
+1
+0
+0
+0
+15 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_0 wedge0_search_location_loc1_room0_push_loc_2
+0
+= 42
+1
+59 0
+0
+0
+1
+0
+0
+0
+14 0 1
+1
+0
+0
+0
+16 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_1 doorway0_room0
+0
+= 42
+1
+43 0
+0
+0
+1
+0
+0
+0
+15 0 1
+1
+0
+0
+0
+0 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_1 doorway0_room0_out
+0
+= 42
+1
+44 0
+0
+0
+1
+0
+0
+0
+15 0 1
+1
+0
+0
+0
+1 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_1 init_loc
+0
+= 42
+1
+51 0
+0
+0
+1
+0
+0
+0
+15 0 1
+1
+0
+0
+0
+8 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_1 object_location_loc0_room0
+0
+= 42
+1
+52 0
+0
+0
+1
+0
+0
+0
+15 0 1
+1
+0
+0
+0
+9 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_1 robot_location
+0
+= 42
+2
+54 0
+23 0
+0
+0
+1
+0
+0
+0
+15 0 1
+1
+0
+0
+0
+11 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_1 search_location_loc1_room0
+0
+= 42
+1
+56 0
+0
+0
+1
+0
+0
+0
+15 0 1
+1
+0
+0
+0
+13 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_0
+0
+= 42
+1
+57 0
+0
+0
+1
+0
+0
+0
+15 0 1
+1
+0
+0
+0
+14 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_2
+0
+= 42
+1
+59 0
+0
+0
+1
+0
+0
+0
+15 0 1
+1
+0
+0
+0
+16 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_2 doorway0_room0
+0
+= 42
+1
+43 0
+0
+0
+1
+0
+0
+0
+16 0 1
+1
+0
+0
+0
+0 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_2 doorway0_room0_out
+0
+= 42
+1
+44 0
+0
+0
+1
+0
+0
+0
+16 0 1
+1
+0
+0
+0
+1 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_2 init_loc
+0
+= 42
+1
+51 0
+0
+0
+1
+0
+0
+0
+16 0 1
+1
+0
+0
+0
+8 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_2 object_location_loc0_room0
+0
+= 42
+1
+52 0
+0
+0
+1
+0
+0
+0
+16 0 1
+1
+0
+0
+0
+9 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_2 robot_location
+0
+= 42
+2
+54 0
+24 0
+0
+0
+1
+0
+0
+0
+16 0 1
+1
+0
+0
+0
+11 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_2 search_location_loc1_room0
+0
+= 42
+1
+56 0
+0
+0
+1
+0
+0
+0
+16 0 1
+1
+0
+0
+0
+13 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_0
+0
+= 42
+1
+57 0
+0
+0
+1
+0
+0
+0
+16 0 1
+1
+0
+0
+0
+14 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-base wedge0_search_location_loc1_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_1
+0
+= 42
+1
+58 0
+0
+0
+1
+0
+0
+0
+16 0 1
+1
+0
+0
+0
+15 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-through-doorway doorway0 doorway0_room0 doorway0_room1_out
+0
+= 41
+1
+25 0
+0
+0
+1
+0
+0
+0
+0 0 1
+2
+0
+0
+1
+25 0
+25 -1 1
+0
+0
+0
+3 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-through-doorway doorway0 doorway0_room1 doorway0_room0_out
+0
+= 41
+1
+25 0
+0
+0
+1
+0
+0
+0
+2 0 1
+2
+0
+0
+0
+1 -1 0
+0
+0
+1
+25 0
+25 -1 1
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-through-doorway doorway1 doorway1_room1 doorway1_room2_out
+0
+= 41
+1
+26 0
+0
+0
+1
+0
+0
+0
+4 0 1
+2
+0
+0
+1
+26 0
+26 -1 1
+0
+0
+0
+7 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+drive-through-doorway doorway1 doorway1_room2 doorway1_room1_out
+0
+= 41
+1
+26 0
+0
+0
+1
+0
+0
+0
+6 0 1
+2
+0
+0
+1
+26 0
+26 -1 1
+0
+0
+0
+5 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+push-object wedge0_search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_0
+0
+= 69
+3
+60 0
+37 1
+14 0
+0
+0
+0
+1
+0
+0
+0
+37 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+push-object wedge0_search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_1
+0
+= 70
+3
+37 1
+15 0
+61 0
+0
+0
+0
+1
+0
+0
+0
+37 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+push-object wedge0_search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_2
+0
+= 71
+3
+16 0
+37 1
+62 0
+0
+0
+0
+1
+0
+0
+0
+37 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+push-object-to-pos wedge0_search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_0 wedge0_search_location_loc1_room0_push_loc_1 object_location_loc0_room0
+0
+= 42
+5
+36 1
+37 1
+63 0
+14 0
+35 1
+0
+0
+0
+3
+0
+0
+0
+36 -1 0
+0
+0
+0
+37 -1 0
+0
+0
+0
+35 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+push-object-to-pos wedge0_search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_0 wedge0_search_location_loc1_room0_push_loc_2 object_location_loc0_room0
+0
+= 42
+5
+36 1
+37 1
+64 0
+14 0
+35 1
+0
+0
+0
+3
+0
+0
+0
+36 -1 0
+0
+0
+0
+37 -1 0
+0
+0
+0
+35 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+push-object-to-pos wedge0_search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_0 object_location_loc0_room0
+0
+= 42
+5
+36 1
+37 1
+15 0
+65 0
+35 1
+0
+0
+0
+3
+0
+0
+0
+36 -1 0
+0
+0
+0
+37 -1 0
+0
+0
+0
+35 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+push-object-to-pos wedge0_search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_1 wedge0_search_location_loc1_room0_push_loc_2 object_location_loc0_room0
+0
+= 42
+5
+36 1
+37 1
+15 0
+66 0
+35 1
+0
+0
+0
+3
+0
+0
+0
+36 -1 0
+0
+0
+0
+37 -1 0
+0
+0
+0
+35 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+push-object-to-pos wedge0_search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_0 object_location_loc0_room0
+0
+= 42
+5
+16 0
+37 1
+36 1
+67 0
+35 1
+0
+0
+0
+3
+0
+0
+0
+36 -1 0
+0
+0
+0
+37 -1 0
+0
+0
+0
+35 -1 0
+0
+0
+0
+0
+end_operator
+begin_operator
+push-object-to-pos wedge0_search_location_loc1_room0 wedge0_search_location_loc1_room0_push_loc_2 wedge0_search_location_loc1_room0_push_loc_1 object_location_loc0_room0
+0
+= 42
+5
+16 0
+68 0
+36 1
+37 1
+35 1
+0
+0
+0
+3
+0
+0
+0
+36 -1 0
+0
+0
+0
+37 -1 0
+0
+0
+0
+35 -1 0
+0
+0
+0
+0
+end_operator
+9
+begin_rule
+3
+30 1
+31 1
+32 1
+27 1 0
+end_rule
+begin_rule
+1
+36 0
+29 0 1
+end_rule
+begin_rule
+1
+28 0
+29 0 1
+end_rule
+begin_rule
+1
+37 0
+30 0 1
+end_rule
+begin_rule
+1
+34 0
+31 0 1
+end_rule
+begin_rule
+2
+38 0
+39 0
+32 0 1
+end_rule
+begin_rule
+1
+37 0
+33 0 1
+end_rule
+begin_rule
+1
+29 1
+34 1 0
+end_rule
+begin_rule
+1
+35 0
+34 1 0
+end_rule
+0
+begin_SG
+switch 0
+check 0
+switch 17
+check 0
+check 1
+9
+check 0
+switch 25
+check 0
+check 1
+102
+check 1
+0
+check 7
+6
+7
+8
+10
+11
+12
+13
+check 0
+switch 1
+check 0
+switch 18
+check 0
+check 1
+17
+check 0
+check 7
+14
+15
+16
+18
+19
+20
+21
+check 0
+switch 2
+check 0
+switch 25
+check 0
+check 1
+103
+check 1
+1
+check 3
+22
+23
+24
+check 0
+switch 3
+check 0
+check 3
+25
+26
+27
+check 0
+switch 4
+check 0
+switch 26
+check 0
+check 1
+104
+check 1
+2
+check 3
+28
+29
+30
+check 0
+switch 5
+check 0
+check 3
+31
+32
+33
+check 0
+switch 6
+check 0
+switch 26
+check 0
+check 1
+105
+check 1
+3
+check 3
+34
+35
+36
+check 0
+switch 7
+check 0
+check 3
+37
+38
+39
+check 0
+switch 8
+check 0
+switch 19
+check 0
+check 1
+43
+check 0
+check 7
+40
+41
+42
+44
+45
+46
+47
+check 0
+switch 9
+check 0
+switch 20
+check 0
+check 1
+51
+check 0
+check 7
+48
+49
+50
+52
+53
+54
+55
+check 0
+switch 10
+check 0
+check 3
+56
+57
+58
+check 0
+switch 11
+check 0
+check 8
+59
+60
+61
+62
+63
+64
+65
+66
+check 0
+switch 12
+check 0
+switch 33
+check 0
+check 0
+switch 38
+check 0
+check 0
+check 1
+4
+check 0
+check 3
+67
+68
+69
+check 0
+switch 13
+check 0
+switch 21
+check 0
+check 1
+74
+check 0
+switch 33
+check 0
+check 0
+switch 39
+check 0
+check 0
+check 1
+5
+check 0
+check 7
+70
+71
+72
+73
+75
+76
+77
+check 0
+switch 14
+check 0
+switch 22
+check 0
+check 1
+82
+check 0
+switch 35
+check 0
+check 0
+switch 36
+check 0
+check 0
+switch 37
+check 0
+check 0
+check 2
+109
+110
+check 0
+check 0
+switch 37
+check 0
+check 0
+check 1
+106
+check 7
+78
+79
+80
+81
+83
+84
+85
+check 0
+switch 15
+check 0
+switch 23
+check 0
+check 1
+90
+check 0
+switch 35
+check 0
+check 0
+switch 36
+check 0
+check 0
+switch 37
+check 0
+check 0
+check 2
+111
+112
+check 0
+check 0
+switch 37
+check 0
+check 0
+check 1
+107
+check 7
+86
+87
+88
+89
+91
+92
+93
+check 0
+switch 16
+check 0
+switch 24
+check 0
+check 1
+98
+check 0
+switch 35
+check 0
+check 0
+switch 36
+check 0
+check 0
+switch 37
+check 0
+check 0
+check 2
+113
+114
+check 0
+check 0
+switch 37
+check 0
+check 0
+check 1
+108
+check 7
+94
+95
+96
+97
+99
+100
+101
+check 0
+check 0
+end_SG
+begin_CG
+10
+1
+3
+8
+9
+11
+13
+14
+15
+16
+25
+10
+0
+2
+8
+9
+11
+13
+14
+15
+16
+25
+5
+1
+3
+4
+5
+25
+5
+0
+2
+4
+5
+25
+5
+2
+3
+5
+7
+26
+5
+2
+3
+4
+6
+26
+5
+5
+7
+10
+12
+26
+5
+4
+6
+10
+12
+26
+8
+0
+1
+9
+11
+13
+14
+15
+16
+8
+0
+1
+8
+11
+13
+14
+15
+16
+3
+6
+7
+12
+8
+0
+1
+8
+9
+13
+14
+15
+16
+4
+6
+7
+10
+38
+9
+0
+1
+8
+9
+11
+14
+15
+16
+39
+11
+0
+1
+8
+9
+11
+13
+15
+16
+35
+36
+37
+11
+0
+1
+8
+9
+11
+13
+14
+16
+35
+36
+37
+11
+0
+1
+8
+9
+11
+13
+14
+15
+35
+36
+37
+2
+0
+11
+2
+1
+11
+2
+8
+11
+2
+9
+11
+2
+11
+13
+2
+11
+14
+2
+11
+15
+2
+11
+16
+4
+0
+1
+2
+3
+4
+4
+5
+6
+7
+0
+1
+29
+1
+34
+1
+27
+1
+27
+1
+27
+2
+38
+39
+1
+31
+3
+34
+36
+37
+3
+29
+35
+37
+4
+30
+33
+35
+36
+1
+32
+1
+32
+0
+0
+0
+9
+0
+1
+8
+9
+11
+13
+14
+15
+16
+9
+0
+1
+8
+9
+11
+13
+14
+15
+16
+4
+2
+3
+4
+5
+4
+2
+3
+4
+5
+4
+2
+3
+4
+5
+4
+2
+3
+4
+5
+4
+6
+7
+10
+12
+4
+6
+7
+10
+12
+9
+0
+1
+8
+9
+11
+13
+14
+15
+16
+9
+0
+1
+8
+9
+11
+13
+14
+15
+16
+4
+6
+7
+10
+12
+9
+0
+1
+8
+9
+11
+13
+14
+15
+16
+4
+6
+7
+10
+12
+9
+0
+1
+8
+9
+11
+13
+14
+15
+16
+9
+0
+1
+8
+9
+11
+13
+14
+15
+16
+9
+0
+1
+8
+9
+11
+13
+14
+15
+16
+9
+0
+1
+8
+9
+11
+13
+14
+15
+16
+1
+37
+1
+37
+1
+37
+3
+35
+36
+37
+3
+35
+36
+37
+3
+35
+36
+37
+3
+35
+36
+37
+3
+35
+36
+37
+3
+35
+36
+37
+0
+0
+0
+end_CG
+begin_DTG
+9
+1
+102
+s
+= 41
+1
+25 0 s
+1
+6
+s
+= 42
+1
+44 0 s
+1
+7
+s
+= 42
+1
+51 0 s
+1
+8
+s
+= 42
+1
+52 0 s
+1
+10
+s
+= 42
+1
+56 0 s
+1
+11
+s
+= 42
+1
+57 0 s
+1
+12
+s
+= 42
+1
+58 0 s
+1
+13
+s
+= 42
+1
+59 0 s
+1
+9
+s
+= 42
+2
+17 0 s
+54 0 s
+8
+0
+14
+e
+= 42
+2
+1 0 s
+43 0 s
+0
+40
+e
+= 42
+2
+8 0 s
+43 0 s
+0
+48
+e
+= 42
+2
+9 0 s
+43 0 s
+0
+59
+e
+= 42
+2
+11 0 s
+43 0 s
+0
+70
+e
+= 42
+2
+13 0 s
+43 0 s
+0
+78
+e
+= 42
+2
+14 0 s
+43 0 s
+0
+86
+e
+= 42
+2
+15 0 s
+43 0 s
+0
+94
+e
+= 42
+2
+16 0 s
+43 0 s
+end_DTG
+begin_DTG
+8
+1
+14
+s
+= 42
+1
+43 0 s
+1
+15
+s
+= 42
+1
+51 0 s
+1
+16
+s
+= 42
+1
+52 0 s
+1
+18
+s
+= 42
+1
+56 0 s
+1
+19
+s
+= 42
+1
+57 0 s
+1
+20
+s
+= 42
+1
+58 0 s
+1
+21
+s
+= 42
+1
+59 0 s
+1
+17
+s
+= 42
+2
+18 0 s
+54 0 s
+9
+0
+103
+e
+= 41
+2
+2 0 s
+25 0 s
+0
+6
+e
+= 42
+2
+0 0 s
+44 0 s
+0
+41
+e
+= 42
+2
+8 0 s
+44 0 s
+0
+49
+e
+= 42
+2
+9 0 s
+44 0 s
+0
+60
+e
+= 42
+2
+11 0 s
+44 0 s
+0
+71
+e
+= 42
+2
+13 0 s
+44 0 s
+0
+79
+e
+= 42
+2
+14 0 s
+44 0 s
+0
+87
+e
+= 42
+2
+15 0 s
+44 0 s
+0
+95
+e
+= 42
+2
+16 0 s
+44 0 s
+end_DTG
+begin_DTG
+4
+1
+103
+s
+= 41
+1
+25 0 s
+1
+22
+s
+= 42
+1
+46 0 s
+1
+23
+s
+= 42
+1
+47 0 s
+1
+24
+s
+= 42
+1
+48 0 s
+3
+0
+25
+e
+= 42
+2
+3 0 s
+45 0 s
+0
+28
+e
+= 42
+2
+4 0 s
+45 0 s
+0
+31
+e
+= 42
+2
+5 0 s
+45 0 s
+end_DTG
+begin_DTG
+3
+1
+25
+s
+= 42
+1
+45 0 s
+1
+26
+s
+= 42
+1
+47 0 s
+1
+27
+s
+= 42
+1
+48 0 s
+4
+0
+102
+e
+= 41
+2
+0 0 s
+25 0 s
+0
+22
+e
+= 42
+2
+2 0 s
+46 0 s
+0
+29
+e
+= 42
+2
+4 0 s
+46 0 s
+0
+32
+e
+= 42
+2
+5 0 s
+46 0 s
+end_DTG
+begin_DTG
+4
+1
+104
+s
+= 41
+1
+26 0 s
+1
+28
+s
+= 42
+1
+45 0 s
+1
+29
+s
+= 42
+1
+46 0 s
+1
+30
+s
+= 42
+1
+48 0 s
+3
+0
+23
+e
+= 42
+2
+2 0 s
+47 0 s
+0
+26
+e
+= 42
+2
+3 0 s
+47 0 s
+0
+33
+e
+= 42
+2
+5 0 s
+47 0 s
+end_DTG
+begin_DTG
+3
+1
+31
+s
+= 42
+1
+45 0 s
+1
+32
+s
+= 42
+1
+46 0 s
+1
+33
+s
+= 42
+1
+47 0 s
+4
+0
+105
+e
+= 41
+2
+6 0 s
+26 0 s
+0
+24
+e
+= 42
+2
+2 0 s
+48 0 s
+0
+27
+e
+= 42
+2
+3 0 s
+48 0 s
+0
+30
+e
+= 42
+2
+4 0 s
+48 0 s
+end_DTG
+begin_DTG
+4
+1
+105
+s
+= 41
+1
+26 0 s
+1
+34
+s
+= 42
+1
+50 0 s
+1
+35
+s
+= 42
+1
+53 0 s
+1
+36
+s
+= 42
+1
+55 0 s
+3
+0
+37
+e
+= 42
+2
+7 0 s
+49 0 s
+0
+56
+e
+= 42
+2
+10 0 s
+49 0 s
+0
+67
+e
+= 42
+2
+12 0 s
+49 0 s
+end_DTG
+begin_DTG
+3
+1
+37
+s
+= 42
+1
+49 0 s
+1
+38
+s
+= 42
+1
+53 0 s
+1
+39
+s
+= 42
+1
+55 0 s
+4
+0
+104
+e
+= 41
+2
+4 0 s
+26 0 s
+0
+34
+e
+= 42
+2
+6 0 s
+50 0 s
+0
+57
+e
+= 42
+2
+10 0 s
+50 0 s
+0
+68
+e
+= 42
+2
+12 0 s
+50 0 s
+end_DTG
+begin_DTG
+8
+1
+40
+s
+= 42
+1
+43 0 s
+1
+41
+s
+= 42
+1
+44 0 s
+1
+42
+s
+= 42
+1
+52 0 s
+1
+44
+s
+= 42
+1
+56 0 s
+1
+45
+s
+= 42
+1
+57 0 s
+1
+46
+s
+= 42
+1
+58 0 s
+1
+47
+s
+= 42
+1
+59 0 s
+1
+43
+s
+= 42
+2
+19 0 s
+54 0 s
+8
+0
+7
+e
+= 42
+2
+0 0 s
+51 0 s
+0
+15
+e
+= 42
+2
+1 0 s
+51 0 s
+0
+50
+e
+= 42
+2
+9 0 s
+51 0 s
+0
+61
+e
+= 42
+2
+11 0 s
+51 0 s
+0
+72
+e
+= 42
+2
+13 0 s
+51 0 s
+0
+80
+e
+= 42
+2
+14 0 s
+51 0 s
+0
+88
+e
+= 42
+2
+15 0 s
+51 0 s
+0
+96
+e
+= 42
+2
+16 0 s
+51 0 s
+end_DTG
+begin_DTG
+8
+1
+48
+s
+= 42
+1
+43 0 s
+1
+49
+s
+= 42
+1
+44 0 s
+1
+50
+s
+= 42
+1
+51 0 s
+1
+52
+s
+= 42
+1
+56 0 s
+1
+53
+s
+= 42
+1
+57 0 s
+1
+54
+s
+= 42
+1
+58 0 s
+1
+55
+s
+= 42
+1
+59 0 s
+1
+51
+s
+= 42
+2
+20 0 s
+54 0 s
+8
+0
+8
+e
+= 42
+2
+0 0 s
+52 0 s
+0
+16
+e
+= 42
+2
+1 0 s
+52 0 s
+0
+42
+e
+= 42
+2
+8 0 s
+52 0 s
+0
+62
+e
+= 42
+2
+11 0 s
+52 0 s
+0
+73
+e
+= 42
+2
+13 0 s
+52 0 s
+0
+81
+e
+= 42
+2
+14 0 s
+52 0 s
+0
+89
+e
+= 42
+2
+15 0 s
+52 0 s
+0
+97
+e
+= 42
+2
+16 0 s
+52 0 s
+end_DTG
+begin_DTG
+3
+1
+56
+s
+= 42
+1
+49 0 s
+1
+57
+s
+= 42
+1
+50 0 s
+1
+58
+s
+= 42
+1
+55 0 s
+3
+0
+35
+e
+= 42
+2
+6 0 s
+53 0 s
+0
+38
+e
+= 42
+2
+7 0 s
+53 0 s
+0
+69
+e
+= 42
+2
+12 0 s
+53 0 s
+end_DTG
+begin_DTG
+8
+1
+59
+s
+= 42
+1
+43 0 s
+1
+60
+s
+= 42
+1
+44 0 s
+1
+61
+s
+= 42
+1
+51 0 s
+1
+62
+s
+= 42
+1
+52 0 s
+1
+63
+s
+= 42
+1
+56 0 s
+1
+64
+s
+= 42
+1
+57 0 s
+1
+65
+s
+= 42
+1
+58 0 s
+1
+66
+s
+= 42
+1
+59 0 s
+8
+0
+9
+e
+= 42
+3
+0 0 s
+17 0 s
+54 0 s
+0
+17
+e
+= 42
+3
+1 0 s
+18 0 s
+54 0 s
+0
+43
+e
+= 42
+3
+8 0 s
+19 0 s
+54 0 s
+0
+51
+e
+= 42
+3
+9 0 s
+20 0 s
+54 0 s
+0
+74
+e
+= 42
+3
+13 0 s
+21 0 s
+54 0 s
+0
+82
+e
+= 42
+3
+14 0 s
+22 0 s
+54 0 s
+0
+90
+e
+= 42
+3
+15 0 s
+23 0 s
+54 0 s
+0
+98
+e
+= 42
+3
+16 0 s
+24 0 s
+54 0 s
+end_DTG
+begin_DTG
+3
+1
+67
+s
+= 42
+1
+49 0 s
+1
+68
+s
+= 42
+1
+50 0 s
+1
+69
+s
+= 42
+1
+53 0 s
+3
+0
+36
+e
+= 42
+2
+6 0 s
+55 0 s
+0
+39
+e
+= 42
+2
+7 0 s
+55 0 s
+0
+58
+e
+= 42
+2
+10 0 s
+55 0 s
+end_DTG
+begin_DTG
+8
+1
+70
+s
+= 42
+1
+43 0 s
+1
+71
+s
+= 42
+1
+44 0 s
+1
+72
+s
+= 42
+1
+51 0 s
+1
+73
+s
+= 42
+1
+52 0 s
+1
+75
+s
+= 42
+1
+57 0 s
+1
+76
+s
+= 42
+1
+58 0 s
+1
+77
+s
+= 42
+1
+59 0 s
+1
+74
+s
+= 42
+2
+21 0 s
+54 0 s
+8
+0
+10
+e
+= 42
+2
+0 0 s
+56 0 s
+0
+18
+e
+= 42
+2
+1 0 s
+56 0 s
+0
+44
+e
+= 42
+2
+8 0 s
+56 0 s
+0
+52
+e
+= 42
+2
+9 0 s
+56 0 s
+0
+63
+e
+= 42
+2
+11 0 s
+56 0 s
+0
+83
+e
+= 42
+2
+14 0 s
+56 0 s
+0
+91
+e
+= 42
+2
+15 0 s
+56 0 s
+0
+99
+e
+= 42
+2
+16 0 s
+56 0 s
+end_DTG
+begin_DTG
+8
+1
+78
+s
+= 42
+1
+43 0 s
+1
+79
+s
+= 42
+1
+44 0 s
+1
+80
+s
+= 42
+1
+51 0 s
+1
+81
+s
+= 42
+1
+52 0 s
+1
+83
+s
+= 42
+1
+56 0 s
+1
+84
+s
+= 42
+1
+58 0 s
+1
+85
+s
+= 42
+1
+59 0 s
+1
+82
+s
+= 42
+2
+22 0 s
+54 0 s
+8
+0
+11
+e
+= 42
+2
+0 0 s
+57 0 s
+0
+19
+e
+= 42
+2
+1 0 s
+57 0 s
+0
+45
+e
+= 42
+2
+8 0 s
+57 0 s
+0
+53
+e
+= 42
+2
+9 0 s
+57 0 s
+0
+64
+e
+= 42
+2
+11 0 s
+57 0 s
+0
+75
+e
+= 42
+2
+13 0 s
+57 0 s
+0
+92
+e
+= 42
+2
+15 0 s
+57 0 s
+0
+100
+e
+= 42
+2
+16 0 s
+57 0 s
+end_DTG
+begin_DTG
+8
+1
+86
+s
+= 42
+1
+43 0 s
+1
+87
+s
+= 42
+1
+44 0 s
+1
+88
+s
+= 42
+1
+51 0 s
+1
+89
+s
+= 42
+1
+52 0 s
+1
+91
+s
+= 42
+1
+56 0 s
+1
+92
+s
+= 42
+1
+57 0 s
+1
+93
+s
+= 42
+1
+59 0 s
+1
+90
+s
+= 42
+2
+23 0 s
+54 0 s
+8
+0
+12
+e
+= 42
+2
+0 0 s
+58 0 s
+0
+20
+e
+= 42
+2
+1 0 s
+58 0 s
+0
+46
+e
+= 42
+2
+8 0 s
+58 0 s
+0
+54
+e
+= 42
+2
+9 0 s
+58 0 s
+0
+65
+e
+= 42
+2
+11 0 s
+58 0 s
+0
+76
+e
+= 42
+2
+13 0 s
+58 0 s
+0
+84
+e
+= 42
+2
+14 0 s
+58 0 s
+0
+101
+e
+= 42
+2
+16 0 s
+58 0 s
+end_DTG
+begin_DTG
+8
+1
+94
+s
+= 42
+1
+43 0 s
+1
+95
+s
+= 42
+1
+44 0 s
+1
+96
+s
+= 42
+1
+51 0 s
+1
+97
+s
+= 42
+1
+52 0 s
+1
+99
+s
+= 42
+1
+56 0 s
+1
+100
+s
+= 42
+1
+57 0 s
+1
+101
+s
+= 42
+1
+58 0 s
+1
+98
+s
+= 42
+2
+24 0 s
+54 0 s
+8
+0
+13
+e
+= 42
+2
+0 0 s
+59 0 s
+0
+21
+e
+= 42
+2
+1 0 s
+59 0 s
+0
+47
+e
+= 42
+2
+8 0 s
+59 0 s
+0
+55
+e
+= 42
+2
+9 0 s
+59 0 s
+0
+66
+e
+= 42
+2
+11 0 s
+59 0 s
+0
+77
+e
+= 42
+2
+13 0 s
+59 0 s
+0
+85
+e
+= 42
+2
+14 0 s
+59 0 s
+0
+93
+e
+= 42
+2
+15 0 s
+59 0 s
+end_DTG
+begin_DTG
+0
+0
+end_DTG
+begin_DTG
+0
+0
+end_DTG
+begin_DTG
+0
+0
+end_DTG
+begin_DTG
+0
+0
+end_DTG
+begin_DTG
+0
+0
+end_DTG
+begin_DTG
+0
+0
+end_DTG
+begin_DTG
+0
+0
+end_DTG
+begin_DTG
+0
+0
+end_DTG
+begin_DTG
+2
+1
+102
+e
+= 41
+2
+0 0 s
+25 0 s
+1
+103
+e
+= 41
+2
+2 0 s
+25 0 s
+2
+0
+0
+e
+= 40
+2
+0 0 s
+25 1 s
+0
+1
+e
+= 40
+2
+2 0 s
+25 1 s
+end_DTG
+begin_DTG
+2
+1
+104
+e
+= 41
+2
+4 0 s
+26 0 s
+1
+105
+e
+= 41
+2
+6 0 s
+26 0 s
+2
+0
+2
+e
+= 40
+2
+4 0 s
+26 1 s
+0
+3
+e
+= 40
+2
+6 0 s
+26 1 s
+end_DTG
+begin_DTG
+0
+1
+0
+0
+a
+3
+30 1 a
+31 1 a
+32 1 a
+end_DTG
+begin_DTG
+0
+0
+end_DTG
+begin_DTG
+2
+1
+1
+a
+1
+36 0 a
+1
+2
+a
+1
+28 0 a
+0
+end_DTG
+begin_DTG
+1
+1
+3
+a
+1
+37 0 a
+0
+end_DTG
+begin_DTG
+1
+1
+4
+a
+1
+34 0 a
+0
+end_DTG
+begin_DTG
+1
+1
+5
+a
+2
+38 0 a
+39 0 a
+0
+end_DTG
+begin_DTG
+1
+1
+6
+a
+1
+37 0 a
+0
+end_DTG
+begin_DTG
+0
+2
+0
+7
+a
+1
+29 1 a
+0
+8
+a
+1
+35 0 a
+end_DTG
+begin_DTG
+0
+6
+0
+109
+e
+= 42
+5
+14 0 s
+35 1 s
+36 1 s
+37 1 s
+63 0 s
+0
+110
+e
+= 42
+5
+14 0 s
+35 1 s
+36 1 s
+37 1 s
+64 0 s
+0
+111
+e
+= 42
+5
+15 0 s
+35 1 s
+36 1 s
+37 1 s
+65 0 s
+0
+112
+e
+= 42
+5
+15 0 s
+35 1 s
+36 1 s
+37 1 s
+66 0 s
+0
+113
+e
+= 42
+5
+16 0 s
+35 1 s
+36 1 s
+37 1 s
+67 0 s
+0
+114
+e
+= 42
+5
+16 0 s
+35 1 s
+36 1 s
+37 1 s
+68 0 s
+end_DTG
+begin_DTG
+0
+6
+0
+109
+e
+= 42
+5
+14 0 s
+35 1 s
+36 1 s
+37 1 s
+63 0 s
+0
+110
+e
+= 42
+5
+14 0 s
+35 1 s
+36 1 s
+37 1 s
+64 0 s
+0
+111
+e
+= 42
+5
+15 0 s
+35 1 s
+36 1 s
+37 1 s
+65 0 s
+0
+112
+e
+= 42
+5
+15 0 s
+35 1 s
+36 1 s
+37 1 s
+66 0 s
+0
+113
+e
+= 42
+5
+16 0 s
+35 1 s
+36 1 s
+37 1 s
+67 0 s
+0
+114
+e
+= 42
+5
+16 0 s
+35 1 s
+36 1 s
+37 1 s
+68 0 s
+end_DTG
+begin_DTG
+0
+9
+0
+109
+e
+= 42
+5
+14 0 s
+35 1 s
+36 1 s
+37 1 s
+63 0 s
+0
+110
+e
+= 42
+5
+14 0 s
+35 1 s
+36 1 s
+37 1 s
+64 0 s
+0
+111
+e
+= 42
+5
+15 0 s
+35 1 s
+36 1 s
+37 1 s
+65 0 s
+0
+112
+e
+= 42
+5
+15 0 s
+35 1 s
+36 1 s
+37 1 s
+66 0 s
+0
+113
+e
+= 42
+5
+16 0 s
+35 1 s
+36 1 s
+37 1 s
+67 0 s
+0
+114
+e
+= 42
+5
+16 0 s
+35 1 s
+36 1 s
+37 1 s
+68 0 s
+0
+106
+e
+= 69
+3
+14 0 s
+37 1 s
+60 0 s
+0
+107
+e
+= 70
+3
+15 0 s
+37 1 s
+61 0 s
+0
+108
+e
+= 71
+3
+16 0 s
+37 1 s
+62 0 s
+end_DTG
+begin_DTG
+0
+1
+0
+4
+e
+= 40
+3
+12 0 s
+33 1 s
+38 1 s
+end_DTG
+begin_DTG
+0
+1
+0
+5
+e
+= 40
+3
+13 0 s
+33 1 s
+39 1 s
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
+begin_DTG
+0
+end_DTG
