@@ -16,13 +16,12 @@ Here we explain how to run an already existing scenario. First of all, start the
 ```sh
 $ roslaunch shakey_executable shakey_world.launch pkg:="$(rospack find shakey_quickscenario)"
 ```
-You can (and should) tuck the arms of the robot such that they not infer with the objects. For that purpose you can use teleop. Press 'a' to control both arms and move them down by holding 'n'. Afterward go back with 'q' and select the left arem with 'l'. Move the left arm 'in' the robot with 'l' and 'k'. Do exactly the same for the right arm (by pressig 'q' then 'r' and using bottons 'j' and 'k').
+You can (and should) tuck the arms of the robot such that they not infer with the objects. For that purpose you can use teleop. Press 'a' to control both arms and move them down by holding 'n'. Afterward go back with 'q' and select the left arem with 'l'. Move the left arm 'in' the robot with 'l' and 'k'. Do exactly the same for the right arm (by pressig 'q' then 'r' and using bottons 'j' and 'k'). The robot should look similar to the picture below.
 
 ```sh
 $ roslaunch pr2_teleop_general pr2_teleop_general_keyboard.launch
 ```
 
-The robot should look similar to the picture below.
 ![](images/pr2_arm_pose.jpg?raw=true)
 
 Now start the Shakey 2016 system. In order to start a scenario we use [screenrun](http://wiki.ros.org/screenrun) with byobu.
