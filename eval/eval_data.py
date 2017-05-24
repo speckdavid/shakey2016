@@ -59,8 +59,7 @@ def parsePlanningTimes(path, filename='plan.times'):
     if os.path.isfile(path + "action.times"):
         run_folders = [""]
     else:
-        run_folders = listdirs(path)
-        
+        run_folders = listdirs(path)     
     #print(run_folders)
     num_all = 0
     for run in run_folders:
@@ -72,7 +71,10 @@ def parsePlanningTimes(path, filename='plan.times'):
         plan_step_folders = listdirs(cur_path)
         num = 0
         for plan_step in plan_step_folders:
-            plan_path = cur_path + "/" + plan_step + "/" + "lazy_eval_partial_caching/" + filename
+            if "plot" in plan_step:
+                #print ("Skipped " + run + "...")
+                continue
+            plan_path = cur_path + plan_step + "/" + "lazy_eval_partial_caching/" + filename
             #print(plan_path)
             try:
                 with open(plan_path) as file:
@@ -257,7 +259,10 @@ if __name__ == '__main__':
         if output_path[-1] != "/":
             output_path += "/"
     else:
-        output_path = path + "plots/"
+        if path[-1] == "/":
+            output_path = path[:-1] + "_plots/"
+        else:
+            output_path = path + "_plots/"
     os.makedirs(output_path, exist_ok=True)
     print("---------------------------------------------------------------------------")
     data = parseActionTimes()

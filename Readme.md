@@ -16,7 +16,7 @@ Here we explain how to run an already existing scenario. First of all, start the
 ```sh
 $ roslaunch shakey_executable shakey_world.launch pkg:="$(rospack find shakey_quickscenario)"
 ```
-You can (and should) tuck the arms of the robot such that they not infer with the objects. For that purpose you can use teleop. Press 'a' to control both arms and move them down by holding 'n'. Afterward go back with 'q' and select the left arem with 'l'. Move the left arm 'in' the robot with 'l' and 'k'. Do exactly the same for the right arm (by pressig 'q' then 'r' and using bottons 'j' and 'k'). The robot should look similar to the picture below.
+You can (and should) tuck the arms of the robot such that they not infer with the objects. For that purpose you can use teleop. The robot should look similar to the picture below.
 
 ```sh
 $ roslaunch pr2_teleop_general pr2_teleop_general_keyboard.launch
@@ -33,6 +33,14 @@ The planner window should appear which monitors the current state of the system.
 By pressing "Execution/Run" the system will start to tidy up the objects located in the different rooms.
 
 ![](images/planner.png?raw=true)
+
+Now it is possible to evaluate and compare your run data. We provide a [python script](eval/) which creates plots of the run data ([here)](shakey_quickscenario/eval/). You can use the scipt as follows.
+```sh
+$ python3 eval/eval_data.py shakey_quickscenario/eval/[your_run_name (date)]
+```
+
+[Here](shakey_quickscenario/eval/example_plots) you can find plots of a run we executed for comparison.
+
 
 <br>
 
@@ -92,7 +100,7 @@ Once you set all locations you can save them by pressing the Save button. If eve
 
 In order to start Shakey 2016 in your scenario follow the subsequent steps. If you use a real PR2 you can skip part 4.1.
 
-<br> 
+<br>
 
 ### 4.1 Start the Simulation (optional)
 If you work with a "real" PR2 you can skip this part. Otherwise start the simualtion with gazebo.
@@ -125,7 +133,11 @@ You can navigate between different tabs with F3 and F4. Now, start all ros nodes
 <br>
 
 ## 5. Evaluate Runs
- Work in procress...
+It is possible to evaluate and compare data of a single run or data of a collection of runs. We provide a [python script](eval/) which creates plots of the run data ([here)](shakey_quickscenario/eval/). The following command prints the usage of the script.
+```sh
+$ python3 eval/eval_data.py
+```
+
 
 <br>
 
