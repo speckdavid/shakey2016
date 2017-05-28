@@ -9,7 +9,7 @@ Panels:
         - /MarkerArray1/Namespaces1
         - /MarkerArray2/Namespaces1
       Splitter Ratio: 0.505929
-    Tree Height: 731
+    Tree Height: 795
   - Class: rviz/Tool Properties
     Expanded:
       - /2D Nav Goal1
@@ -61,442 +61,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_bellow_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        base_laser_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        bl_caster_l_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        bl_caster_r_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        bl_caster_rotation_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        br_caster_l_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        br_caster_r_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        br_caster_rotation_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        double_stereo_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        fl_caster_l_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        fl_caster_r_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        fl_caster_rotation_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        fr_caster_l_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        fr_caster_r_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        fr_caster_rotation_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        head_mount_kinect_ir_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        head_mount_kinect_ir_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        head_mount_kinect_rgb_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        head_mount_kinect_rgb_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        head_mount_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        head_mount_prosilica_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        head_mount_prosilica_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        head_pan_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        head_plate_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        head_tilt_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        high_def_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        high_def_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        imu_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        l_elbow_flex_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_forearm_cam_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        l_forearm_cam_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        l_forearm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_forearm_roll_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_gripper_l_finger_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_gripper_l_finger_tip_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        l_gripper_l_finger_tip_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_gripper_led_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        l_gripper_motor_accelerometer_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_gripper_motor_screw_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        l_gripper_motor_slider_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        l_gripper_palm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_gripper_r_finger_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_gripper_r_finger_tip_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_gripper_tool_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        l_shoulder_lift_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_shoulder_pan_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_torso_lift_side_plate_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        l_upper_arm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_upper_arm_roll_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_wrist_flex_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        l_wrist_roll_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        laser_tilt_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        laser_tilt_mount_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        narrow_stereo_l_stereo_camera_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        narrow_stereo_l_stereo_camera_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        narrow_stereo_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        narrow_stereo_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        narrow_stereo_r_stereo_camera_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        narrow_stereo_r_stereo_camera_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        projector_wg6802418_child_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        projector_wg6802418_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        r_elbow_flex_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_forearm_cam_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        r_forearm_cam_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        r_forearm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_forearm_roll_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_gripper_l_finger_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_gripper_l_finger_tip_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        r_gripper_l_finger_tip_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_gripper_led_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        r_gripper_motor_accelerometer_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_gripper_motor_screw_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        r_gripper_motor_slider_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        r_gripper_palm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_gripper_r_finger_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_gripper_r_finger_tip_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_gripper_tool_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        r_shoulder_lift_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_shoulder_pan_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_torso_lift_side_plate_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        r_upper_arm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_upper_arm_roll_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_wrist_flex_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        r_wrist_roll_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        sensor_mount_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        torso_lift_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        torso_lift_motor_screw_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        wide_stereo_l_stereo_camera_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        wide_stereo_l_stereo_camera_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        wide_stereo_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        wide_stereo_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        wide_stereo_r_stereo_camera_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        wide_stereo_r_stereo_camera_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -616,7 +180,13 @@ Visualization Manager:
       Class: rviz/Path
       Color: 0; 255; 0
       Enabled: true
+      Line Style: Lines
+      Line Width: 0.03
       Name: Global Plan
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
       Topic: /move_base/TrajectoryPlannerROS/global_plan
       Value: true
     - Alpha: 1
@@ -624,7 +194,13 @@ Visualization Manager:
       Class: rviz/Path
       Color: 0; 0; 255
       Enabled: true
+      Line Style: Lines
+      Line Width: 0.03
       Name: Local Plan
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
       Topic: /move_base/TrajectoryPlannerROS/local_plan
       Value: true
     - Alpha: 1
@@ -632,7 +208,13 @@ Visualization Manager:
       Class: rviz/Path
       Color: 0; 255; 0
       Enabled: true
+      Line Style: Lines
+      Line Width: 0.03
       Name: Planner Plan
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
       Topic: /move_base/NavfnROS/plan
       Value: true
     - Alpha: 1
@@ -760,7 +342,7 @@ Visualization Manager:
       Marker Topic: /Detected_Objects
       Name: MarkerArray
       Namespaces:
-        obj/Detected_Objects: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -768,7 +350,7 @@ Visualization Manager:
       Marker Topic: /Destination_Objects
       Name: MarkerArray
       Namespaces:
-        obj/Destination_Objects: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -776,18 +358,26 @@ Visualization Manager:
       Marker Topic: /poses_marker
       Name: MarkerArray
       Namespaces:
-        "": true
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /Objects_Location
+      Name: MarkerArray
+      Namespaces:
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Camera
-      Enabled: false
+      Enabled: true
       Image Rendering: background and overlay
       Image Topic: /head_mount_kinect/rgb/image_raw
       Name: Camera
       Overlay Alpha: 0.5
       Queue Size: 2
       Transport Hint: raw
-      Value: false
+      Value: true
       Visibility:
         AMCL Cloud: true
         Current Goal: true
@@ -853,14 +443,14 @@ Window Geometry:
     collapsed: false
   Displays:
     collapsed: false
-  Height: 972
+  Height: 1056
   Hide Left Dock: false
   Hide Right Dock: false
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000002000000000000010f00000386fc0200000004fb000000100044006900730070006c00610079007301000000280000036a000000dd00fffffffb0000000a0049006d00610067006500000002d4000000be0000001600fffffffb0000000c00430061006d0065007200610100000398000000160000001600000016fb0000000c00430061006d00650072006100000002e9000000c50000001600ffffff000000010000010000000593fc0200000001fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730000000041000005930000006400ffffff000003aa0000038600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd000000020000000000000113000003d5fc0200000004fb000000100044006900730070006c0061007900730100000028000003b3000000e600fffffffb0000000a0049006d00610067006500000002d4000000be0000001a00fffffffb0000000c00430061006d00650072006101000003e10000001c0000001a00fffffffb0000000c00430061006d00650072006100000002e9000000c50000000000000000000000010000010000000593fc0200000001fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730000000041000005930000006800ffffff00000626000003d500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Tool Properties:
     collapsed: false
-  Width: 1215
-  X: 57
+  Width: 1855
+  X: 65
   Y: 24

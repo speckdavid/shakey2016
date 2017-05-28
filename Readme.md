@@ -11,12 +11,12 @@ The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulat
 
 <br>
 
-## 2. Shakey Quickstart (with Simulation)
+## 2. Shakey Quickscenario (with Simulation)
 Here we explain how to run an already existing scenario. First of all, start the simulation and the robot system.
 ```sh
 $ roslaunch shakey_executable shakey_world.launch pkg:="$(rospack find shakey_quickscenario)"
 ```
-You can (and should) tuck the arms of the robot such that they not infer with the objects. For that purpose you can use teleop. The robot should look similar to the picture below.
+You should tuck the arms of the robot such that they can not interact with the objects. For that purpose you can use teleop. The picture below illustrates the desired robot state.
 
 ```sh
 $ roslaunch pr2_teleop_general pr2_teleop_general_keyboard.launch
@@ -24,13 +24,18 @@ $ roslaunch pr2_teleop_general pr2_teleop_general_keyboard.launch
 
 ![](images/pr2_arm_pose.jpg?raw=true)
 
-Now start the Shakey 2016 system. In order to start a scenario we use [screenrun](http://wiki.ros.org/screenrun) with byobu.
+If you want, you can start Rviz to visualize your whole run with relevant data.
+```sh
+$ rosrun rviz rviz -d [...]/shakey_executable/shakey_rviz.rviz
+```
+
+Now start the Shakey 2016 system. In order to start a scenario we use [screenrun](http://wiki.ros.org/screenrun) with byobu. If you don't want to use byobu, you can use the optional introduction of section 2.1.
 ```sh
 $ roslaunch shakey_quickscenario screenrun.launch
 $ byobu
 ```
 The planner window should appear which monitors the current state of the system.
-By pressing "Execution/Run" the system will start to tidy up the objects located in the different rooms.
+Press "Execution/Run" to start the system. The robot will try to tidy up all objects located in the different rooms. Note: If you get an error message, wait a moment and try to press "Execution/Run" again (some modules may take some time to start).
 
 ![](images/planner.png?raw=true)
 
@@ -39,8 +44,19 @@ Now it is possible to evaluate and compare your run data. We provide a [python s
 $ python3 eval/eval_data.py shakey_quickscenario/eval/[your_run_name (date)]
 ```
 
-[Here](shakey_quickscenario/eval/example_plots) you can find plots of a run we executed for comparison.
+[Here](shakey_quickscenario/eval/example_plots) you can find some plots of a run we executed for comparison.
 
+<br>
+
+### 2.1 Optional: Start Shakey 2016 Modules by hand
+If you don't want to use byobu you can start all modules by hand as follows (use different tabs of your shell).
+```sh
+$ roslaunch shakey_executable shakey_localize.launch pkg:=$(rospack find shakey_quickscenario)
+$ roslaunch shakey_2dnav shakey_2dnav.launch
+$ roslaunch shakey_object_recognition shakey_object_recognition.launch
+$ roslaunch shakey_actionlib shakey_actionserver.launch
+$ roslaunch shakey_planning_server continual-planning-shakey.launch map_suffix:='shakey_quickscenario'
+```
 
 <br>
 
@@ -57,7 +73,7 @@ $ rosrun shakey_quickstart shakey_quickstart
 ```
 Start Rviz as an additional visualization tool.
 ```sh
-$ rosrun rviz rviz
+$ rosrun rviz rviz -d [...]/shakey_executable/shakey_rviz.rviz
 ```
 
 <br>
@@ -71,18 +87,18 @@ Now you can create or load a new scenario. Inserting your descired scneario name
 
 ### 3.3 Create a Map
 
-Press "Start mapping" to build up a map of the new scenario. The shakey_quickplay window should visualize the current map. Additionally, the map is published as "/map" which can be used to visualize it with Rviz. Once you are satified with the map you can press stop mapping and the map will be saved (indicaded by a small checkmark at the bottom). Note: Restarting the mapping procedure will remove the already created map.
+Press "Start mapping" to build a map of the new scenario. The shakey_quickplay window should visualize the current map. Additionally, the map is published as "/map" which can be used to visualize it with Rviz. Once you are satisfied with the map you can press stop mapping and the map will be saved (indicaded by a small checkmark at the bottom). Note: Restarting the mapping procedure will remove the already created map.
 
 ![](images/mapping.jpg?raw=true)
 
 <br>
 
 ### 3.4 Create relevant Poses
-For a complete scenario it is neessary to specify Search Locations, Doorway Entries and Object Goal Locations. For that purpose you can use the Location area of shakey_quickstart (combined with rviz). At the top right you can choose between different topics which pusblish StampedPoses. We recommonend to use the "/move_base_simple/goal" topic. Furthermore, you can choose at bottom left which location type you want to specify next. In addition, you should choose the room in which the corresponding location is located.
+For a complete scenario it is neessary to specify Search Locations, Doorway Entries and Object Goal Locations. For that purpose you can use the Location area of shakey_quickstart (combined with rviz). At the top right you can choose between different topics which pusblish StampedPoses. We recommonend to use the "/move_base_simple/goal" topic. Furthermore, you can choose at bottom left which location type you want to specify next. In addition, you should choose the room in which the corresponding location should be located.
 
 ![](images/poses.jpg?raw=true)
 
-Via drag and drop you can specify the exact poses of the desired location. Choose at he ttop "2D Nav Goal" and select the pose you prefer. The already created locations are published as "/poses_marker" and can be visualized as MarkerArray in Rviz.
+In Rviz you can via drag and drop specify exact poses of the desired location. Select at top "2D Nav Goal" and click at the position you prefer. The already created locations are published as MarkerArray with topic "/poses_marker".
 
 Search Locations are visualized as blue arrows, Doorways are visualized as red arrow with a connecting line between two corresponding entry points and Object Goal Locations as green boxes (irrelevant orientation).
 
@@ -128,7 +144,7 @@ In order to start a scenario we use [screenrun](http://wiki.ros.org/screenrun) w
 $ roslaunch [your_scenario_name] screenrun.launch
 $ byobu
 ```
-You can navigate between different tabs with F3 and F4. Now, start all ros nodes by executing the provided commands (ENTER) in every tab. The planning monitor should appear and as explained in 1. by pressing "Execution/Run" you can start the system.
+You can navigate between different tabs with F3 and F4. Now, start all ros nodes by executing the provided commands (ENTER) in every tab. The planning monitor should appear and as explained in section 1 by pressing "Execution/Run" you can start the system.
 
 <br>
 
