@@ -12,7 +12,7 @@ The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulat
 <br>
 
 ## 2. Shakey Quickscenario (with Simulation)
-Here we explain how to run an already existing scenario. First of all, start the simulation and the robot system.
+Here we explain how to run a provided scenario in order to test, reproduce and compare the system. First of all, start the simulation and the robot system.
 ```sh
 $ roslaunch shakey_executable shakey_world.launch pkg:="$(rospack find shakey_quickscenario)"
 ```
@@ -29,7 +29,7 @@ If you want, you can start Rviz to visualize additional data of your run.
 $ rosrun rviz rviz -d [...]/shakey_executable/shakey_rviz.rviz
 ```
 
-Now start the Shakey 2016 system. In order to start a scenario we use [screenrun](http://wiki.ros.org/screenrun) with byobu. If you don't want to use byobu, you can use the optional introduction of section 2.1.
+Now start the Shakey 2016 system. In order to start a scenario we use [screenrun](http://wiki.ros.org/screenrun) with byobu. If you don't want to use byobu, you can use the optional instructions of section 2.1.
 ```sh
 $ roslaunch shakey_quickscenario screenrun.launch
 $ byobu
@@ -49,7 +49,7 @@ $ python3 eval/eval_data.py shakey_quickscenario/eval/[your_run_name (date)]
 <br>
 
 ### 2.1 Optional: Start Shakey 2016 Modules by hand
-If you don't want to use byobu you can start all modules by hand as follows (use different tabs of your shell).
+If you don't want to use byobu, you can start all modules by hand as follows (use different tabs of your shell).
 ```sh
 $ roslaunch shakey_executable shakey_localize.launch pkg:=$(rospack find shakey_quickscenario)
 $ roslaunch shakey_2dnav shakey_2dnav.launch
