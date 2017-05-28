@@ -3,7 +3,7 @@ Shakey the robot was one of the first autonomous robots that showed impressive c
 
 [![Shakey 2016 - Video](images/youtube.png?raw=true)](https://www.youtube.com/watch?v=FQuuyhuEXak)
 
-If you are intrested in trying out Shakey 2016 you can run and evaluate an example in Section 2. Shakey Quickstart (with Simulation). If you want to create your own scenario either with simulation or with a real world PR2 you can find a detailed explanation in Section 3. Section 4 describes the execution of Shakey 2016. Finally, Section 5 is about evaluating recorded runs.
+If you are intrested in trying out Shakey 2016, you can run and evaluate an example in Section 2. Shakey Quickscenario (with Simulation). If you want to create your own scenario either with simulation or with a real world PR2, you can find a detailed explanation in Section 3. Section 4 describes the execution of Shakey 2016. Finally, Section 5 is about evaluating recorded runs.
 <br>
 
 ## 1. Installing Shakey 2016 <a name="installing"></a>
