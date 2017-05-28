@@ -41,7 +41,7 @@ Press "Execution/Run" to start the system. The robot will try to tidy up all obj
 
 Now it is possible to evaluate and compare your run data. We provide a [python script](eval/) which creates plots of the run data ([here](shakey_quickscenario/eval/)). You can use the scipt as follows.
 ```sh
-$ python3 eval/eval_data.py shakey_quickscenario/eval/[your_run_name (date)]
+$ python eval/eval_data.py shakey_quickscenario/eval/[your_run_name (date)]
 ```
 
 [Here](shakey_quickscenario/eval/example_plots) you can find some plots of a run we executed for comparison.
@@ -151,7 +151,7 @@ You can navigate between different tabs with F3 and F4. Now, start all ros nodes
 ## 5. Evaluate Runs
 It is possible to evaluate and compare data of a single run or data of a collection of runs. The data of runs are stored in a subfolder eval/ located in the corresponding scenario folder. We provide a [python script](eval/) which creates plots of run data. The following command prints the usage of the script.
 ```sh
-$ python3 eval/eval_data.py
+$ python eval/eval_data.py
 ```
 
 

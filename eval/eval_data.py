@@ -10,7 +10,7 @@ import os
 import numpy as np
 
 USAGE = """
-python3 eval_data.py i [o]
+python eval_data.py i [o]
 
 i = path to top input folder (e.g. [...]/shakey_quickscenario/eval/example)
     - if more then one run is located in this folder it will process all
@@ -263,7 +263,8 @@ if __name__ == '__main__':
             output_path = path[:-1] + "_plots/"
         else:
             output_path = path + "_plots/"
-    os.makedirs(output_path, exist_ok=True)
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
     print("---------------------------------------------------------------------------")
     data = parseActionTimes()
     successRun, failureRun, percentageRun = numberRunSuccess(data)
