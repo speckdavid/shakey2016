@@ -24,7 +24,7 @@ $ roslaunch pr2_teleop_general pr2_teleop_general_keyboard.launch
 
 ![](images/pr2_arm_pose.jpg?raw=true)
 
-If you want, you can start Rviz to visualize your whole run with relevant data.
+If you want, you can start Rviz to visualize additional data of your run.
 ```sh
 $ rosrun rviz rviz -d [...]/shakey_executable/shakey_rviz.rviz
 ```
