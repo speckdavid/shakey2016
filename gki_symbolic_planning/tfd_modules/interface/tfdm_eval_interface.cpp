@@ -5,6 +5,7 @@
 #include <sstream>
 #include <sys/stat.h>
 #include <ros/ros.h>
+#include <ros/package.h>
 #include "planParser.h"
 #include "domainParser.h"
 #include <pluginlib/class_list_macros.h>
@@ -62,7 +63,9 @@ namespace tfd_modules
         if(!nhConfig.getParam("eval_dir", evalOutputDir)) {
             ROS_FATAL("TFDMEvalInterface: /tfd_modules/eval/eval_dir was not set!");
             evalOutputDir = "/tmp";
-        }
+        } else {
+		    evalOutputDir = ros::package::getPath(evalOutputDir) + "/eval";
+	}
 
         // add date
         time_t rawtime;

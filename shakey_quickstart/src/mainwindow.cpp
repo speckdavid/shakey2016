@@ -171,8 +171,8 @@ void MainWindow::on_pushButton_createFolder_clicked() {
 			system("cp -R " + config_cp.toUtf8() +
 					" " + config_path.toUtf8());
 			FILE * planer_param = fopen(config_path.toUtf8() + "/shakey_planner_params.yaml", "a");
-			fputs("eval/eval_current_dir: " + path.toUtf8() + "/eval\n", planer_param);
-			fputs( "eval/eval_dir: " + path.toUtf8() + "/eval", planer_param);
+			fputs(("eval/eval_current_dir: " + this->project_folder + "\n").c_str(), planer_param);
+			fputs(("eval/eval_dir: " + this->project_folder).c_str(), planer_param);
 			fclose(planer_param);
 			std::cout << config_path.toUtf8().constData() << "/shakey_planner_params.yaml" << std::endl;
 		}
