@@ -26,7 +26,7 @@ $ roslaunch pr2_teleop_general pr2_teleop_general_keyboard.launch
 
 If you want, you can start Rviz to visualize additional data of your run.
 ```sh
-$ rosrun rviz rviz -d [...]/shakey_executable/shakey_rviz.rviz
+$ rosrun rviz rviz -d $(rospack find shakey_executable)/shakey_rviz.rviz
 ```
 
 Now start the Shakey 2016 system. In order to start a scenario we use [screenrun](http://wiki.ros.org/screenrun) with byobu. If you don't want to use byobu, you can use the optional instructions of section 2.1.
@@ -73,7 +73,7 @@ $ rosrun shakey_quickstart shakey_quickstart
 ```
 Start Rviz as an additional visualization tool.
 ```sh
-$ rosrun rviz rviz -d [...]/shakey_executable/shakey_rviz.rviz
+$ rosrun rviz rviz -d $(rospack find shakey_executable)/shakey_rviz.rviz
 ```
 
 <br>
