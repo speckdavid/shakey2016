@@ -59,7 +59,8 @@ def parsePlanningTimes(path, filename='plan.times'):
     if os.path.isfile(path + "action.times"):
         run_folders = [""]
     else:
-        run_folders = listdirs(path)     
+        run_folders = listdirs(path)
+	run_folders = [x + "/" for x in run_folders]     
     #print(run_folders)
     num_all = 0
     for run in run_folders:
