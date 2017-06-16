@@ -964,7 +964,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/david/shakey/src/shakey_spawn_objects/meshes/wedge.stl</uri>
+              <uri>../shakey_spawn_objects/meshes/wedge.stl</uri>
             </mesh>
           </geometry>
           <surface>
@@ -983,7 +983,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/david/shakey/src/shakey_spawn_objects/meshes/wedge.stl</uri>
+              <uri>../shakey_spawn_objects/meshes/wedge.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -1132,7 +1132,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/david/shakey/src/shakey_spawn_objects/meshes/wedge.stl</uri>
+              <uri>../shakey_spawn_objects/meshes/wedge.stl</uri>
             </mesh>
           </geometry>
           <surface>
@@ -1151,7 +1151,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/david/shakey/src/shakey_spawn_objects/meshes/wedge.stl</uri>
+              <uri>../shakey_spawn_objects/meshes/wedge.stl</uri>
             </mesh>
           </geometry>
           <material>
