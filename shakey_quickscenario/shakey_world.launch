@@ -1,0 +1,32 @@
+<launch>
+
+  <!-- start up empty world -->
+  <arg name="pkg" default="$(find shakey_quickscenario)"/>
+  <arg name="gui" default="true"/>
+  <arg name="paused" default="true"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)" />
+    <arg name="world_name" value="$(arg pkg)/world.world"/>
+  </include>
+
+  <!-- start pr2 robot -->
+  <include file="$(find pr2_gazebo)/launch/pr2.launch"/>
+
+  <include file="$(find shakey_spawn_objects)/launch/spawn_wedge.launch">
+    <arg name="name" value="wedge_0" />
+    <arg name="x" value="8.73692" />
+    <arg name="y" value="-3.61186" />
+    <arg name="Y" value="-1.56267" />
+  </include>
+
+  <include file="$(find shakey_spawn_objects)/launch/spawn_wedge.launch">
+    <arg name="name" value="wedge_1" />
+    <arg name="x" value="-3.88766" />
+    <arg name="y" value="0.90383" />
+    <arg name="Y" value="-2.97249" />
+  </include>
+
+</launch>
+

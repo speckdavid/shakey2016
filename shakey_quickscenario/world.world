@@ -919,24 +919,6 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='wedge_0'>
-        <pose>8.73692 -3.61186 0.343549 0.002936 -0.035222 -1.56267</pose>
-        <link name='wedge'>
-          <pose>8.73692 -3.61186 0.343549 0.002936 -0.035222 -1.56267</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='wedge_1'>
-        <pose>-3.88766 0.90383 0.343549 0.002936 -0.035222 -2.97249</pose>
-        <link name='wedge'>
-          <pose>-3.88766 0.90383 0.343549 0.002936 -0.035222 -2.97249</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
@@ -944,66 +926,6 @@
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
-    <model name='wedge_0'>
-      <link name='wedge'>
-        <pose>0 0 0 0 -0 0</pose>
-        <inertial>
-          <pose>-0.02904 -0.00404 0.00689 0 -0 0</pose>
-          <mass>5</mass>
-          <inertia>
-            <ixx>0.547112</ixx>
-            <ixy>0.000273</ixy>
-            <ixz>0.101661</ixz>
-            <iyy>0.48123</iyy>
-            <iyz>0.003377</iyz>
-            <izz>0.467481</izz>
-          </inertia>
-        </inertial>
-        <collision name='wedge_collision'>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>../shakey_spawn_objects/meshes/wedge.stl</uri>
-            </mesh>
-          </geometry>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <friction>
-              <ode/>
-            </friction>
-            <bounce/>
-          </surface>
-          <max_contacts>10</max_contacts>
-        </collision>
-        <visual name='wedge_visual'>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>../shakey_spawn_objects/meshes/wedge.stl</uri>
-            </mesh>
-          </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Grey</name>
-              <uri>__default__</uri>
-            </script>
-          </material>
-        </visual>
-        <gravity>1</gravity>
-        <velocity_decay>
-          <linear>0</linear>
-          <angular>0</angular>
-        </velocity_decay>
-        <self_collide>0</self_collide>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>0 0 0 0 -0 0</pose>
-      <static>0</static>
-    </model>
     <model name='unit_box_2'>
       <pose>8.54794 -3.46628 0.5 0 -0 0</pose>
       <link name='link'>
@@ -1110,66 +1032,6 @@
         <kinematic>0</kinematic>
         <gravity>1</gravity>
       </link>
-      <static>0</static>
-    </model>
-    <model name='wedge_1'>
-      <link name='wedge'>
-        <pose>0 0 0 0 -0 0</pose>
-        <inertial>
-          <pose>-0.02904 -0.00404 0.00689 0 -0 0</pose>
-          <mass>5</mass>
-          <inertia>
-            <ixx>0.547112</ixx>
-            <ixy>0.000273</ixy>
-            <ixz>0.101661</ixz>
-            <iyy>0.48123</iyy>
-            <iyz>0.003377</iyz>
-            <izz>0.467481</izz>
-          </inertia>
-        </inertial>
-        <collision name='wedge_collision'>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>../shakey_spawn_objects/meshes/wedge.stl</uri>
-            </mesh>
-          </geometry>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <friction>
-              <ode/>
-            </friction>
-            <bounce/>
-          </surface>
-          <max_contacts>10</max_contacts>
-        </collision>
-        <visual name='wedge_visual'>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>../shakey_spawn_objects/meshes/wedge.stl</uri>
-            </mesh>
-          </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Grey</name>
-              <uri>__default__</uri>
-            </script>
-          </material>
-        </visual>
-        <gravity>1</gravity>
-        <velocity_decay>
-          <linear>0</linear>
-          <angular>0</angular>
-        </velocity_decay>
-        <self_collide>0</self_collide>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>0 0 0 0 -0 0</pose>
       <static>0</static>
     </model>
   </world>

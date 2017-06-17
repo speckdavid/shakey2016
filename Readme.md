@@ -14,7 +14,7 @@ The Shakey 2016 system can be executed on a real robot, the PR2, or as a simulat
 ## 2. Shakey Quickscenario (with Simulation)
 Here we explain how to run a provided scenario in order to test, reproduce and compare the system. First of all, start the simulation and the robot system.
 ```sh
-$ roslaunch shakey_executable shakey_world.launch pkg:="$(rospack find shakey_quickscenario)"
+$ roslaunch shakey_quickscenario shakey_world.launch
 ```
 You should tuck the arms of the robot such that they can not interact with the objects. For that purpose you can use teleop. The picture below illustrates the desired robot state.
 
